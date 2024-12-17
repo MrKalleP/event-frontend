@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+body {
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+}
+
+
+/*För att göra egna fonts till tex knapparna eller inputs osv*/
+.ant-btn,
+.ant-typography,
+.ant-input {
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+}
