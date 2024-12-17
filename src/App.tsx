@@ -1,16 +1,9 @@
-import './App.css'
-import { Button } from 'antd'
+import SideBar from "./components/Sidebar";
 
-function App() {
 
-  return (
-    <>
-      <h2>Hello world!</h2>
-      <div>
-        <Button type="primary" size='large'>Klicka här</Button>
-      </div>
-    </>
-  )
+const App: React.FC = () => {
+  return <>
+    <SideBar />
+  </>;
 }
-
-export default App
+export default App;
