@@ -2,6 +2,7 @@ import React from "react";
 import { ErrorsHome } from "../components/ErrorsHome";
 import { WarningHome } from "../components/WarningHome";
 import { Row, Col } from "antd";
+import TableHomePage from "../components/TableHomePage";
 
 
 const HomePage: React.FC = () => {
@@ -14,6 +15,9 @@ const HomePage: React.FC = () => {
         <Col span={10}>
             <h2 >This is the active warnings</h2>
             <WarningHome />
+        </Col>
+        <Col>
+            <TableHomePage />
         </Col>
     </Row>
 };
