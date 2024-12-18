@@ -6,14 +6,14 @@ import Logo from "./Logo";
 
 
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Content, Footer, Sider } = Layout;
 
 const MainLayout: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
     const location = useLocation();
 
     const {
-        token: { colorBgContainer, borderRadiusLG },
+        token: { borderRadiusLG },
     } = theme.useToken();
 
     const menuItems = [
@@ -38,9 +38,7 @@ const MainLayout: React.FC = () => {
                     theme="dark"
                     mode="inline"
                     defaultSelectedKeys={["/"]}
-                    selectedKeys={[location.pathname]}
-                >
-
+                    selectedKeys={[location.pathname]}>
                     {menuItems.map((item) => (
                         <Menu.Item key={item.key} icon={item.icon}>
                             <Link to={item.key}>{item.label}</Link>
@@ -49,9 +47,9 @@ const MainLayout: React.FC = () => {
                 </Menu>
             </Sider>
             <Layout>
-                <Header style={{ background: colorBgContainer }} />
-                <Content style={{ margin: "16px" }}>
-                    <Breadcrumb style={{ margin: "16px 0" }}>
+
+                <Content style={{ margin: "10px" }}>
+                    <Breadcrumb style={{ margin: "2px 0" }}>
                         {breadcrumbItems.map((item) => (
                             <Breadcrumb.Item key={item.key}>{item.label}</Breadcrumb.Item>
                         ))}
@@ -59,7 +57,7 @@ const MainLayout: React.FC = () => {
                     <div
                         style={{
                             padding: 24,
-                            minHeight: 360,
+                            maxWidth: 'calc(100% - 8px)',
                             background: "#07495b",
                             color: "#fafafa",
                             borderRadius: borderRadiusLG,

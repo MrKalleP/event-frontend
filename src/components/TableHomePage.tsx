@@ -1,105 +1,82 @@
-import React, { useState } from 'react';
-import { Radio, Space, Table, Tag } from 'antd';
-import type { TableProps } from 'antd';
-
-type ColumnsType<T extends object> = TableProps<T>['columns'];
-type TablePagination<T extends object> = NonNullable<Exclude<TableProps<T>['pagination'], boolean>>;
-type TablePaginationPosition<T extends object> = NonNullable<
-    TablePagination<T>['position']
->[number];
+import React from 'react';
+import { Table } from 'antd';
+import type { TableColumnsType, TableProps } from 'antd';
+import { EXAMPLE_DATA } from '../utils/testdata';
 
 interface DataType {
-    key: string;
+    type: any;
+    key: React.Key;
     project: string;
     date: string;
-    type: string[];
-    message: string[];
+    message: string;
 }
 
-
-const bottomOptions = [
-    { label: 'Info', value: 'info' },
-    { label: 'Warnings', value: 'warnings' },
-    { label: 'Erroes', value: 'errors' },
-];
-
-const columns: ColumnsType<DataType> = [
+const project_columns: TableColumnsType<DataType> = [
     {
         title: 'project',
         dataIndex: 'project',
-        key: 'project',
-        render: (text) => <a>{text}</a>,
+        filters: [
+            {
+                text: 'John Brown',
+                value: 'John Brown',
+            },
+            {
+                text: 'Joe Black',
+                value: 'Joe Black',
+            },
+            {
+                text: 'Jim Green',
+                value: 'Jim Green',
+            },
+        ],
+        onFilter: (value, record) => record.project.includes(value as string),
+        sorter: (a, b) => a.project.localeCompare(b.project),
+        sortDirections: ['ascend', 'descend'],
     },
     {
-        title: 'date',
+        title: 'Date',
         dataIndex: 'date',
-        key: 'date',
+        defaultSortOrder: 'ascend',
+        sorter: (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
     },
     {
         title: 'message',
         dataIndex: 'message',
-        key: 'message',
+        defaultSortOrder: 'ascend',
     },
     {
         title: 'type',
-        key: 'type',
         dataIndex: 'type',
-        render: (tags: string[]) => (
-            <span>
-                {tags.map((tag) => {
-                    let color = tag.length > 5 ? 'geekblue' : 'green';
-                    if (tag === 'loser') {
-                        color = 'volcano';
-                    }
-                    return (
-                        <Tag color={color} key={tag}>
-                            {tag.toUpperCase()}
-                        </Tag>
-                    );
-                })}
-            </span>
-        ),
-    },
-    {
-        title: 'Action',
-        key: 'action',
-        render: (_, record) => (
-            <Space size="middle">
-                <a>check {record.project}</a>
-            </Space>
-        ),
+        filters: [
+            {
+                text: 'info',
+                value: 'info',
+            },
+            {
+                text: 'warnings',
+                value: 'warnings',
+            },
+            {
+                text: 'errors',
+                value: 'errors',
+            },
+        ],
+        onFilter: (value, record) => record.type.includes(value as string),
     },
 ];
 
-const data: DataType[] = [
-    {
-        key: '1',
-        project: 'John Brown',
-        date: "1943-23-23",
-        message: [],
-        type: ['Info'],
-    },
-];
-
-const TableHomePage: React.FC = () => {
-    const [top, setTop] = useState<TablePaginationPosition<DataType>>('topLeft');
-    const [bottom, setBottom] = useState<TablePaginationPosition<DataType>>('bottomRight');
-    return (
-        <div>
-            <Radio.Group
-                style={{ marginBottom: 10 }}
-                options={bottomOptions}
-                value={bottom}
-                onChange={(e) => {
-                    setBottom(e.target.value);
-                }}
-            />
-            <Table<DataType>
-                columns={columns}
-                pagination={{ position: [top, bottom] }}
-                dataSource={data}
-            />
-        </div>
-    );
+const onChange: TableProps<DataType>['onChange'] = (pagination, filters, sorter, extra) => {
+    console.log('params', pagination, filters, sorter, extra);
 };
-export default TableHomePage
+
+const TableHomePage: React.FC = () => (
+    <Table<DataType>
+        columns={project_columns}
+        dataSource={EXAMPLE_DATA}
+        onChange={onChange}
+        showSorterTooltip={{ title: 'Click to sort' }}
+        rowKey="key"
+    />
+);
+
+export default TableHomePage;
