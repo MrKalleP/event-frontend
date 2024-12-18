@@ -3,17 +3,17 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import ProjectPage from "./pages/ProjectPage";
 import NotFound from "./utils/NotFound";
-import SideBar from "./components/Sidebar";
+import MainLayout from "./components/MainLayout";
 
 const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <SideBar />
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="*" element={<HomePage />} />
-        <Route path="/projects" element={<ProjectPage />} />
-        <Route path="/NotFound" element={<NotFound />} />
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/project" element={<ProjectPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

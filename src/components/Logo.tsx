@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from "../assets/logo_skytech_white.png"
-import { Image, Row, Col } from 'antd';
+import { Row, Col } from 'antd';
 
 
 const Logo: React.FC = () => (

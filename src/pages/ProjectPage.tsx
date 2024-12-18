@@ -1,12 +1,8 @@
 
+import React from "react";
 
-function ProductPage() {
+const ProjectPage: React.FC = () => {
+    return <h1>Project Page</h1>;
+};
 
-    return (
-        <>
-            <h1>Project Page</h1>
-        </>
-    )
-}
-
-export default ProductPage
+export default ProjectPage;

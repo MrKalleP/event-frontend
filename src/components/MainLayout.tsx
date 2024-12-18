@@ -4,9 +4,11 @@ import { Layout, Menu, Breadcrumb, theme } from "antd";
 import { ProjectOutlined, HomeOutlined } from "@ant-design/icons";
 import Logo from "./Logo";
 
+
+
 const { Header, Content, Footer, Sider } = Layout;
 
-const SideBar: React.FC = () => {
+const MainLayout: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
     const location = useLocation();
 
@@ -15,7 +17,7 @@ const SideBar: React.FC = () => {
     } = theme.useToken();
 
     const menuItems = [
-        { key: "/homepage", label: "Home", icon: <HomeOutlined /> },
+        { key: "/", label: "Home", icon: <HomeOutlined /> },
         { key: "/project", label: "Projects", icon: <ProjectOutlined /> },
     ];
 
@@ -28,7 +30,7 @@ const SideBar: React.FC = () => {
         }));
 
     return (
-        <Layout style={{ minHeight: "100vh" }}>
+        <Layout style={{ minHeight: "100vh", background: "#07495b" }}>
             <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed}>
                 <Logo />
 
@@ -58,7 +60,8 @@ const SideBar: React.FC = () => {
                         style={{
                             padding: 24,
                             minHeight: 360,
-                            background: colorBgContainer,
+                            background: "#07495b",
+                            color: "#fafafa",
                             borderRadius: borderRadiusLG,
                         }}
                     >
@@ -72,4 +75,4 @@ const SideBar: React.FC = () => {
     );
 };
 
-export default SideBar;
+export default MainLayout
