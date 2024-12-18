@@ -1,53 +1,58 @@
-import React, { useState } from 'react';
-
-import {
-    DesktopOutlined,
-    PieChartOutlined,
-} from '@ant-design/icons';
-import type { MenuProps } from 'antd';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import React, { useState } from "react";
+import { Link, useLocation, Outlet } from "react-router-dom";
+import { Layout, Menu, Breadcrumb, theme } from "antd";
+import { ProjectOutlined, HomeOutlined } from "@ant-design/icons";
+import Logo from "./Logo";
 
 const { Header, Content, Footer, Sider } = Layout;
 
-type MenuItem = Required<MenuProps>['items'][number];
-
-function getItem(
-    label: React.ReactNode,
-    key: React.Key,
-    icon?: React.ReactNode,
-    children?: MenuItem[],
-): MenuItem {
-    return {
-        key,
-        icon,
-        children,
-        label,
-    } as MenuItem;
-}
-
-const items: MenuItem[] = [
-    getItem('Home', '1', <PieChartOutlined />),
-    getItem('Projects', '2', <DesktopOutlined />)
-];
-
-function SideBar() {
+const SideBar: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
+    const location = useLocation();
+
     const {
         token: { colorBgContainer, borderRadiusLG },
     } = theme.useToken();
 
+    const menuItems = [
+        { key: "/homepage", label: "Home", icon: <HomeOutlined /> },
+        { key: "/project", label: "Projects", icon: <ProjectOutlined /> },
+    ];
+
+    const breadcrumbItems = location.pathname
+        .split("/")
+        .filter((path) => path)
+        .map((path, index) => ({
+            key: index,
+            label: path.charAt(0).toUpperCase() + path.slice(1),
+        }));
+
     return (
-        <Layout style={{ minHeight: '100vh' }}>
-            <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-                <div className="demo-logo-vertical" />
-                <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
+        <Layout style={{ minHeight: "100vh" }}>
+            <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed}>
+                <Logo />
+
+                <Menu
+                    theme="dark"
+                    mode="inline"
+                    defaultSelectedKeys={["/"]}
+                    selectedKeys={[location.pathname]}
+                >
+
+                    {menuItems.map((item) => (
+                        <Menu.Item key={item.key} icon={item.icon}>
+                            <Link to={item.key}>{item.label}</Link>
+                        </Menu.Item>
+                    ))}
+                </Menu>
             </Sider>
             <Layout>
-                <Header style={{ padding: 0, background: colorBgContainer }} />
-                <Content style={{ margin: '0 16px' }}>
-                    <Breadcrumb style={{ margin: '16px 0' }}>
-                        <Breadcrumb.Item>User</Breadcrumb.Item>
-                        <Breadcrumb.Item>Bill</Breadcrumb.Item>
+                <Header style={{ background: colorBgContainer }} />
+                <Content style={{ margin: "16px" }}>
+                    <Breadcrumb style={{ margin: "16px 0" }}>
+                        {breadcrumbItems.map((item) => (
+                            <Breadcrumb.Item key={item.key}>{item.label}</Breadcrumb.Item>
+                        ))}
                     </Breadcrumb>
                     <div
                         style={{
@@ -57,15 +62,14 @@ function SideBar() {
                             borderRadius: borderRadiusLG,
                         }}
                     >
-                        Bill is a cat.
+                        <Outlet />
+
                     </div>
                 </Content>
-                <Footer style={{ textAlign: 'center' }}>
-                    Event logger ©{new Date().getFullYear()}
-                </Footer>
+                <Footer style={{ textAlign: "center" }}>Event Logger ©{new Date().getFullYear()}</Footer>
             </Layout>
         </Layout>
     );
 };
 
-export default SideBar
+export default SideBar;
