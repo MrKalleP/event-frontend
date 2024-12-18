@@ -6,7 +6,7 @@ import { Card, Col, Row, Statistic } from 'antd';
 export const ErrorsHome = () => (
     <Row gutter={16}>
         <Col span={12}>
-            <Card bordered={false}>
+            <Card bordered={false} >
                 <Statistic
                     title="Errors "
                     value={19.3}

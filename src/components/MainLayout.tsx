@@ -8,7 +8,7 @@ import Logo from "./Logo";
 
 const { Content, Footer, Sider } = Layout;
 
-const MainLayout: React.FC = () => {
+const MainLayout = () => {
     const [collapsed, setCollapsed] = useState(false);
     const location = useLocation();
 
@@ -49,7 +49,7 @@ const MainLayout: React.FC = () => {
             <Layout>
 
                 <Content style={{
-                    margin: "10px",
+                    margin: "5px",
                 }}>
                     <Breadcrumb style={{ margin: "2px 0" }}>
                         {breadcrumbItems.map((item) => (

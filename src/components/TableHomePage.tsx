@@ -5,7 +5,7 @@ import EXAMPLE_DATA from "../utils/testdata.json";
 
 interface DataType {
     type: Type;
-    key: React.Key;
+    id: React.id;
     project: string;
     date: string;
     message: string;
