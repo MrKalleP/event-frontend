@@ -1,10 +1,10 @@
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType, TableProps } from 'antd';
-import { EXAMPLE_DATA } from '../utils/testdata';
+import EXAMPLE_DATA from "../utils/testdata.json";
 
 interface DataType {
-    type: any;
+    type: Type;
     key: React.Key;
     project: string;
     date: string;
@@ -49,16 +49,16 @@ const project_columns: TableColumnsType<DataType> = [
         dataIndex: 'type',
         filters: [
             {
-                text: 'info',
+                text: 'Info',
                 value: 'info',
             },
             {
-                text: 'warnings',
-                value: 'warnings',
+                text: 'Warning',
+                value: 'warning',
             },
             {
-                text: 'errors',
-                value: 'errors',
+                text: 'Error',
+                value: 'error',
             },
         ],
         onFilter: (value, record) => record.type.includes(value as string),
@@ -69,13 +69,14 @@ const onChange: TableProps<DataType>['onChange'] = (pagination, filters, sorter,
     console.log('params', pagination, filters, sorter, extra);
 };
 
-const TableHomePage: React.FC = () => (
+const TableHomePage = () => (
     <Table<DataType>
         columns={project_columns}
         dataSource={EXAMPLE_DATA}
         onChange={onChange}
         showSorterTooltip={{ title: 'Click to sort' }}
-        rowKey="key"
+        rowKey="id"
+
     />
 );
 

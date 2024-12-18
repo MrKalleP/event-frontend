@@ -1,7 +1,6 @@
 
-import React from "react";
 
-const ProjectPage: React.FC = () => {
+const ProjectPage = () => {
     return <h1>Project Page</h1>;
 };
 

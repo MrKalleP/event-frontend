@@ -48,7 +48,9 @@ const MainLayout: React.FC = () => {
             </Sider>
             <Layout>
 
-                <Content style={{ margin: "10px" }}>
+                <Content style={{
+                    margin: "10px",
+                }}>
                     <Breadcrumb style={{ margin: "2px 0" }}>
                         {breadcrumbItems.map((item) => (
                             <Breadcrumb.Item key={item.key}>{item.label}</Breadcrumb.Item>
