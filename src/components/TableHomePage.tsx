@@ -10,6 +10,7 @@ interface DataType {
     project: string;
     date: string;
     message: string;
+    crashed: string;
 }
 
 const project_columns: TableColumnsType<DataType> = [
@@ -37,6 +38,11 @@ const project_columns: TableColumnsType<DataType> = [
         defaultSortOrder: 'ascend',
     },
     {
+        title: 'crashed',
+        dataIndex: 'crashed',
+        defaultSortOrder: 'ascend',
+    },
+    {
         title: 'type',
         dataIndex: 'type',
         filters: [
@@ -54,13 +60,17 @@ const project_columns: TableColumnsType<DataType> = [
             },
         ],
         onFilter: (value, record) => record.type.includes(value as string),
-        render: (type: string) => {
+        render: (type: string, record: { crashed: string }) => {
             const colorMap: Record<string, string> = {
-                info: "blue",
-                error: "red",
-                warning: "orange",
+                info: "#8F91FF",
+                error: "#FA8D8F",
+                warning: "#FFF266",
+                crashed: "#CD0205"
             };
-            return <Tag color={colorMap[type] || "default"}>{type}</Tag>;
+
+            const color = record.crashed === "true" ? "#f50" : colorMap[type] || "default";
+
+            return <Tag color={color}>{type}</Tag>;
         },
     },
 ];
