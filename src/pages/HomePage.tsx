@@ -28,7 +28,7 @@ const HomePage = () => {
         <Col span={12}>
             <TableHomePage />
         </Col>
-        <Col span={12} style={{ background: "#fff", borderRadius: ".5rem", padding: "2.3rem", marginBottom: "4rem" }}>
+        <Col span={12} style={{ background: "#fff", borderRadius: ".5rem", }}>
             <DemoLine />
         </Col>
 
