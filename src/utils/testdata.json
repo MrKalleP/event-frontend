@@ -24,7 +24,7 @@
         "id": "4",
         "project": "Daniel Lee",
         "date": "2023-10-22",
-        "type": "success",
+        "type": "error",
         "message": "Tokyo Skytree Expansion"
     },
     {
@@ -59,7 +59,7 @@
         "id": "9",
         "project": "Mia Clark",
         "date": "2023-09-25",
-        "type": "success",
+        "type": "error",
         "message": "Rome Colosseum Preservation"
     },
     {

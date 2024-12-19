@@ -4,7 +4,6 @@ import type { TableColumnsType, TableProps } from 'antd';
 import test_data from "../utils/testdata.json";
 
 
-
 interface DataType {
     type: Type;
     id: React.id;
@@ -57,10 +56,9 @@ const project_columns: TableColumnsType<DataType> = [
         onFilter: (value, record) => record.type.includes(value as string),
         render: (type: string) => {
             const colorMap: Record<string, string> = {
-                success: "green",
+                info: "blue",
                 error: "red",
                 warning: "orange",
-                info: "blue",
             };
             return <Tag color={colorMap[type] || "default"}>{type}</Tag>;
         },
