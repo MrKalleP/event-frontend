@@ -15,7 +15,7 @@ export const WarningHome = () => (
                     precision={2}
                     valueStyle={{ color: 'black' }}
                     prefix={<WarningOutlined />}
-                    suffix="%"
+                    suffix="pcs"
                 />
             </Card>
         </Col>

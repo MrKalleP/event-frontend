@@ -16,7 +16,7 @@ export const ErrorsHome = () => (
                     precision={2}
                     valueStyle={{ color: 'black' }}
                     prefix={<FireOutlined />}
-                    suffix="%"
+                    suffix="pcs"
                 />
             </Card>
         </Col>

@@ -13,7 +13,7 @@ export const InfoLoggs = () => (
                     precision={2}
                     valueStyle={{ color: 'black' }}
                     prefix={<InfoCircleOutlined />}
-                    suffix="%"
+                    suffix="logs"
                 />
             </Card>
         </Col>

@@ -37,11 +37,7 @@ const project_columns: TableColumnsType<DataType> = [
         dataIndex: 'message',
         defaultSortOrder: 'ascend',
     },
-    {
-        title: 'crashed',
-        dataIndex: 'crashed',
-        defaultSortOrder: 'ascend',
-    },
+
     {
         title: 'type',
         dataIndex: 'type',
