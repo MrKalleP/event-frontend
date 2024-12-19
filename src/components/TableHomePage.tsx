@@ -1,7 +1,9 @@
 import React from 'react';
-import { Table } from 'antd';
+import { Table, Tag } from 'antd';
 import type { TableColumnsType, TableProps } from 'antd';
-import EXAMPLE_DATA from "../utils/testdata.json";
+import test_data from "../utils/testdata.json";
+
+
 
 interface DataType {
     type: Type;
@@ -13,25 +15,16 @@ interface DataType {
 
 const project_columns: TableColumnsType<DataType> = [
     {
-        title: 'project',
+        title: 'Project',
         dataIndex: 'project',
-        filters: [
-            {
-                text: 'John Brown',
-                value: 'John Brown',
-            },
-            {
-                text: 'Joe Black',
-                value: 'Joe Black',
-            },
-            {
-                text: 'Jim Green',
-                value: 'Jim Green',
-            },
-        ],
+        filters: Array.from(
+            new Set(test_data.map((item) => item.project))
+        ).map((project) => ({
+            text: project,
+            value: project,
+        })),
         onFilter: (value, record) => record.project.includes(value as string),
         sorter: (a, b) => a.project.localeCompare(b.project),
-        sortDirections: ['ascend', 'descend'],
     },
     {
         title: 'Date',
@@ -62,6 +55,15 @@ const project_columns: TableColumnsType<DataType> = [
             },
         ],
         onFilter: (value, record) => record.type.includes(value as string),
+        render: (type: string) => {
+            const colorMap: Record<string, string> = {
+                success: "green",
+                error: "red",
+                warning: "orange",
+                info: "blue",
+            };
+            return <Tag color={colorMap[type] || "default"}>{type}</Tag>;
+        },
     },
 ];
 
@@ -72,7 +74,7 @@ const onChange: TableProps<DataType>['onChange'] = (pagination, filters, sorter,
 const TableHomePage = () => (
     <Table<DataType>
         columns={project_columns}
-        dataSource={EXAMPLE_DATA}
+        dataSource={test_data}
         onChange={onChange}
         showSorterTooltip={{ title: 'Click to sort' }}
         rowKey="id"
