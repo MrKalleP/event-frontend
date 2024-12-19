@@ -29,8 +29,8 @@ const project_columns: TableColumnsType<DataType> = [
     {
         title: 'Date',
         dataIndex: 'date',
-        defaultSortOrder: 'ascend',
-        sorter: (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
+        defaultSortOrder: 'descend',
+        sorter: (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
     },
     {
         title: 'message',
@@ -60,9 +60,6 @@ const project_columns: TableColumnsType<DataType> = [
             },
         ],
         onFilter: (value, record) => {
-            if (value === 'crashed') {
-                return record.crashed === "true";
-            }
             return record.type.includes(value as string);
         },
         sorter: (a, b) => a.type.localeCompare(b.type),
@@ -73,9 +70,9 @@ const project_columns: TableColumnsType<DataType> = [
                 warning: "#FFF266",
                 crashed: "#CD0205"
             };
-            const color = record.crashed === "true" ? "#f50" : colorMap[type] || "default";
+            const backgroundColor = record.crashed === "true" ? "#f50" : colorMap[type] || "default";
 
-            return <Tag color={color}>{type}</Tag>;
+            return <Tag color={backgroundColor} style={{ color: "black" }}>{type}</Tag>;
         },
     }
 ];

@@ -4,79 +4,76 @@
         "project": "Alice Johnson",
         "date": "2023-12-10",
         "type": "error",
-        "message": "Stockholm Central Library",
-        "crashed": "true"
+        "message": "Stockholm Central Library"
     },
     {
         "id": "2",
         "project": "Michael Smith",
         "date": "2023-11-15",
         "type": "warning",
-        "message": "New York Public Park Renovation",
-        "crashed": "false"
+        "message": "New York Public Park Renovation"
     },
     {
         "id": "3",
         "project": "Emma Brown",
         "date": "2023-11-15",
-        "type": "error",
-        "message": "Berlin City Hall Maintenance",
-        "crashed": "true"
+        "type": "crashed",
+        "message": "Berlin City Hall Maintenance"
     },
     {
         "id": "4",
         "project": "Daniel Lee",
         "date": "2023-10-22",
         "type": "error",
-        "message": "Tokyo Skytree Expansion",
-        "crashed": "false"
+        "message": "Tokyo Skytree Expansion"
     },
     {
         "id": "5",
         "project": "Sophia Davis",
         "date": "2023-12-01",
-        "type": "info",
-        "message": "Copenhagen Harbor Clean-up",
-        "crashed": "false"
+        "type": "crashed",
+        "message": "Copenhagen Harbor Clean-up"
     },
     {
         "id": "6",
         "project": "Liam White",
         "date": "2024-02-12",
         "type": "warning",
-        "message": "Paris Metro Line Upgrade",
-        "crashed": "false"
+        "message": "Paris Metro Line Upgrade"
     },
     {
         "id": "7",
         "project": "Olivia Martin",
         "date": "2023-11-30",
         "type": "error",
-        "message": "Sydney Opera House Repairs",
-        "crashed": "false"
+        "message": "Sydney Opera House Repairs"
     },
     {
         "id": "8",
         "project": "Noah Wilson",
         "date": "2024-01-18",
         "type": "info",
-        "message": "Barcelona Beachfront Restoration",
-        "crashed": "false"
+        "message": "Barcelona Beachfront Restoration"
     },
     {
         "id": "9",
         "project": "Mia Clark",
         "date": "2023-09-25",
         "type": "error",
-        "message": "Rome Colosseum Preservation",
-        "crashed": "false"
+        "message": "Rome Colosseum Preservation"
     },
     {
         "id": "10",
         "project": "Ethan Harris",
         "date": "2023-12-20",
         "type": "warning",
-        "message": "Los Angeles Urban Gardening Project",
-        "crashed": "false"
+        "message": "Los Angeles Urban Gardening Project"
+    },
+    {
+        "id": "11",
+        "project": "Nisse Hult",
+        "date": "2023-08-10",
+        "type": "warning",
+        "message": "Los Angeles Urban Gardening Project"
     }
 ]
