@@ -2,7 +2,7 @@ import { Line } from '@ant-design/plots';
 import test_data from "../utils/testdata.json";
 
 
-const prepareLineChartData = (_data: { id: string; project: string; date: string; type: string; message: string; crashed: string; }[]) => {
+const prepareLineChartData = (_data: { id: string; project: string; date: string; type: string; message: string; }[]) => {
 
     const today = new Date();
     let oneWeekLater = new Date();
@@ -13,7 +13,6 @@ const prepareLineChartData = (_data: { id: string; project: string; date: string
         return itemDate >= today && itemDate <= oneWeekLater;
     });
 
-
     const aggregatedData = filteredData.reduce((sum, curr) => {
         const dateKey = curr.date.split('T')[0];
         if (!sum[dateKey]) {
@@ -21,7 +20,7 @@ const prepareLineChartData = (_data: { id: string; project: string; date: string
         }
         if (curr.type === "error") sum[dateKey].errors += 1;
         if (curr.type === "warning") sum[dateKey].warnings += 1;
-        if (curr.crashed === "true") sum[dateKey].crashed += 1;
+        if (curr.type === "crached") sum[dateKey].crashed += 1;
         return sum;
     }, {} as Record<string, { date: string; errors: number; warnings: number; crashed: number }>);
 

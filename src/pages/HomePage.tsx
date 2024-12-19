@@ -10,19 +10,15 @@ import { LineChart } from "../components/LineChart";
 const HomePage = () => {
     return <Row gutter={[8, 13]} justify="center" align="middle" style={{ backgroundColor: "#07495b", borderRadius: ".5rem", color: "white" }}>
         <Col span={6}>
-            <h2>This is all loggs</h2>
             <InfoLoggs />
         </Col>
         <Col span={6}>
-            <h2>Active warnings</h2>
             <WarningHome />
         </Col>
         <Col span={6}>
-            <h2>Active errors</h2>
             <ErrorsHome />
         </Col>
         <Col span={6}>
-            <h2>Crached loggs</h2>
             <CrashedLoggs />
         </Col>
         <Col span={12}>

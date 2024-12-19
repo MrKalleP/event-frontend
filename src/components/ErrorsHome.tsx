@@ -12,7 +12,6 @@ export const ErrorsHome = () => (
         <Statistic
             title="Errors "
             value={errorFilterData.length}
-            precision={2}
             valueStyle={{ color: 'black' }}
             prefix={<FireOutlined />}
             suffix="pcs"

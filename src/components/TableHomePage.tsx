@@ -4,13 +4,13 @@ import type { TableColumnsType, TableProps } from 'antd';
 import test_data from "../utils/testdata.json";
 
 
+
 interface DataType {
-    type: Type;
+    type: string;
     id: React.Key;
     project: string;
     date: string;
     message: string;
-    crashed: string;
 }
 
 const project_columns: TableColumnsType<DataType> = [
@@ -63,14 +63,14 @@ const project_columns: TableColumnsType<DataType> = [
             return record.type.includes(value as string);
         },
         sorter: (a, b) => a.type.localeCompare(b.type),
-        render: (type: string, record: { crashed: string }) => {
+        render: (type: string) => {
             const colorMap: Record<string, string> = {
                 info: "#8F91FF",
                 error: "#FA8D8F",
                 warning: "#FFF266",
                 crashed: "#CD0205"
             };
-            const backgroundColor = record.crashed === "true" ? "#f50" : colorMap[type] || "default";
+            const backgroundColor = colorMap[type] || "default";
 
             return <Tag color={backgroundColor} style={{ color: "black" }}>{type}</Tag>;
         },

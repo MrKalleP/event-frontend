@@ -2,7 +2,7 @@ import { AlertOutlined } from '@ant-design/icons';
 import { Card, Statistic } from 'antd';
 import test_data from "../utils/testdata.json";
 
-const CrashedFilterData = test_data.filter(item => item.crashed === "true");
+const CrashedFilterData = test_data.filter(item => item.type === "crashed");
 
 export const CrashedLoggs = () => (
 
@@ -10,10 +10,9 @@ export const CrashedLoggs = () => (
         <Statistic
             title="Crashed"
             value={CrashedFilterData.length}
-            precision={0}
             valueStyle={{ color: 'black' }}
             prefix={<AlertOutlined />}
-            suffix="logs"
+            suffix="pcs"
         />
     </Card>
 
