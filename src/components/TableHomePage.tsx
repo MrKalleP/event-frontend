@@ -6,7 +6,7 @@ import test_data from "../utils/testdata.json";
 
 interface DataType {
     type: Type;
-    id: React.id;
+    id: React.Key;
     project: string;
     date: string;
     message: string;
@@ -54,8 +54,18 @@ const project_columns: TableColumnsType<DataType> = [
                 text: 'Error',
                 value: 'error',
             },
+            {
+                text: 'Crashed',
+                value: 'crashed',
+            },
         ],
-        onFilter: (value, record) => record.type.includes(value as string),
+        onFilter: (value, record) => {
+            if (value === 'crashed') {
+                return record.crashed === "true";
+            }
+            return record.type.includes(value as string);
+        },
+        sorter: (a, b) => a.type.localeCompare(b.type),
         render: (type: string, record: { crashed: string }) => {
             const colorMap: Record<string, string> = {
                 info: "#8F91FF",
@@ -63,12 +73,11 @@ const project_columns: TableColumnsType<DataType> = [
                 warning: "#FFF266",
                 crashed: "#CD0205"
             };
-
             const color = record.crashed === "true" ? "#f50" : colorMap[type] || "default";
 
             return <Tag color={color}>{type}</Tag>;
         },
-    },
+    }
 ];
 
 const onChange: TableProps<DataType>['onChange'] = (pagination, filters, sorter, extra) => {
