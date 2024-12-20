@@ -19,7 +19,7 @@ class LineChartExample extends PureComponent {
         return (
             <ResponsiveContainer width="100%" height="100%">
                 <LineChart
-                    width={500}
+                    width={600}
                     height={300}
                     data={test_data}
                     margin={{
@@ -34,7 +34,7 @@ class LineChartExample extends PureComponent {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Line type="monotone" dataKey="type" stroke="#8884d8" activeDot={{ r: 8 }} />
+                    <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
                     <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
                 </LineChart>
             </ResponsiveContainer>
