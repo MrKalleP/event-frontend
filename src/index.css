@@ -4,6 +4,13 @@ body {
   font-family: 'Poppins', 'Montserrat', sans-serif;
 }
 
+body,
+html,
+#root {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
 
 /*För att göra egna fonts till tex knapparna eller inputs osv*/
 .ant-btn,

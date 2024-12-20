@@ -33,12 +33,12 @@ const MainLayout = () => {
         <Layout style={{ minHeight: "100vh", background: "#07495b" }}>
             <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed}>
                 <Logo />
-
                 <Menu
                     theme="dark"
                     mode="inline"
                     defaultSelectedKeys={["/"]}
-                    selectedKeys={[location.pathname]}>
+                    selectedKeys={[location.pathname]}
+                >
                     {menuItems.map((item) => (
                         <Menu.Item key={item.key} icon={item.icon}>
                             <Link to={item.key}>{item.label}</Link>
@@ -47,26 +47,23 @@ const MainLayout = () => {
                 </Menu>
             </Sider>
             <Layout>
-
-                <Content style={{
-                    margin: "5px",
-                }}>
-                    <Breadcrumb style={{ margin: "2px 0" }}>
+                <Content style={{ margin: "0", height: "100%" }}>
+                    <Breadcrumb style={{ margin: "3px" }}>
                         {breadcrumbItems.map((item) => (
                             <Breadcrumb.Item key={item.key}>{item.label}</Breadcrumb.Item>
                         ))}
                     </Breadcrumb>
                     <div
                         style={{
-                            padding: 24,
-                            maxWidth: 'calc(100% - 8px)',
+                            padding: 14,
                             background: "#07495b",
                             color: "#fafafa",
                             borderRadius: borderRadiusLG,
+                            height: "100%",
+                            margin: "1.3rem"
                         }}
                     >
                         <Outlet />
-
                     </div>
                 </Content>
                 <Footer style={{ textAlign: "center" }}>Event Logger ©{new Date().getFullYear()}</Footer>
