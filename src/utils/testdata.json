@@ -4,98 +4,76 @@
         "project": "Ståldirekt",
         "date": "2023-12-01",
         "type": "error",
-        "message": "Stockholm Central Library",
-        "uv": 200,
-        "pv": 300
+        "message": "Stockholm Central Library"
     },
     {
         "id": "2",
         "project": "Skyltdirekt",
         "date": "2023-12-02",
         "type": "warning",
-        "message": "New York Public Park Renovation",
-        "uv": 300,
-        "pv": 500
+        "message": "New York Public Park Renovation"
     },
     {
         "id": "3",
         "project": "Skytech AB",
         "date": "2023-12-03",
         "type": "crashed",
-        "message": "Berlin City Hall Maintenance",
-        "uv": 400,
-        "pv": 200
+        "message": "Berlin City Hall Maintenance"
     },
     {
         "id": "4",
         "project": "Ståldirekt",
         "date": "2023-12-04",
         "type": "error",
-        "message": "Tokyo Skytree Expansion",
-        "uv": 250,
-        "pv": 450
+        "message": "Tokyo Skytree Expansion"
     },
     {
         "id": "5",
         "project": "Skyltdirekt",
         "date": "2023-12-05",
         "type": "crashed",
-        "message": "Copenhagen Harbor Clean-up",
-        "uv": 300,
-        "pv": 400
+        "message": "Copenhagen Harbor Clean-up"
     },
     {
         "id": "6",
         "project": "Skytech AB",
         "date": "2023-12-06",
         "type": "warning",
-        "message": "Paris Metro Line Upgrade",
-        "uv": 350,
-        "pv": 300
+        "message": "Paris Metro Line Upgrade"
     },
     {
         "id": "7",
         "project": "Ståldirekt",
         "date": "2023-12-07",
         "type": "error",
-        "message": "Sydney Opera House Repairs",
-        "uv": 400,
-        "pv": 500
+        "message": "Sydney Opera House Repairs"
     },
     {
         "id": "8",
         "project": "Skytech AB",
         "date": "2023-12-03",
         "type": "info",
-        "message": "Paris Metro Line Upgrade",
-        "uv": 350,
-        "pv": 300
+        "message": "Paris Metro Line Upgrade"
     },
     {
         "id": "9",
         "project": "Skytech AB",
         "date": "2023-12-02",
         "type": "error",
-        "message": "Paris Metro Line Upgrade",
-        "uv": 350,
-        "pv": 300
+        "message": "Paris Metro Line Upgrade"
     },
     {
         "id": "10",
         "project": "Skyltdirekt",
         "date": "2023-12-06",
         "type": "warning",
-        "message": "Paris Metro Line Upgrade",
-        "uv": 350,
-        "pv": 300
+        "message": "Paris Metro Line Upgrade"
     },
     {
         "id": "11",
         "project": "Ståldirekt",
         "date": "2023-12-06",
         "type": "info",
-        "message": "Paris Metro Line Upgrade",
-        "uv": 350,
-        "pv": 300
+        "message": "Paris Metro Line Upgrade"
     }
 ]
