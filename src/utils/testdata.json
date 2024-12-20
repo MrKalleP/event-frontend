@@ -2,78 +2,141 @@
     {
         "id": "1",
         "project": "Ståldirekt",
-        "date": "2023-12-01",
-        "type": "error",
-        "message": "Stockholm Central Library"
+        "date": "2024-12-20",
+        "type": "info",
+        "message": "System under maintenance."
     },
     {
         "id": "2",
-        "project": "Skyltdirekt",
-        "date": "2023-12-02",
-        "type": "warning",
-        "message": "New York Public Park Renovation"
+        "project": "skyteck AB",
+        "date": "2024-12-19",
+        "type": "error",
+        "message": "Database connection failed."
     },
     {
         "id": "3",
-        "project": "Skytech AB",
-        "date": "2023-12-03",
-        "type": "crashed",
-        "message": "Berlin City Hall Maintenance"
+        "project": "Skyltdirekt",
+        "date": "2024-12-18",
+        "type": "warning",
+        "message": "High memory usage detected."
     },
     {
         "id": "4",
-        "project": "Ståldirekt",
-        "date": "2023-12-04",
-        "type": "error",
-        "message": "Tokyo Skytree Expansion"
+        "project": "TechVision",
+        "date": "2024-12-17",
+        "type": "crashed",
+        "message": "Application server crashed."
     },
     {
         "id": "5",
-        "project": "Skyltdirekt",
-        "date": "2023-12-05",
-        "type": "crashed",
-        "message": "Copenhagen Harbor Clean-up"
+        "project": "BuildSmart",
+        "date": "2024-12-20",
+        "type": "error",
+        "message": "Invalid user input."
     },
     {
         "id": "6",
-        "project": "Skytech AB",
-        "date": "2023-12-06",
-        "type": "warning",
-        "message": "Paris Metro Line Upgrade"
+        "project": "Ståldirekt",
+        "date": "2024-12-19",
+        "type": "info",
+        "message": "New update deployed successfully."
     },
     {
         "id": "7",
-        "project": "Ståldirekt",
-        "date": "2023-12-07",
-        "type": "error",
-        "message": "Sydney Opera House Repairs"
+        "project": "skyteck AB",
+        "date": "2024-12-18",
+        "type": "warning",
+        "message": "API rate limit approaching."
     },
     {
         "id": "8",
-        "project": "Skytech AB",
-        "date": "2023-12-03",
-        "type": "info",
-        "message": "Paris Metro Line Upgrade"
+        "project": "Skyltdirekt",
+        "date": "2024-12-17",
+        "type": "crashed",
+        "message": "Payment gateway service down."
     },
     {
         "id": "9",
-        "project": "Skytech AB",
-        "date": "2023-12-02",
-        "type": "error",
-        "message": "Paris Metro Line Upgrade"
+        "project": "TechVision",
+        "date": "2024-12-16",
+        "type": "info",
+        "message": "System check completed."
     },
     {
         "id": "10",
-        "project": "Skyltdirekt",
-        "date": "2023-12-06",
-        "type": "warning",
-        "message": "Paris Metro Line Upgrade"
+        "project": "BuildSmart",
+        "date": "2024-12-15",
+        "type": "error",
+        "message": "Configuration file missing."
     },
     {
         "id": "11",
         "project": "Ståldirekt",
-        "date": "2023-12-06",
+        "date": "2024-12-20",
+        "type": "warning",
+        "message": "Unusual login detected."
+    },
+    {
+        "id": "12",
+        "project": "skyteck AB",
+        "date": "2024-12-19",
+        "type": "crashed",
+        "message": "Email server not responding."
+    },
+    {
+        "id": "13",
+        "project": "Skyltdirekt",
+        "date": "2024-12-18",
         "type": "info",
-        "message": "Paris Metro Line Upgrade"
+        "message": "New client onboarded."
+    },
+    {
+        "id": "14",
+        "project": "TechVision",
+        "date": "2024-12-17",
+        "type": "error",
+        "message": "Access denied for user."
+    },
+    {
+        "id": "15",
+        "project": "BuildSmart",
+        "date": "2024-12-16",
+        "type": "warning",
+        "message": "Disk space running low."
+    },
+    {
+        "id": "16",
+        "project": "Ståldirekt",
+        "date": "2024-12-15",
+        "type": "crached",
+        "message": "Unexpected server shutdown."
+    },
+    {
+        "id": "17",
+        "project": "skyteck AB",
+        "date": "2024-12-14",
+        "type": "info",
+        "message": "Daily backup completed."
+    },
+    {
+        "id": "18",
+        "project": "Skyltdirekt",
+        "date": "2024-12-13",
+        "type": "inf",
+        "message": "Deprecated API used in production."
+    },
+    {
+        "id": "19",
+        "project": "TechVision",
+        "date": "2024-12-12",
+        "type": "error",
+        "message": "Failed to send SMS notifications."
+    },
+    {
+        "id": "20",
+        "project": "BuildSmart",
+        "date": "2024-12-11",
+        "type": "error",
+        "message": "Critical module unresponsive."
     }
 ]

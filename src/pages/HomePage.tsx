@@ -9,7 +9,7 @@ import LineChartExample from "../components/LineChart"
 
 
 const HomePage = () => {
-    return <Row gutter={[8, 13]} justify="center" align="middle" style={{ backgroundColor: "#07495b", borderRadius: ".5rem", color: "white", margin: ".5rem" }}>
+    return <Row gutter={[8, 17]} justify="center" align="middle" style={{ backgroundColor: "#07495b", borderRadius: ".5rem", color: "white", margin: ".5rem", padding: ".3rem" }}>
         <Col span={6}>
             <InfoLoggs />
         </Col>
@@ -25,7 +25,7 @@ const HomePage = () => {
         <Col span={12} style={{ borderRadius: ".5rem" }}>
             <TableHomePage />
         </Col>
-        <Col span={12} style={{ background: "#fff", borderRadius: ".5rem", height: "70vh" }}>
+        <Col span={12} style={{ background: "#fff", borderRadius: ".5rem", height: "70vh", padding: ".7rem" }}>
             < LineChartExample />
         </Col>
 

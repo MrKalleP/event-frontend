@@ -1,5 +1,6 @@
-import { PureComponent } from "react";
+
 import test_data from "../utils/testdata.json";
+
 import {
     LineChart,
     Line,
@@ -11,60 +12,77 @@ import {
     ResponsiveContainer,
 } from "recharts";
 
+interface DataType {
+    id: string;
+    project: string;
+    date: string;
+    type: string;
+    message: string;
+}
 
-const processData = (test_data: any[]) => {
+interface ProcessedDataType {
+    date: string;
+    info: number;
+    warning: number;
+    error: number;
+    crashed: number;
+}
+
+const preProcessData = (data: DataType[]): ProcessedDataType[] => {
+    const groupedData: { [key: string]: ProcessedDataType } = {}; // En tomt objekt som ska innehålla grupperad data
     const today = new Date();
-    const sevenDaysAhead = new Date();
-    sevenDaysAhead.setDate(today.getDate() + 7);
+    const oneWeekAgo = new Date();
+    oneWeekAgo.setDate(today.getDate() - 7);
 
-    const aggregatedData: any = {};
-
-    test_data.forEach((item) => {
-        const itemDate = new Date(item.date);
-        if (itemDate >= today && itemDate <= sevenDaysAhead) {
-            const dateKey = itemDate.toISOString().split("T")[0];
-
-            if (!aggregatedData[dateKey]) {
-                aggregatedData[dateKey] = { date: dateKey, error: 0, warning: 0, info: 0, crashed: 0 };
+    // Gå igenom varje objekt i data-arrayen och gruppera dem efter datum /
+    data.forEach(({ date, type }) => {
+        const dateObj = new Date(date); // Skapa ett Date-objekt från datumsträngen för nuvarande objekt
+        if (dateObj >= oneWeekAgo && dateObj <= today) {
+            // Om datumet är inom en vecka från idag
+            const formattedDate = dateObj.toISOString().split('T')[0]; // formatera datumet till ISO-format (YYYY-MM-DD)
+            if (!groupedData[formattedDate]) {
+                // Om datumet inte redan finns i groupedData
+                groupedData[formattedDate] = { date: formattedDate, info: 0, warning: 0, error: 0, crashed: 0 };
+                // Lägg till datumet i groupedData och sätt alla typer till 0
             }
-
-            if (item.type in aggregatedData[dateKey]) {
-                aggregatedData[dateKey][item.type] += 1;
+            if (type in groupedData[formattedDate]) {
+                // Om typen finns i groupedData för det aktuella datumet
+                groupedData[formattedDate][type as keyof ProcessedDataType]++;
+                // Öka antalet för den aktuella typen med 1, ex om typen är 'info' öka info med 1 för det aktuella datumet
             }
         }
     });
 
-    return Object.values(aggregatedData);
+    const result = Object.values(groupedData); // Skapa en array av värdena i groupedData
+
+    return result;
 };
+function LineChartExample() {
+    const processedData = preProcessData(test_data);
 
-class LineChartExample extends PureComponent {
-    render() {
-        const chartData = processData(test_data);
-
-        return (
-            <ResponsiveContainer width="100%" height={400}>
-                <LineChart
-                    data={chartData}
-                    margin={{
-                        top: 5,
-                        right: 30,
-                        left: 20,
-                        bottom: 5,
-                    }}
-                >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="date" />
-                    <YAxis dataKey="type" />
-                    <Tooltip />
-                    <Legend />
-                    <Line type="monotone" dataKey="error" stroke="#ff0000" name="Errors" activeDot={{ r: 8 }} />
-                    <Line type="monotone" dataKey="warning" stroke="#ffa500" name="Warnings" />
-                    <Line type="monotone" dataKey="info" stroke="#0000ff" name="Info" />
-                    <Line type="monotone" dataKey="crashed" stroke="#800080" name="Crashed" />
-                </LineChart>
-            </ResponsiveContainer>
-        );
-    }
+    return (
+        <ResponsiveContainer width="100%" height={400} style={{ marginTop: "7rem" }}>
+            <LineChart
+                data={processedData}
+                margin={{
+                    top: 25,
+                    right: 30,
+                    left: 20,
+                    bottom: 5,
+                }}
+            >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="date" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Line type="monotone" dataKey="info" stroke="#8F91FF" name="Info" activeDot={{ r: 8 }} />
+                <Line type="monotone" dataKey="warning" stroke="#FFF266" name="Warning" />
+                <Line type="monotone" dataKey="error" stroke="#FA8D8F" name="Error" />
+                <Line type="monotone" dataKey="crashed" stroke="#CD0205" name="crashed" />
+            </LineChart>
+        </ResponsiveContainer>
+    );
 }
 
 export default LineChartExample;

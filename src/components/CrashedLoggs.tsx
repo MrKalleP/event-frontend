@@ -8,7 +8,7 @@ export const CrashedLoggs = () => (
 
     <Card bordered={false} style={{ backgroundColor: "#CD0205" }}>
         <Statistic
-            title="Crashed"
+            title="crashed"
             value={CrashedFilterData.length}
             valueStyle={{ color: 'black' }}
             prefix={<AlertOutlined />}
