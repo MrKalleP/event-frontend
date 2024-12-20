@@ -108,7 +108,7 @@
         "id": "16",
         "project": "Ståldirekt",
         "date": "2024-12-15",
-        "type": "crached",
+        "type": "crashed",
         "message": "Unexpected server shutdown."
     },
     {
@@ -122,7 +122,7 @@
         "id": "18",
         "project": "Skyltdirekt",
         "date": "2024-12-13",
-        "type": "inf",
+        "type": "info",
         "message": "Deprecated API used in production."
     },
     {

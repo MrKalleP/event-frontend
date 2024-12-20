@@ -65,10 +65,10 @@ const project_columns: TableColumnsType<DataType> = [
         sorter: (a, b) => a.type.localeCompare(b.type),
         render: (type: string) => {
             const colorMap: Record<string, string> = {
-                info: "#8F91FF",
+                info: "#0022FF",
                 error: "#FA8D8F",
-                warning: "#FFF266",
-                crashed: "#CD0205"
+                warning: "#FFFF00",
+                crashed: "#FF0000"
             };
             const backgroundColor = colorMap[type] || "default";
 

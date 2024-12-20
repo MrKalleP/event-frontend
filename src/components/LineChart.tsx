@@ -76,10 +76,10 @@ function LineChartExample() {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Line type="monotone" dataKey="info" stroke="#8F91FF" name="Info" activeDot={{ r: 8 }} />
-                <Line type="monotone" dataKey="warning" stroke="#FFF266" name="Warning" />
-                <Line type="monotone" dataKey="error" stroke="#FA8D8F" name="Error" />
-                <Line type="monotone" dataKey="crashed" stroke="#CD0205" name="crashed" />
+                <Line type="monotone" dataKey="info" stroke="#0022FF" name="Info" activeDot={{ r: 8 }} />
+                <Line type="monotone" dataKey="warning" stroke="#FFFF00" name="Warning" />
+                <Line type="monotone" dataKey="error" stroke="#F4577E" name="Error" />
+                <Line type="monotone" dataKey="crashed" stroke="#FF0000" name="crashed" />
             </LineChart>
         </ResponsiveContainer>
     );

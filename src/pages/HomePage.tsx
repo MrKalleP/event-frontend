@@ -25,7 +25,7 @@ const HomePage = () => {
         <Col span={12} style={{ borderRadius: ".5rem" }}>
             <TableHomePage />
         </Col>
-        <Col span={12} style={{ background: "#fff", borderRadius: ".5rem", height: "70vh", padding: ".7rem" }}>
+        <Col span={12} style={{ background: "#F6FFFF", borderRadius: ".5rem", height: "70vh", padding: ".7rem" }}>
             < LineChartExample />
         </Col>
 
