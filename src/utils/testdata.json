@@ -1,79 +1,101 @@
 [
     {
         "id": "1",
-        "project": "Alice Johnson",
-        "date": "2023-12-10",
+        "project": "Ståldirekt",
+        "date": "2023-12-01",
         "type": "error",
-        "message": "Stockholm Central Library"
+        "message": "Stockholm Central Library",
+        "uv": 200,
+        "pv": 300
     },
     {
         "id": "2",
-        "project": "Michael Smith",
-        "date": "2023-11-15",
+        "project": "Skyltdirekt",
+        "date": "2023-12-02",
         "type": "warning",
-        "message": "New York Public Park Renovation"
+        "message": "New York Public Park Renovation",
+        "uv": 300,
+        "pv": 500
     },
     {
         "id": "3",
-        "project": "Emma Brown",
-        "date": "2023-11-15",
+        "project": "Skytech AB",
+        "date": "2023-12-03",
         "type": "crashed",
-        "message": "Berlin City Hall Maintenance"
+        "message": "Berlin City Hall Maintenance",
+        "uv": 400,
+        "pv": 200
     },
     {
         "id": "4",
-        "project": "Daniel Lee",
-        "date": "2023-10-22",
+        "project": "Ståldirekt",
+        "date": "2023-12-04",
         "type": "error",
-        "message": "Tokyo Skytree Expansion"
+        "message": "Tokyo Skytree Expansion",
+        "uv": 250,
+        "pv": 450
     },
     {
         "id": "5",
-        "project": "Sophia Davis",
-        "date": "2023-12-01",
+        "project": "Skyltdirekt",
+        "date": "2023-12-05",
         "type": "crashed",
-        "message": "Copenhagen Harbor Clean-up"
+        "message": "Copenhagen Harbor Clean-up",
+        "uv": 300,
+        "pv": 400
     },
     {
         "id": "6",
-        "project": "Liam White",
-        "date": "2024-02-12",
+        "project": "Skytech AB",
+        "date": "2023-12-06",
         "type": "warning",
-        "message": "Paris Metro Line Upgrade"
+        "message": "Paris Metro Line Upgrade",
+        "uv": 350,
+        "pv": 300
     },
     {
         "id": "7",
-        "project": "Olivia Martin",
-        "date": "2023-11-30",
+        "project": "Ståldirekt",
+        "date": "2023-12-07",
         "type": "error",
-        "message": "Sydney Opera House Repairs"
+        "message": "Sydney Opera House Repairs",
+        "uv": 400,
+        "pv": 500
     },
     {
         "id": "8",
-        "project": "Noah Wilson",
-        "date": "2024-01-18",
+        "project": "Skytech AB",
+        "date": "2023-12-03",
         "type": "info",
-        "message": "Barcelona Beachfront Restoration"
+        "message": "Paris Metro Line Upgrade",
+        "uv": 350,
+        "pv": 300
     },
     {
         "id": "9",
-        "project": "Mia Clark",
-        "date": "2023-09-25",
+        "project": "Skytech AB",
+        "date": "2023-12-02",
         "type": "error",
-        "message": "Rome Colosseum Preservation"
+        "message": "Paris Metro Line Upgrade",
+        "uv": 350,
+        "pv": 300
     },
     {
         "id": "10",
-        "project": "Ethan Harris",
-        "date": "2023-12-20",
+        "project": "Skyltdirekt",
+        "date": "2023-12-06",
         "type": "warning",
-        "message": "Los Angeles Urban Gardening Project"
+        "message": "Paris Metro Line Upgrade",
+        "uv": 350,
+        "pv": 300
     },
     {
         "id": "11",
-        "project": "Nisse Hult",
-        "date": "2023-08-10",
-        "type": "warning",
-        "message": "Los Angeles Urban Gardening Project"
+        "project": "Ståldirekt",
+        "date": "2023-12-06",
+        "type": "info",
+        "message": "Paris Metro Line Upgrade",
+        "uv": 350,
+        "pv": 300
     }
 ]

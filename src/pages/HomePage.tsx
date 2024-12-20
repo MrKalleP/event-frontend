@@ -5,10 +5,11 @@ import { Row, Col } from "antd";
 import TableHomePage from "../components/TableHomePage";
 import { CrashedLoggs } from "../components/CrashedLoggs"
 import { InfoLoggs } from "../components/InfoLoggs"
+import LineChartExample from "../components/LineChart"
 
 
 const HomePage = () => {
-    return <Row gutter={[8, 13]} justify="center" align="middle" style={{ backgroundColor: "#07495b", borderRadius: ".5rem", color: "white", margin: ".2rem" }}>
+    return <Row gutter={[8, 13]} justify="center" align="middle" style={{ backgroundColor: "#07495b", borderRadius: ".5rem", color: "white", margin: ".5rem" }}>
         <Col span={6}>
             <InfoLoggs />
         </Col>
@@ -24,7 +25,8 @@ const HomePage = () => {
         <Col span={12} style={{ borderRadius: ".5rem" }}>
             <TableHomePage />
         </Col>
-        <Col span={12} style={{ background: "#fff", borderRadius: ".5rem" }}>
+        <Col span={12} style={{ background: "#fff", borderRadius: ".5rem", height: "70vh" }}>
+            < LineChartExample />
         </Col>
 
     </Row>
