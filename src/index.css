@@ -18,3 +18,13 @@ html,
 .ant-input {
   font-family: 'Poppins', 'Montserrat', sans-serif;
 }
+
+.logo-small {
+  width: 10px;
+  transition: width 0.3s ease;
+}
+
+.logo-large {
+  width: 160px;
+  transition: width 0.3s ease;
+}

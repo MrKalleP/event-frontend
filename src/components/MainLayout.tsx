@@ -32,7 +32,7 @@ const MainLayout = () => {
     return (
         <Layout style={{ minHeight: "100vh", background: "#07495b" }}>
             <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed}>
-                <Logo />
+                <Logo isCollapsed={collapsed} />
                 <Menu
                     theme="dark"
                     mode="inline"
