@@ -2,6 +2,8 @@
 
 body {
   font-family: 'Poppins', 'Montserrat', sans-serif;
+  overflow-y: auto;
+  overflow-x: auto;
 }
 
 body,
