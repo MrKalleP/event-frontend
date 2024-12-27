@@ -72,7 +72,9 @@ const project_columns: TableColumnsType<DataType> = [
             };
             const backgroundColor = colorMap[type] || "default";
 
-            return <Tag color={backgroundColor} style={{ color: "black" }}>{type}</Tag>;
+            const textColor = type === "warning" ? "black" : "white";
+
+            return <Tag color={backgroundColor} style={{ color: textColor, width: "4.4rem" }}>{type}</Tag>;
         },
     }
 ];

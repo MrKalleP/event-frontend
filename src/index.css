@@ -10,6 +10,8 @@ html,
   height: 100%;
   margin: 0;
   overflow: hidden;
+  font-weight: 700;
+  letter-spacing: .05rem;
 }
 
 /*För att göra egna fonts till tex knapparna eller inputs osv*/

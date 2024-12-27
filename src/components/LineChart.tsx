@@ -1,4 +1,3 @@
-
 import test_data from "../utils/testdata.json";
 
 import {
@@ -72,8 +71,8 @@ function LineChartExample() {
                 }}
             >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="date" />
-                <YAxis />
+                <XAxis dataKey="date" tick={{ fill: "white", fontSize: 12 }} />
+                <YAxis tick={{ fill: "white", fontSize: 12 }} />
                 <Tooltip />
                 <Legend />
                 <Line type="monotone" dataKey="info" stroke="#0022FF" name="Info" activeDot={{ r: 8 }} />
