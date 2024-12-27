@@ -8,11 +8,11 @@ const errorFilterData = test_data.filter(item => item.type === "error")
 
 export const ErrorsHome = () => (
 
-    <Card bordered={false} style={{ backgroundColor: "#FA8D8F" }}>
+    <Card bordered={false} style={{ backgroundColor: "#FF0000 " }}>
         <Statistic
             title="Errors "
             value={errorFilterData.length}
-            valueStyle={{ color: 'black' }}
+            valueStyle={{ color: 'white' }}
             prefix={<FireOutlined />}
             suffix="pcs"
         />

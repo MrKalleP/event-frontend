@@ -6,11 +6,11 @@ const CrashedFilterData = test_data.filter(item => item.type === "crashed");
 
 export const CrashedLoggs = () => (
 
-    <Card bordered={false} style={{ backgroundColor: "#FF0000" }}>
+    <Card bordered={false} style={{ backgroundColor: "#FF00E1" }}>
         <Statistic
             title="crashed"
             value={CrashedFilterData.length}
-            valueStyle={{ color: 'black' }}
+            valueStyle={{ color: 'white' }}
             prefix={<AlertOutlined />}
             suffix="pcs"
         />

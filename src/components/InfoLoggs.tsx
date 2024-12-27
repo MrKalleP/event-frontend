@@ -10,7 +10,7 @@ export const InfoLoggs = () => (
         <Statistic
             title="Info"
             value={filtredInfo.length}
-            valueStyle={{ color: 'black' }}
+            valueStyle={{ color: 'white' }}
             prefix={<InfoCircleOutlined />}
             suffix="pcs"
         />

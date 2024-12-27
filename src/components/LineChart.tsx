@@ -78,8 +78,8 @@ function LineChartExample() {
                 <Legend />
                 <Line type="monotone" dataKey="info" stroke="#0022FF" name="Info" activeDot={{ r: 8 }} />
                 <Line type="monotone" dataKey="warning" stroke="#FFFF00" name="Warning" />
-                <Line type="monotone" dataKey="error" stroke="#F4577E" name="Error" />
-                <Line type="monotone" dataKey="crashed" stroke="#FF0000" name="crashed" />
+                <Line type="monotone" dataKey="error" stroke="#FF0000" name="Error" />
+                <Line type="monotone" dataKey="crashed" stroke="#FF00E1" name="crashed" />
             </LineChart>
         </ResponsiveContainer>
     );

@@ -9,133 +9,133 @@
     {
         "id": "2",
         "project": "skyteck AB",
-        "date": "2024-12-19",
+        "date": "2024-12-21",
         "type": "error",
         "message": "Database connection failed."
     },
     {
         "id": "3",
         "project": "Skyltdirekt",
-        "date": "2024-12-18",
+        "date": "2024-12-27",
         "type": "warning",
         "message": "High memory usage detected."
     },
     {
         "id": "4",
         "project": "TechVision",
-        "date": "2024-12-17",
+        "date": "2024-12-27",
         "type": "crashed",
         "message": "Application server crashed."
     },
     {
         "id": "5",
         "project": "BuildSmart",
-        "date": "2024-12-20",
+        "date": "2024-12-22",
         "type": "error",
         "message": "Invalid user input."
     },
     {
         "id": "6",
         "project": "Ståldirekt",
-        "date": "2024-12-19",
+        "date": "2024-12-24",
         "type": "info",
         "message": "New update deployed successfully."
     },
     {
         "id": "7",
         "project": "skyteck AB",
-        "date": "2024-12-18",
+        "date": "2024-12-23",
         "type": "warning",
         "message": "API rate limit approaching."
     },
     {
         "id": "8",
         "project": "Skyltdirekt",
-        "date": "2024-12-17",
+        "date": "2024-12-25",
         "type": "crashed",
         "message": "Payment gateway service down."
     },
     {
         "id": "9",
         "project": "TechVision",
-        "date": "2024-12-16",
+        "date": "2024-12-26",
         "type": "info",
         "message": "System check completed."
     },
     {
         "id": "10",
         "project": "BuildSmart",
-        "date": "2024-12-15",
+        "date": "2024-12-25",
         "type": "error",
         "message": "Configuration file missing."
     },
     {
         "id": "11",
         "project": "Ståldirekt",
-        "date": "2024-12-20",
+        "date": "2024-12-21",
         "type": "warning",
         "message": "Unusual login detected."
     },
     {
         "id": "12",
         "project": "skyteck AB",
-        "date": "2024-12-19",
+        "date": "2024-12-22",
         "type": "crashed",
         "message": "Email server not responding."
     },
     {
         "id": "13",
         "project": "Skyltdirekt",
-        "date": "2024-12-18",
+        "date": "2024-12-23",
         "type": "info",
         "message": "New client onboarded."
     },
     {
         "id": "14",
         "project": "TechVision",
-        "date": "2024-12-17",
+        "date": "2024-12-24",
         "type": "error",
         "message": "Access denied for user."
     },
     {
         "id": "15",
         "project": "BuildSmart",
-        "date": "2024-12-16",
+        "date": "2024-12-26",
         "type": "warning",
         "message": "Disk space running low."
     },
     {
         "id": "16",
         "project": "Ståldirekt",
-        "date": "2024-12-15",
+        "date": "2024-12-25",
         "type": "crashed",
         "message": "Unexpected server shutdown."
     },
     {
         "id": "17",
         "project": "skyteck AB",
-        "date": "2024-12-14",
+        "date": "2024-12-24",
         "type": "info",
         "message": "Daily backup completed."
     },
     {
         "id": "18",
         "project": "Skyltdirekt",
-        "date": "2024-12-13",
+        "date": "2024-12-23",
         "type": "info",
         "message": "Deprecated API used in production."
     },
     {
         "id": "19",
         "project": "TechVision",
-        "date": "2024-12-12",
+        "date": "2024-12-22",
         "type": "error",
         "message": "Failed to send SMS notifications."
     },
     {
         "id": "20",
         "project": "BuildSmart",
-        "date": "2024-12-11",
+        "date": "2024-12-21",
         "type": "error",
         "message": "Critical module unresponsive."
     }

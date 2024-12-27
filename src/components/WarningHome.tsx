@@ -11,7 +11,7 @@ export const WarningHome = () => (
         <Statistic
             title="Warnings"
             value={warningFilterData.length}
-            valueStyle={{ color: 'black' }}
+            valueStyle={{ color: '#07495B' }}
             prefix={<WarningOutlined />}
             suffix="pcs"
         />

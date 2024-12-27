@@ -66,9 +66,9 @@ const project_columns: TableColumnsType<DataType> = [
         render: (type: string) => {
             const colorMap: Record<string, string> = {
                 info: "#0022FF",
-                error: "#FA8D8F",
+                error: "#FF0000",
                 warning: "#FFFF00",
-                crashed: "#FF0000"
+                crashed: "#FF00E1"
             };
             const backgroundColor = colorMap[type] || "default";
 
