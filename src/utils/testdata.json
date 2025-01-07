@@ -2,140 +2,140 @@
     {
         "id": "1",
         "project": "Ståldirekt",
-        "date": "2024-12-20",
+        "date": "2025-01-06",
         "type": "info",
         "message": "System under maintenance."
     },
     {
         "id": "2",
         "project": "skyteck AB",
-        "date": "2024-12-21",
+        "date": "2025-01-07",
         "type": "error",
         "message": "Database connection failed."
     },
     {
         "id": "3",
         "project": "Skyltdirekt",
-        "date": "2024-12-27",
+        "date": "2025-01-05",
         "type": "warning",
         "message": "High memory usage detected."
     },
     {
         "id": "4",
         "project": "TechVision",
-        "date": "2024-12-27",
+        "date": "2025-01-04",
         "type": "crashed",
         "message": "Application server crashed."
     },
     {
         "id": "5",
         "project": "BuildSmart",
-        "date": "2024-12-22",
+        "date": "2025-01-03",
         "type": "error",
         "message": "Invalid user input."
     },
     {
         "id": "6",
         "project": "Ståldirekt",
-        "date": "2024-12-24",
+        "date": "2025-01-02",
         "type": "info",
         "message": "New update deployed successfully."
     },
     {
         "id": "7",
         "project": "skyteck AB",
-        "date": "2024-12-23",
+        "date": "2025-01-01",
         "type": "warning",
         "message": "API rate limit approaching."
     },
     {
         "id": "8",
         "project": "Skyltdirekt",
-        "date": "2024-12-25",
+        "date": "2025-01-07",
         "type": "crashed",
         "message": "Payment gateway service down."
     },
     {
         "id": "9",
         "project": "TechVision",
-        "date": "2024-12-26",
+        "date": "2025-01-06",
         "type": "info",
         "message": "System check completed."
     },
     {
         "id": "10",
         "project": "BuildSmart",
-        "date": "2024-12-25",
+        "date": "2025-01-05",
         "type": "error",
         "message": "Configuration file missing."
     },
     {
         "id": "11",
         "project": "Ståldirekt",
-        "date": "2024-12-21",
+        "date": "2025-01-04",
         "type": "warning",
         "message": "Unusual login detected."
     },
     {
         "id": "12",
         "project": "skyteck AB",
-        "date": "2024-12-22",
+        "date": "2025-01-03",
         "type": "crashed",
         "message": "Email server not responding."
     },
     {
         "id": "13",
         "project": "Skyltdirekt",
-        "date": "2024-12-23",
+        "date": "2025-01-02",
         "type": "info",
         "message": "New client onboarded."
     },
     {
         "id": "14",
         "project": "TechVision",
-        "date": "2024-12-24",
+        "date": "2025-01-01",
         "type": "error",
         "message": "Access denied for user."
     },
     {
         "id": "15",
         "project": "BuildSmart",
-        "date": "2024-12-26",
+        "date": "2025-01-06",
         "type": "warning",
         "message": "Disk space running low."
     },
     {
         "id": "16",
         "project": "Ståldirekt",
-        "date": "2024-12-25",
+        "date": "2025-01-05",
         "type": "crashed",
         "message": "Unexpected server shutdown."
     },
     {
         "id": "17",
         "project": "skyteck AB",
-        "date": "2024-12-24",
+        "date": "2025-01-04",
         "type": "info",
         "message": "Daily backup completed."
     },
     {
         "id": "18",
         "project": "Skyltdirekt",
-        "date": "2024-12-23",
+        "date": "2025-01-03",
         "type": "info",
         "message": "Deprecated API used in production."
     },
     {
         "id": "19",
         "project": "TechVision",
-        "date": "2024-12-22",
+        "date": "2025-01-02",
         "type": "error",
         "message": "Failed to send SMS notifications."
     },
     {
         "id": "20",
         "project": "BuildSmart",
-        "date": "2024-12-21",
+        "date": "2025-01-01",
         "type": "error",
         "message": "Critical module unresponsive."
     }
