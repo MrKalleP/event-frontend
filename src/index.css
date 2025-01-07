@@ -26,5 +26,10 @@ html,
 .error-title,
 .info-title,
 .warning-title {
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  font-size: 1.1rem;
+}
+
+.warning-title {
+  color: #07495B;
 }
