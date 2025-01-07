@@ -5,11 +5,12 @@ import test_data from "../utils/testdata.json"
 
 const warningFilterData = test_data.filter(item => item.type === "warning")
 
+
 export const WarningHome = () => (
 
     <Card bordered={false} style={{ backgroundColor: "#FFFF00" }}>
         <Statistic
-            title="Warnings"
+            title={<span className="warning-title">Warnings</span>}
             value={warningFilterData.length}
             valueStyle={{ color: '#07495B' }}
             prefix={<WarningOutlined />}

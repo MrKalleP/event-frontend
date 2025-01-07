@@ -10,7 +10,7 @@ export const ErrorsHome = () => (
 
     <Card bordered={false} style={{ backgroundColor: "#FF0000 " }}>
         <Statistic
-            title="Errors "
+            title={<span className="error-title">Errors</span>}
             value={errorFilterData.length}
             valueStyle={{ color: 'white' }}
             prefix={<FireOutlined />}

@@ -21,3 +21,10 @@ html,
 .ant-input {
   font-family: 'Poppins', 'Montserrat', sans-serif;
 }
+
+.crashed-title,
+.error-title,
+.info-title,
+.warning-title {
+  color: rgb(0, 0, 0);
+}
