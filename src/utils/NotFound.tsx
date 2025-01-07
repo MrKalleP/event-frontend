@@ -1,7 +1,12 @@
-
+import { Col, Row } from "antd";
+import { MessageOutlined } from '@ant-design/icons';
 
 const NotFound = () => {
-    return <h1>404 Not Found</h1>;
+    return (
+        <Row justify="center" align="middle" style={{ backgroundColor: "#002140", borderRadius: ".5rem", color: "white", margin: ".5rem", padding: ".3rem", height: "100%" }}>
+            <Col> <h1 style={{ fontSize: "6rem" }}><MessageOutlined /> 404 Not Found</h1> </Col>
+        </Row>
+    )
 };
 
 export default NotFound;

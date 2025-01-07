@@ -2,8 +2,7 @@ import React from 'react';
 import { Table, Tag } from 'antd';
 import type { TableColumnsType, TableProps } from 'antd';
 import test_data from "../utils/testdata.json";
-
-
+import formatDate from "../utils/DateFunction"
 
 interface DataType {
     type: string;
@@ -31,15 +30,14 @@ const project_columns: TableColumnsType<DataType> = [
         dataIndex: 'date',
         defaultSortOrder: 'descend',
         sorter: (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+        render: (date: string) => formatDate(date),
     },
     {
-        title: 'message',
+        title: 'Message',
         dataIndex: 'message',
-        defaultSortOrder: 'ascend',
     },
-
     {
-        title: 'type',
+        title: 'Type',
         dataIndex: 'type',
         filters: [
             {
