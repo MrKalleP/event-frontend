@@ -1,6 +1,7 @@
-import { Input, Space, Card, Row, Col } from 'antd';
-import { useState } from 'react';
+import { useState } from "react";
+import { Input, Space, Card, Row, Col } from "antd";
 import test_data from "../utils/testdata.json";
+import BarChartProjects from "./BarChartProject";
 
 const { Search } = Input;
 
@@ -30,9 +31,9 @@ const SearchProject = () => {
                         <Card
                             title={item.project}
                             bordered={true}
-                            hoverable
-                        >
-                            <p>{item.message}</p>
+                            hoverable>
+                            <BarChartProjects data={item.test_data} />
+                            <p style={{ padding: "1rem" }}>{item.message}</p>
                         </Card>
                     </Col>
                 ))}
@@ -42,4 +43,3 @@ const SearchProject = () => {
 };
 
 export default SearchProject;
-
