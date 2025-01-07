@@ -52,7 +52,8 @@ const preProcessData = (data: DataType[]): ProcessedDataType[] => {
         }
     });
 
-    const result = Object.values(groupedData); // Skapa en array av värdena i groupedData
+
+    const result = Object.values(groupedData).sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
     return result;
 };
@@ -71,7 +72,7 @@ function LineChartExample() {
                 }}
             >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="date" tick={{ fill: "white", fontSize: 12 }} />
+                <XAxis dataKey="date" tick={{ fill: "white", fontSize: 10 }} />
                 <YAxis tick={{ fill: "white", fontSize: 12 }} />
                 <Tooltip />
                 <Legend />
