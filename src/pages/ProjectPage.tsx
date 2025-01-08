@@ -26,9 +26,20 @@ const ProjectBarChart = ({ data }) => (
     </ResponsiveContainer>
 );
 
+const uniqueProjects = test_data.reduce((acc: any[], current) => {
+    const project = acc.find(item => item.project === current.project);
+
+    if (!project) {
+        // ta bort date, message och type från current
+        acc.push({ ...current, children: [current] });
+    } else {
+        project.children.push(current);
+    }
+    return acc;
+}, [])
 
 const ProjectsPage = () => {
-    const [filteredProjects, setFilteredProjects] = useState(test_data);
+    const [filteredProjects, setFilteredProjects] = useState(uniqueProjects);
 
     const onSearch = (value) => {
         const filtered = test_data.filter((project) =>

@@ -138,5 +138,12 @@
         "date": "2025-01-01",
         "type": "error",
         "message": "Critical module unresponsive."
+    },
+    {
+        "id": "21",
+        "project": "Caspers",
+        "date": "2025-01-01",
+        "type": "error",
+        "message": "Critical module unresponsive."
     }
 ]
