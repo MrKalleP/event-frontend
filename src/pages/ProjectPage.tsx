@@ -67,7 +67,7 @@ const ProjectsPage = () => {
                 onSearch={onSearch}
                 style={{ marginBottom: "1rem" }}
             />
-            <Row gutter={[16, 16]} >
+            <Row gutter={[16, 16]} justify="center" align="middle" style={{ backgroundColor: "#002140", borderRadius: ".5rem", color: "white", marginBlock: "1.5rem" }}>
                 {filteredProjects.map((project) => {
                     const {
                         id,
@@ -79,7 +79,8 @@ const ProjectsPage = () => {
                     const crashFreePercentage = calculateCrashFreePercentage(totalLogs, crashes);
 
                     return (
-                        <Col key={id} xs={24} sm={12} md={8} lg={8}>
+
+                        <Col key={id} xs={24} sm={12} md={8} lg={8} >
                             <Card
                                 title={<Link to={`/project/${id}`}>{projectName}</Link>}
                                 hoverable

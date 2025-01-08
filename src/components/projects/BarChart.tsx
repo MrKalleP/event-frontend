@@ -1,20 +1,19 @@
+import test_data from "../../utils/testdata.json"
 
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 
-const rawData = [
-    { timestamp: '2025-01-08T00:15:00', message: 'Error 1' },
-    { timestamp: '2025-01-08T00:45:00', message: 'Error 2' },
-    { timestamp: '2025-01-08T01:10:00', message: 'Error 3' },
-    { timestamp: '2025-01-08T02:05:00', message: 'Error 4' },
-];
 
-const groupedData = Array.from({ length: 24 }, (_, i) => ({
-    hour: `${i.toString().padStart(2, '0')}:00`,
-    errors: 0,
-}));
+const groupedData = Array.from({ length: 24 }, (_, hourIndex) => {
+    const formattedHour = `${hourIndex.toString().padStart(2, '0')}:00`;
+    return {
+        hour: formattedHour,
+        errors: 0,
+    };
+});
+console.log(groupedData);
 
-rawData.forEach((log) => {
-    const hour = new Date(log.timestamp).getHours();
+test_data.forEach((log) => {
+    const hour = new Date(log.date).getHours();
     groupedData[hour].errors += 1;
 });
 
