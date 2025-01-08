@@ -26,7 +26,6 @@ interface Project {
 
 const uniqueProjects = test_data.reduce<Project[]>((acc, current) => {
     const existingProject = acc.find(item => item.project === current.project);
-    console.log(existingProject);
 
     if (!existingProject) {
 
@@ -50,12 +49,16 @@ const ProjectsPage = () => {
     const [filteredProjects, setFilteredProjects] = useState(uniqueProjects);
 
     const onSearch = (value) => {
-        const filtered = test_data.filter((project) =>
+        const match = test_data.find((project) =>
             project.project.toLowerCase().includes(value.toLowerCase())
         );
-        setFilteredProjects(filtered);
-    };
 
+        if (match) {
+            setFilteredProjects([match]);
+        } else {
+            setFilteredProjects([]);
+        }
+    };
 
     return (
         <div style={{ padding: "1rem" }}>
@@ -85,7 +88,7 @@ const ProjectsPage = () => {
                                 title={<Link to={`/project/${id}`}>{projectName}</Link>}
                                 hoverable
                             >
-                                <ProjectBarChart data={test_data} />
+                                <ProjectBarChart data={project.children} />
                                 <Statistic
                                     title="Crash Free Sessions"
                                     value={crashFreePercentage}
