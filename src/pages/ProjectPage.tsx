@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Input, Row, Col, Card, Statistic } from "antd";
-import { BarChart, CartesianGrid, XAxis, YAxis, Legend, Bar, Tooltip, ResponsiveContainer } from "recharts";
 import { Link } from "react-router-dom";
 import test_data from "../../src/utils/testdata.json";
+import { SmileTwoTone } from "@ant-design/icons";
+import ProjectBarChart from "../components/projects/BarChart";
+
 
 const CrashedFilterData = test_data.filter(item => item.type === "crashed");
 
@@ -13,30 +15,36 @@ const calculateCrashFreePercentage = (totalLogs, crashes) => {
     return ((crashFreeSessions / totalLogs) * 100).toFixed(2);
 };
 
-const ProjectBarChart = ({ data }) => (
-    <ResponsiveContainer width="100%" height={250} >
-        <BarChart data={data}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="hour" label={{ value: "Hour", position: "insideBottom", offset: -5 }} />
-            <YAxis label={{ value: "Logs", angle: -90, position: "insideLeft" }} />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="count" fill="#8884d8" />
-        </BarChart>
-    </ResponsiveContainer>
-);
 
-const uniqueProjects = test_data.reduce((acc: any[], current) => {
-    const project = acc.find(item => item.project === current.project);
 
-    if (!project) {
-        // ta bort date, message och type från current
-        acc.push({ ...current, children: [current] });
+interface Project {
+    id: string;
+    project: string;
+    type: string;
+    children: { id: string; project: string; type: string }[];
+}
+
+const uniqueProjects = test_data.reduce<Project[]>((acc, current) => {
+    const existingProject = acc.find(item => item.project === current.project);
+    console.log(existingProject);
+
+    if (!existingProject) {
+
+        const { id, project, type } = current;
+        acc.push({
+            id,
+            project,
+            type,
+            children: [{ id, project, type }],
+        });
     } else {
-        project.children.push(current);
+
+        const { id, project, type } = current;
+        existingProject.children.push({ id, project, type });
     }
+
     return acc;
-}, [])
+}, []);
 
 const ProjectsPage = () => {
     const [filteredProjects, setFilteredProjects] = useState(uniqueProjects);
@@ -81,7 +89,8 @@ const ProjectsPage = () => {
                                     title="Crash Free Sessions"
                                     value={crashFreePercentage}
                                     suffix="%"
-                                    style={{ marginTop: "1rem" }}
+                                    style={{ marginBlock: "1rem", padding: ".1rem", borderTop: "1px solid black" }}
+                                    prefix={<SmileTwoTone />}
                                 />
                             </Card>
                         </Col>

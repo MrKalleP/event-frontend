@@ -33,3 +33,13 @@ html,
 .warning-title {
   color: #07495B;
 }
+
+/*Den här är för att få chart i mitten */
+
+.chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
