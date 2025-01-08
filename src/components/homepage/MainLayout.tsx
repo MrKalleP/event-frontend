@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation, Outlet } from "react-router-dom";
 import { Layout, Menu, Breadcrumb, theme } from "antd";
 import { ProjectOutlined, HomeOutlined } from "@ant-design/icons";
-import Logo from "./Logo";
+import Logo from "../../utils/Logo";
 
 
 

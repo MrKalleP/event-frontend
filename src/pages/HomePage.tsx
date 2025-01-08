@@ -1,11 +1,11 @@
 
-import { ErrorsHome } from "../components/ErrorsHome";
-import { WarningHome } from "../components/WarningHome";
+import { ErrorsHome } from "../components/homepage/ErrorsHome";
+import { WarningHome } from "../components/homepage/WarningHome";
 import { Row, Col } from "antd";
-import TableHomePage from "../components/TableHomePage";
-import { CrashedLoggs } from "../components/CrashedLoggs"
-import { InfoLoggs } from "../components/InfoLoggs"
-import LineChartExample from "../components/LineChart"
+import TableHomePage from "../components/homepage/TableHomePage";
+import { CrashedLoggs } from "../components/homepage/CrashedLoggs"
+import { InfoLoggs } from "../components/homepage/InfoLoggs"
+import LineChartExample from "../components/homepage/LineChart"
 
 
 const HomePage = () => {

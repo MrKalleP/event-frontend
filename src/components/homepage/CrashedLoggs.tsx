@@ -1,6 +1,6 @@
 import { AlertOutlined } from '@ant-design/icons';
 import { Card, Statistic } from 'antd';
-import test_data from "../utils/testdata.json";
+import test_data from "../../utils/testdata.json";
 
 const CrashedFilterData = test_data.filter(item => item.type === "crashed");
 

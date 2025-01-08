@@ -1,8 +1,8 @@
 import React from 'react';
 import { Table, Tag } from 'antd';
 import type { TableColumnsType, TableProps } from 'antd';
-import test_data from "../utils/testdata.json";
-import formatDate from "../utils/DateFunction"
+import test_data from "../../utils/testdata.json";
+import formatDate from "../../utils/DateFunction"
 
 interface DataType {
     type: string;

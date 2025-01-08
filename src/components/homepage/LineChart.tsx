@@ -1,4 +1,4 @@
-import test_data from "../utils/testdata.json";
+import test_data from "../../utils/testdata.json";
 
 import {
     LineChart,
