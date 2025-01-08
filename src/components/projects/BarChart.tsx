@@ -10,7 +10,6 @@ const groupedData = Array.from({ length: 24 }, (_, hourIndex) => {
         errors: 0,
     };
 });
-console.log(groupedData);
 
 test_data.forEach((log) => {
     const hour = new Date(log.date).getHours();

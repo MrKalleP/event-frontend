@@ -27,7 +27,7 @@ const SingleProjectPage = () => {
         <div style={{ padding: "1rem" }}>
             <h1>{project.project}</h1>
             <Table
-                dataSource={project.data
+                dataSource={project.project
                 }
                 columns={columns}
                 rowKey="date"
