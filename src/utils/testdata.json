@@ -2,71 +2,71 @@
     {
         "id": "1",
         "project": "Ståldirekt",
-        "date": "2025-01-06T14:30:00Z",
-        "type": "info",
+        "date": "2025-01-08T14:30:00Z",
+        "type": "error",
         "message": "System under maintenance."
     },
     {
         "id": "2",
         "project": "Ståldirekt",
-        "date": "2025-01-05T10:15:00Z",
-        "type": "warning",
+        "date": "2025-01-09T12:15:00Z",
+        "type": "error",
         "message": "Unusual login detected."
     },
     {
         "id": "3",
         "project": "Ståldirekt",
-        "date": "2025-01-05T23:45:00Z",
+        "date": "2025-01-08T12:45:00Z",
         "type": "crashed",
         "message": "Unexpected server shutdown."
     },
     {
         "id": "4",
         "project": "Skyltdirekt",
-        "date": "2025-01-07T08:25:00Z",
-        "type": "crashed",
+        "date": "2025-01-09T12:00:00Z",
+        "type": "warning",
         "message": "Payment gateway service down."
     },
     {
         "id": "5",
         "project": "Skyltdirekt",
-        "date": "2025-01-05T12:40:00Z",
-        "type": "warning",
+        "date": "2025-01-09T12:40:00Z",
+        "type": "error",
         "message": "High memory usage detected."
     },
     {
         "id": "6",
         "project": "Skyltdirekt",
-        "date": "2025-01-02T17:30:00Z",
-        "type": "info",
+        "date": "2025-01-09T10:30:00Z",
+        "type": "error",
         "message": "New client onboarded."
     },
     {
         "id": "7",
         "project": "Prospector",
-        "date": "2025-01-04T09:10:00Z",
+        "date": "2025-01-05T09:10:00Z",
         "type": "info",
         "message": "Daily data aggregation completed."
     },
     {
         "id": "8",
         "project": "Prospector",
-        "date": "2025-01-03T21:00:00Z",
+        "date": "2025-01-04T21:00:00Z",
         "type": "error",
         "message": "Data sync failed."
     },
     {
         "id": "9",
         "project": "Prospector",
-        "date": "2025-01-01T06:00:00Z",
-        "type": "warning",
+        "date": "2025-01-09T06:00:00Z",
+        "type": "error",
         "message": "Potential data inconsistency detected."
     },
     {
-        "id": "9",
+        "id": "10",
         "project": "Prospector",
-        "date": "2025-01-01T06:00:00Z",
-        "type": "warning",
+        "date": "2025-01-08T17:00:00Z",
+        "type": "error",
         "message": "Potential data inconsistency detected."
     }
 ]

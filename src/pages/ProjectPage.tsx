@@ -21,32 +21,33 @@ interface Project {
     id: string;
     project: string;
     type: string;
-    children: { id: string; project: string; type: string }[];
+    children: { id: string; project: string; type: string; date: string }[];
 }
 
 const uniqueProjects = test_data.reduce<Project[]>((acc, current) => {
     const existingProject = acc.find(item => item.project === current.project);
 
-    if (!existingProject) {
 
-        const { id, project, type } = current;
+    if (!existingProject) {
+        const { id, project, type, date } = current;
         acc.push({
             id,
             project,
             type,
-            children: [{ id, project, type }],
+            children: [{ id, project, type, date }],
         });
     } else {
-
-        const { id, project, type } = current;
-        existingProject.children.push({ id, project, type });
+        const { id, project, type, date } = current;
+        existingProject.children.push({ id, project, type, date });
     }
 
     return acc;
 }, []);
 
+
 const ProjectsPage = () => {
     const [filteredProjects, setFilteredProjects] = useState(uniqueProjects);
+
 
     const onSearch = (value) => {
         const match = test_data.find((project) =>
