@@ -23,7 +23,6 @@ const SingleProjectPage = () => {
         return log.type === "error" && isWithinLast24Hours(dateObj, now);
     }) || [];
 
-    console.log("Filtered data:", filteredData);
 
     const columns = [
         {
@@ -51,7 +50,7 @@ const SingleProjectPage = () => {
             <Table
                 dataSource={filteredData}
                 columns={columns}
-                rowKey={(record) => `${record.date}-${Math.random()}`} // Unique key
+                rowKey={id}
                 pagination={{ pageSize: 10 }}
             />
         </div>
