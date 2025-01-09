@@ -38,7 +38,7 @@
         "id": "6",
         "project": "Skyltdirekt",
         "date": "2025-01-09T10:30:00Z",
-        "type": "error",
+        "type": "warning",
         "message": "New client onboarded."
     },
     {
