@@ -70,7 +70,7 @@ const SingleProjectPage = () => {
         <ResponsiveContainer>
             <Row gutter={[8, 17]} style={{ padding: "2rem" }}>
                 <Col style={{ width: "100%", textAlign: "center", color: "black", fontSize: "2.5rem" }}>
-                    <h1 >{project.project}<Logo /></h1>
+                    <h1 >{project.project}<Logo isCollapsed={false} /></h1>
                 </Col>
                 <Col
                     xs={24}

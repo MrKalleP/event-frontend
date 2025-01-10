@@ -2,7 +2,13 @@
 const now = new Date();
 const oneDayAgoAgain = new Date(now.getTime() - 24 * 60 * 60 * 1000);
 
-export const groupedDataByProject = (data: string) => {
+
+export type projectDataProps = {
+    type: string;
+    date: string | number | Date;
+}
+
+export const groupedDataByProject = (data: projectDataProps[]) => {
 
     const groupedData = Array.from({ length: 24 }, (_, hourIndex) => {
         const currentHour = new Date(oneDayAgoAgain.getTime() + hourIndex * 60 * 60 * 1000);

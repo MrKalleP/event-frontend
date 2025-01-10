@@ -1,4 +1,4 @@
-import { groupedDataByProject } from "./GroupedDataByProject"
+import { groupedDataByProject, projectDataProps } from "./GroupedDataByProject"
 
 import {
     ResponsiveContainer,
@@ -12,8 +12,9 @@ import {
 } from "recharts";
 
 
-const ProjectBarCharts = ({ data }) => {
+const ProjectBarCharts: React.FC<projectDataProps> = ({ data }) => {
     const dataBarChart = groupedDataByProject(data)
+
     return (
         <ResponsiveContainer width="100%" height={250}>
             <BarChart
