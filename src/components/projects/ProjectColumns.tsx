@@ -1,7 +1,7 @@
 import { TableColumnsType } from 'antd';
-import { DataType } from "./Interface";
-import test_data from "./testdata.json";
-import formatDate from "./DateFunction";
+import { DataType } from "../../utils/Interface";
+import test_data from "../../utils/testdata.json";
+import formatDate from "../../utils/DateFunction";
 import { Tag } from 'antd';
 
 const ProjectColumns: TableColumnsType<DataType> = [

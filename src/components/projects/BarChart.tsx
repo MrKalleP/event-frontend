@@ -1,4 +1,4 @@
-import { groupedDataByProject } from "../../utils/GroupedDataByProject"
+import { groupedDataByProject } from "./GroupedDataByProject"
 
 import {
     ResponsiveContainer,

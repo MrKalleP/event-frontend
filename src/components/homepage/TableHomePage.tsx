@@ -1,7 +1,7 @@
 import { Table } from 'antd';
 import type { TableProps } from 'antd';
 import test_data from "../../utils/testdata.json";
-import ProjectColumns from '../../utils/ProjectColumns';
+import ProjectColumns from '../projects/ProjectColumns';
 import { DataType } from "../../utils/Interface";
 
 const onChange: TableProps<DataType>['onChange'] = (pagination, filters, sorter, extra) => {
