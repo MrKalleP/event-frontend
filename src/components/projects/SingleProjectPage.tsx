@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import test_data from "../../utils/testdata.json";
 import { ResponsiveContainer } from "recharts";
 import { FieldTimeOutlined, IdcardOutlined, MessageOutlined, ProjectOutlined } from "@ant-design/icons";
+import Logo from "../../utils/Logo";
 
 const isWithinLast24Hours = (date: number | Date, now: number | Date) => {
     const oneDayAgo = new Date(now.getTime() - 24 * 60 * 60 * 1000);
@@ -67,8 +68,10 @@ const SingleProjectPage = () => {
 
     return (
         <ResponsiveContainer>
-            <Row gutter={[8, 17]} style={{ padding: "1rem" }}>
-                <h1 style={{ width: "100%", textAlign: "center", color: "black", fontSize: "4REM" }}>{project.project}</h1>
+            <Row gutter={[8, 17]} style={{ padding: "2rem" }}>
+                <Col style={{ width: "100%", textAlign: "center", color: "black", fontSize: "2.5rem" }}>
+                    <h1 >{project.project}<Logo /></h1>
+                </Col>
                 <Col
                     xs={24}
                     sm={24}
@@ -83,7 +86,7 @@ const SingleProjectPage = () => {
                         marginBottom: "1rem",
                     }}
                 >
-                    <h3 style={{ fontSize: "2rem", textAlign: "center", padding: "1rem" }}>Project Details</h3>
+                    <h3 style={{ fontSize: "2rem", padding: "1.4rem" }}>Project Details</h3>
                     <Col style={{ padding: "1rem" }}>
                         <p><strong><IdcardOutlined style={{ padding: ".5rem" }} />Project ID:</strong> {project.id}</p>
                         <p><strong><ProjectOutlined style={{ padding: ".5rem" }} />Project Name:</strong> {project.project}</p>
@@ -93,7 +96,7 @@ const SingleProjectPage = () => {
                     </Col>
                 </Col>
 
-                <Col xs={24} sm={24} md={24} lg={24}>
+                <Col xs={24} sm={24} md={24} lg={24} style={{ overflow: "auto", backgroundColor: "white", borderRadius: ".5rem", padding: ".5rem" }}>
                     <Table
                         dataSource={filteredData}
                         columns={columns}

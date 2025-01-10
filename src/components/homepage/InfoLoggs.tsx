@@ -6,7 +6,7 @@ import test_data from "../../utils/testdata.json"
 const filtredInfo = test_data.filter(item => item.type === "info")
 
 export const InfoLoggs = () => (
-    <Card bordered={false} style={{ backgroundColor: "#0022FF" }}>
+    <Card bordered={false} style={{ backgroundColor: "#3A4DCB" }}>
         <Statistic
             title={<span className="info-title">Info</span>}
             value={filtredInfo.length}

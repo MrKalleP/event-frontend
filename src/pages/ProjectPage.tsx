@@ -64,7 +64,6 @@ const ProjectsPage = () => {
 
                     const totalLogs = children.length;
                     const crashes = children.filter(child => child.type === "crashed").length;
-
                     const crashFreePercentage = calculateCrashFreePercentage(totalLogs, crashes);
 
                     return (
@@ -74,6 +73,7 @@ const ProjectsPage = () => {
                                 hoverable
                             >
                                 <ProjectBarChart data={children} />
+                                <h3 style={{ marginBlock: "1rem" }}>{`it is ${crashes} craches of total: ${totalLogs} logs`}</h3>
                                 <Statistic
                                     title="Crash Free Sessions"
                                     value={crashFreePercentage}

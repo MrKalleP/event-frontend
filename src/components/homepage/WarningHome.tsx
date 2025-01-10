@@ -8,7 +8,7 @@ const warningFilterData = test_data.filter(item => item.type === "warning")
 
 export const WarningHome = () => (
 
-    <Card bordered={false} style={{ backgroundColor: "#FFFF00" }}>
+    <Card bordered={false} style={{ backgroundColor: "#FFFF8F" }}>
         <Statistic
             title={<span className="warning-title">Warnings</span>}
             value={warningFilterData.length}
