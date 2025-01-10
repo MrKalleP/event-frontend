@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import test_data from "../../src/utils/testdata.json";
 import { SmileTwoTone } from "@ant-design/icons";
 import ProjectBarChart from "../components/projects/BarChart";
+import { Project } from "../utils/Interface"
 
 const { Search } = Input;
 
@@ -13,12 +14,7 @@ const calculateCrashFreePercentage = (totalLogs, crashes) => {
 };
 
 
-interface Project {
-    id: string;
-    project: string;
-    type: string;
-    children: { id: string; project: string; type: string; date: string }[];
-}
+
 
 const uniqueProjects = test_data.reduce<Project[]>((acc, current) => {
     const existingProject = acc.find(item => item.project === current.project);

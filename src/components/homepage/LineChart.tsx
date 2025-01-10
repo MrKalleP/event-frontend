@@ -1,4 +1,5 @@
 import test_data from "../../utils/testdata.json";
+import { DataType, ProcessedDataType } from "../../utils/Interface"
 
 import {
     LineChart,
@@ -11,43 +12,23 @@ import {
     ResponsiveContainer,
 } from "recharts";
 
-interface DataType {
-    id: string;
-    project: string;
-    date: string;
-    type: string;
-    message: string;
-}
 
-interface ProcessedDataType {
-    date: string;
-    info: number;
-    warning: number;
-    error: number;
-    crashed: number;
-}
 
 const preProcessData = (data: DataType[]): ProcessedDataType[] => {
-    const groupedData: { [key: string]: ProcessedDataType } = {}; // En tomt objekt som ska innehålla grupperad data
+    const groupedData: { [key: string]: ProcessedDataType } = {};
     const today = new Date();
     const oneWeekAgo = new Date();
     oneWeekAgo.setDate(today.getDate() - 7);
 
-    // Gå igenom varje objekt i data-arrayen och gruppera dem efter datum /
     data.forEach(({ date, type }) => {
-        const dateObj = new Date(date); // Skapa ett Date-objekt från datumsträngen för nuvarande objekt
+        const dateObj = new Date(date);
         if (dateObj >= oneWeekAgo && dateObj <= today) {
-            // Om datumet är inom en vecka från idag
-            const formattedDate = dateObj.toISOString().split('T')[0]; // formatera datumet till ISO-format (YYYY-MM-DD)
+            const formattedDate = dateObj.toISOString().split('T')[0];
             if (!groupedData[formattedDate]) {
-                // Om datumet inte redan finns i groupedData
                 groupedData[formattedDate] = { date: formattedDate, info: 0, warning: 0, error: 0, crashed: 0 };
-                // Lägg till datumet i groupedData och sätt alla typer till 0
             }
             if (type in groupedData[formattedDate]) {
-                // Om typen finns i groupedData för det aktuella datumet
                 groupedData[formattedDate][type as keyof ProcessedDataType]++;
-                // Öka antalet för den aktuella typen med 1, ex om typen är 'info' öka info med 1 för det aktuella datumet
             }
         }
     });

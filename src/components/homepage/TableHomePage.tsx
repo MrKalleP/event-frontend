@@ -1,16 +1,9 @@
-import React from 'react';
+import { DataType } from "../../utils/Interface"
 import { Table, Tag } from 'antd';
 import type { TableColumnsType, TableProps } from 'antd';
 import test_data from "../../utils/testdata.json";
 import formatDate from "../../utils/DateFunction"
 
-interface DataType {
-    type: string;
-    id: React.Key;
-    project: string;
-    date: string;
-    message: string;
-}
 
 const project_columns: TableColumnsType<DataType> = [
     {
