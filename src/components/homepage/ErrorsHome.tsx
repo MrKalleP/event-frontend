@@ -1,5 +1,3 @@
-
-
 import { FireOutlined } from '@ant-design/icons';
 import { Card, Statistic } from 'antd';
 import test_data from "../../utils/testdata.json"

@@ -3,10 +3,8 @@ import { Link, useLocation, Outlet } from "react-router-dom";
 import { Layout, Menu, Breadcrumb, theme } from "antd";
 import { ProjectOutlined, HomeOutlined } from "@ant-design/icons";
 import Logo from "../../utils/Logo";
-
-
-
 const { Content, Footer, Sider } = Layout;
+
 
 const MainLayout = () => {
     const [collapsed, setCollapsed] = useState(false);
