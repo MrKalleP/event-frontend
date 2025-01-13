@@ -17,7 +17,7 @@ import {
 function LineChartExample() {
     const processedData = PreProcessData(test_data);
     return (
-        <ResponsiveContainer width="100%" height={400} style={{ marginTop: "17rem", padding: ".3rem" }}>
+        <ResponsiveContainer width="100%" height={400} >
             <LineChart
                 data={processedData}
                 margin={{

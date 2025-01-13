@@ -28,7 +28,7 @@ const MainLayout = () => {
         }));
 
     return (
-        <Layout style={{ minHeight: "100vh", background: "rgba(0, 0, 0, 0.01)" }}>
+        <Layout >
             <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed}>
                 <Logo isCollapsed={collapsed} />
                 <Menu
@@ -45,26 +45,18 @@ const MainLayout = () => {
                 </Menu>
             </Sider>
             <Layout>
-                <Content style={{ margin: "0", height: "100%" }}>
+                <Content >
                     <Breadcrumb style={{ margin: "3px" }}>
                         {breadcrumbItems.map((item) => (
                             <Breadcrumb.Item key={item.key}>{item.label}</Breadcrumb.Item>
                         ))}
                     </Breadcrumb>
                     <div
-                        style={{
-                            padding: 14,
-                            background: "rgba(0, 0, 0, 0.01)",
-                            color: "#fafafa",
-                            borderRadius: borderRadiusLG,
-                            height: "100%",
-                            margin: "1.3rem"
-                        }}
                     >
                         <Outlet />
                     </div>
                 </Content>
-                <Footer style={{ textAlign: "center" }}>Event Logger ©{new Date().getFullYear()}</Footer>
+                <Footer >Event Logger ©{new Date().getFullYear()}</Footer>
             </Layout>
         </Layout>
     );

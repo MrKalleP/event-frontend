@@ -48,18 +48,17 @@ const ProjectsPage = () => {
         setSearchValue("")
     };
     return (
-        <div style={{ padding: "1.1rem" }}>
+        <div >
             <Search
                 placeholder="Search for projects by name"
                 allowClear
                 enterButton="Search"
                 size="large"
                 onSearch={onSearch}
-                style={{ marginBottom: ".5rem" }}
                 value={serachValue}
                 onChange={(e) => setSearchValue(e.target.value)}
             />
-            <Row gutter={[16, 16]} justify="center" align="middle" style={{ backgroundColor: "rgba(0, 0, 0, 0.01)", borderRadius: ".5rem", color: "white", marginBlock: "1.5rem" }}>
+            <Row gutter={[16, 16]}>
                 {filteredProjects.map((project) => {
                     const {
                         id,
@@ -74,20 +73,15 @@ const ProjectsPage = () => {
                     return (
                         <Col key={id} xs={24} sm={12} md={8} lg={8}>
                             <Card
-                                title={<Link to={`/project/${id}`}>{projectName}</Link>}
+                                title={<Link to={`/project/${projectName}`}>{projectName}</Link>}
                                 hoverable
                             >
                                 <ProjectBarChart data={children} />
-                                <h3 style={{ marginBlock: "1rem" }}>{`it is ${crashes} craches of total: ${totalLogs} logs`}</h3>
+                                <h3 >{`it is ${crashes} craches of total: ${totalLogs} logs`}</h3>
                                 <Statistic
                                     title="Crash Free Sessions"
                                     value={crashFreePercentage}
                                     suffix="%"
-                                    style={{
-                                        marginBlock: "1rem",
-                                        padding: ".1rem",
-                                        borderTop: "1px solid black",
-                                    }}
                                     prefix={<SmileTwoTone />}
                                 />
                             </Card>

@@ -15,7 +15,7 @@ const TableHomePage = () => (
         onChange={onChange}
         showSorterTooltip={{ title: 'Click to sort' }}
         rowKey="id"
-        style={{ background: "white", color: "#2A2A2A", borderRadius: ".5rem" }}
+
     />
 );
 

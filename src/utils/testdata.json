@@ -16,8 +16,8 @@
     {
         "id": "3",
         "project": "Ståldirekt",
-        "date": "2025-01-12T12:45:00Z",
-        "type": "crashed",
+        "date": "2025-01-17T12:45:00Z",
+        "type": "warning",
         "message": "Unexpected server shutdown."
     },
     {
