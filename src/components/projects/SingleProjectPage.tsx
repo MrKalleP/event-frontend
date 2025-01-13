@@ -1,10 +1,12 @@
-import { Col, Row, Table } from "antd";
+import { Col, Row, Table, Tag } from "antd";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import test_data from "../../utils/testdata.json";
 import { ResponsiveContainer } from "recharts";
 import { FieldTimeOutlined, IdcardOutlined, MessageOutlined, ProjectOutlined } from "@ant-design/icons";
 import Logo from "../../utils/Logo";
+import formatDate from "../../utils/DateFunction";
+import { DataType } from "../../utils/Interface";
 
 const isWithinLast24Hours = (date: number | Date, now: number | Date) => {
     const oneDayAgo = new Date(now.getTime() - 24 * 60 * 60 * 1000);
@@ -14,56 +16,73 @@ const isWithinLast24Hours = (date: number | Date, now: number | Date) => {
 const SingleProjectPage = () => {
     const { id } = useParams();
     const project = test_data.find((p) => String(p.id) === id);
-    const [selectedProject, setSelectedProject] = useState(project); // State for selected project
+    const [selectedProject, setSelectedProject] = useState<DataType>(project);
 
     if (!project) {
         console.log("Project not found");
         return <p>Project not found</p>;
     }
 
-    const now: Date = new Date();
+    const now = new Date();
 
-    const filteredData = test_data
-        ?.filter((log: { project: string; date: string | number | Date; type: string; }) => {
-            const dateObj = new Date(log.date);
-            return (
-                log.project === project.project &&
-                log.type === "error" &&
-                isWithinLast24Hours(dateObj, now)
-            );
-        }) || [];
+    const filteredData = test_data.filter((log) => {
+        const dateObj = new Date(log.date);
+        return (
+            log.project === project.project &&
+            isWithinLast24Hours(dateObj, now) &&
+            log.type
+        );
+    });
 
     const columns = [
         {
-            title: "Timestamp",
+            title: "Date",
             dataIndex: "date",
             key: "date",
-            sorter: (a: { date: string | number | Date }, b: { date: string | number | Date }) =>
-                new Date(a.date).getTime() - new Date(b.date).getTime(),
+            sorter: (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+            render: (date) => formatDate(date),
             defaultSortOrder: "descend",
         },
         {
             title: "Type",
             dataIndex: "type",
             key: "type",
+            filters: [
+                { text: "Info", value: "info" },
+                { text: "Warning", value: "warning" },
+                { text: "Error", value: "error" },
+                { text: "Crashed", value: "crashed" },
+            ],
+            onFilter: (value, record) => record.type.includes(value),
+            sorter: (a, b) => a.type.localeCompare(b.type),
+            render: (type) => {
+                const colorMap = {
+                    info: "#3A4DCB",
+                    error: "#C52E2E",
+                    warning: "#FFFF8F",
+                    crashed: "#D04CC1",
+                };
+                const backgroundColor = colorMap[type] || "default";
+                const textColor = type === "warning" ? "black" : "white";
+
+                return <Tag color={backgroundColor} style={{ color: textColor, width: "4.4rem" }}>{type}</Tag>;
+            },
         },
         {
             title: "Message",
             dataIndex: "message",
             key: "message",
-            render: (message: string, record: any) => {
-                return (
-                    <a
-                        href={`/message/${record.date}`}
-                        onClick={(e) => {
-                            e.preventDefault();
-                            setSelectedProject(record); // Update the selected project on click
-                        }}
-                    >
-                        {message}
-                    </a>
-                );
-            },
+            render: (message, record) => (
+                <a
+                    href={`/message/${record.id}`}
+                    onClick={(e) => {
+                        e.preventDefault();
+                        setSelectedProject(record);
+                    }}
+                >
+                    {message}
+                </a>
+            ),
         },
     ];
 
@@ -100,7 +119,7 @@ const SingleProjectPage = () => {
                     <Table
                         dataSource={filteredData}
                         columns={columns}
-                        rowKey={(record) => String(record.date)}
+                        rowKey={(record) => String(record.id)}
                         pagination={{ pageSize: 10 }}
                     />
                 </Col>
