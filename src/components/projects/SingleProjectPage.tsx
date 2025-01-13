@@ -88,8 +88,8 @@ const SingleProjectPage = () => {
 
     return (
         <ResponsiveContainer>
-            <Row gutter={[8, 17]} style={{ padding: "2rem" }}>
-                <Col style={{ width: "100%", textAlign: "center", color: "black", fontSize: "2.5rem" }}>
+            <Row gutter={[8, 17]} style={{ padding: "1rem" }}>
+                <Col style={{ width: "100%", textAlign: "center", color: "black", fontSize: "1.5rem" }}>
                     <h1>{selectedProject.project}<Logo isCollapsed={false} /></h1>
                 </Col>
                 <Col
@@ -106,7 +106,7 @@ const SingleProjectPage = () => {
                         marginBottom: "1rem",
                     }}
                 >
-                    <h3 style={{ fontSize: "2rem", padding: "1.4rem" }}>Project Details</h3>
+                    <h3 style={{ fontSize: "2rem", padding: "1rem" }}>Project Details</h3>
                     <Col style={{ padding: "1rem" }}>
                         <p><strong><IdcardOutlined style={{ padding: ".5rem" }} />Project ID:</strong> {selectedProject.id}</p>
                         <p><strong><ProjectOutlined style={{ padding: ".5rem" }} />Project Name:</strong> {selectedProject.project}</p>

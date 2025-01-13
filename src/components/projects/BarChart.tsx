@@ -16,20 +16,15 @@ const ProjectBarCharts: React.FC<projectDataProps> = ({ data }) => {
     const dataBarChart = groupedDataByProject(data)
 
     return (
-        <ResponsiveContainer width="100%" height={250}>
+        <ResponsiveContainer width="100%" height={350} >
             <BarChart
                 data={dataBarChart}
-                style={{ padding: ".4rem" }}
-                margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
+                style={{ marginBlock: "1rem" }}
+                margin={{ top: 5, right: 10, bottom: 15, left: 5 }}
             >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis
                     dataKey="hour"
-                    label={{
-                        value: "Hour",
-                        position: "insideBottom",
-                        offset: -5,
-                    }}
                 />
                 <YAxis
                     label={{
