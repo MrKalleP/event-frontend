@@ -14,7 +14,7 @@ const HomePage = () => {
         justify="center"
         align="middle"
         style={{
-            backgroundColor: "#0000002e",
+            backgroundColor: "rgba(0, 0, 0, 0.01)",
             borderRadius: ".5rem",
             color: "white",
             padding: "1rem",

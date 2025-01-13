@@ -8,7 +8,7 @@ import { Project } from "../utils/Interface"
 
 const { Search } = Input;
 
-const calculateCrashFreePercentage = (totalLogs, crashes) => {
+const calculateCrashFreePercentage = (totalLogs: number, crashes: number) => {
     const crashFreeSessions = totalLogs - crashes;
     return ((crashFreeSessions / totalLogs) * 100).toFixed(2);
 };
@@ -37,12 +37,15 @@ const uniqueProjects = test_data.reduce<Project[]>((acc, current) => {
 
 const ProjectsPage = () => {
     const [filteredProjects, setFilteredProjects] = useState(uniqueProjects);
-    const onSearch = (value) => {
+    const [serachValue, setSearchValue] = useState("")
+
+    const onSearch = (value: string) => {
         const matches = uniqueProjects.filter((project) =>
             project.project.toLowerCase().includes(value.toLowerCase())
         );
 
         setFilteredProjects(matches);
+        setSearchValue("")
     };
     return (
         <div style={{ padding: "1.1rem" }}>
@@ -53,8 +56,10 @@ const ProjectsPage = () => {
                 size="large"
                 onSearch={onSearch}
                 style={{ marginBottom: ".5rem" }}
+                value={serachValue}
+                onChange={(e) => setSearchValue(e.target.value)}
             />
-            <Row gutter={[16, 16]} justify="center" align="middle" style={{ backgroundColor: "0000002E", borderRadius: ".5rem", color: "white", marginBlock: "1.5rem" }}>
+            <Row gutter={[16, 16]} justify="center" align="middle" style={{ backgroundColor: "rgba(0, 0, 0, 0.01)", borderRadius: ".5rem", color: "white", marginBlock: "1.5rem" }}>
                 {filteredProjects.map((project) => {
                     const {
                         id,
