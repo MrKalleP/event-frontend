@@ -1,5 +1,6 @@
 import { Col, Row, Table } from "antd";
 import { useParams } from "react-router-dom";
+import { useState } from "react";
 import test_data from "../../utils/testdata.json";
 import { ResponsiveContainer } from "recharts";
 import { FieldTimeOutlined, IdcardOutlined, MessageOutlined, ProjectOutlined } from "@ant-design/icons";
@@ -13,6 +14,7 @@ const isWithinLast24Hours = (date: number | Date, now: number | Date) => {
 const SingleProjectPage = () => {
     const { id } = useParams();
     const project = test_data.find((p) => String(p.id) === id);
+    const [selectedProject, setSelectedProject] = useState(project); // State for selected project
 
     if (!project) {
         console.log("Project not found");
@@ -50,13 +52,12 @@ const SingleProjectPage = () => {
             dataIndex: "message",
             key: "message",
             render: (message: string, record: any) => {
-                console.log("Record data:", record);
                 return (
                     <a
                         href={`/message/${record.date}`}
                         onClick={(e) => {
                             e.preventDefault();
-                            console.log("Clicked message:", message);
+                            setSelectedProject(record); // Update the selected project on click
                         }}
                     >
                         {message}
@@ -70,7 +71,7 @@ const SingleProjectPage = () => {
         <ResponsiveContainer>
             <Row gutter={[8, 17]} style={{ padding: "2rem" }}>
                 <Col style={{ width: "100%", textAlign: "center", color: "black", fontSize: "2.5rem" }}>
-                    <h1 >{project.project}<Logo isCollapsed={false} /></h1>
+                    <h1>{selectedProject.project}<Logo isCollapsed={false} /></h1>
                 </Col>
                 <Col
                     xs={24}
@@ -88,11 +89,10 @@ const SingleProjectPage = () => {
                 >
                     <h3 style={{ fontSize: "2rem", padding: "1.4rem" }}>Project Details</h3>
                     <Col style={{ padding: "1rem" }}>
-                        <p><strong><IdcardOutlined style={{ padding: ".5rem" }} />Project ID:</strong> {project.id}</p>
-                        <p><strong><ProjectOutlined style={{ padding: ".5rem" }} />Project Name:</strong> {project.project}</p>
-                        <p><strong><MessageOutlined style={{ padding: ".5rem" }} />Message:</strong> {project.message}</p>
-                        <p><strong><FieldTimeOutlined style={{ padding: ".5rem" }} />Last Updated:</strong> {new Date(project.date).toLocaleString()}</p>
-
+                        <p><strong><IdcardOutlined style={{ padding: ".5rem" }} />Project ID:</strong> {selectedProject.id}</p>
+                        <p><strong><ProjectOutlined style={{ padding: ".5rem" }} />Project Name:</strong> {selectedProject.project}</p>
+                        <p><strong><MessageOutlined style={{ padding: ".5rem" }} />Message:</strong> {selectedProject.message}</p>
+                        <p><strong><FieldTimeOutlined style={{ padding: ".5rem" }} />Last Updated:</strong> {new Date(selectedProject.date).toLocaleString()}</p>
                     </Col>
                 </Col>
 
@@ -103,11 +103,8 @@ const SingleProjectPage = () => {
                         rowKey={(record) => String(record.date)}
                         pagination={{ pageSize: 10 }}
                     />
-
                 </Col>
-
             </Row>
-
         </ResponsiveContainer>
     );
 };
