@@ -5,14 +5,14 @@ import test_data from "../../utils/testdata.json";
 const CrashedFilterData = test_data.filter(item => item.type === "crashed");
 
 export const CrashedLoggs = () => (
-    <Card bordered={false} style={{ backgroundColor: "#D04CC1", padding: ".5rem" }}>
+    <Card bordered={false} style={{ backgroundColor: "#D04CC1", padding: ".1rem" }}>
         <Statistic
             title={<span className="crashed-title">Crashed</span>}
             value={CrashedFilterData.length}
             valueStyle={{ color: 'white' }}
             prefix={<AlertOutlined />}
             suffix="pcs"
-            style={{ fontSize: "2rem" }}
+            style={{ fontSize: "1rem" }}
         />
     </Card>
 );
