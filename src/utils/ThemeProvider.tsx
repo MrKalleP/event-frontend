@@ -5,7 +5,7 @@ export const themeGlobal = {
         colorBgLayout: "#f5f5f5",
         colorBgContainer: "#ffffff",
         colorText: "rgba(0,0,0,0.88)",
-        fontSize: "14px",
+
         lineHeight: "1.6",
         borderRadius: "8px",
         boxShadow: "0 2px 8px rgba(0, 0, 0, 0.15)",
