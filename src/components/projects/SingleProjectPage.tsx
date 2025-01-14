@@ -3,9 +3,11 @@ import { useParams } from "react-router-dom";
 import { JSXElementConstructor, ReactElement, ReactNode, ReactPortal, SetStateAction, useState } from "react";
 import test_data from "../../utils/testdata.json";
 import { ResponsiveContainer } from "recharts";
-import { FieldTimeOutlined, IdcardOutlined, MessageOutlined, ProjectOutlined } from "@ant-design/icons";
+import { FieldTimeOutlined, MessageOutlined, ProjectOutlined } from "@ant-design/icons";
 import formatDate from "../../utils/DateFunction";
 import { DataType } from "../../utils/Interface";
+import ThemeProvider from "../../utils/ThemeProvider";
+
 
 const SingleProjectPage = () => {
     const { projectName } = useParams();
@@ -76,35 +78,38 @@ const SingleProjectPage = () => {
     ];
 
     return (
-        <ResponsiveContainer >
-            <Row gutter={[8, 17]} style={{ padding: "1rem" }}>
-                <Col >
-                </Col>
-                <Col
-                    xs={24}
-                    sm={24}
-                    md={24}
-                    lg={24}
-                >
-                    <h3 >{selectedProject.project}</h3>
+        <ThemeProvider>
+            <ResponsiveContainer >
+                <Row gutter={[8, 17]} style={{ padding: "1rem", height: "100vh" }}>
                     <Col >
-                        <p><strong><ProjectOutlined />Project Name:</strong> {selectedProject.project}</p>
-                        <p><strong><MessageOutlined />Message:</strong> {selectedProject.message}</p>
-                        <p><strong><FieldTimeOutlined />Last Updated:</strong> {new Date(selectedProject.date).toLocaleString()}</p>
                     </Col>
-                </Col>
+                    <Col
+                        xs={24}
+                        sm={24}
+                        md={24}
+                        lg={24}
+                    >
+                        <h3 >{selectedProject.project}</h3>
+                        <Col >
+                            <p><strong><ProjectOutlined />Project Name:</strong> {selectedProject.project}</p>
+                            <p><strong><MessageOutlined />Message:</strong> {selectedProject.message}</p>
+                            <p><strong><FieldTimeOutlined />Last Updated:</strong> {new Date(selectedProject.date).toLocaleString()}</p>
+                        </Col>
+                    </Col>
 
-                <Col xs={24} sm={24} md={24} lg={24} >
-                    <Table
-                        dataSource={filteredData}
-                        columns={columns}
-                        rowKey={(record) => String(record.project)}
-                        pagination={{ pageSize: 10 }}
-                    />
-                </Col>
-            </Row>
-        </ResponsiveContainer>
+                    <Col xs={24} sm={24} md={24} lg={24} >
+                        <Table
+                            dataSource={filteredData}
+                            columns={columns}
+                            rowKey={(record) => String(record.project)}
+                            pagination={{ pageSize: 10 }}
+                        />
+                    </Col>
+                </Row>
+            </ResponsiveContainer>
+        </ThemeProvider>
     );
+
 };
 
 export default SingleProjectPage;

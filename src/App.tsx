@@ -4,18 +4,11 @@ import ProjectPage from "./pages/ProjectPage";
 import NotFound from "./utils/NotFound";
 import MainLayout from "./components/homepage/MainLayout";
 import SingleProjectPage from "./components/projects/SingleProjectPage";
-import { ConfigProvider } from "antd";
+import ThemeProvider from "./utils/ThemeProvider";
 
 const App: React.FC = () => {
-
-  const theme = {
-    token: {
-      colorPrimary: "#FBFBFB",
-      pagePadding: "1rem"
-    }
-  }
   return (
-    <ConfigProvider theme={theme}>
+    <ThemeProvider>
       <BrowserRouter>
         <Routes>
           <Route element={<MainLayout />}>
@@ -26,7 +19,7 @@ const App: React.FC = () => {
           </Route>
         </Routes>
       </BrowserRouter>
-    </ConfigProvider>
+    </ThemeProvider>
   );
 };
 
