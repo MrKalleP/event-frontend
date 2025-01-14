@@ -4,11 +4,12 @@ import ProjectPage from "./pages/ProjectPage";
 import NotFound from "./utils/NotFound";
 import MainLayout from "./components/homepage/MainLayout";
 import SingleProjectPage from "./components/projects/SingleProjectPage";
-import ThemeProvider from "./utils/ThemeProvider";
+import { ConfigProvider } from 'antd';
+import { themeGlobal } from './utils/ThemeProvider.tsx';
 
 const App: React.FC = () => {
   return (
-    <ThemeProvider>
+    <ConfigProvider theme={themeGlobal}>
       <BrowserRouter>
         <Routes>
           <Route element={<MainLayout />}>
@@ -19,7 +20,7 @@ const App: React.FC = () => {
           </Route>
         </Routes>
       </BrowserRouter>
-    </ThemeProvider>
+    </ConfigProvider>
   );
 };
 

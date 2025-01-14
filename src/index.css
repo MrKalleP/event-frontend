@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
 
+
 body {
   font-family: 'Poppins', 'Montserrat', sans-serif;
   overflow-y: scroll;
@@ -11,7 +12,7 @@ html,
 #root {
   height: 100%;
   margin: 0;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: .05rem;
 }
 
@@ -46,4 +47,9 @@ html,
 
 strong {
   font-size: 1rem;
+}
+
+.Padding-detaljP {
+  padding: .5rem;
+
 }

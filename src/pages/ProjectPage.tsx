@@ -5,7 +5,6 @@ import test_data from "../../src/utils/testdata.json";
 import { SmileTwoTone } from "@ant-design/icons";
 import ProjectBarChart from "../components/projects/BarChart";
 import { Project } from "../utils/Interface"
-import ThemeProvider from "../utils/ThemeProvider";
 
 const { Search } = Input;
 
@@ -50,59 +49,63 @@ const ProjectsPage = () => {
         setSearchValue("")
     };
     return (
-        <ThemeProvider>
-            <div
-                style={{
-                    minHeight: "100vh",
-                    background: "#f0f2f5",
-                    padding: "32px",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "24px",
-                }}
-            >
-                <Search
-                    placeholder="Search for projects by name"
-                    allowClear
-                    enterButton="Search"
-                    size="large"
-                    onSearch={onSearch}
-                    value={serachValue}
-                    onChange={(e) => setSearchValue(e.target.value)}
-                />
-                <Row gutter={[16, 16]}>
-                    {filteredProjects.map((project) => {
-                        const {
-                            id,
-                            project: projectName,
-                            children,
-                        } = project;
 
-                        const totalLogs = children.length;
-                        const crashes = children.filter(child => child.type === "crashed").length;
-                        const crashFreePercentage = calculateCrashFreePercentage(totalLogs, crashes);
+        <div
+            style={{
+                minHeight: "100vh",
+                background: "#f0f2f5",
+                padding: "32px",
+                display: "flex",
+                flexDirection: "column",
+                gap: "24px",
+            }}
+        >
+            <h1 style={{ textAlign: "center", }}>Project Page</h1>
+            <Search
+                placeholder="Search for projects by name"
+                allowClear
+                enterButton="Search"
+                size="large"
+                onSearch={onSearch}
+                value={serachValue}
+                onChange={(e) => setSearchValue(e.target.value)}
+            />
 
-                        return (
-                            <Col key={id} xs={24} sm={12} md={8} lg={8}>
-                                <Card
-                                    title={<Link to={`/project/${projectName}`}>{projectName}</Link>}
-                                    hoverable
-                                >
-                                    <ProjectBarChart data={children} />
-                                    <h3 >{`it is ${crashes} craches of total: ${totalLogs} logs`}</h3>
-                                    <Statistic
-                                        title="Crash Free Sessions"
-                                        value={crashFreePercentage}
-                                        suffix="%"
-                                        prefix={<SmileTwoTone />}
-                                    />
-                                </Card>
-                            </Col>
-                        );
-                    })}
-                </Row>
-            </div>
-        </ThemeProvider>
+            <Row gutter={[16, 16]} >
+                {filteredProjects.map((project) => {
+                    const {
+                        id,
+                        project: projectName,
+                        children,
+                    } = project;
+
+                    const totalLogs = children.length;
+                    const crashes = children.filter(child => child.type === "crashed").length;
+                    const crashFreePercentage = calculateCrashFreePercentage(totalLogs, crashes);
+
+                    return (
+                        <Col key={id} xs={24} sm={12} md={8} lg={8}>
+                            <Card
+                                title={<Link to={`/project/${projectName}`} style={{ fontSize: "1.5rem" }}>{projectName}</Link>}
+                                hoverable
+                                style={{ fontSize: ".8rem", padding: ".5rem" }}
+                            >
+                                <ProjectBarChart data={children} />
+                                <h3 style={{ fontSize: "1.3rem" }}>{`it is ${crashes} craches of total: ${totalLogs} logs`}</h3>
+                                <Statistic
+                                    title="Crash Free Sessions"
+                                    value={crashFreePercentage}
+                                    suffix="%"
+                                    prefix={<SmileTwoTone />}
+                                    style={{ fontSize: "1.5rem" }}
+                                />
+                            </Card>
+                        </Col>
+                    );
+                })}
+            </Row>
+        </div>
+
     );
 
 };

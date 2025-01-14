@@ -6,7 +6,8 @@ import { ResponsiveContainer } from "recharts";
 import { FieldTimeOutlined, MessageOutlined, ProjectOutlined } from "@ant-design/icons";
 import formatDate from "../../utils/DateFunction";
 import { DataType } from "../../utils/Interface";
-import ThemeProvider from "../../utils/ThemeProvider";
+import { format } from "date-fns";
+
 
 
 const SingleProjectPage = () => {
@@ -78,36 +79,51 @@ const SingleProjectPage = () => {
     ];
 
     return (
-        <ThemeProvider>
-            <ResponsiveContainer >
-                <Row gutter={[8, 17]} style={{ padding: "1rem", height: "100vh" }}>
-                    <Col >
+        <ResponsiveContainer style={{
+            color: "black",
+            backgroundColor: "#FCFCFC",
+            borderRadius: "4px",
+            display: "flex",
+            flexDirection: "column",
+            marginBottom: "1rem",
+            padding: "0rem"
+        }}>
+            <Row gutter={[8, 17]} style={{ padding: "0 1rem 0 1rem", height: "100vh" }}>
+                <Col >
+                </Col>
+                <Col style={{ backgroundColor: "#f5f5f5", borderRadius: ".5rem", padding: "1.5rem" }}
+                    xs={24}
+                    sm={24}
+                    md={24}
+                    lg={24}
+                >
+                    <h3 style={{ textAlign: "center", fontSize: "4rem", padding: ".6rem", marginBottom: "4rem" }}>{selectedProject.project}</h3>
+                    <Col style={{ textAlign: "left", padding: "1rem" }}>
+                        <p className="Padding-detaljP"><strong><ProjectOutlined style={{ marginRight: ".4rem" }} />Project Name:</strong> {selectedProject.project}</p>
+                        <p className="Padding-detaljP"><strong><MessageOutlined style={{ marginRight: ".4rem" }} />Message:</strong> {selectedProject.message}</p>
+                        <p className="Padding-detaljP">
+                            <strong>
+                                <FieldTimeOutlined style={{ marginRight: ".4rem" }} />
+                                Last Updated:
+                            </strong>{" "}
+                            {format(new Date(selectedProject.date), "yyyy-MM-dd")}
+                            <span style={{ margin: "0 .4rem" }}></span>
+                            {format(new Date(selectedProject.date), "HH:mm")}
+                        </p>
                     </Col>
-                    <Col
-                        xs={24}
-                        sm={24}
-                        md={24}
-                        lg={24}
-                    >
-                        <h3 >{selectedProject.project}</h3>
-                        <Col >
-                            <p><strong><ProjectOutlined />Project Name:</strong> {selectedProject.project}</p>
-                            <p><strong><MessageOutlined />Message:</strong> {selectedProject.message}</p>
-                            <p><strong><FieldTimeOutlined />Last Updated:</strong> {new Date(selectedProject.date).toLocaleString()}</p>
-                        </Col>
-                    </Col>
+                </Col>
 
-                    <Col xs={24} sm={24} md={24} lg={24} >
-                        <Table
-                            dataSource={filteredData}
-                            columns={columns}
-                            rowKey={(record) => String(record.project)}
-                            pagination={{ pageSize: 10 }}
-                        />
-                    </Col>
-                </Row>
-            </ResponsiveContainer>
-        </ThemeProvider>
+                <Col xs={24} sm={24} md={24} lg={24} >
+                    <Table
+                        dataSource={filteredData}
+                        columns={columns}
+                        rowKey={(record) => String(record.project)}
+                        pagination={{ pageSize: 10 }}
+                    />
+                </Col>
+            </Row>
+        </ResponsiveContainer >
+
     );
 
 };

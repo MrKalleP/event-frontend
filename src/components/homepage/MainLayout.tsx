@@ -3,7 +3,6 @@ import { Link, useLocation, Outlet } from "react-router-dom";
 import { Layout, Menu, Breadcrumb } from "antd";
 import { ProjectOutlined, HomeOutlined } from "@ant-design/icons";
 import Logo from "../../utils/Logo";
-import ThemeProvider from "../../utils/ThemeProvider";
 const { Content, Footer, Sider } = Layout;
 
 
@@ -25,39 +24,39 @@ const MainLayout = () => {
         }));
 
     return (
-        <ThemeProvider>
-            <Layout >
-                <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed}>
-                    <Logo isCollapsed={collapsed} />
-                    <Menu
-                        theme="dark"
-                        mode="inline"
-                        defaultSelectedKeys={["/"]}
-                        selectedKeys={[location.pathname]}
-                    >
-                        {menuItems.map((item) => (
-                            <Menu.Item key={item.key} icon={item.icon}>
-                                <Link to={item.key}>{item.label}</Link>
-                            </Menu.Item>
+        <Layout >
+            <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed}>
+                <Logo isCollapsed={collapsed} />
+                <Menu
+                    theme="dark"
+                    mode="inline"
+                    defaultSelectedKeys={["/"]}
+                    selectedKeys={[location.pathname]}
+                    style={{ padding: ".5rem" }}
+                >
+                    {menuItems.map((item) => (
+                        <Menu.Item key={item.key} icon={item.icon} style={{ textAlign: "left", marginBlock: ".6rem" }}>
+                            <Link style={{ marginInline: ".4rem" }} to={item.key}>{item.label}</Link>
+                        </Menu.Item>
+                    ))}
+                </Menu>
+            </Sider>
+            <Layout>
+                <Content >
+                    <Breadcrumb style={{ margin: "3px" }}>
+                        {breadcrumbItems.map((item) => (
+                            <Breadcrumb.Item key={item.key}>{item.label}</Breadcrumb.Item>
                         ))}
-                    </Menu>
-                </Sider>
-                <Layout>
-                    <Content >
-                        <Breadcrumb style={{ margin: "3px" }}>
-                            {breadcrumbItems.map((item) => (
-                                <Breadcrumb.Item key={item.key}>{item.label}</Breadcrumb.Item>
-                            ))}
-                        </Breadcrumb>
-                        <div
-                        >
-                            <Outlet />
-                        </div>
-                    </Content>
-                    <Footer >Event Logger ©{new Date().getFullYear()}</Footer>
-                </Layout>
+                    </Breadcrumb>
+                    <div
+                    >
+                        <Outlet />
+                    </div>
+                </Content>
+                <Footer >Event Logger ©{new Date().getFullYear()}</Footer>
             </Layout>
-        </ThemeProvider>
+        </Layout>
+
     );
 };
 
