@@ -60,7 +60,7 @@ const ProjectsPage = () => {
                 gap: "24px",
             }}
         >
-            <h1 style={{ textAlign: "center", }}>Project Page</h1>
+            <h1 style={{ textAlign: "center", fontSize: "4rem" }}>Project Page</h1>
             <Search
                 placeholder="Search for projects by name"
                 allowClear
@@ -91,7 +91,7 @@ const ProjectsPage = () => {
                                 style={{ fontSize: ".8rem", padding: ".5rem" }}
                             >
                                 <ProjectBarChart data={children} />
-                                <h3 style={{ fontSize: "1.3rem" }}>{`it is ${crashes} craches of total: ${totalLogs} logs`}</h3>
+                                <h3 style={{ fontSize: "1.3rem", borderTop: "2px solid black", padding: ".7rem" }}>{`it is ${crashes} craches of total: ${totalLogs} logs`}</h3>
                                 <Statistic
                                     title="Crash Free Sessions"
                                     value={crashFreePercentage}

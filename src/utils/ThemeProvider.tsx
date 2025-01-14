@@ -1,3 +1,4 @@
+
 export const themeGlobal = {
     token: {
         colorPrimary: "darkblue",
@@ -43,7 +44,6 @@ export const themeGlobal = {
             margin: "16px 0",
             boxShadow: "0 2px 8px rgba(0, 0, 0, 0.6)",
         },
-
     },
     responsive: {
         breakpoints: {
