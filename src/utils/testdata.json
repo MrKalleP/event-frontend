@@ -1,142 +1,82 @@
-[
-    {
-        "id": "1",
-        "project": "Ståldirekt",
-        "date": "2025-01-12T14:30:00Z",
-        "type": "error",
-        "message": "System under maintenance."
-    },
-    {
-        "id": "2",
-        "project": "Ståldirekt",
-        "date": "2025-01-12T12:15:00Z",
-        "type": "error",
-        "message": "Unusual login detected."
-    },
-    {
-        "id": "3",
-        "project": "Ståldirekt",
-        "date": "2025-01-17T12:45:00Z",
-        "type": "warning",
-        "message": "Unexpected server shutdown."
-    },
-    {
-        "id": "4",
-        "project": "Skyltdirekt",
-        "date": "2025-01-12T12:00:00Z",
-        "type": "warning",
-        "message": "Payment gateway service down."
-    },
-    {
-        "id": "5",
-        "project": "Skyltdirekt",
-        "date": "2025-01-12T12:40:00Z",
-        "type": "error",
-        "message": "High memory usage detected."
-    },
-    {
-        "id": "6",
-        "project": "Skyltdirekt",
-        "date": "2025-01-12T10:30:00Z",
-        "type": "warning",
-        "message": "New client onboarded."
-    },
-    {
-        "id": "7",
-        "project": "Prospector",
-        "date": "2025-01-12T09:10:00Z",
-        "type": "info",
-        "message": "Daily data aggregation completed."
-    },
-    {
-        "id": "8",
-        "project": "Prospector",
-        "date": "2025-01-12T21:00:00Z",
-        "type": "error",
-        "message": "Data sync failed."
-    },
-    {
-        "id": "9",
-        "project": "Prospector",
-        "date": "2025-01-12T16:00:00Z",
-        "type": "error",
-        "message": "Potential data inconsistency detected."
-    },
-    {
-        "id": "10",
-        "project": "Prospector",
-        "date": "2025-01-13T07:00:00Z",
-        "type": "error",
-        "message": "Potential data inconsistency detected."
-    },
-    {
-        "id": "11",
-        "project": "Ståldirekt",
-        "date": "2025-01-12T14:30:00Z",
-        "type": "error",
-        "message": "System under maintenance."
-    },
-    {
-        "id": "12",
-        "project": "Ståldirekt",
-        "date": "2025-01-12T12:15:00Z",
-        "type": "error",
-        "message": "Unusual login detected."
-    },
-    {
-        "id": "13",
-        "project": "Ståldirekt",
-        "date": "2025-01-12T12:45:00Z",
-        "type": "crashed",
-        "message": "Unexpected server shutdown."
-    },
-    {
-        "id": "14",
-        "project": "Skyltdirekt",
-        "date": "2025-01-12T12:00:00Z",
-        "type": "warning",
-        "message": "Payment gateway service down."
-    },
-    {
-        "id": "15",
-        "project": "Skyltdirekt",
-        "date": "2025-01-12T17:40:00Z",
-        "type": "error",
-        "message": "High memory usage detected."
-    },
-    {
-        "id": "16",
-        "project": "Skyltdirekt",
-        "date": "2025-01-12T10:30:00Z",
-        "type": "warning",
-        "message": "New client onboarded."
-    },
-    {
-        "id": "17",
-        "project": "Prospector",
-        "date": "2025-01-12T09:10:00Z",
-        "type": "info",
-        "message": "Daily data aggregation completed."
-    },
-    {
-        "id": "18",
-        "project": "Prospector",
-        "date": "2025-01-12T21:00:00Z",
-        "type": "error",
-        "message": "Data sync failed."
-    },
-    {
-        "id": "19",
-        "project": "Prospector",
-        "date": "2025-12-08T16:00:00Z",
-        "type": "error",
-        "message": "Potential data inconsistency detected."
-    },
-    {
-        "id": "20",
-        "project": "Prospector",
-        "date": "2025-01-13T07:00:00Z",
-        "type": "error",
-        "message": "Potential data inconsistency detected."
+{
+    "projects": {
+        "Ståldirekt": {
+            "description": "Ett projekt som hanterar stålleveranser och logistik.",
+            "logs": [
+                {
+                    "id": "1",
+                    "project": "Ståldirekt",
+                    "date": "2025-01-14T12:00:00Z",
+                    "type": "error",
+                    "message": "Unusual login detected."
+                },
+                {
+                    "id": "2",
+                    "project": "Ståldirekt",
+                    "date": "2025-01-14T11:00:00Z",
+                    "type": "info",
+                    "message": "User successfully logged in."
+                },
+                {
+                    "id": "3",
+                    "project": "Ståldirekt",
+                    "date": "2025-01-14T11:00:00Z",
+                    "type": "info",
+                    "message": "User successfully logged in."
+                }
+            ]
+        },
+        "Skyltdirekt": {
+            "description": "Ett system för hantering av skylttillverkning och distribution.",
+            "logs": [
+                {
+                    "id": "1",
+                    "project": "Skyltdirekt",
+                    "date": "2025-01-14T12:00:00Z",
+                    "type": "error",
+                    "message": "System overload detected."
+                },
+                {
+                    "id": "2",
+                    "project": "Skyltdirekt",
+                    "date": "2025-01-14T11:00:00Z",
+                    "type": "info",
+                    "message": "System backup completed."
+                },
+                {
+                    "id": "3",
+                    "project": "Skyltdirekt",
+                    "date": "2025-01-14T11:00:00Z",
+                    "type": "crashed",
+                    "message": "System not completed."
+                }
+            ]
+        },
+        "Prospector": {
+            "description": "En applikation för prospektering och dataanalys för gruvindustrin.",
+            "logs": [
+                {
+                    "id": "1",
+                    "project": "Prospector",
+                    "date": "2025-01-14T12:00:00Z",
+                    "type": "warning",
+                    "message": "High memory usage detected."
+                },
+                {
+                    "id": "2",
+                    "project": "Prospector",
+                    "date": "2025-01-14T11:00:00Z",
+                    "type": "error",
+                    "message": "Database connection failed."
+                },
+                {
+                    "id": "3",
+                    "project": "Prospector",
+                    "date": "2025-01-13T11:00:00Z",
+                    "type": "crashed",
+                    "message": "Database connection failed."
+                }
+            ]
+        }
     }
-]
+}

@@ -1,9 +1,9 @@
 
 import { InfoCircleOutlined } from '@ant-design/icons';
 import { Card, Statistic } from 'antd';
-import test_data from "../../utils/testdata.json"
+import { allLogs } from './CrashedLoggs';
 
-const filtredInfo = test_data.filter(item => item.type === "info")
+const filtredInfo = allLogs.filter(item => item.type === "info")
 
 export const InfoLoggs = () => (
     <Card bordered={false} style={{ backgroundColor: "#3A4DCB", padding: ".1rem" }}>

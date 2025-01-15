@@ -1,8 +1,8 @@
 import { FireOutlined } from '@ant-design/icons';
 import { Card, Statistic } from 'antd';
-import test_data from "../../utils/testdata.json"
+import { allLogs } from './CrashedLoggs';
 
-const errorFilterData = test_data.filter(item => item.type === "error")
+const errorFilterData = allLogs.filter(item => item.type === "error")
 
 export const ErrorsHome = () => (
 

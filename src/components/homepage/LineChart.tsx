@@ -1,5 +1,7 @@
-import test_data from "../../utils/testdata.json";
+
+import { allLogs } from "./CrashedLoggs";
 import { PreProcessData } from "./preProcessData";
+
 
 import {
     LineChart,
@@ -15,7 +17,7 @@ import {
 
 
 function LineChartExample() {
-    const processedData = PreProcessData(test_data);
+    const processedData = PreProcessData(allLogs);
     return (
 
         <ResponsiveContainer width="100%" height={400} >

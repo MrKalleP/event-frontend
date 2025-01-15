@@ -1,8 +1,9 @@
 import { Table } from 'antd';
 import type { TableProps } from 'antd';
-import test_data from "../../utils/testdata.json";
 import ProjectColumns from '../projects/ProjectColumns';
 import { DataType } from "../../utils/Interface";
+import { allLogs } from './CrashedLoggs';
+
 
 const onChange: TableProps<DataType>['onChange'] = (pagination, filters, sorter, extra) => {
     console.log('params', pagination, filters, sorter, extra);
@@ -11,7 +12,7 @@ const onChange: TableProps<DataType>['onChange'] = (pagination, filters, sorter,
 const TableHomePage = () => (
     <Table<DataType>
         columns={ProjectColumns}
-        dataSource={test_data}
+        dataSource={allLogs}
         onChange={onChange}
         showSorterTooltip={{ title: 'Click to sort' }}
         rowKey="id"

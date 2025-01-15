@@ -1,8 +1,8 @@
 import { WarningOutlined } from '@ant-design/icons';
 import { Card, Statistic } from 'antd';
-import test_data from "../../utils/testdata.json"
+import { allLogs } from './CrashedLoggs';
 
-const warningFilterData = test_data.filter(item => item.type === "warning")
+const warningFilterData = allLogs.filter(item => item.type === "warning")
 
 export const WarningHome = () => (
 
