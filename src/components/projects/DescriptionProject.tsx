@@ -5,12 +5,10 @@ const DescriptionProject = () => {
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        fetch('/testdata.json')
+        fetch('../src/utils/testdata.json')
             .then(response => response.json())
             .then(data => setData(data));
     }, []);
-
-    console.log(data);
 
     if (!data) {
         return <p>Loading...</p>;
