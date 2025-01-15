@@ -1,4 +1,5 @@
 
+import { Col, Row } from "antd";
 import { useState, useEffect } from "react";
 
 const DescriptionProject = () => {
@@ -14,15 +15,23 @@ const DescriptionProject = () => {
         return <p>Loading...</p>;
     }
 
+
+
     return (
-        <div>
-            {Object.entries(data.projects).map(([key, project]) => (
-                <div key={key}>
-                    <h2>{key}</h2>
-                    <p>{project.description}</p>
-                </div>
-            ))}
-        </div>
+        <Row align={"middle"} justify={"center"}>
+            <Col style={{
+                textAlign: "left",
+                fontSize: "1.4rem",
+                marginBottom: ".1rem",
+            }}>
+                {Object.entries(data.projects).map(([key, project]) => (
+                    <div key={key}>
+                        <h2>{key}</h2>
+                        <p>{project.description}</p>
+                    </div>
+                ))}
+            </Col>
+        </Row>
     );
 };
 

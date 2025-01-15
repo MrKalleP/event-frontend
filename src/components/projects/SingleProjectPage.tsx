@@ -97,10 +97,10 @@ const SingleProjectPage = () => {
 
     return (
         <>
-            <Row gutter={[8, 17]} style={{ padding: "0 1rem 0 1rem", height: "100vh" }}>
+            <Row gutter={[24, 2]} align={"middle"} justify={"center"} style={{ padding: "0 1rem 0 1rem", height: "100vh" }}>
                 <Col />
                 <Col
-                    style={{ backgroundColor: "#f5f5f5", borderRadius: ".5rem", padding: "1.5rem" }}
+                    style={{ backgroundColor: "#f5f5f5", borderRadius: ".5rem" }}
                     xs={24}
                     sm={24}
                     md={24}
@@ -111,15 +111,16 @@ const SingleProjectPage = () => {
                             textAlign: "center",
                             fontSize: "4rem",
                             padding: ".6rem",
-                            marginBottom: "4rem",
                         }}
                     >
                         {project.project}
                     </h3>
+
+                </Col>
+                <Col >
                     < DescriptionProject />
                 </Col>
-
-                <Col xs={24} sm={24} md={24} lg={24}>
+                <Col xs={24} sm={24} md={24} lg={12}>
                     <Table
                         dataSource={filteredData}
                         columns={columns}
@@ -129,7 +130,7 @@ const SingleProjectPage = () => {
                 </Col>
             </Row>
 
-            <Modal title="Project Details" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} style={{ padding: "1rem", textAlign: "center", fontSize: "1rem" }}>
+            <Modal centered title="Project Details" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} style={{ padding: "1rem", textAlign: "center", fontSize: "1rem" }}>
                 {selectedProject && (
                     <Col style={{ textAlign: "left", padding: "1rem" }}>
                         <p>
