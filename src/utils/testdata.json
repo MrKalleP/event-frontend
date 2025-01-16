@@ -7,7 +7,7 @@
                 {
                     "id": "1",
                     "project": "Ståldirekt",
-                    "date": "2025-01-14T12:00:00Z",
+                    "date": "2025-01-14T17:00:00Z",
                     "type": "error",
                     "message": "Unusual login detected."
                 },
@@ -21,7 +21,7 @@
                 {
                     "id": "3",
                     "project": "Ståldirekt",
-                    "date": "2025-01-14T11:00:00Z",
+                    "date": "2025-01-14T17:00:00Z",
                     "type": "info",
                     "message": "User successfully logged in."
                 }
@@ -31,29 +31,29 @@
             "name": "Skyltdirekt",
             "description": "Ett system för hantering av skylttillverkning och distribution.",
             "logs": [
-                    {
-                        "id": "1",
-                        "project": "Skyltdirekt",
-                        "date": "2025-01-14T12:00:00Z",
-                        "type": "error",
-                        "message": "System overload detected."
-                    },
-                    {
-                        "id": "2",
-                        "project": "Skyltdirekt",
-                        "date": "2025-01-14T11:00:00Z",
-                        "type": "info",
-                        "message": "System backup completed."
-                    },
-                    {
-                        "id": "3",
-                        "project": "Skyltdirekt",
-                        "date": "2025-01-14T11:00:00Z",
-                        "type": "crashed",
-                        "message": "System not completed."
-                    }
-                ] 
-            },
+                {
+                    "id": "1",
+                    "project": "Skyltdirekt",
+                    "date": "2025-01-15T11:00:00Z",
+                    "type": "error",
+                    "message": "System overload detected."
+                },
+                {
+                    "id": "2",
+                    "project": "Skyltdirekt",
+                    "date": "2025-01-14T11:00:00Z",
+                    "type": "info",
+                    "message": "System backup completed."
+                },
+                {
+                    "id": "3",
+                    "project": "Skyltdirekt",
+                    "date": "2025-01-14T11:00:00Z",
+                    "type": "crashed",
+                    "message": "System not completed."
+                }
+            ]
+        },
         {
             "name": "Prospector",
             "description": "En applikation för prospektering och dataanalys för gruvindustrin.",
@@ -68,7 +68,7 @@
                 {
                     "id": "2",
                     "project": "Prospector",
-                    "date": "2025-01-14T11:00:00Z",
+                    "date": "2025-01-14T21:00:00Z",
                     "type": "error",
                     "message": "Database connection failed."
                 },
