@@ -1,19 +1,19 @@
-import { Col, Row, Table, Tag, Modal } from "antd";
+import { FieldTimeOutlined, MessageOutlined, ProjectOutlined } from "@ant-design/icons";
+import { Table, Row, Col, Modal, Tag } from "antd";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-import { FieldTimeOutlined, MessageOutlined, ProjectOutlined } from "@ant-design/icons";
 import formatDate from "../../utils/DateFunction";
 import { DataType } from "../../utils/Interface";
 import { format } from "date-fns";
 import DescriptionProject from "./DescriptionProject";
-import test_data from "../../utils/testdata.json"
+import test_data from "../../utils/testdata.json";
 
 const SingleProjectPage = () => {
     const { projectName } = useParams();
 
     const project = test_data.projects.find((proj) => proj.name === projectName);
 
-    const [selectedProject, setSelectedProject] = useState<DataType | null>(null);
+    const [selectedLog, setSelectedLog] = useState<DataType | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     if (!project) {
@@ -21,11 +21,11 @@ const SingleProjectPage = () => {
         return <p>Project not found</p>;
     }
 
-    const filteredData = test_data.projects
-        .filter((log) => log.name === project.name)
+
+    const filteredData = project.logs;
 
     const showModal = (record: DataType) => {
-        setSelectedProject(record);
+        setSelectedLog(record);
         setIsModalOpen(true);
     };
 
@@ -114,10 +114,9 @@ const SingleProjectPage = () => {
                     >
                         {project.name}
                     </h3>
-
                 </Col>
                 <Col >
-                    < DescriptionProject data={project.description} />
+                    <DescriptionProject data={project.description} />
                 </Col>
                 <Col xs={24} sm={24} md={24} lg={12}>
                     <Table
@@ -129,30 +128,30 @@ const SingleProjectPage = () => {
                 </Col>
             </Row>
 
-            <Modal centered title="Project Details" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} style={{ padding: "1rem", textAlign: "center", fontSize: "1rem" }}>
-                {selectedProject && (
+            <Modal centered title="Log Details" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} style={{ padding: "1rem", textAlign: "center", fontSize: "1rem" }}>
+                {selectedLog && (
                     <Col style={{ textAlign: "left", padding: "1rem" }}>
                         <p>
                             <strong>
                                 <ProjectOutlined style={{ marginRight: ".4rem" }} />
                                 Project Name:
                             </strong>{" "}
-                            {selectedProject.project}
+                            {selectedLog.project}
                         </p>
                         <p>
                             <strong>
                                 <MessageOutlined style={{ marginRight: ".4rem" }} />
                                 Message:
                             </strong>{" "}
-                            {selectedProject.message}
+                            {selectedLog.message}
                         </p>
                         <p>
                             <strong>
                                 <FieldTimeOutlined style={{ marginRight: ".4rem" }} />
                                 Last Updated:
                             </strong>{" "}
-                            {format(new Date(selectedProject.date), "yyyy-MM-dd")}{" "}
-                            {format(new Date(selectedProject.date), "HH:mm")}
+                            {format(new Date(selectedLog.date), "yyyy-MM-dd")}{" "}
+                            {format(new Date(selectedLog.date), "HH:mm")}
                         </p>
                     </Col>
                 )}

@@ -1,28 +1,46 @@
-
 import { Col, Row } from "antd";
 
 const DescriptionProject = ({ data }) => {
 
-    if (!data || !data.projects) {
+    if (!data) {
         return <p>Loading...</p>;
     }
 
-    return (
-        <Row align={"middle"} justify={"center"}>
-            <Col style={{
-                textAlign: "left",
-                fontSize: "1.4rem",
-                marginBottom: ".1rem",
-            }}>
-                {Object.entries(data.projects).map(([key, value]) => (
-                    <div key={key}>
-                        <h2>{key}</h2>
-                        <p>{value.description}</p>
-                    </div>
-                ))}
-            </Col>
-        </Row>
-    );
+    if (typeof data === "string") {
+        return (
+            <Row align={"middle"} justify={"center"}>
+                <Col style={{
+                    textAlign: "left",
+                    fontSize: "1.4rem",
+                    marginBottom: ".1rem",
+                }}>
+                    <p>{data}</p>
+                </Col>
+            </Row>
+        );
+    }
+
+
+    if (typeof data === "object") {
+        return (
+            <Row align={"middle"} justify={"center"}>
+                <Col style={{
+                    textAlign: "left",
+                    fontSize: "1.4rem",
+                    marginBottom: ".1rem",
+                }}>
+                    {Object.entries(data).map(([key, value]) => (
+                        <div key={key}>
+                            <h2>{key}</h2>
+                            <p>{value}</p>
+                        </div>
+                    ))}
+                </Col>
+            </Row>
+        );
+    }
+
+    return <p>Invalid data format</p>;
 };
 
 export default DescriptionProject;
