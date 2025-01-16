@@ -8,17 +8,17 @@ export const themeGlobal = {
         lineHeight: "1.6",
         borderRadius: "8px",
         boxShadow: "0 2px 8px rgba(0, 0, 0, 0.15)",
-        paddingContentHorizontal: "16px",
-        paddingContentVertical: "16px",
+        paddingContentHorizontal: "1px",
+        paddingContentVertical: "1px",
         marginSM: "12px",
-        marginMD: "24px",
-        marginLG: "32px",
+        marginMD: "4px",
+        marginLG: "3px",
     },
     components: {
         Layout: {
             backgroundColor: "#f5f5f5",
-            paddingHorizontal: "16px",
-            paddingVertical: "24px",
+            paddingHorizontal: "6px",
+            paddingVertical: "4px",
         },
         Sider: {
             backgroundColor: "#001529",

@@ -15,9 +15,18 @@ const calculateCrashFreePercentage = (totalLogs: number, crashes: number) => {
 
 const ProjectsPage = () => {
     const [serachValue, setSearchValue] = useState("")
-    const filteredProjects = test_data.projects
+    const [filteredProjects, setFilteredProjects] = useState(test_data.projects);
+
     const onSearch = () => {
-        setSearchValue("")
+        if (serachValue.trim() === "") {
+            setFilteredProjects(test_data.projects);
+        } else {
+            const filtered = test_data.projects.filter((project) =>
+                project.name.toLowerCase().includes(serachValue.toLowerCase())
+            );
+            setFilteredProjects(filtered);
+        }
+        setSearchValue("");
     };
     return (
 
@@ -55,7 +64,7 @@ const ProjectsPage = () => {
                     const crashFreePercentage = calculateCrashFreePercentage(totalLogs, crashes);
 
                     return (
-                        <Col key={id} xs={24} sm={12} md={8} lg={8}>
+                        <Col key={id} xs={24} sm={24} md={24} lg={8}>
                             <Card
                                 title={<Link to={`/project/${name}`} style={{ fontSize: "1.5rem" }}>{name}</Link>}
                                 hoverable

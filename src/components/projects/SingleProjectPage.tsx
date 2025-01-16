@@ -97,7 +97,6 @@ const SingleProjectPage = () => {
     return (
         <>
             <Row gutter={[24, 2]} align={"middle"} justify={"center"} style={{ padding: "0 1rem 0 1rem", height: "100vh" }}>
-                <Col />
                 <Col
                     style={{ backgroundColor: "#f5f5f5", borderRadius: ".5rem" }}
                     xs={24}
@@ -114,10 +113,11 @@ const SingleProjectPage = () => {
                     >
                         {project.name}
                     </h3>
+                    <Col >
+                        <DescriptionProject data={project.description} />
+                    </Col>
                 </Col>
-                <Col >
-                    <DescriptionProject data={project.description} />
-                </Col>
+
                 <Col xs={24} sm={24} md={24} lg={12}>
                     <Table
                         dataSource={filteredData}
