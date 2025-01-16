@@ -57,3 +57,8 @@ strong {
 .ant-table-tbody>tr {
   cursor: pointer;
 }
+
+
+.ant-breadcrumb a {
+  text-transform: lowercase;
+}

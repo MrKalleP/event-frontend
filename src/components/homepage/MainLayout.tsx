@@ -45,7 +45,11 @@ const MainLayout = () => {
                 <Content >
                     <Breadcrumb style={{ margin: "3px" }}>
                         {breadcrumbItems.map((item) => (
-                            <Breadcrumb.Item key={item.key}>{item.label}</Breadcrumb.Item>
+                            <Breadcrumb.Item key={item.key} >
+                                <Link to="/project">
+                                    {item.label.toLowerCase()}
+                                </Link>
+                            </Breadcrumb.Item>
                         ))}
                     </Breadcrumb>
                     <div
@@ -61,3 +65,4 @@ const MainLayout = () => {
 };
 
 export default MainLayout
+
