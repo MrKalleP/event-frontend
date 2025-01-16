@@ -3,6 +3,8 @@ import { DataType } from "../../utils/Interface";
 import formatDate from "../../utils/DateFunction";
 import { Tag } from 'antd';
 import test_data from "../../utils/testdata.json"
+import { Link } from 'react-router-dom';
+
 
 const ProjectColumns: TableColumnsType<DataType> = [
     {
@@ -15,6 +17,11 @@ const ProjectColumns: TableColumnsType<DataType> = [
             value: project,
         })),
         onFilter: (value, record) => record.project.includes(value as string),
+        render: (text) => (
+            <Link to={`/project/${text}`} style={{ fontSize: '1rem' }}>
+                {text}
+            </Link>
+        ),
         sorter: (a, b) => a.project.localeCompare(b.project),
     },
     {
@@ -64,8 +71,17 @@ const ProjectColumns: TableColumnsType<DataType> = [
 
             const textColor = type === "warning" ? "black" : "white";
 
-            return <Tag color={backgroundColor} style={{ color: textColor, width: "4.4rem" }
-            }> {type} </Tag>;
+            return (
+                <Tag
+                    color={backgroundColor}
+                    style={{
+                        color: textColor,
+                        width: "4.4rem"
+                    }
+                    } >
+                    {type}
+                </Tag>
+            )
         },
     }
 ];
