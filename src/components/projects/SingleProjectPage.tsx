@@ -122,13 +122,24 @@ const SingleProjectPage = () => {
                     <Table
                         dataSource={filteredData}
                         columns={columns}
+                        onRow={(record) => ({
+                            onClick: () => {
+                                showModal(record);
+                            },
+                        })}
                         rowKey={(record) => String(record.id)}
                         pagination={{ pageSize: 10 }}
                     />
                 </Col>
             </Row>
 
-            <Modal centered title="Log Details" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} style={{ padding: "1rem", textAlign: "center", fontSize: "1rem" }}>
+            <Modal
+                centered
+                title="Log Details"
+                open={isModalOpen}
+                onOk={handleOk}
+                onCancel={handleCancel}
+                style={{ padding: "1rem", textAlign: "center", fontSize: "1rem" }}>
                 {selectedLog && (
                     <Col style={{ textAlign: "left", padding: "1rem" }}>
                         <p>

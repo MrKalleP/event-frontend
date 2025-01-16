@@ -42,7 +42,7 @@ export const themeGlobal = {
             padding: "24px",
             margin: "16px 0",
             boxShadow: "0 2px 8px rgba(0, 0, 0, 0.6)",
-        },
+        }
     },
     responsive: {
         breakpoints: {

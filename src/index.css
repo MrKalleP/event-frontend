@@ -53,3 +53,7 @@ strong {
   padding: .5rem;
 
 }
+
+.ant-table-tbody>tr {
+  cursor: pointer;
+}
