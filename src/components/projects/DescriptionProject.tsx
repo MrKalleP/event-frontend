@@ -1,21 +1,11 @@
 
 import { Col, Row } from "antd";
-import { useState, useEffect } from "react";
 
-const DescriptionProject = () => {
-    const [data, setData] = useState(null);
+const DescriptionProject = ({ data }) => {
 
-    useEffect(() => {
-        fetch('../src/utils/testdata.json')
-            .then(response => response.json())
-            .then(data => setData(data));
-    }, []);
-
-    if (!data) {
+    if (!data || !data.projects) {
         return <p>Loading...</p>;
     }
-
-
 
     return (
         <Row align={"middle"} justify={"center"}>
@@ -24,10 +14,10 @@ const DescriptionProject = () => {
                 fontSize: "1.4rem",
                 marginBottom: ".1rem",
             }}>
-                {Object.entries(data.projects).map(([key, project]) => (
+                {Object.entries(data.projects).map(([key, value]) => (
                     <div key={key}>
                         <h2>{key}</h2>
-                        <p>{project.description}</p>
+                        <p>{value.description}</p>
                     </div>
                 ))}
             </Col>

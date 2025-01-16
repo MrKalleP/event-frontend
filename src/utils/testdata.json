@@ -1,13 +1,14 @@
 {
     "projects": [
         {
+            "id": 1,
             "name": "Ståldirekt",
             "description": "Ett projekt som hanterar stålleveranser och logistik.",
             "logs": [
                 {
                     "id": "1",
                     "project": "Ståldirekt",
-                    "date": "2025-01-14T17:00:00Z",
+                    "date": "2025-01-15T17:00:00Z",
                     "type": "error",
                     "message": "Unusual login detected."
                 },
@@ -28,25 +29,26 @@
             ]
         },
         {
+            "id": 2,
             "name": "Skyltdirekt",
             "description": "Ett system för hantering av skylttillverkning och distribution.",
             "logs": [
                 {
-                    "id": "1",
+                    "id": "4",
                     "project": "Skyltdirekt",
                     "date": "2025-01-15T11:00:00Z",
                     "type": "error",
                     "message": "System overload detected."
                 },
                 {
-                    "id": "2",
+                    "id": "5",
                     "project": "Skyltdirekt",
                     "date": "2025-01-14T11:00:00Z",
                     "type": "info",
                     "message": "System backup completed."
                 },
                 {
-                    "id": "3",
+                    "id": "6",
                     "project": "Skyltdirekt",
                     "date": "2025-01-14T11:00:00Z",
                     "type": "crashed",
@@ -55,25 +57,26 @@
             ]
         },
         {
+            "id": 3,
             "name": "Prospector",
             "description": "En applikation för prospektering och dataanalys för gruvindustrin.",
             "logs": [
                 {
-                    "id": "1",
+                    "id": "7",
                     "project": "Prospector",
                     "date": "2025-01-14T12:00:00Z",
                     "type": "warning",
                     "message": "High memory usage detected."
                 },
                 {
-                    "id": "2",
+                    "id": "8",
                     "project": "Prospector",
                     "date": "2025-01-14T21:00:00Z",
                     "type": "error",
                     "message": "Database connection failed."
                 },
                 {
-                    "id": "3",
+                    "id": "9",
                     "project": "Prospector",
                     "date": "2025-01-13T11:00:00Z",
                     "type": "crashed",

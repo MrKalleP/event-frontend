@@ -1,6 +1,6 @@
 import { DataType, ProcessedDataType } from "../../utils/Interface"
 
-export const PreProcessData = (data: DataType[]): ProcessedDataType[] => {
+export const PreProcessData = (data: DataType[] = []): ProcessedDataType[] => {
     const groupedData: { [key: string]: ProcessedDataType } = {};
     const today = new Date();
     const oneWeekAgo = new Date();
@@ -19,8 +19,5 @@ export const PreProcessData = (data: DataType[]): ProcessedDataType[] => {
         }
     });
 
-
-    const result = Object.values(groupedData).sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-
-    return result;
+    return Object.values(groupedData).sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 };

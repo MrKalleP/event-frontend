@@ -2,15 +2,14 @@ import { TableColumnsType } from 'antd';
 import { DataType } from "../../utils/Interface";
 import formatDate from "../../utils/DateFunction";
 import { Tag } from 'antd';
-import { allLogs } from '../homepage/CrashedLoggs';
-
+import test_data from "../../utils/testdata.json"
 
 const ProjectColumns: TableColumnsType<DataType> = [
     {
         title: 'Project',
         dataIndex: 'project',
         filters: Array.from(
-            new Set(allLogs.map((item) => item.project))
+            new Set(test_data.projects.map((item) => item.logs.project))
         ).map((project) => ({
             text: project,
             value: project,

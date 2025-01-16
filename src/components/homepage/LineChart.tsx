@@ -1,5 +1,3 @@
-
-import { allLogs } from "./CrashedLoggs";
 import { PreProcessData } from "./preProcessData";
 
 
@@ -16,8 +14,10 @@ import {
 
 
 
-function LineChartExample() {
-    const processedData = PreProcessData(allLogs);
+function LineChartExample({ data }) {
+    const processedData = PreProcessData(data);
+    console.log(processedData);
+
     return (
 
         <ResponsiveContainer width="100%" height={400} >

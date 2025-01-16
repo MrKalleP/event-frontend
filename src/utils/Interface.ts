@@ -18,6 +18,8 @@ export interface Project {
     id: string;
     project: string;
     type: string;
-    children: { id: string; project: string; type: string; date: string }[];
+    children: {
+        name: any; id: string; project: string; type: string; date: string
+    }[];
 }
 

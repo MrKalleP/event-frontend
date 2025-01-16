@@ -5,13 +5,13 @@ import { FieldTimeOutlined, MessageOutlined, ProjectOutlined } from "@ant-design
 import formatDate from "../../utils/DateFunction";
 import { DataType } from "../../utils/Interface";
 import { format } from "date-fns";
-import { allLogs } from "../homepage/CrashedLoggs";
 import DescriptionProject from "./DescriptionProject";
-
+import test_data from "../../utils/testdata.json"
 
 const SingleProjectPage = () => {
     const { projectName } = useParams();
-    const project = allLogs.find((p) => String(p.project) === projectName);
+
+    const project = test_data.projects.find((proj) => proj.name === projectName);
 
     const [selectedProject, setSelectedProject] = useState<DataType | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,9 +21,8 @@ const SingleProjectPage = () => {
         return <p>Project not found</p>;
     }
 
-    const filteredData = allLogs
-        .filter((log) => log.project === project.project)
-        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    const filteredData = test_data.projects
+        .filter((log) => log.name === project.name)
 
     const showModal = (record: DataType) => {
         setSelectedProject(record);
@@ -113,12 +112,12 @@ const SingleProjectPage = () => {
                             padding: ".6rem",
                         }}
                     >
-                        {project.project}
+                        {project.name}
                     </h3>
 
                 </Col>
                 <Col >
-                    < DescriptionProject />
+                    < DescriptionProject data={project.description} />
                 </Col>
                 <Col xs={24} sm={24} md={24} lg={12}>
                     <Table
