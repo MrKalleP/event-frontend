@@ -62,4 +62,5 @@ strong {
 
 .ant-breadcrumb a {
   text-transform: lowercase;
+  color: red;
 }

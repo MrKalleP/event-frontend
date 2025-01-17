@@ -8,7 +8,7 @@ import { Card, Statistic } from 'antd';
 export const InfoLoggs = ({ data }) => {
     const filtredInfo = Array.isArray(data) ? data.filter(item => item.type === "info") : []
     return (
-        <Card bordered={false} style={{ backgroundColor: "#3A4DCB", padding: ".1rem" }}>
+        <Card bordered={false} style={{ backgroundColor: "#4E688E", padding: ".1rem" }}>
             <Statistic
                 title={<span className="info-title">Info</span>}
                 value={filtredInfo.length}

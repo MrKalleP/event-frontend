@@ -6,7 +6,7 @@ export const CrashedLoggs = ({ data }) => {
     const CrashedFilterData = Array.isArray(data) ? data.filter(item => item.type === "crashed") : [];
 
     return (
-        <Card bordered={false} style={{ backgroundColor: "#D04CC1", padding: ".1rem" }}>
+        <Card bordered={false} style={{ backgroundColor: "#340A0B", padding: ".1rem" }}>
             <Statistic
                 title={<span className="crashed-title">Crashed</span>}
                 value={CrashedFilterData.length}

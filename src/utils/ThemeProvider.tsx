@@ -1,18 +1,18 @@
 
 export const themeGlobal = {
     token: {
-        colorPrimary: "darkblue",
+        colorPrimary: "#3A4DCB",
         colorBgLayout: "#f5f5f5",
-        colorBgContainer: "#ffffff",
+        colorBgContainer: "white",
         colorText: "rgba(0,0,0,0.88)",
         lineHeight: "1.6",
         borderRadius: "8px",
         boxShadow: "0 2px 8px rgba(0, 0, 0, 0.15)",
-        paddingContentHorizontal: "1px",
-        paddingContentVertical: "1px",
-        marginSM: "12px",
-        marginMD: "4px",
-        marginLG: "3px",
+        paddingContentHorizontal: "1rem",
+        paddingContentVertical: "01rem",
+        marginSM: "1rem",
+        marginMD: "2rem",
+        marginLG: "3rem",
     },
     components: {
         Layout: {

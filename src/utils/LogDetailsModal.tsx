@@ -2,13 +2,7 @@ import React from "react";
 import { Modal, Col, Tag } from "antd";
 import { FieldTimeOutlined, MessageOutlined, ProjectOutlined } from "@ant-design/icons";
 import { format } from "date-fns";
-import { DataType } from "./Interface";
-
-interface LogDetailsModalProps {
-    log: DataType | null;
-    isOpen: boolean;
-    onClose: () => void;
-}
+import { LogDetailsModalProps } from "./Interface";
 
 const LogDetailsModal: React.FC<LogDetailsModalProps> = ({ log, isOpen, onClose }) => {
     if (!log) return null;

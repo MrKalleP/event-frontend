@@ -20,8 +20,20 @@ const MainLayout = () => {
         .filter((path) => path)
         .map((path, index) => ({
             key: index,
-            label: path.charAt(0).toUpperCase() + path.slice(1),
+            label: path.charAt(0) + path.slice(1),
         }));
+
+    const normalizeText = (text) => {
+        return text
+            .replace(/å/g, "a")
+            .replace(/ä/g, "a")
+            .replace(/ö/g, "o")
+            .replace(/Å/g, "A")
+            .replace(/Ä/g, "A")
+            .replace(/Ö/g, "O");
+    };
+
+
 
     return (
         <Layout >
@@ -47,7 +59,7 @@ const MainLayout = () => {
                         {breadcrumbItems.map((item) => (
                             <Breadcrumb.Item key={item.key} >
                                 <Link to="/project">
-                                    {item.label.toLowerCase()}
+                                    {item.label}
                                 </Link>
                             </Breadcrumb.Item>
                         ))}
