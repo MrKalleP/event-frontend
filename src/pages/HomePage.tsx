@@ -34,10 +34,10 @@ const HomePage = () => {
                 </Col>
             </Row>
             <Row gutter={[24, 24]} style={{ width: "100%" }}>
-                <Col xs={24} sm={24} md={24} lg={12}>
+                <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={12}>
                     <TableHomePage data={allLogs} />
                 </Col>
-                <Col xs={24} sm={24} md={24} lg={12}>
+                <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={12}>
                     <LineChartExample data={allLogs} />
                 </Col>
             </Row>

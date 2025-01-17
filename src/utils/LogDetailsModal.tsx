@@ -8,10 +8,10 @@ const LogDetailsModal: React.FC<LogDetailsModalProps> = ({ log, isOpen, onClose 
     if (!log) return null;
 
     const colorMap = {
-        info: "#3A4DCB",
-        error: "#C52E2E",
-        warning: "#FFFF8F",
-        crashed: "#D04CC1",
+        info: "#4E688E",
+        error: "#B0483A",
+        warning: "#FFD790",
+        crashed: "#340A0B",
     };
 
     const backgroundColor = colorMap[log.type] || "default";
