@@ -66,7 +66,7 @@ const ProjectsPage = () => {
                     return (
                         <Col key={id} xs={24} sm={24} md={24} lg={8}>
                             <Card
-                                title={<Link to={`/project/${name}`} style={{ fontSize: "1.5rem" }}>{name}</Link>}
+                                title={<Link to={`/project/${name.toLowerCase()}`} style={{ fontSize: "1.5rem" }}>{name}</Link>}
                                 hoverable
                                 style={{ fontSize: ".8rem", padding: ".5rem" }}
                             >
