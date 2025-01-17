@@ -5,7 +5,6 @@ import { ProjectOutlined, HomeOutlined } from "@ant-design/icons";
 import Logo from "../../utils/Logo";
 const { Content, Footer, Sider } = Layout;
 
-
 const MainLayout = () => {
     const [collapsed, setCollapsed] = useState(false);
     const location = useLocation();
@@ -18,25 +17,17 @@ const MainLayout = () => {
     const breadcrumbItems = location.pathname
         .split("/")
         .filter((path) => path)
-        .map((path, index) => ({
-            key: index,
-            label: path.charAt(0) + path.slice(1),
-        }));
-
-    const normalizeText = (text) => {
-        return text
-            .replace(/å/g, "a")
-            .replace(/ä/g, "a")
-            .replace(/ö/g, "o")
-            .replace(/Å/g, "A")
-            .replace(/Ä/g, "A")
-            .replace(/Ö/g, "O");
-    };
-
-
+        .map((path, index, arr) => {
+            const isLastItem = index === arr.length - 1;
+            return {
+                key: index,
+                label: path.charAt(0).toUpperCase() + path.slice(1),
+                link: !isLastItem && path === "project" ? "/project" : null,
+            };
+        });
 
     return (
-        <Layout >
+        <Layout>
             <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed}>
                 <Logo isCollapsed={collapsed} />
                 <Menu
@@ -54,27 +45,26 @@ const MainLayout = () => {
                 </Menu>
             </Sider>
             <Layout>
-                <Content >
+                <Content>
                     <Breadcrumb style={{ margin: "3px" }}>
                         {breadcrumbItems.map((item) => (
-                            <Breadcrumb.Item key={item.key} >
-                                <Link to="/project">
-                                    {item.label}
-                                </Link>
+                            <Breadcrumb.Item key={item.key}>
+                                {item.link ? (
+                                    <Link to={item.link}>{item.label}</Link>
+                                ) : (
+                                    item.label.toLowerCase()
+                                )}
                             </Breadcrumb.Item>
                         ))}
                     </Breadcrumb>
-                    <div
-                    >
+                    <div>
                         <Outlet />
                     </div>
                 </Content>
-                <Footer >Event Logger ©{new Date().getFullYear()}</Footer>
+                <Footer>Event Logger ©{new Date().getFullYear()}</Footer>
             </Layout>
         </Layout>
-
     );
 };
 
-export default MainLayout
-
+export default MainLayout;
