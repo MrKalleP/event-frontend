@@ -59,8 +59,8 @@ strong {
   cursor: pointer;
 }
 
-
 .ant-breadcrumb a {
   text-transform: lowercase;
   color: #1b73f7;
+
 }
