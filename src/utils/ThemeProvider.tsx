@@ -11,13 +11,13 @@ export const themeGlobal = {
         paddingContentHorizontal: "1rem",
         paddingContentVertical: "01rem",
         marginSM: "1rem",
-        marginMD: "2rem",
-        marginLG: "3rem",
+        marginMD: "1rem",
+        marginLG: "1rem",
     },
     components: {
         Layout: {
             backgroundColor: "#f5f5f5",
-            paddingHorizontal: "6px",
+            paddingHorizontal: "1",
             paddingVertical: "4px",
         },
         Sider: {

@@ -14,7 +14,7 @@ const allLogs = test_data.projects.flatMap(project => project.logs);
 const HomePage = () => {
     return (
         <Row
-            style={{ height: "100vh", width: "100%", padding: "3rem" }}
+            style={{ height: "100vh", width: "100%", padding: "4rem" }}
             gutter={[24, 24]}
             justify="center"
             align="top"

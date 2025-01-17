@@ -34,7 +34,7 @@ const ProjectsPage = () => {
             style={{
                 minHeight: "100vh",
                 background: "#f0f2f5",
-                padding: "32px",
+                padding: "2rem",
                 display: "flex",
                 flexDirection: "column",
                 gap: "24px",

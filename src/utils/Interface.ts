@@ -23,3 +23,8 @@ export interface Project {
     }[];
 }
 
+export interface LogDetailsModalProps {
+    log: DataType | null;
+    isOpen: boolean;
+    onClose: () => void;
+}
