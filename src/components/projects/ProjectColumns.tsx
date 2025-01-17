@@ -18,7 +18,7 @@ const ProjectColumns: TableColumnsType<DataType> = [
         })),
         onFilter: (value, record) => record.project.includes(value as string),
         render: (text) => (
-            <Link to={`/project/${text}`} style={{ fontSize: '1rem' }}>
+            <Link to={`/project/${text.toLowerCase()}`} style={{ fontSize: '1rem' }}>
                 {text}
             </Link>
         ),

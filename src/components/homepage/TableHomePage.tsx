@@ -3,7 +3,7 @@ import type { TableProps } from 'antd';
 import { DataType } from "../../utils/Interface";
 import ProjectColumns from "../projects/ProjectColumns"
 import LogDetailsModal from "../../utils/LogDetailsModal";
-import useModal from "../../utils/modalFunctionality";
+import useModal from "../../utils/ModalFunctionality";
 
 
 const onChange: TableProps<DataType>['onChange'] = (pagination, filters, sorter, extra) => {

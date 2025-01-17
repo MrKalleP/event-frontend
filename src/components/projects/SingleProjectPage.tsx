@@ -1,14 +1,16 @@
-import { Table, Row, Col, Tag, Breadcrumb } from "antd";
-import { Link, useParams } from "react-router-dom";
+import { Table, Row, Col, Tag, } from "antd";
+import { useParams } from "react-router-dom";
 import formatDate from "../../utils/DateFunction";
 import DescriptionProject from "./DescriptionProject";
 import test_data from "../../utils/testdata.json";
 import LogDetailsModal from "../../utils/LogDetailsModal";
-import useModal from "../../utils/modalFunctionality";
+import useModal from "../../utils/ModalFunctionality";
 
 const SingleProjectPage = () => {
     const { projectName } = useParams();
-    const project = test_data.projects.find((proj) => proj.name === projectName);
+
+
+    const project = test_data.projects.find((proj) => proj.name.toLowerCase() === projectName?.toLowerCase());
 
     if (!project) {
         console.log("Project not found");
