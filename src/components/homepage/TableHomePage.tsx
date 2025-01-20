@@ -33,6 +33,7 @@ const TableHomePage = ({ data }) => {
                 style={{
                     background: "white",
                     color: "#2A2A2A",
+                    borderRadius: ".5rem"
                 }}
             />
             <LogDetailsModal log={selectedLog} isOpen={isModalOpen} onClose={handleModalClose} />
