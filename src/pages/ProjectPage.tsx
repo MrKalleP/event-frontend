@@ -40,7 +40,7 @@ const ProjectsPage = () => {
                 gap: "24px",
             }}
         >
-            <h1 style={{ textAlign: "center", fontSize: "4rem" }}>Project Page</h1>
+            <h1 style={{ textAlign: "center", fontSize: "4rem", color: "var(--errors-color-)", letterSpacing: ".4rem", fontWeight: "700" }}>Project Page</h1>
             <Search
                 placeholder="Search for projects by name"
                 allowClear

@@ -80,8 +80,8 @@ const SingleProjectPage = () => {
     return (
         <>
             <Row gutter={[24, 2]} align="middle" justify="center" style={{ padding: "0 1rem", height: "100vh" }}>
-                <Col style={{ backgroundColor: "#f5f5f5", borderRadius: ".5rem" }} xs={24} sm={24} md={24} lg={24}>
-                    <h3 style={{ textAlign: "center", fontSize: "4rem", padding: ".6rem" }}>
+                <Col style={{ backgroundColor: "#F2F2F2", borderRadius: ".5rem" }} xs={24} sm={24} md={24} lg={24}>
+                    <h3 style={{ textAlign: "center", fontSize: "4rem", color: "var(--errors-color-)", letterSpacing: ".4rem", fontWeight: "700" }}>
                         {project.name}
                     </h3>
                     <Col>

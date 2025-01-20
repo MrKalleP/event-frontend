@@ -14,7 +14,7 @@ const DescriptionProject = ({ data }) => {
                     fontSize: "1.4rem",
                     marginBottom: ".1rem",
                 }}>
-                    <p>{data}</p>
+                    <p style={{ textAlign: "center", color: "var(--errors-color-)", letterSpacing: ".1rem", fontWeight: "700" }}>{data}</p>
                 </Col>
             </Row>
         );
@@ -28,6 +28,7 @@ const DescriptionProject = ({ data }) => {
                     textAlign: "left",
                     fontSize: "1.4rem",
                     marginBottom: ".1rem",
+
                 }}>
                     {Object.entries(data).map(([key, value]) => (
                         <div key={key}>

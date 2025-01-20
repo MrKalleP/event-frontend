@@ -38,7 +38,7 @@ const ProjectBarCharts: React.FC<projectDataProps> = ({ data }) => {
                 />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="errors" fill="#de7724" />
+                <Bar dataKey="errors" fill="var(--errors-color-)" />
             </BarChart>
         </ResponsiveContainer>
 

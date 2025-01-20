@@ -2,7 +2,7 @@
 export const themeGlobal = {
     token: {
         colorPrimary: "#3A4DCB",
-        colorBgLayout: "#f5f5f5",
+        colorBgLayout: "#F2F2F2",
         colorBgContainer: "white",
         colorText: "rgba(0,0,0,0.88)",
         borderRadius: ".5rem",
