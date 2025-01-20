@@ -72,3 +72,42 @@ html,
   padding: "1rem";
 
 }
+
+.projectPageTitel {
+  text-align: center;
+  font-size: 4rem;
+  color: var(--errors-color-);
+  letter-spacing: .4rem;
+  font-weight: 700;
+}
+
+.PTagProjectSingle {
+  text-align: center;
+  color: var(--errors-color-);
+  letter-spacing: .1rem;
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+.titleProjectSingle {
+  text-align: center;
+  font-size: 4rem;
+  color: var(--errors-color-);
+  letter-spacing: 0.4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 730px) {
+  .titleProjectSingle {
+    font-size: 2rem;
+  }
+
+  .PTagProjectSingle {
+    font-size: 1rem;
+  }
+
+  .projectPageTitel {
+    font-size: 1.8rem;
+  }
+}

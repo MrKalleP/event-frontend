@@ -76,7 +76,7 @@ const MainLayout = () => {
                         <Outlet />
                     </div>
                 </Content>
-                <Footer>Event Logger ©{new Date().getFullYear()}</Footer>
+                <Footer style={{ textAlign: "center" }}>Event Logger ©{new Date().getFullYear()}</Footer>
             </Layout>
         </Layout>
     );

@@ -11,10 +11,9 @@ const DescriptionProject = ({ data }) => {
             <Row align={"middle"} justify={"center"}>
                 <Col style={{
                     textAlign: "left",
-                    fontSize: "1.4rem",
                     marginBottom: "-10.1rem",
                 }}>
-                    <p style={{ textAlign: "center", color: "var(--errors-color-)", letterSpacing: ".1rem", fontWeight: "700" }}>{data}</p>
+                    <p className="PTagProjectSingle">{data}</p>
                 </Col>
             </Row>
         );
@@ -30,7 +29,7 @@ const DescriptionProject = ({ data }) => {
                 }}>
                     {Object.entries(data).map(([key, value]) => (
                         <div key={key}>
-                            <h2>{key}</h2>
+                            <h2 >{key}</h2>
                             <p>{value}</p>
                         </div>
                     ))}
