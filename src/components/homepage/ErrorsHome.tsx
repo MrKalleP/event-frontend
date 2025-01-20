@@ -4,7 +4,7 @@ import { Card, Statistic } from 'antd';
 export const ErrorsHome = ({ data }) => {
     const errorFilterData = Array.isArray(data) ? data.filter(item => item.type === "error") : []
     return (
-        <Card bordered={false} style={{ backgroundColor: "var(--errors-color-)", padding: ".1rem" }}>
+        <Card bordered={false} style={{ backgroundColor: "var(--errors-color-)" }}>
             <Statistic
                 title={<span className="error-title">Errors</span>}
                 value={errorFilterData.length}

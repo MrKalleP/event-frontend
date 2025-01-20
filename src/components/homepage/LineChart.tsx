@@ -33,10 +33,10 @@ function LineChartExample({ data }) {
                 <YAxis tick={{ fill: "#2A2A2A", fontSize: 12 }} />
                 <Tooltip />
                 <Legend />
-                <Line type="monotone" dataKey="info" stroke="var(--Info-color-)" name="Info" activeDot={{ r: 8 }} />
-                <Line type="monotone" dataKey="warning" stroke="var(--Warning-color-)" name="Warning" />
-                <Line type="monotone" dataKey="error" stroke="var(--errors-color-)" name="Error" />
-                <Line type="monotone" dataKey="crashed" stroke="var(--Crashed-color-)" name="crashed" />
+                <Line type="monotone" dataKey="info" stroke="var(--Info-color-)" name="Info" activeDot={{ r: 8 }} strokeWidth={2} />
+                <Line type="monotone" dataKey="warning" stroke="var(--Warning-color-)" name="Warning" strokeWidth={2} />
+                <Line type="monotone" dataKey="error" stroke="var(--errors-color-)" name="Error" strokeWidth={2} />
+                <Line type="monotone" dataKey="crashed" stroke="var(--Crashed-color-)" name="crashed" strokeWidth={2} />
             </LineChart>
         </ResponsiveContainer>
 

@@ -8,6 +8,8 @@
 
   --white-color-: white;
   --dark-color-: black;
+
+  --effect-blue-color: #1677ff;
 }
 
 body {
@@ -39,29 +41,11 @@ html,
 .warning-title {
   color: var(--white-color-);
   font-size: 1.1rem;
+  padding: ".1rem"
 }
 
 .warning-title {
   color: var(--dark-color-);
-}
-
-/*Den här är för att få chart i mitten */
-
-.chart-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-}
-
-strong {
-  font-size: 1rem;
-}
-
-.Padding-detaljP {
-  padding: .5rem;
-
 }
 
 .ant-table-tbody>tr {
@@ -70,5 +54,9 @@ strong {
 
 .ant-breadcrumb a {
   text-transform: lowercase;
-  color: #1b73f7;
+  color: var(--effect-blue-color);
+}
+
+.ant-breadcrumb a:hover {
+  background-color: var(--Warning-color-);
 }

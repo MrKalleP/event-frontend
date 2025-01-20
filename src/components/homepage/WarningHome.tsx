@@ -5,7 +5,7 @@ import { Card, Statistic } from 'antd';
 export const WarningHome = ({ data }) => {
     const warningFilterData = Array.isArray(data) ? data.filter(item => item.type === "warning") : []
     return (
-        <Card bordered={false} style={{ backgroundColor: "var(--Warning-color-)", padding: ".1rem" }}>
+        <Card bordered={false} style={{ backgroundColor: "var(--Warning-color-)" }}>
             <Statistic
                 title={<span className="warning-title">Warnings</span>}
                 value={warningFilterData.length}
