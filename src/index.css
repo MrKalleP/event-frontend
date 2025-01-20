@@ -65,7 +65,6 @@ html,
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 60vh;
   background-color: white;
   color: #2A2A2A;
   border-radius: .5rem;
