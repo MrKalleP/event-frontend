@@ -1,4 +1,4 @@
-import { Table } from 'antd';
+import { Col, Row, Table } from 'antd';
 import type { TableProps } from 'antd';
 import { DataType } from "../../utils/Interface";
 import ProjectColumns from "../projects/ProjectColumns";
@@ -13,30 +13,35 @@ const TableHomePage = ({ data }) => {
     const { selectedLog, isModalOpen, showModal, handleModalClose } = useModal();
 
     return (
-        <div
-            className='containerHome'
-        >
-            <Table<DataType>
-                columns={ProjectColumns}
-                dataSource={data}
-                onRow={(record) => ({
-                    onClick: () => {
-                        showModal(record);
-                    },
-                })}
-                onChange={onChange}
-                pagination={{
-                    position: ["bottomCenter"],
-                }}
-                showSorterTooltip={{ title: 'Click to sort' }}
-                rowKey={(record) => String(record.id)}
-                style={{
-                    background: "white",
-                    color: "#2A2A2A",
-                    borderRadius: ".5rem"
-                }}
-            />
-            <LogDetailsModal log={selectedLog} isOpen={isModalOpen} onClose={handleModalClose} />
+        <div className="containerHome">
+            <Row gutter={[16, 16]}>
+                <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                    <Table<DataType>
+                        columns={ProjectColumns}
+                        dataSource={data}
+                        onRow={(record) => ({
+                            onClick: () => {
+                                showModal(record);
+                            },
+                        })}
+                        onChange={onChange}
+                        pagination={{
+                            position: ["bottomCenter"],
+                        }}
+                        showSorterTooltip={{ title: 'Click to sort' }}
+                        rowKey={(record) => String(record.id)}
+                        scroll={{ x: 800 }}
+                        style={{
+                            background: "white",
+                            color: "#2A2A2A",
+                            borderRadius: ".5rem"
+                        }}
+                    />
+                </Col>
+                <Col xs={24} sm={24} md={24} lg={6} xl={8}>
+                    <LogDetailsModal log={selectedLog} isOpen={isModalOpen} onClose={handleModalClose} />
+                </Col>
+            </Row>
         </div>
     );
 };
