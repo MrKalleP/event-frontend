@@ -44,10 +44,10 @@ const SingleProjectPage = () => {
             sorter: (a, b) => a.type.localeCompare(b.type),
             render: (type) => {
                 const colorMap = {
-                    info: "#4E688E",
-                    error: "#B0483A",
-                    warning: "#FFD790",
-                    crashed: "#340A0B",
+                    info: "var(--Info-color-)",
+                    error: "var(--errors-color-)",
+                    warning: "var(--Warning-color-)",
+                    crashed: "var(--Crashed-color-)",
                 };
                 const backgroundColor = colorMap[type] || "default";
                 const textColor = type === "warning" ? "black" : "white";

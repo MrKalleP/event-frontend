@@ -2,6 +2,7 @@ import { DataType, ProcessedDataType } from "../../utils/Interface";
 import formatDate from "../../utils/DateFunction";
 
 export const PreProcessData = (data: DataType[] = []): ProcessedDataType[] => {
+
     // Skapa en tom struktur för att gruppera data.
     const groupedData: { [key: string]: ProcessedDataType } = {};
     const today = new Date();
@@ -11,10 +12,13 @@ export const PreProcessData = (data: DataType[] = []): ProcessedDataType[] => {
     data.forEach(({ date, type }) => {
         const dateObj = new Date(date);
         // Kontrollera om datumet ligger inom den senaste veckan.
+
         if (dateObj >= oneWeekAgo && dateObj <= today) {
             // Formatera datumet med din formatDate-funktion.
+
             const formattedDate = formatDate(dateObj).split(" ")[0]; // Ta bara "yyyy-MM-dd".
             // Om datumet inte redan finns i groupedData, skapa en ny post.
+
             if (!groupedData[formattedDate]) {
                 groupedData[formattedDate] = {
                     date: formattedDate,
@@ -24,13 +28,16 @@ export const PreProcessData = (data: DataType[] = []): ProcessedDataType[] => {
                     crashed: 0,
                 };
             }
+
             // Uppdatera rätt typ i groupedData om typen matchar.
+
             if (type in groupedData[formattedDate]) {
                 groupedData[formattedDate][type as keyof ProcessedDataType]++;
             }
         }
     });
     // Returnera värdena från groupedData, sorterade efter datum.
+
     return Object.values(groupedData).sort(
         (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
     );

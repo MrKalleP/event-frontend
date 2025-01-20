@@ -8,14 +8,14 @@ import { Card, Statistic } from 'antd';
 export const InfoLoggs = ({ data }) => {
     const filtredInfo = Array.isArray(data) ? data.filter(item => item.type === "info") : []
     return (
-        <Card bordered={false} style={{ backgroundColor: "#4E688E", padding: ".1rem" }}>
+        <Card bordered={false} style={{ backgroundColor: "var(--Info-color-)", padding: ".1rem" }}>
             <Statistic
                 title={<span className="info-title">Info</span>}
                 value={filtredInfo.length}
-                valueStyle={{ color: 'white' }}
+                valueStyle={{ color: 'var(--white-color-)' }}
                 prefix={<InfoCircleOutlined />}
                 suffix="pcs"
-                style={{ fontSize: "1rem" }}
+
             />
         </Card>
 

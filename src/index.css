@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
 
+#root {
+  --Info-color-: #4E688E;
+  --Warning-color-: #FFD790;
+  --Crashed-color-: #340A0B;
+  --errors-color-: #B0483A;
+
+  --white-color-: white;
+  --dark-color-: black;
+}
 
 body {
   font-family: 'Poppins', 'Montserrat', sans-serif;
@@ -28,12 +37,12 @@ html,
 .error-title,
 .info-title,
 .warning-title {
-  color: rgb(255, 253, 253);
+  color: var(--white-color-);
   font-size: 1.1rem;
 }
 
 .warning-title {
-  color: #07495B;
+  color: var(--dark-color-);
 }
 
 /*Den här är för att få chart i mitten */
@@ -62,5 +71,4 @@ strong {
 .ant-breadcrumb a {
   text-transform: lowercase;
   color: #1b73f7;
-
 }
