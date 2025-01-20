@@ -21,10 +21,25 @@ const MainLayout = () => {
             const isLastItem = index === arr.length - 1;
             return {
                 key: index,
-                label: path.charAt(0).toUpperCase() + path.slice(1),
+                label: path,
                 link: !isLastItem && path === "project" ? "/project" : null,
             };
         });
+
+    /*
+    Delar upp sökvägen (location.pathname) i en array av delar och tar bort tomma element.
+    Itererar över varje del av sökvägen.
+    För varje del skapar den ett objekt med:
+    key: Ett unikt ID baserat på index.
+    label: Namnet på delen som ska visas.
+    link: En URL om det inte är sista delen och segmentet är "project", annars null.
+    Returnerar en array av dessa breadcrumb-objekt.
+    
+    split() delar upp en sträng i en array baserat på en angiven avgränsare
+    const text = "hello/world/example";
+    const result = text.split("/");
+    // result blir: ["hello", "world", "example"]
+    */
 
     return (
         <Layout>

@@ -1,23 +1,37 @@
-import { DataType, ProcessedDataType } from "../../utils/Interface"
+import { DataType, ProcessedDataType } from "../../utils/Interface";
+import formatDate from "../../utils/DateFunction";
 
 export const PreProcessData = (data: DataType[] = []): ProcessedDataType[] => {
+    // Skapa en tom struktur för att gruppera data.
     const groupedData: { [key: string]: ProcessedDataType } = {};
     const today = new Date();
-    const oneWeekAgo = new Date();
-    oneWeekAgo.setDate(today.getDate() - 7);
+    const oneWeekAgo = new Date(today);
+    oneWeekAgo.setDate(today.getDate() - 7); // Sätt datum till en vecka tillbaka.
 
     data.forEach(({ date, type }) => {
         const dateObj = new Date(date);
+        // Kontrollera om datumet ligger inom den senaste veckan.
         if (dateObj >= oneWeekAgo && dateObj <= today) {
-            const formattedDate = dateObj.toISOString().split('T')[0];
+            // Formatera datumet med din formatDate-funktion.
+            const formattedDate = formatDate(dateObj).split(" ")[0]; // Ta bara "yyyy-MM-dd".
+            // Om datumet inte redan finns i groupedData, skapa en ny post.
             if (!groupedData[formattedDate]) {
-                groupedData[formattedDate] = { date: formattedDate, info: 0, warning: 0, error: 0, crashed: 0 };
+                groupedData[formattedDate] = {
+                    date: formattedDate,
+                    info: 0,
+                    warning: 0,
+                    error: 0,
+                    crashed: 0,
+                };
             }
+            // Uppdatera rätt typ i groupedData om typen matchar.
             if (type in groupedData[formattedDate]) {
                 groupedData[formattedDate][type as keyof ProcessedDataType]++;
             }
         }
     });
-
-    return Object.values(groupedData).sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    // Returnera värdena från groupedData, sorterade efter datum.
+    return Object.values(groupedData).sort(
+        (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+    );
 };
