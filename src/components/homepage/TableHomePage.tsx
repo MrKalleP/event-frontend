@@ -14,16 +14,7 @@ const TableHomePage = ({ data }) => {
 
     return (
         <div
-            style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-                minHeight: "60vh",
-                background: "white",
-                color: "#2A2A2A",
-                borderRadius: ".5rem",
-                padding: "1rem",
-            }}
+            className='containerHome'
         >
             <Table<DataType>
                 columns={ProjectColumns}
