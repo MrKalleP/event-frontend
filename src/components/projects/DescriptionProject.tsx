@@ -23,10 +23,7 @@ const DescriptionProject = ({ data }) => {
     if (typeof data === "object") {
         return (
             <Row align={"middle"} justify={"center"}>
-                <Col style={{
-                    textAlign: "left",
-                    fontSize: "1.4rem",
-                }}>
+                <Col>
                     {Object.entries(data).map(([key, value]) => (
                         <div key={key}>
                             <h2 >{key}</h2>

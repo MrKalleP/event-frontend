@@ -89,7 +89,7 @@ const SingleProjectPage = () => {
                     </Col>
                 </Col>
 
-                <Col xs={24} sm={24} md={24} lg={12} style={{ backgroundColor: "white", padding: "2rem", borderRadius: ".5rem", minHeight: "30vh" }}>
+                <Col xs={24} sm={24} md={24} lg={16} className="tableProjectPage">
                     <Table
                         dataSource={filteredData}
                         columns={columns}

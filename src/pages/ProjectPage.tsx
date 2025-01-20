@@ -30,16 +30,7 @@ const ProjectsPage = () => {
     };
     return (
 
-        <div
-            style={{
-                minHeight: "100vh",
-                background: "#f0f2f5",
-                padding: "2rem",
-                display: "flex",
-                flexDirection: "column",
-                gap: "24px",
-            }}
-        >
+        <div className="projectPageContainer">
             <h1 className="projectPageTitel">Project Page</h1>
             <Search
                 placeholder="Search for projects by name"

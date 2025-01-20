@@ -73,6 +73,18 @@ html,
 
 }
 
+/*Project Site*/
+
+
+.projectPageContainer {
+  min-height: 100vh;
+  background-color: #f0f2f5;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 .projectPageTitel {
   text-align: center;
   font-size: 4rem;
@@ -87,6 +99,7 @@ html,
   letter-spacing: .1rem;
   font-weight: 700;
   font-size: 1.4rem;
+  margin-bottom: 5rem;
 }
 
 .titleProjectSingle {
@@ -96,6 +109,14 @@ html,
   letter-spacing: 0.4rem;
   font-weight: 700;
   margin-bottom: 1rem;
+}
+
+.tableProjectPage {
+  background-color: white;
+  padding: 2rem;
+  border-radius: .5rem;
+  min-height: 30vh;
+  margin-bottom: 6rem;
 }
 
 @media (max-width: 730px) {
