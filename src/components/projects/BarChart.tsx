@@ -18,7 +18,7 @@ const ProjectBarCharts: React.FC<projectDataProps> = ({ data }) => {
 
     return (
 
-        <ResponsiveContainer width="100%" height={350} className={"containerHome"} >
+        <ResponsiveContainer width="100%" height={350} className={"cardProject"} >
             <BarChart
                 data={dataBarChart}
                 style={{ marginBlock: "1rem" }}
