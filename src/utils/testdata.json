@@ -29,7 +29,7 @@
                 {
                     "id": "4",
                     "project": "Ståldirekt",
-                    "date": "2025-01-19T17:00:00Z",
+                    "date": "2025-01-20T17:00:00Z",
                     "type": "error",
                     "message": "User auth dont work."
                 }
@@ -43,7 +43,7 @@
                 {
                     "id": "5",
                     "project": "Skyltdirekt",
-                    "date": "2025-01-19T11:00:00Z",
+                    "date": "2025-01-20T11:00:00Z",
                     "type": "error",
                     "message": "System overload detected."
                 },
@@ -64,7 +64,7 @@
                 {
                     "id": "8",
                     "project": "Skyltdirekt",
-                    "date": "2025-01-19T18:00:00Z",
+                    "date": "2025-01-20T18:00:00Z",
                     "type": "error",
                     "message": "dont work that god."
                 }
@@ -85,7 +85,7 @@
                 {
                     "id": "10",
                     "project": "Prospector",
-                    "date": "2025-01-19T21:00:00Z",
+                    "date": "2025-01-20T21:00:00Z",
                     "type": "error",
                     "message": "Database connection failed."
                 },
