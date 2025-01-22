@@ -7,7 +7,6 @@ import { CrashedLoggs } from "../components/homepage/CrashedLoggs";
 import { InfoLoggs } from "../components/homepage/InfoLoggs";
 import LineChartExample from "../components/homepage/LineChart";
 import test_data from "../utils/testdata.json"
-import TestApiFetches from "../utils/TestApiFetches";
 
 const allLogs = test_data.projects.flatMap(project => project.logs);
 
@@ -20,7 +19,6 @@ const HomePage = () => {
             justify="center"
             align="top"
         >
-            <TestApiFetches></TestApiFetches>
             <Row gutter={[16, 16]} justify="center" style={{ width: "100%" }}>
                 <Col xs={24} sm={12} md={6} lg={6} >
                     <InfoLoggs data={allLogs} />

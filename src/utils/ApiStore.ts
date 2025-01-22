@@ -1,7 +1,6 @@
 
 const base_url = "http://localhost:3000";
 
-
 const fetchData = async (endpoint: string) => {
     try {
         const response = await fetch(`${base_url}/${endpoint}`);
@@ -16,26 +15,18 @@ const fetchData = async (endpoint: string) => {
 };
 
 export const FetchAllLogs = async () => {
-    console.log(fetchData("logs"));
-
     return fetchData("logs");
 };
 
 export const FetchLogsByType = async (type: string) => {
-    console.log(fetchData(`logs/type/${type}`));
-
     return fetchData(`logs/type/${type}`);
 };
 
 export const FetchLogsByProject = async (projectId: number) => {
-    console.log(fetchData(`logs/project/${projectId}`));
-
     return fetchData(`logs/project/${projectId}`);
 };
 
 export const FetchAllProjects = async () => {
-    console.log(fetchData("projects"));
-
     return fetchData("projects");
 };
 
