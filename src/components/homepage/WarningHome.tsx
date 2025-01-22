@@ -1,9 +1,10 @@
 import { WarningOutlined } from '@ant-design/icons';
 import { Card, Statistic } from 'antd';
+import { useFetchLogsByType } from '../../hooks/useFetchByType';
 
 
-export const WarningHome = ({ data }) => {
-    const warningFilterData = Array.isArray(data) ? data.filter(item => item.type === "warning") : []
+export const WarningHome = () => {
+    const { data: warningFilterData } = useFetchLogsByType({ type: "warning" })
     return (
         <Card bordered={false} style={{ backgroundColor: "var(--Warning-color-)" }}>
             <Statistic

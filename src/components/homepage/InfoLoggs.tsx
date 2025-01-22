@@ -1,12 +1,14 @@
 
 import { InfoCircleOutlined } from '@ant-design/icons';
 import { Card, Statistic } from 'antd';
+import { useFetchLogsByType } from '../../hooks/useFetchByType';
 
 
 
 
-export const InfoLoggs = ({ data }) => {
-    const filtredInfo = Array.isArray(data) ? data.filter(item => item.type === "info") : []
+export const InfoLoggs = () => {
+    const { data: filtredInfo } = useFetchLogsByType({ type: "info" })
+
     return (
         <Card bordered={false} style={{ backgroundColor: "var(--Info-color-)" }}>
             <Statistic
