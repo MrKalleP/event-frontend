@@ -99,8 +99,8 @@
                 {
                     "id": "12",
                     "project": "Prospector",
-                    "date": "2025-01-16T11:00:00Z",
-                    "type": "crashed",
+                    "date": "2025-01-21T11:00:00Z",
+                    "type": "error",
                     "message": "Database Crashed."
                 }
             ]
