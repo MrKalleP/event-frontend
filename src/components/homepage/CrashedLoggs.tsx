@@ -1,8 +1,10 @@
 import { AlertOutlined } from '@ant-design/icons';
 import { Card, Statistic } from 'antd';
 import { useFetchLogsByType } from '../../hooks/useFetchByType';
+import { LogBody } from '../../utils/Interface';
 
-export const CrashedLoggs = ({ data }) => {
+export const CrashedLoggs = ({ data }: { data: LogBody }) => {
+
     const { data: CrashedFilterData } = useFetchLogsByType({ type: 'crashed' });
 
     return (

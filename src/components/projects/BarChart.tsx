@@ -14,6 +14,7 @@ import {
 
 
 const ProjectBarCharts: React.FC<projectDataProps> = ({ data }) => {
+
     const dataBarChart = groupedDataByProject(data)
 
     return (

@@ -1,8 +1,9 @@
 import { FireOutlined } from '@ant-design/icons';
 import { Card, Statistic } from 'antd';
 import { useFetchLogsByType } from '../../hooks/useFetchByType';
+import { LogBody } from '../../utils/Interface';
 
-export const ErrorsHome = ({ data }) => {
+export const ErrorsHome = ({ data }: { data: LogBody }) => {
     const { data: errorFilterData } = useFetchLogsByType({ type: "error" })
     return (
         <Card bordered={false} style={{ backgroundColor: "var(--errors-color-)" }}>

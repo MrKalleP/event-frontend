@@ -5,6 +5,8 @@ import DescriptionProject from "./DescriptionProject";
 import test_data from "../../utils/testdata.json";
 import LogDetailsModal from "../../utils/LogDetailsModal";
 import useModal from "../../utils/ModalFunctionality";
+import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from "react";
+import { DataType } from "../../utils/Interface";
 
 const SingleProjectPage = () => {
     const { projectName } = useParams();
@@ -26,8 +28,8 @@ const SingleProjectPage = () => {
             title: "Date",
             dataIndex: "date",
             key: "date",
-            sorter: (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-            render: (date) => formatDate(date),
+            sorter: (a: { date: string | number | Date; }, b: { date: string | number | Date; }) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+            render: (date: string | number | Date) => formatDate(date),
             defaultSortOrder: "descend",
         },
         {
@@ -40,9 +42,9 @@ const SingleProjectPage = () => {
                 { text: "Error", value: "error" },
                 { text: "Crashed", value: "crashed" },
             ],
-            onFilter: (value, record) => record.type.includes(value),
-            sorter: (a, b) => a.type.localeCompare(b.type),
-            render: (type) => {
+            onFilter: (value: any, record: { type: string | any[]; }) => record.type.includes(value),
+            sorter: (a: { type: string; }, b: { type: any; }) => a.type.localeCompare(b.type),
+            render: (type: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined) => {
                 const colorMap = {
                     info: "var(--Info-color-)",
                     error: "var(--errors-color-)",
@@ -63,7 +65,7 @@ const SingleProjectPage = () => {
             title: "Message",
             dataIndex: "message",
             key: "message",
-            render: (message, record) => (
+            render: (message: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined, record: DataType) => (
                 <a
                     href="#"
                     onClick={(e) => {

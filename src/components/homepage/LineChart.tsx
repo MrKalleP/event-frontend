@@ -1,3 +1,4 @@
+import { ProcessedDataType } from "../../utils/Interface";
 import { PreProcessData } from "./preProcessData";
 
 
@@ -14,7 +15,7 @@ import {
 
 
 
-function LineChartExample({ data }) {
+function LineChartExample({ data }: { data: ProcessedDataType }) {
 
     const processedData = PreProcessData(data);
 

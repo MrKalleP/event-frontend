@@ -8,10 +8,10 @@ export interface DataType {
 
 export interface ProcessedDataType {
     date: string;
-    info: number;
-    warning: number;
-    error: number;
-    crashed: number;
+    info: string;
+    warning: string;
+    error: string;
+    crashed: string;
 }
 
 export interface Project {
@@ -27,4 +27,12 @@ export interface LogDetailsModalProps {
     log: DataType | null;
     isOpen: boolean;
     onClose: () => void;
+}
+
+export interface LogBody {
+    id: string;
+    project: string;
+    date: string;
+    type: string;
+    message: string;
 }

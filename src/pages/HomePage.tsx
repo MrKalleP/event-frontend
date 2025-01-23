@@ -8,7 +8,6 @@ import LineChartExample from "../components/homepage/LineChart";
 import { useAllLogs } from "../hooks/useFetchAllLogs";
 
 
-
 const HomePage = () => {
     const { data: allLogData } = useAllLogs()
     const allLogs = allLogData?.flatMap(project => project || []);
