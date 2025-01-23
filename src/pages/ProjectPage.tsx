@@ -29,9 +29,11 @@ const ProjectsPage = () => {
         }
         setSearchValue("");
     };
+
     return (
 
         <div className="projectPageContainer">
+
             <h1 className="projectPageTitel">Project Page</h1>
             <Search
                 placeholder="Search for projects by name"
@@ -40,8 +42,7 @@ const ProjectsPage = () => {
                 size="large"
                 onSearch={onSearch}
                 value={serachValue}
-                onChange={(e) => setSearchValue(e.target.value)}
-            />
+                onChange={(e) => setSearchValue(e.target.value)} />
 
             <Row gutter={[16, 16]} >
                 {filteredProjects.map((project) => {
@@ -60,17 +61,18 @@ const ProjectsPage = () => {
                             <Card
                                 title={<Link to={`/project/${name.toLowerCase()}`} style={{ fontSize: "1.5rem" }}>{name}</Link>}
                                 hoverable
-                                style={{ fontSize: ".8rem", padding: ".5rem" }}
-                            >
+                                style={{ fontSize: ".8rem", padding: ".5rem" }}>
+
                                 <ProjectBarChart data={logs} />
+
                                 <h3 style={{ fontSize: "1.3rem", borderTop: "2px solid black", padding: ".7rem" }}>{`it is ${crashes} craches of total: ${totalLogs} logs`}</h3>
+
                                 <Statistic
                                     title="Crash Free Sessions"
                                     value={crashFreePercentage}
                                     suffix="%"
                                     prefix={<SmileTwoTone />}
-                                    style={{ fontSize: "1.5rem" }}
-                                />
+                                    style={{ fontSize: "1.5rem" }} />
                             </Card>
                         </Col>
                     );

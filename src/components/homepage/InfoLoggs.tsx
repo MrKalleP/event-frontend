@@ -4,8 +4,7 @@ import { Card, Statistic } from 'antd';
 import { useFetchLogsByType } from '../../hooks/useFetchByType';
 import { LogBody } from '../../utils/Interface';
 
-export const InfoLoggs = ({ data }: { data: LogBody }) => {
-    console.log(data);
+export const InfoLoggs = ({ data }: { data: LogBody[] }) => {
 
     const { data: filtredInfo } = useFetchLogsByType({ type: "info" })
 

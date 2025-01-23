@@ -4,7 +4,7 @@ import { useFetchLogsByType } from '../../hooks/useFetchByType';
 import { LogBody } from '../../utils/Interface';
 
 
-export const WarningHome = ({ data }: { data: LogBody }) => {
+export const WarningHome = ({ data }: { data: LogBody[] }) => {
     const { data: warningFilterData } = useFetchLogsByType({ type: "warning" })
     return (
         <Card bordered={false} style={{ backgroundColor: "var(--Warning-color-)" }}>

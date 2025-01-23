@@ -6,11 +6,10 @@ import test_data from "../../utils/testdata.json";
 import LogDetailsModal from "../../utils/LogDetailsModal";
 import useModal from "../../utils/ModalFunctionality";
 import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from "react";
-import { DataType } from "../../utils/Interface";
+import { DataType, onleyTypes } from "../../utils/Interface";
 
 const SingleProjectPage = () => {
     const { projectName } = useParams();
-
 
     const project = test_data.projects.find((proj) => proj.name.toLowerCase() === projectName?.toLowerCase());
 
@@ -44,13 +43,15 @@ const SingleProjectPage = () => {
             ],
             onFilter: (value: any, record: { type: string | any[]; }) => record.type.includes(value),
             sorter: (a: { type: string; }, b: { type: any; }) => a.type.localeCompare(b.type),
-            render: (type: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined) => {
+            render: (type) => {
+
                 const colorMap = {
                     info: "var(--Info-color-)",
                     error: "var(--errors-color-)",
                     warning: "var(--Warning-color-)",
                     crashed: "var(--Crashed-color-)",
                 };
+
                 const backgroundColor = colorMap[type] || "default";
                 const textColor = type === "warning" ? "black" : "white";
 
