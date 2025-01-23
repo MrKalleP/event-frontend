@@ -6,7 +6,7 @@ import { useFetchLogsByType } from '../../hooks/useFetchByType';
 
 
 
-export const InfoLoggs = () => {
+export const InfoLoggs = ({ data }) => {
     const { data: filtredInfo } = useFetchLogsByType({ type: "info" })
 
     return (

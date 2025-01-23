@@ -3,7 +3,7 @@ import { Card, Statistic } from 'antd';
 import { useFetchLogsByType } from '../../hooks/useFetchByType';
 
 
-export const WarningHome = () => {
+export const WarningHome = ({ data }) => {
     const { data: warningFilterData } = useFetchLogsByType({ type: "warning" })
     return (
         <Card bordered={false} style={{ backgroundColor: "var(--Warning-color-)" }}>

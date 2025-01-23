@@ -10,7 +10,7 @@ export const useFetchLogsByType = ({ type }) => {
                 const logs = await FetchLogsByType(type);
                 setFetchedData(logs);
             } catch (error) {
-                console.log("did not find the data");
+                console.log("did not find all the types");
             }
         };
         fetchLogs();

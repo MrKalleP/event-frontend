@@ -15,7 +15,9 @@ import {
 
 
 function LineChartExample({ data }) {
+
     const processedData = PreProcessData(data);
+
     return (
 
         <ResponsiveContainer width="100%" height="100%" style={{ backgroundColor: "white", borderRadius: ".5rem", padding: "1rem" }}>

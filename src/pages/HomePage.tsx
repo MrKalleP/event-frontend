@@ -1,4 +1,3 @@
-
 import { Row, Col } from "antd";
 import { ErrorsHome } from "../components/homepage/ErrorsHome";
 import { WarningHome } from "../components/homepage/WarningHome";
@@ -6,12 +5,14 @@ import TableHomePage from "../components/homepage/TableHomePage";
 import { CrashedLoggs } from "../components/homepage/CrashedLoggs";
 import { InfoLoggs } from "../components/homepage/InfoLoggs";
 import LineChartExample from "../components/homepage/LineChart";
-import test_data from "../utils/testdata.json"
+import { useAllLogs } from "../hooks/useFetchAllLogs";
 
-const allLogs = test_data.projects.flatMap(project => project.logs);
 
 
 const HomePage = () => {
+    const { data: allLogData } = useAllLogs()
+    const allLogs = allLogData?.flatMap(project => project || []);
+
     return (
         <Row
             style={{ padding: "4rem" }}
