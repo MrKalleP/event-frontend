@@ -8,7 +8,6 @@ import LineChartExample from "../components/homepage/LineChart";
 import { useAllLogs } from "../hooks/useFetchAllLogs";
 import { LogBody } from "../utils/Interface";
 
-
 const HomePage = () => {
     const { data: allLogData }: { data: LogBody[] } = useAllLogs()
     const allLogs = allLogData?.flatMap(project => project || []);
@@ -22,21 +21,21 @@ const HomePage = () => {
 
             <Row gutter={[16, 16]} justify="center" style={{ width: "100%" }}>
                 <Col xs={24} sm={12} md={6} lg={6} >
-                    <InfoLoggs data={allLogs} />
+                    <InfoLoggs />
                 </Col>
                 <Col xs={24} sm={12} md={6} lg={6} >
-                    <WarningHome data={allLogs} />
+                    <WarningHome />
                 </Col>
                 <Col xs={24} sm={12} md={6} lg={6} >
-                    <ErrorsHome data={allLogs} />
+                    <ErrorsHome />
                 </Col>
                 <Col xs={24} sm={12} md={6} lg={6} >
-                    <CrashedLoggs data={allLogs} />
+                    <CrashedLoggs />
                 </Col>
             </Row>
             <Row gutter={[24, 24]} style={{ width: "100%" }}>
                 <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={12}>
-                    <TableHomePage data={allLogs} />
+                    <TableHomePage />
                 </Col>
                 <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={12}>
                     <LineChartExample data={allLogs} />

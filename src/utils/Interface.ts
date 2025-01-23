@@ -29,15 +29,6 @@ export interface LogDetailsModalProps {
     onClose: () => void;
 }
 
-export interface LogBody {
-    flatMap(arg0: (project: any) => any): unknown;
-    id: string;
-    project: string;
-    date: string;
-    type: string;
-    message: string;
-}
-
 export interface onleyTypes {
     info: string;
     warning: string;

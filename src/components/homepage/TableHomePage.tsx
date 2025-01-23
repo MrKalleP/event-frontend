@@ -1,6 +1,6 @@
 import { Col, Row, Table } from 'antd';
 import type { TableProps } from 'antd';
-import { DataType, LogBody } from "../../utils/Interface";
+import { DataType } from "../../utils/Interface";
 import ProjectColumns from "../projects/ProjectColumns";
 import LogDetailsModal from "../../utils/LogDetailsModal";
 import useModal from "../../utils/ModalFunctionality";
@@ -9,7 +9,8 @@ const onChange: TableProps<DataType>['onChange'] = (pagination, filters, sorter,
     console.log('params', pagination, filters, sorter, extra);
 };
 
-const TableHomePage = ({ data }: { data: LogBody[] }) => {
+const TableHomePage = ({ data }) => {
+
     const { selectedLog, isModalOpen, showModal, handleModalClose } = useModal();
 
     return (

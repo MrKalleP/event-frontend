@@ -1,4 +1,4 @@
-import { ProcessedDataType } from "../../utils/Interface";
+
 import { PreProcessData } from "./preProcessData";
 
 
@@ -13,9 +13,7 @@ import {
     ResponsiveContainer,
 } from "recharts";
 
-
-
-function LineChartExample({ data }: { data: ProcessedDataType }) {
+function LineChartExample({ data }) {
 
     const processedData = PreProcessData(data);
 
