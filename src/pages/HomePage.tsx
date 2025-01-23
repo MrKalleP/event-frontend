@@ -6,10 +6,9 @@ import { CrashedLoggs } from "../components/homepage/CrashedLoggs";
 import { InfoLoggs } from "../components/homepage/InfoLoggs";
 import LineChartExample from "../components/homepage/LineChart";
 import { useAllLogs } from "../hooks/useFetchAllLogs";
-import { LogBody } from "../utils/Interface";
 
 const HomePage = () => {
-    const { data: allLogData }: { data: LogBody[] } = useAllLogs()
+    const { data: allLogData } = useAllLogs()
     const allLogs = allLogData?.flatMap(project => project || []);
 
     return (
@@ -35,7 +34,7 @@ const HomePage = () => {
             </Row>
             <Row gutter={[24, 24]} style={{ width: "100%" }}>
                 <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={12}>
-                    <TableHomePage />
+                    <TableHomePage data={allLogs} />
                 </Col>
                 <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={12}>
                     <LineChartExample data={allLogs} />
