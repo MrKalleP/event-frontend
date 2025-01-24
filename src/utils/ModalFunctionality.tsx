@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { DataType } from "../utils/Interface";
 
-function UseModal() {
+function useModal() {
     const [selectedLog, setSelectedLog] = useState<DataType | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false)
     const showModal = (record: DataType) => {
@@ -17,4 +17,4 @@ function UseModal() {
     return { selectedLog, isModalOpen, showModal, handleModalClose };
 }
 
-export default UseModal;
+export default useModal;

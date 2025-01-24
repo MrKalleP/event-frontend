@@ -70,8 +70,10 @@ const SingleProjectPage = () => {
                     warning: "var(--Warning-color-)",
                     crashed: "var(--Crashed-color-)",
                 };
+
                 const backgroundColor = colorMap[type as keyof typeof colorMap] || "default";
                 const textColor = type === "warning" ? "black" : "white";
+
                 return (
                     <Tag color={backgroundColor} style={{ color: textColor, width: "4.4rem" }}>
                         {type}
@@ -122,7 +124,7 @@ const SingleProjectPage = () => {
                 </Col>
             </Row>
 
-            <LogDetailsModal log={selectedLog || {}} isOpen={isModalOpen} onClose={handleModalClose} />
+            <LogDetailsModal log={selectedLog} isOpen={isModalOpen} onClose={handleModalClose} />
         </>
     );
 };
