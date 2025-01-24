@@ -5,15 +5,15 @@ export const useAllLogs = () => {
     const [fetchAllLogs, setfetchAllLogs] = useState([]);
 
     useEffect(() => {
-        const fetchProjects = async () => {
+        const fetchLogs = async () => {
             try {
-                const allProjects = await FetchAllLogs();
-                setfetchAllLogs(allProjects);
+                const allLogs = await FetchAllLogs();
+                setfetchAllLogs(allLogs);
             } catch (error) {
                 console.log("did not find all of the logs");
             }
         };
-        fetchProjects();
+        fetchLogs();
     }, []);
 
 

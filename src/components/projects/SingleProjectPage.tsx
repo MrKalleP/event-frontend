@@ -6,7 +6,7 @@ import test_data from "../../utils/testdata.json";
 import LogDetailsModal from "../../utils/LogDetailsModal";
 import useModal from "../../utils/ModalFunctionality";
 import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from "react";
-import { DataType, onleyTypes } from "../../utils/Interface";
+import { DataType } from "../../utils/Interface";
 
 const SingleProjectPage = () => {
     const { projectName } = useParams();
@@ -88,7 +88,7 @@ const SingleProjectPage = () => {
                         {project.name}
                     </h3>
                     <Col>
-                        <DescriptionProject data={project.description} />
+                        <DescriptionProject />
                     </Col>
                 </Col>
 

@@ -29,9 +29,10 @@ export interface LogDetailsModalProps {
     onClose: () => void;
 }
 
-export interface onleyTypes {
-    info: string;
-    warning: string;
-    error: string;
-    crashed: string;
+
+export interface DecriptionForDescription {
+    id: number,
+    description: string,
+    logs: string,
+    name: string,
 }
