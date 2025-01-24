@@ -9,7 +9,7 @@ export const useProjects = () => {
             try {
                 const allProjects = await FetchAllProjects();
                 setfetchedProjectsData(allProjects);
-            } catch (error) {
+            } catch {
                 console.log("did not find all projects");
             }
         };

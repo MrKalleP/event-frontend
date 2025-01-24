@@ -2,12 +2,12 @@ export interface DataType {
     type: string;
     id: React.Key;
     project: string;
-    date: string;
+    date: "date";
     message: string;
 }
 
 export interface ProcessedDataType {
-    date: string;
+    date: "date";
     info: string;
     warning: string;
     error: string;
@@ -19,12 +19,12 @@ export interface Project {
     project: string;
     type: string;
     children: {
-        name: any; id: string; project: string; type: string; date: string
+        name: string; id: string; project: string; type: string; date: string
     }[];
 }
 
 export interface LogDetailsModalProps {
-    log: DataType | null;
+    log: DataType;
     isOpen: boolean;
     onClose: () => void;
 }

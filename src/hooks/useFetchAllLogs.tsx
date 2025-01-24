@@ -9,7 +9,7 @@ export const useAllLogs = () => {
             try {
                 const allLogs = await FetchAllLogs();
                 setfetchAllLogs(allLogs);
-            } catch (error) {
+            } catch {
                 console.log("did not find all of the logs");
             }
         };

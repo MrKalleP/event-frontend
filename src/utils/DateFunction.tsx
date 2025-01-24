@@ -17,3 +17,4 @@ export const formatDate = (dateTimeString: string | number | Date) => {
 };
 
 export default formatDate;
+
