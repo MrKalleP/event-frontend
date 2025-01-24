@@ -12,7 +12,8 @@ import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from "rea
 
 
 
-const SingleProjectPage = () => {
+const SingleProjectPage = ({ description }) => {
+
     const { projectName } = useParams();
     const { data: descriptionProject }: { data: DataType[] } = useProjects();
     const { data: allLogs }: { data: DecriptionForDescription[] } = useAllLogs();
@@ -105,7 +106,7 @@ const SingleProjectPage = () => {
                 <Col style={{ backgroundColor: "#F2F2F2", borderRadius: ".5rem" }} xs={24} sm={24} md={24} lg={24}>
                     <h3 className="titleProjectSingle">{filteredProject.name}</h3>
                     <Col>
-                        <DescriptionProject description={filteredProject} />
+                        <DescriptionProject description={filteredProject.project} />
                     </Col>
                 </Col>
 
