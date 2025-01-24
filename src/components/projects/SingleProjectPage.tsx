@@ -6,19 +6,21 @@ import useModal from "../../utils/ModalFunctionality";
 import { useProjects } from "../../hooks/useFetchAllProjects";
 import formatDate from "../../utils/DateFunction";
 import { useAllLogs } from "../../hooks/useFetchAllLogs";
+import { DataType, DecriptionForDescription } from "../../utils/Interface";
+import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from "react";
+
+
 
 
 const SingleProjectPage = () => {
     const { projectName } = useParams();
-    const { data: descriptionProject = [] } = useProjects();
-    const { data: allLogs = [] } = useAllLogs();
+    const { data: descriptionProject }: { data: DataType[] } = useProjects();
+    const { data: allLogs }: { data: DecriptionForDescription[] } = useAllLogs();
     const { selectedLog, isModalOpen, showModal, handleModalClose } = useModal();
 
-    console.log(descriptionProject);
-    console.log(allLogs);
-    console.log(projectName);
-
-
+    console.log(typeof descriptionProject, descriptionProject);
+    console.log(typeof allLogs, allLogs);
+    console.log(typeof projectName, projectName);
 
     if (!descriptionProject || descriptionProject.length === 0 || !allLogs || allLogs.length === 0) {
         return <p>Loading or no projects available.</p>;
@@ -27,6 +29,7 @@ const SingleProjectPage = () => {
     const filteredProject = descriptionProject.find(
         (proj) => proj.name.toLowerCase() === projectName?.toLowerCase()
     );
+
     console.log(filteredProject);
 
     if (!filteredProject) {
@@ -36,17 +39,16 @@ const SingleProjectPage = () => {
     const projectsLogsId = allLogs.filter((log) =>
         filteredProject.logs.includes(String(log.id))
     );
+
     console.log(projectsLogsId);
-
-
 
     const columns = [
         {
             title: "Date",
             dataIndex: "date",
             key: "date",
-            sorter: (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-            render: (date) => formatDate(date),
+            sorter: (a: { date: string | number | Date; }, b: { date: string | number | Date; }) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+            render: (date: string | number | Date) => formatDate(date),
             defaultSortOrder: "descend",
         },
         {
@@ -59,9 +61,9 @@ const SingleProjectPage = () => {
                 { text: "Error", value: "error" },
                 { text: "Crashed", value: "crashed" },
             ],
-            onFilter: (value, record) => record.type.includes(value),
-            sorter: (a, b) => a.type.localeCompare(b.type),
-            render: (type) => {
+            onFilter: (value: any, record: { type: string | any[]; }) => record.type.includes(value),
+            sorter: (a: { type: string; }, b: { type: any; }) => a.type.localeCompare(b.type),
+            render: (type: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined) => {
                 const colorMap = {
                     info: "var(--Info-color-)",
                     error: "var(--errors-color-)",
@@ -81,8 +83,8 @@ const SingleProjectPage = () => {
             title: "Message",
             dataIndex: "message",
             key: "message",
-            render: (message, record) => (
-                <a
+            render: (message: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined, record: DataType) => (
+                < a
                     href="#"
                     onClick={(e) => {
                         e.preventDefault();
@@ -90,7 +92,7 @@ const SingleProjectPage = () => {
                     }}
                 >
                     {message}
-                </a>
+                </a >
             ),
         },
     ];

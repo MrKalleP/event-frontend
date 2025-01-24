@@ -1,6 +1,8 @@
 export interface DataType {
+    name: any;
+    logs: any;
     type: string;
-    id: React.Key;
+    id: string;
     project: string;
     date: "date";
     message: string;
