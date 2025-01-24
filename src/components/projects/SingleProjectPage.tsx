@@ -19,10 +19,6 @@ const SingleProjectPage = () => {
     const { data: allLogs }: { data: DecriptionForDescription[] } = useAllLogs();
     const { selectedLog, isModalOpen, showModal, handleModalClose } = useModal();
 
-    console.log(typeof descriptionProject, descriptionProject);
-    console.log(typeof allLogs, allLogs);
-    console.log(typeof projectName, projectName);
-
     if (!descriptionProject || descriptionProject.length === 0 || !allLogs || allLogs.length === 0) {
         return <p>Loading or no projects available.</p>;
     }
@@ -31,8 +27,6 @@ const SingleProjectPage = () => {
         (proj) => proj.name.toLowerCase() === projectName?.toLowerCase()
     );
 
-    console.log(filteredProject);
-
     if (!filteredProject) {
         return <p>Project not found.</p>;
     }
@@ -40,8 +34,6 @@ const SingleProjectPage = () => {
     const projectsLogsId = allLogs.filter((log) =>
         filteredProject.logs.includes(String(log.id))
     );
-
-    console.log(projectsLogsId);
 
     const columns = [
         {
