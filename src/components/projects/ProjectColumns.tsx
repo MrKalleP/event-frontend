@@ -2,7 +2,6 @@ import { TableColumnsType } from 'antd';
 import { DataType } from "../../utils/Interface";
 import formatDate from "../../utils/DateFunction";
 import { Tag } from 'antd';
-
 import { Link } from 'react-router-dom';
 
 
@@ -10,7 +9,7 @@ const ProjectColumns: TableColumnsType<DataType> = [
     {
         title: 'Project',
         dataIndex: 'project',
-        onFilter: (value, record) => record.project.includes(value as string),
+
         render: (text) => (
             <Link to={`/project/${text.toLowerCase()}`} style={{ fontSize: '1rem' }}>
                 {text}
@@ -50,9 +49,7 @@ const ProjectColumns: TableColumnsType<DataType> = [
                 value: 'crashed',
             },
         ],
-        onFilter: (value: string, record: { type: string | string[]; }) => {
-            return record.type.includes(value as string);
-        },
+
         sorter: (a: { type: string; }, b: { type: any; }) => a.type.localeCompare(b.type),
         render: (type: string) => {
             const colorMap: Record<string, string> = {

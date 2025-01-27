@@ -57,8 +57,11 @@ html,
   color: var(--effect-blue-color);
 }
 
+
 .ant-breadcrumb a:hover {
-  background-color: var(--Warning-color-);
+  background-color: rgb(120, 120, 120);
+  color: white;
+  transition: .1s ease-in;
 }
 
 
