@@ -1,5 +1,5 @@
-import { useFetchLogsByType } from "../../hooks/useFetchByType";
-import { groupedDataByProject, projectDataProps } from "./GroupedDataByProject"
+import { useAllLogs } from "../../hooks/useFetchAllLogs";
+import { groupedDataByProject, } from "./GroupedDataByProject"
 
 import {
     ResponsiveContainer,
@@ -13,9 +13,9 @@ import {
 } from "recharts";
 
 
-const ProjectBarCharts: React.FC<projectDataProps> = () => {
+const ProjectBarCharts: React.FC = () => {
 
-    const { data: errorFilterData } = useFetchLogsByType({ type: "error" })
+    const { data: errorFilterData } = useAllLogs()
     const dataBarChart = groupedDataByProject(errorFilterData)
 
     return (

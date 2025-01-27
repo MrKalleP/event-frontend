@@ -5,11 +5,11 @@ import TableHomePage from "../components/homepage/TableHomePage";
 import { CrashedLoggs } from "../components/homepage/CrashedLoggs";
 import { InfoLoggs } from "../components/homepage/InfoLoggs";
 import LineChartExample from "../components/homepage/LineChart";
-import { useAllLogs } from "../hooks/useFetchAllLogs";
+
 
 
 const HomePage = () => {
-    const { data: allLogData } = useAllLogs()
+
 
     return (
         <Row

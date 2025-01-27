@@ -15,6 +15,8 @@ const calculateCrashFreePercentage = (totalLogs: number, crashes: number) => {
 
 const ProjectsPage = () => {
     const { data: descriptionProject }: { data: DataType[] } = useProjects();
+    console.log(descriptionProject);
+
     const [searchValue, setSearchValue] = useState("");
     const [filteredProjects, setFilteredProjects] = useState<DataType[]>([]);
 

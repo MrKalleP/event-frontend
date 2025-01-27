@@ -1,13 +1,3 @@
-export interface DataType {
-    description: any;
-    name: any;
-    logs: any;
-    type: string;
-    id: string;
-    project: string;
-    date: "date";
-    message: string;
-}
 
 export interface ProcessedDataType {
     date: "date";
@@ -29,13 +19,18 @@ export interface Project {
     id: string;
     project: string;
     type: string;
-    children: {
-        name: string; id: string; project: string; type: string; date: string
-    }[];
+    log: Logs[];
+}
+export interface Logs {
+    id: string;
+    date: string;
+    message: string;
+    name: string;
+    type: string;
 }
 
 export interface LogDetailsModalProps {
-    log: DataType;
+    log: Logs;
     isOpen: boolean;
     onClose: () => void;
 }

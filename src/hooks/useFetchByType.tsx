@@ -14,6 +14,7 @@ export const useFetchLogsByType = ({ type }) => {
             }
         };
         fetchLogs();
+
     }, [type]);
     return { data: fetchedData };
 };
