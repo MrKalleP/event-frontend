@@ -17,9 +17,9 @@ export interface preProcessDataType {
 
 export interface Project {
     id: string;
-    project: string;
+    name: string;
     type: string;
-    log: Logs[];
+    logs: Logs[];
 }
 export interface Logs {
     id: string;
@@ -27,10 +27,11 @@ export interface Logs {
     message: string;
     name: string;
     type: string;
+    logs: Logs[];
 }
 
 export interface LogDetailsModalProps {
-    log: Logs;
+    logs: Logs[];
     isOpen: boolean;
     onClose: () => void;
 }

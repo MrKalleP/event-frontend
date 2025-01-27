@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { SmileTwoTone } from "@ant-design/icons";
 import ProjectBarChart from "../components/projects/BarChart";
 import { useProjects } from "../hooks/useFetchAllProjects";
-import { DataType } from "../utils/Interface";
+import { Project } from "../utils/Interface";
 
 const { Search } = Input;
 
@@ -14,11 +14,11 @@ const calculateCrashFreePercentage = (totalLogs: number, crashes: number) => {
 };
 
 const ProjectsPage = () => {
-    const { data: descriptionProject }: { data: DataType[] } = useProjects();
+    const { data: descriptionProject }: { data: Project[] } = useProjects();
     console.log(descriptionProject);
 
     const [searchValue, setSearchValue] = useState("");
-    const [filteredProjects, setFilteredProjects] = useState<DataType[]>([]);
+    const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
 
     useEffect(() => {
         if (descriptionProject) {
@@ -72,7 +72,7 @@ const ProjectsPage = () => {
                                 hoverable
                                 style={{ fontSize: ".8rem", padding: ".5rem" }}
                             >
-                                <ProjectBarChart type={"sting"} date={"string"} />
+                                <ProjectBarChart />
                                 <h3
                                     style={{
                                         fontSize: "1.3rem",
