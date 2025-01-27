@@ -1,4 +1,4 @@
-import { useAllLogs } from "../../hooks/useFetchAllLogs";
+import { useFetchLogsByType } from "../../hooks/useFetchByType";
 import { groupedDataByProject, projectDataProps } from "./GroupedDataByProject"
 
 import {
@@ -15,8 +15,8 @@ import {
 
 const ProjectBarCharts: React.FC<projectDataProps> = () => {
 
-    const { data: allLogs } = useAllLogs()
-    const dataBarChart = groupedDataByProject(allLogs)
+    const { data: errorFilterData } = useFetchLogsByType({ type: "error" })
+    const dataBarChart = groupedDataByProject(errorFilterData)
 
     return (
 

@@ -70,7 +70,7 @@ const ProjectsPage = () => {
                                 hoverable
                                 style={{ fontSize: ".8rem", padding: ".5rem" }}
                             >
-                                <ProjectBarChart type={"error"} date={""} />
+                                <ProjectBarChart type={"sting"} date={"string"} />
                                 <h3
                                     style={{
                                         fontSize: "1.3rem",

@@ -59,7 +59,6 @@ const ProjectColumns: TableColumnsType<DataType> = [
                 crashed: "var(--Crashed-color-)"
             };
             const backgroundColor = colorMap[type] || "default";
-
             const textColor = type === "warning" ? "black" : "white";
 
             return (
