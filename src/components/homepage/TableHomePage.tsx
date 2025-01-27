@@ -4,12 +4,15 @@ import { DataType } from "../../utils/Interface";
 import ProjectColumns from "../projects/ProjectColumns";
 import LogDetailsModal from "../../utils/LogDetailsModal";
 import useModal from "../../utils/ModalFunctionality";
+import { useAllLogs } from '../../hooks/useFetchAllLogs';
 
 const onChange: TableProps<DataType>['onChange'] = (pagination, filters, sorter, extra) => {
     console.log('params', pagination, filters, sorter, extra);
 };
 
-const TableHomePage = ({ data }) => {
+const TableHomePage = () => {
+
+    const { data: allLogs } = useAllLogs()
 
     const { selectedLog, isModalOpen, showModal, handleModalClose } = useModal();
 
@@ -19,7 +22,7 @@ const TableHomePage = ({ data }) => {
                 <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                     <Table<DataType>
                         columns={ProjectColumns}
-                        dataSource={data}
+                        dataSource={allLogs}
                         onRow={(record) => ({
                             onClick: () => {
                                 showModal(record);

@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Input, Row, Col, Card, Statistic } from "antd";
 import { Link } from "react-router-dom";
 import { SmileTwoTone } from "@ant-design/icons";
 import ProjectBarChart from "../components/projects/BarChart";
-import test_data from "../utils/testdata.json"
-
+import { useProjects } from "../hooks/useFetchAllProjects";
+import { DataType } from "../utils/Interface";
 
 const { Search } = Input;
 
@@ -14,16 +14,22 @@ const calculateCrashFreePercentage = (totalLogs: number, crashes: number) => {
 };
 
 const ProjectsPage = () => {
+    const { data: descriptionProject }: { data: DataType[] } = useProjects();
+    const [searchValue, setSearchValue] = useState("");
+    const [filteredProjects, setFilteredProjects] = useState<DataType[]>([]);
 
-    const [serachValue, setSearchValue] = useState("")
-    const [filteredProjects, setFilteredProjects] = useState(test_data.projects);
+    useEffect(() => {
+        if (descriptionProject) {
+            setFilteredProjects(descriptionProject);
+        }
+    }, [descriptionProject]);
 
     const onSearch = () => {
-        if (serachValue.trim() === "") {
-            setFilteredProjects(test_data.projects);
+        if (!searchValue.trim()) {
+            setFilteredProjects(descriptionProject);
         } else {
-            const filtered = test_data.projects.filter((project) =>
-                project.name.toLowerCase().includes(serachValue.toLowerCase())
+            const filtered = descriptionProject.filter((project) =>
+                project.name.toLowerCase().includes(searchValue.toLowerCase())
             );
             setFilteredProjects(filtered);
         }
@@ -31,9 +37,7 @@ const ProjectsPage = () => {
     };
 
     return (
-
         <div className="projectPageContainer">
-
             <h1 className="projectPageTitel">Project Page</h1>
             <Search
                 placeholder="Search for projects by name"
@@ -41,49 +45,55 @@ const ProjectsPage = () => {
                 enterButton="Search"
                 size="large"
                 onSearch={onSearch}
-                value={serachValue}
-                onChange={(e) => setSearchValue(e.target.value)} />
+                value={searchValue}
+                onChange={(e) => setSearchValue(e.target.value)}
+            />
 
-            <Row gutter={[16, 16]} >
+            <Row gutter={[16, 16]}>
                 {filteredProjects.map((project) => {
-                    const {
-                        name,
-                        logs,
-                        id,
-                    } = project;
-
+                    const { name, logs, id } = project;
                     const totalLogs = logs.length;
-                    const crashes = logs.filter(log => log.type === "crashed").length;
+                    const crashes = logs.filter((log) => log.type === "crashed").length;
                     const crashFreePercentage = calculateCrashFreePercentage(totalLogs, crashes);
 
                     return (
                         <Col key={id} xs={24} sm={24} md={24} lg={8}>
                             <Card
-                                title={<Link to={`/project/${name.toLowerCase()}`} style={{ fontSize: "1.5rem" }}>{name}</Link>}
+                                title={
+                                    <Link
+                                        to={`/project/${name.toLowerCase()}`}
+                                        style={{ fontSize: "1.5rem" }}
+                                    >
+                                        {name}
+                                    </Link>
+                                }
                                 hoverable
-                                style={{ fontSize: ".8rem", padding: ".5rem" }}>
-
+                                style={{ fontSize: ".8rem", padding: ".5rem" }}
+                            >
                                 <ProjectBarChart data={logs} />
-
-                                <h3 style={{ fontSize: "1.3rem", borderTop: "2px solid black", padding: ".7rem" }}>{`it is ${crashes} craches of total: ${totalLogs} logs`}</h3>
-
+                                <h3
+                                    style={{
+                                        fontSize: "1.3rem",
+                                        borderTop: "2px solid black",
+                                        padding: ".7rem",
+                                    }}
+                                >
+                                    {`It is ${crashes} crashes of total: ${totalLogs} logs`}
+                                </h3>
                                 <Statistic
                                     title="Crash Free Sessions"
                                     value={crashFreePercentage}
                                     suffix="%"
                                     prefix={<SmileTwoTone />}
-                                    style={{ fontSize: "1.5rem" }} />
+                                    style={{ fontSize: "1.5rem" }}
+                                />
                             </Card>
                         </Col>
                     );
                 })}
             </Row>
         </div>
-
     );
-
 };
 
-
-
-export default ProjectsPage
+export default ProjectsPage;

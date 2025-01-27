@@ -1,10 +1,10 @@
-import { DataType, ProcessedDataType } from "../../utils/Interface";
+import { DataType, preProcessDataType } from "../../utils/Interface";
 import formatDate from "../../utils/DateFunction";
 
-export const PreProcessData = (data: DataType[] = []): ProcessedDataType[] => {
+export const PreProcessData = (data: DataType[] = []): preProcessDataType[] => {
 
     // Skapa en tom struktur för att gruppera data.
-    const groupedData: { [key: string]: ProcessedDataType } = {};
+    const groupedData: { [key: string]: preProcessDataType } = {};
     const today = new Date();
     const oneWeekAgo = new Date(today);
     oneWeekAgo.setDate(today.getDate() - 7); // Sätt datum till en vecka tillbaka.
@@ -32,7 +32,7 @@ export const PreProcessData = (data: DataType[] = []): ProcessedDataType[] => {
             // Uppdatera rätt typ i groupedData om typen matchar.
 
             if (type in groupedData[formattedDate]) {
-                groupedData[formattedDate][type as keyof ProcessedDataType]++;
+                groupedData[formattedDate][type as keyof preProcessDataType]++;
             }
         }
     });

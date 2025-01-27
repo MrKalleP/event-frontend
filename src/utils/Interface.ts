@@ -16,6 +16,14 @@ export interface ProcessedDataType {
     crashed: string;
 }
 
+export interface preProcessDataType {
+    date: string;
+    info: number;
+    warning: number;
+    error: number;
+    crashed: number;
+}
+
 export interface Project {
     id: string;
     project: string;
