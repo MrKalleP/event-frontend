@@ -1,4 +1,5 @@
 export interface DataType {
+    description: any;
     name: any;
     logs: any;
     type: string;

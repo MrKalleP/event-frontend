@@ -13,7 +13,6 @@ const onChange: TableProps<DataType>['onChange'] = (pagination, filters, sorter,
 const TableHomePage = () => {
 
     const { data: allLogs } = useAllLogs()
-
     const { selectedLog, isModalOpen, showModal, handleModalClose } = useModal();
 
     return (

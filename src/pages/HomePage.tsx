@@ -7,9 +7,9 @@ import { InfoLoggs } from "../components/homepage/InfoLoggs";
 import LineChartExample from "../components/homepage/LineChart";
 import { useAllLogs } from "../hooks/useFetchAllLogs";
 
+
 const HomePage = () => {
     const { data: allLogData } = useAllLogs()
-    const allLogs = allLogData?.flatMap(project => project || []);
 
     return (
         <Row
@@ -34,10 +34,10 @@ const HomePage = () => {
             </Row>
             <Row gutter={[24, 24]} style={{ width: "100%" }}>
                 <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={12}>
-                    <TableHomePage data={allLogs} />
+                    <TableHomePage />
                 </Col>
                 <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={12}>
-                    <LineChartExample data={allLogs} />
+                    <LineChartExample />
                 </Col>
             </Row>
         </Row>

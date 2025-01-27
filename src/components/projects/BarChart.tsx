@@ -1,5 +1,3 @@
-
-
 import { useAllLogs } from "../../hooks/useFetchAllLogs";
 import { groupedDataByProject, projectDataProps } from "./GroupedDataByProject"
 
