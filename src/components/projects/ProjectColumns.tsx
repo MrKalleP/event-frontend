@@ -2,7 +2,7 @@ import { TableColumnsType } from 'antd';
 import { DataType } from "../../utils/Interface";
 import formatDate from "../../utils/DateFunction";
 import { Tag } from 'antd';
-import test_data from "../../utils/testdata.json"
+
 import { Link } from 'react-router-dom';
 
 
@@ -10,12 +10,6 @@ const ProjectColumns: TableColumnsType<DataType> = [
     {
         title: 'Project',
         dataIndex: 'project',
-        filters: Array.from(
-            new Set(test_data.projects.map((item) => item.logs.project))
-        ).map((project) => ({
-            text: project,
-            value: project,
-        })),
         onFilter: (value, record) => record.project.includes(value as string),
         render: (text) => (
             <Link to={`/project/${text.toLowerCase()}`} style={{ fontSize: '1rem' }}>
