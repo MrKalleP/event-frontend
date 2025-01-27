@@ -1,4 +1,6 @@
 
+
+import { useAllLogs } from "../../hooks/useFetchAllLogs";
 import { groupedDataByProject, projectDataProps } from "./GroupedDataByProject"
 
 import {
@@ -13,9 +15,10 @@ import {
 } from "recharts";
 
 
-const ProjectBarCharts: React.FC<projectDataProps> = ({ data }) => {
+const ProjectBarCharts: React.FC<projectDataProps> = () => {
 
-    const dataBarChart = groupedDataByProject(data)
+    const { data: allLogs } = useAllLogs()
+    const dataBarChart = groupedDataByProject(allLogs)
 
     return (
 
@@ -47,3 +50,5 @@ const ProjectBarCharts: React.FC<projectDataProps> = ({ data }) => {
 }
 
 export default ProjectBarCharts;
+
+
