@@ -45,3 +45,12 @@ export interface DecriptionForDescription {
     logs: string,
     name: string,
 }
+
+export interface ProjectBarChartsProps {
+    projectId: string;
+}
+
+export interface barChartProps {
+    hour: string;
+    errors: number
+}

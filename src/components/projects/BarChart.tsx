@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { FetchAllProjectsFilterlogs } from "../../utils/ApiStore";
 import { groupedDataByProject, } from "./GroupedDataByProject"
@@ -13,16 +12,10 @@ import {
     Tooltip,
     Legend,
 } from "recharts";
+import { barChartProps, ProjectBarChartsProps } from "../../utils/Interface";
 
 
-interface ProjectBarChartsProps {
-    projectId: string;
-}
 
-interface barChartProps {
-    hour: string;
-    errors: number
-}
 
 const ProjectBarCharts: React.FC<ProjectBarChartsProps> = ({ projectId }) => {
     const [chartData, setChartData] = useState<barChartProps[]>([]);
