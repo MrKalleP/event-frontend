@@ -1,11 +1,9 @@
 import { TableColumnsType } from 'antd';
-import { DataType } from "../../utils/Interface";
 import formatDate from "../../utils/DateFunction";
 import { Tag } from 'antd';
 import { Link } from 'react-router-dom';
 
-
-const ProjectColumns: TableColumnsType<DataType> = [
+const ProjectColumns: TableColumnsType = [
     {
         title: 'Project',
         dataIndex: 'project',
@@ -49,8 +47,7 @@ const ProjectColumns: TableColumnsType<DataType> = [
                 value: 'crashed',
             },
         ],
-
-        sorter: (a: { type: string; }, b: { type: any; }) => a.type.localeCompare(b.type),
+        sorter: (a: { type: string; }, b: { type: string; }) => a.type.localeCompare(b.type),
         render: (type: string) => {
             const colorMap: Record<string, string> = {
                 info: "var(--Info-color-)",

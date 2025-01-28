@@ -40,7 +40,7 @@ export interface LogDetailsModalProps {
 
 
 export interface DecriptionForDescription {
-    id: number,
+    id: string,
     description: string,
     logs: string,
     name: string,

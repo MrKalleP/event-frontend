@@ -7,7 +7,6 @@ import { useProjects } from "../../hooks/useFetchAllProjects";
 import formatDate from "../../utils/DateFunction";
 import { useAllLogs } from "../../hooks/useFetchAllLogs";
 import { DecriptionForDescription, Project } from "../../utils/Interface";
-import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from "react";
 
 
 const SingleProjectPage = () => {
@@ -55,7 +54,7 @@ const SingleProjectPage = () => {
             ],
             onFilter: (value: any, record: { type: string | any[]; }) => record.type.includes(value),
             sorter: (a: { type: string; }, b: { type: any; }) => a.type.localeCompare(b.type),
-            render: (type: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined) => {
+            render: (type: string) => {
                 const colorMap = {
                     info: "var(--Info-color-)",
                     error: "var(--errors-color-)",
@@ -77,7 +76,7 @@ const SingleProjectPage = () => {
             title: "Message",
             dataIndex: "message",
             key: "message",
-            render: (message: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined, record: DataType) => (
+            render: (message: string, record: Project[]) => (
                 < a
                     href="#"
                     onClick={(e) => {
