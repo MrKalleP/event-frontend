@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { FetchLogsByType } from '../utils/ApiStore';
 
 
-export const useFetchLogsByType = ({ type }) => {
+export const useFetchLogsByType = ({ type }: { type: string }) => {
     const [fetchedData, setFetchedData] = useState([]);
     useEffect(() => {
         const fetchLogs = async () => {

@@ -54,6 +54,7 @@ const ProjectsPage = () => {
                 {filteredProjects.map((project) => {
                     const { name, logs, id } = project;
                     const totalLogs = logs.length;
+                    /* fixa fetch logs så du kan använda på 2 ställen med olika data*/
                     const crashes = logs.filter((log) => log.type === "crashed").length;
                     const crashFreePercentage = calculateCrashFreePercentage(totalLogs, crashes);
 

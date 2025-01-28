@@ -12,16 +12,14 @@ import {
     Tooltip,
     Legend,
 } from "recharts";
+
 import { barChartProps, ProjectBarChartsProps } from "../../utils/Interface";
-
-
 
 
 const ProjectBarCharts: React.FC<ProjectBarChartsProps> = ({ projectId }) => {
     const [chartData, setChartData] = useState<barChartProps[]>([]);
-
-    const fetchLogs = async () => {
-        const type = "error";
+    /* fixa fetch logs så du kan använda på 2 ställen med olika data*/
+    const fetchLogs = async (projectId: string, type: string) => {
 
         try {
             const logs = await FetchAllProjectsFilterlogs(projectId, type);
@@ -33,7 +31,7 @@ const ProjectBarCharts: React.FC<ProjectBarChartsProps> = ({ projectId }) => {
     };
 
     useEffect(() => {
-        fetchLogs();
+        fetchLogs(projectId, "error");
     }, [projectId]);
 
     return (
