@@ -2,8 +2,9 @@ import { TableColumnsType } from 'antd';
 import formatDate from "../../utils/DateFunction";
 import { Tag } from 'antd';
 import { Link } from 'react-router-dom';
+import { Log } from '../../utils/Interface';
 
-const ProjectColumns: TableColumnsType = [
+const ProjectColumns: TableColumnsType<Log> = [
     {
         title: 'Project',
         dataIndex: 'project',

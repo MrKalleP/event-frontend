@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import { SmileTwoTone } from "@ant-design/icons";
 import ProjectBarChart from "../components/projects/BarChart";
 import { useProjects } from "../hooks/useFetchAllProjects";
-import { Project } from "../utils/Interface";
+import { ProjectProjectPage } from "../utils/Interface";
+
 
 const { Search } = Input;
 
@@ -14,10 +15,9 @@ const calculateCrashFreePercentage = (totalLogs: number, crashes: number) => {
 };
 
 const ProjectsPage = () => {
-    const { data: descriptionProject }: { data: Project[] } = useProjects();
-
+    const { data: descriptionProject }: { data: ProjectProjectPage[] } = useProjects();
     const [searchValue, setSearchValue] = useState("");
-    const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
+    const [filteredProjects, setFilteredProjects] = useState<ProjectProjectPage[]>([]);
 
     useEffect(() => {
         if (descriptionProject) {
@@ -55,7 +55,7 @@ const ProjectsPage = () => {
                     const { name, logs, id } = project;
                     const totalLogs = logs.length;
                     /* fixa fetch logs så du kan använda på 2 ställen med olika data*/
-                    const crashes = logs.filter((log) => log.type === "crashed").length;
+                    const crashes = logs.filter((log) => log === "crashed").length;
                     const crashFreePercentage = calculateCrashFreePercentage(totalLogs, crashes);
 
                     return (

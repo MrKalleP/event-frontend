@@ -6,14 +6,18 @@ import useModal from "../../utils/ModalFunctionality";
 import { useProjects } from "../../hooks/useFetchAllProjects";
 import formatDate from "../../utils/DateFunction";
 import { useAllLogs } from "../../hooks/useFetchAllLogs";
-import { DecriptionForDescription, Project } from "../../utils/Interface";
+import { Log, ProjectProjectPage } from "../../utils/Interface";
 
 
 const SingleProjectPage = () => {
 
     const { projectName } = useParams();
-    const { data: descriptionProject }: { data: Project[] } = useProjects();
-    const { data: allLogs }: { data: DecriptionForDescription[] } = useAllLogs();
+    const { data: descriptionProject }: { data: ProjectProjectPage[] } = useProjects();
+    console.log(descriptionProject);
+
+    const { data: allLogs }: { data: Log[] } = useAllLogs();
+    console.log(allLogs);
+
     const { selectedLog, isModalOpen, showModal, handleModalClose } = useModal();
 
 
@@ -76,7 +80,7 @@ const SingleProjectPage = () => {
             title: "Message",
             dataIndex: "message",
             key: "message",
-            render: (message: string, record: Project[]) => (
+            render: (message: string, record: ProjectProjectPage) => (
                 < a
                     href="#"
                     onClick={(e) => {

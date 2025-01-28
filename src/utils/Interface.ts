@@ -1,10 +1,32 @@
 
-export interface ProcessedDataType {
-    date: "date";
-    info: string;
-    warning: string;
-    error: string;
-    crashed: string;
+export interface ProjectBarChartsProps {
+    projectId: string;
+}
+
+export interface barChartProps {
+    hour: string;
+    errors: number
+}
+
+export interface Log {
+    date: string;
+    id: string;
+    message: string;
+    project: string;
+    type: string;
+}
+
+export interface LogDetailsModalProps {
+    log: Log;
+    isOpen: boolean;
+    onClose: () => void;
+}
+
+export interface ProjectProjectPage {
+    id: string;
+    description: string;
+    logs: string[];
+    name: string;
 }
 
 export interface preProcessDataType {
@@ -15,42 +37,5 @@ export interface preProcessDataType {
     crashed: number;
 }
 
-export interface Project {
-    description: string;
-    id: string;
-    name: string;
-    type: string;
-    logs: Logs[];
-    date: string;
-}
-export interface Logs {
-    id: string;
-    date: string;
-    message: string;
-    name: string;
-    type: string;
-    logs: Logs[];
-}
-
-export interface LogDetailsModalProps {
-    logs: Logs[];
-    isOpen: boolean;
-    onClose: () => void;
-}
 
 
-export interface DecriptionForDescription {
-    id: string,
-    description: string,
-    logs: string,
-    name: string,
-}
-
-export interface ProjectBarChartsProps {
-    projectId: string;
-}
-
-export interface barChartProps {
-    hour: string;
-    errors: number
-}

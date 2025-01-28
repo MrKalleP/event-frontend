@@ -1,12 +1,12 @@
 import { Col, Row, Table } from 'antd';
 import type { TableProps } from 'antd';
-import { Project } from "../../utils/Interface";
 import ProjectColumns from "../projects/ProjectColumns";
 import LogDetailsModal from "../../utils/LogDetailsModal";
 import useModal from "../../utils/ModalFunctionality";
 import { useAllLogs } from '../../hooks/useFetchAllLogs';
+import { Log } from '../../utils/Interface';
 
-const onChange: TableProps<Project[]>['onChange'] = (pagination, filters, sorter, extra) => {
+const onChange: TableProps<Log>['onChange'] = (pagination, filters, sorter, extra) => {
     console.log('params', pagination, filters, sorter, extra);
 };
 
@@ -14,12 +14,15 @@ const TableHomePage = () => {
 
     const { data: allLogs } = useAllLogs()
     const { selectedLog, isModalOpen, showModal, handleModalClose } = useModal();
+    console.log(ProjectColumns, "hej");
+    console.log(allLogs, "då");
+
 
     return (
         <div className="containerHome">
             <Row gutter={[16, 16]}>
                 <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                    <Table<Project[]>
+                    <Table<Log>
                         columns={ProjectColumns}
                         dataSource={allLogs}
                         onRow={(record) => ({

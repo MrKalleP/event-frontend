@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Project } from "../utils/Interface";
+import { Log } from "./Interface";
+
 
 function useModal() {
-    const [selectedLog, setSelectedLog] = useState<Project[] | null>(null);
+    const [selectedLog, setSelectedLog] = useState<Log | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false)
-    const showModal = (record: Project[]) => {
+    const showModal = (record: Log) => {
         setSelectedLog(record);
         setIsModalOpen(true);
     };
