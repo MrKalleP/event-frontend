@@ -6,16 +6,14 @@ import useModal from "../../utils/ModalFunctionality";
 import { useProjects } from "../../hooks/useFetchAllProjects";
 import formatDate from "../../utils/DateFunction";
 import { useAllLogs } from "../../hooks/useFetchAllLogs";
-import { DecriptionForDescription } from "../../utils/Interface";
+import { DecriptionForDescription, Project } from "../../utils/Interface";
 import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from "react";
-
-
 
 
 const SingleProjectPage = () => {
 
     const { projectName } = useParams();
-    const { data: descriptionProject }: { data } = useProjects();
+    const { data: descriptionProject }: { data: Project[] } = useProjects();
     const { data: allLogs }: { data: DecriptionForDescription[] } = useAllLogs();
     const { selectedLog, isModalOpen, showModal, handleModalClose } = useModal();
 

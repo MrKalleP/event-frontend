@@ -15,7 +15,6 @@ const calculateCrashFreePercentage = (totalLogs: number, crashes: number) => {
 
 const ProjectsPage = () => {
     const { data: descriptionProject }: { data: Project[] } = useProjects();
-    console.log(descriptionProject);
 
     const [searchValue, setSearchValue] = useState("");
     const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
@@ -72,7 +71,7 @@ const ProjectsPage = () => {
                                 hoverable
                                 style={{ fontSize: ".8rem", padding: ".5rem" }}
                             >
-                                <ProjectBarChart />
+                                <ProjectBarChart projectId={project.id} />
                                 <h3
                                     style={{
                                         fontSize: "1.3rem",

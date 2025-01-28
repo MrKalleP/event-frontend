@@ -1,7 +1,7 @@
-import { DataType, preProcessDataType } from "../../utils/Interface";
+import { preProcessDataType, Project } from "../../utils/Interface";
 import formatDate from "../../utils/DateFunction";
 
-export const PreProcessData = (data: DataType[] = []): preProcessDataType[] => {
+export const PreProcessData = (data: Project[] = []): preProcessDataType[] => {
 
     // Skapa en tom struktur för att gruppera data.
     const groupedData: { [key: string]: preProcessDataType } = {};

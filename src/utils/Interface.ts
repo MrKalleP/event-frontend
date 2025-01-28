@@ -16,10 +16,12 @@ export interface preProcessDataType {
 }
 
 export interface Project {
+    description: string;
     id: string;
     name: string;
     type: string;
     logs: Logs[];
+    date: string;
 }
 export interface Logs {
     id: string;

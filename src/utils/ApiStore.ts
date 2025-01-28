@@ -22,7 +22,7 @@ export const FetchLogsByType = async (type: string) => {
     return fetchData(`logs/type/${type}`);
 };
 
-export const FetchLogsByProject = async (projectId: number) => {
+export const FetchLogsByProject = async (projectId: string) => {
     return fetchData(`logs/project/${projectId}`);
 };
 
@@ -30,7 +30,12 @@ export const FetchAllProjects = async () => {
     return fetchData("projects");
 };
 
+export const FetchAllProjectsFilterlogs = async (projectId: string, type: string) => {
+    return fetchData(`logs/project/${projectId}/type/${type}`);
+}
+
 // http://localhost:3000/logs to get all logs
 // http://localhost:3000/logs/type/error eller info osv beroende på typ info, warning, error, crashed
 // http://localhost:3000/logs/project/1 eller 2 osv berode på id tar ut alla project tillhörande det id som projectet tillhör
 // http://localhost:3000/projects får alla project 
+// http://localhost:3000/logs/project/2/type/error

@@ -1,4 +1,6 @@
-import { useAllLogs } from "../../hooks/useFetchAllLogs";
+
+import { useEffect, useState } from "react";
+import { FetchAllProjectsFilterlogs } from "../../utils/ApiStore";
 import { groupedDataByProject, } from "./GroupedDataByProject"
 
 import {
@@ -13,16 +15,39 @@ import {
 } from "recharts";
 
 
-const ProjectBarCharts: React.FC = () => {
+interface ProjectBarChartsProps {
+    projectId: string;
+}
 
-    const { data: errorFilterData } = useAllLogs()
-    const dataBarChart = groupedDataByProject(errorFilterData)
+interface barChartProps {
+    hour: string;
+    errors: number
+}
+
+const ProjectBarCharts: React.FC<ProjectBarChartsProps> = ({ projectId }) => {
+    const [chartData, setChartData] = useState<barChartProps[]>([]);
+
+    const fetchLogs = async () => {
+        const type = "error";
+
+        try {
+            const logs = await FetchAllProjectsFilterlogs(projectId, type);
+            const processedData = groupedDataByProject(logs);
+            setChartData(processedData);
+        } catch (error) {
+            console.error('Error fetching logs:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchLogs();
+    }, [projectId]);
 
     return (
 
         <ResponsiveContainer width="100%" height={350} className={"cardProject"} >
             <BarChart
-                data={dataBarChart}
+                data={chartData}
                 style={{ marginBlock: "1rem" }}
                 margin={{ top: 5, right: 10, bottom: 15, left: 5 }}
             >
@@ -48,5 +73,6 @@ const ProjectBarCharts: React.FC = () => {
 }
 
 export default ProjectBarCharts;
+
 
 
