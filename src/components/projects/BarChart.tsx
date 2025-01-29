@@ -1,6 +1,3 @@
-import { useEffect, useState } from "react";
-import { FetchAllProjectsFilterlogs } from "../../utils/ApiStore";
-import { groupedDataByProject, } from "./GroupedDataByProject"
 
 import {
     ResponsiveContainer,
@@ -13,32 +10,17 @@ import {
     Legend,
 } from "recharts";
 
-import { barChartProps, ProjectBarChartsProps } from "../../utils/Interface";
+import { ProjectBarChartsProps } from "../../utils/Interface";
+import { useFetchLogsForProjects } from "../../hooks/useFetchLogsForProjects";
 
 
 const ProjectBarCharts: React.FC<ProjectBarChartsProps> = ({ projectId }) => {
-    const [chartData, setChartData] = useState<barChartProps[]>([]);
-    /* fixa fetch logs så du kan använda på 2 ställen med olika data*/
-    const fetchLogs = async (projectId: string, type: string) => {
-
-        try {
-            const logs = await FetchAllProjectsFilterlogs(projectId, type);
-            const processedData = groupedDataByProject(logs);
-            setChartData(processedData);
-        } catch (error) {
-            console.error('Error fetching logs:', error);
-        }
-    };
-
-    useEffect(() => {
-        fetchLogs(projectId, "error");
-    }, [projectId]);
-
+    const { getTypesFromProjects } = useFetchLogsForProjects(projectId, "error");
     return (
 
         <ResponsiveContainer width="100%" height={350} className={"cardProject"} >
             <BarChart
-                data={chartData}
+                data={getTypesFromProjects}
                 style={{ marginBlock: "1rem" }}
                 margin={{ top: 5, right: 10, bottom: 15, left: 5 }}
             >

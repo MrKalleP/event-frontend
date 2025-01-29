@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import { SmileTwoTone } from "@ant-design/icons";
 import ProjectBarChart from "../components/projects/BarChart";
 import { useProjects } from "../hooks/useFetchAllProjects";
-import { ProjectProjectPage } from "../utils/Interface";
+import { ProjectBarChartsProps, ProjectProjectPage } from "../utils/Interface";
+import { useFetchLogsForProjects } from "../hooks/useFetchLogsForProjects";
 
 
 const { Search } = Input;
@@ -14,10 +15,12 @@ const calculateCrashFreePercentage = (totalLogs: number, crashes: number) => {
     return ((crashFreeSessions / totalLogs) * 100).toFixed(2);
 };
 
-const ProjectsPage = () => {
+const ProjectsPage: React.FC<ProjectBarChartsProps> = ({ projectId }) => {
     const { data: descriptionProject }: { data: ProjectProjectPage[] } = useProjects();
     const [searchValue, setSearchValue] = useState("");
     const [filteredProjects, setFilteredProjects] = useState<ProjectProjectPage[]>([]);
+    const { getTypesFromProjects: crashes } = useFetchLogsForProjects(projectId, "crashed");
+
 
     useEffect(() => {
         if (descriptionProject) {
@@ -56,9 +59,13 @@ const ProjectsPage = () => {
                     const uniqueKey = id || `${name}-${index}`;
                     const totalLogs = logs.length;
 
-                    /* fixa fetch logs så du kan använda på 2 ställen med olika data*/
-                    const crashes = logs.filter((log) => log === "crashed").length;
-                    const crashFreePercentage = calculateCrashFreePercentage(totalLogs, crashes);
+
+                    const foundCrashes = crashes.length;
+                    console.log(foundCrashes);
+
+
+
+                    const crashFreePercentage = calculateCrashFreePercentage(totalLogs, foundCrashes as unknown as number);
 
                     return (
                         <Col key={uniqueKey} xs={24} sm={24} md={24} lg={8}>
@@ -74,7 +81,7 @@ const ProjectsPage = () => {
                                 hoverable
                                 style={{ fontSize: ".8rem", padding: ".5rem" }}
                             >
-                                <ProjectBarChart projectId={project.id} />
+                                <ProjectBarChart projectId={project.id} type={""} />
                                 <h3
                                     style={{
                                         fontSize: "1.3rem",
@@ -82,7 +89,7 @@ const ProjectsPage = () => {
                                         padding: ".7rem",
                                     }}
                                 >
-                                    {`It is ${crashes} crashes of total: ${totalLogs} logs`}
+                                    {`It is ${foundCrashes} crashes of total: ${totalLogs} logs`}
                                 </h3>
                                 <Statistic
                                     title="Crash Free Sessions"

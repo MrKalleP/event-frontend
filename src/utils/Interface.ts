@@ -1,6 +1,7 @@
 
 export interface ProjectBarChartsProps {
     projectId: string;
+    type: string;
 }
 
 export interface barChartProps {

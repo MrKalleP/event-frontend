@@ -1,20 +1,24 @@
-import { useState, useEffect } from 'react';
-import { FetchLogsByProject } from '../utils/ApiStore';
+import { useState, useEffect } from "react";
+import { barChartProps } from "../utils/Interface";
+import { FetchAllProjectsFilterlogs } from "../utils/ApiStore";
+import { groupedDataByProject } from "../components/projects/GroupedDataByProject";
 
-export const useFetchLogsForProjects = ({ projectId }: { projectId: string }) => {
-    const [fetchedProjectsAndLogsData, setfetchedProjectsAndLogsData] = useState([]);
+export const useFetchLogsForProjects = (projectId: string, type: string) => {
+    const [getTypesFromProjects, setgetTypesFromProjects] = useState<barChartProps[]>([]);
+
     useEffect(() => {
-        const fetchProjectsLogs = async () => {
+        const fetchLogs = async () => {
             try {
-                const allLogsForProjects = await FetchLogsByProject(projectId);
-                setfetchedProjectsAndLogsData(allLogsForProjects);
-
-            } catch {
-                console.log("did not find all projects for this logs");
+                const logs = await FetchAllProjectsFilterlogs(projectId, type);
+                const processedData = groupedDataByProject(logs);
+                setgetTypesFromProjects(processedData);
+            } catch (error) {
+                console.error("Error fetching logs:", error);
             }
         };
-        fetchProjectsLogs();
-    }, [projectId]);
 
-    return { data: fetchedProjectsAndLogsData };
+        fetchLogs();
+    }, [projectId, type]);
+
+    return { getTypesFromProjects };
 };
