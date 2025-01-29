@@ -1,6 +1,7 @@
 import { Col, Row } from "antd";
 
-const DescriptionProject = ({ description }: any) => {
+const DescriptionProject = ({ description }: { description: string }) => {
+
 
     return (
         <Row align="middle" justify="center">
