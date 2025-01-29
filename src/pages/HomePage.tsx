@@ -2,7 +2,7 @@ import { Row, Col } from "antd";
 import { ErrorsHome } from "../components/homepage/ErrorsHome";
 import { WarningHome } from "../components/homepage/WarningHome";
 import TableHomePage from "../components/homepage/TableHomePage";
-import { CrashedLoggs } from "../components/homepage/CrashedLoggs";
+import { CrashedHome } from "../components/homepage/CrashedHome";
 import { InfoHome } from "../components/homepage/InfoHome";
 import LineChartExample from "../components/homepage/LineChart";
 
@@ -29,7 +29,7 @@ const HomePage = () => {
                     <ErrorsHome />
                 </Col>
                 <Col xs={24} sm={12} md={6} lg={6} >
-                    <CrashedLoggs />
+                    <CrashedHome />
                 </Col>
             </Row>
             <Row gutter={[24, 24]} style={{ width: "100%" }}>
