@@ -17,6 +17,11 @@ import {
 function LineChartExample() {
     const { data: allLogs } = useAllLogs()
     const processedData = PreProcessData(allLogs);
+    // PreProcessData gör så att jag får rätt data för min chart det vill säga 24 timmar från nu bakåt i tiden 
+    // jag hämtar alla loggar från backend med hjälp av FetchAllLogs och fetchdata från ApiStore 
+    // jag får en array med alla loggar som ser ut som detta 0: {id:2, project:"ståldirek, date: "2025-01-28T07:00:00Z", type:"error", message:"hej det här är ett project"} och en för varje log.
+    // när jag lägger in allLogs o PreProcessData får jag fram processedData som ser ut 0: crashed: 0 date: "2025-01-23 "error: 1 info: 0 warning: 1 det vill säga alla olika typer och antal typer som inte fins och finns det datumet max en vecka tillbaka
+
 
     return (
 

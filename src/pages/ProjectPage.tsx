@@ -51,15 +51,17 @@ const ProjectsPage = () => {
             />
 
             <Row gutter={[16, 16]}>
-                {filteredProjects.map((project) => {
+                {filteredProjects.map((project, index) => {
                     const { name, logs, id } = project;
+                    const uniqueKey = id || `${name}-${index}`;
                     const totalLogs = logs.length;
+
                     /* fixa fetch logs så du kan använda på 2 ställen med olika data*/
                     const crashes = logs.filter((log) => log === "crashed").length;
                     const crashFreePercentage = calculateCrashFreePercentage(totalLogs, crashes);
 
                     return (
-                        <Col key={id} xs={24} sm={24} md={24} lg={8}>
+                        <Col key={uniqueKey} xs={24} sm={24} md={24} lg={8}>
                             <Card
                                 title={
                                     <Link
