@@ -1,4 +1,4 @@
-import { Table, Row, Col, Tag } from "antd";
+import { Table, Row, Col, Tag, TableColumnsType } from "antd";
 import { useParams } from "react-router-dom";
 import DescriptionProject from "./DescriptionProject";
 import LogDetailsModal from "../../utils/LogDetailsModal";
@@ -36,7 +36,7 @@ const SingleProjectPage = () => {
         filteredProject.logs.includes(String(log.id))
     );
 
-    const columns = [
+    const columns: TableColumnsType<Log> = [
         {
             title: "Date",
             dataIndex: "date",
@@ -56,7 +56,7 @@ const SingleProjectPage = () => {
                 { text: "Error", value: "error" },
                 { text: "Crashed", value: "crashed" },
             ],
-            onFilter: (value: string, record: { type: string | string; }) => record.type.includes(value),
+            onFilter: (value, record) => record.type.includes(value as string),
             sorter: (a: { type: string; }, b: { type: string; }) => a.type.localeCompare(b.type),
             render: (type?: string) => {
                 const colorMap = {
@@ -93,7 +93,6 @@ const SingleProjectPage = () => {
             ),
         },
     ];
-    console.log(columns, "sddasdas");
 
     return (
         <>
@@ -120,7 +119,7 @@ const SingleProjectPage = () => {
                 </Col>
             </Row>
 
-            <LogDetailsModal log={selectedLog ?? undefined} isOpen={isModalOpen} onClose={handleModalClose} />
+            <LogDetailsModal log={selectedLog} isOpen={isModalOpen} onClose={handleModalClose} />
         </>
     );
 };
