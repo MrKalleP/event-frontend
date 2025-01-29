@@ -5,6 +5,7 @@ import { format } from "date-fns";
 import { LogDetailsModalProps } from "./Interface";
 
 const LogDetailsModal: React.FC<LogDetailsModalProps> = ({ log, isOpen, onClose }) => {
+
     if (!log) return null;
 
     const colorMap = {
@@ -16,7 +17,6 @@ const LogDetailsModal: React.FC<LogDetailsModalProps> = ({ log, isOpen, onClose 
 
     const backgroundColor = colorMap[log.type as keyof typeof colorMap] || "default";
     const textColor = log.type === "warning" ? "black" : "white";
-    console.log("date: ", log)
 
     return (
         <Modal

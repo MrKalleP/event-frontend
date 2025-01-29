@@ -7,16 +7,15 @@ import { useProjects } from "../../hooks/useFetchAllProjects";
 import formatDate from "../../utils/DateFunction";
 import { useAllLogs } from "../../hooks/useFetchAllLogs";
 import { Log, ProjectProjectPage } from "../../utils/Interface";
+import { SortOrder } from "antd/es/table/interface";
 
 
 const SingleProjectPage = () => {
 
     const { projectName } = useParams();
     const { data: descriptionProject }: { data: ProjectProjectPage[] } = useProjects();
-    console.log(descriptionProject);
 
     const { data: allLogs }: { data: Log[] } = useAllLogs();
-    console.log(allLogs);
 
     const { selectedLog, isModalOpen, showModal, handleModalClose } = useModal();
 
@@ -42,9 +41,10 @@ const SingleProjectPage = () => {
             title: "Date",
             dataIndex: "date",
             key: "date",
-            sorter: (a: { date: string | number | Date; }, b: { date: string | number | Date; }) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-            render: (date: string | number | Date) => formatDate(date),
-            defaultSortOrder: "descend",
+            sorter: (a: { date: string }, b: { date: string }) =>
+                new Date(b.date).getTime() - new Date(a.date).getTime(),
+            render: (date: string) => formatDate(date),
+            defaultSortOrder: "descend" as SortOrder,
         },
         {
             title: "Type",
@@ -56,9 +56,9 @@ const SingleProjectPage = () => {
                 { text: "Error", value: "error" },
                 { text: "Crashed", value: "crashed" },
             ],
-            onFilter: (value: any, record: { type: string | any[]; }) => record.type.includes(value),
-            sorter: (a: { type: string; }, b: { type: any; }) => a.type.localeCompare(b.type),
-            render: (type: string) => {
+            onFilter: (value: string, record: { type: string | string; }) => record.type.includes(value),
+            sorter: (a: { type: string; }, b: { type: string; }) => a.type.localeCompare(b.type),
+            render: (type?: string) => {
                 const colorMap = {
                     info: "var(--Info-color-)",
                     error: "var(--errors-color-)",
@@ -80,7 +80,7 @@ const SingleProjectPage = () => {
             title: "Message",
             dataIndex: "message",
             key: "message",
-            render: (message: string, record: ProjectProjectPage) => (
+            render: (message: string, record: Log) => (
                 < a
                     href="#"
                     onClick={(e) => {
@@ -93,6 +93,7 @@ const SingleProjectPage = () => {
             ),
         },
     ];
+    console.log(columns, "sddasdas");
 
     return (
         <>
@@ -119,7 +120,7 @@ const SingleProjectPage = () => {
                 </Col>
             </Row>
 
-            <LogDetailsModal log={selectedLog} isOpen={isModalOpen} onClose={handleModalClose} />
+            <LogDetailsModal log={selectedLog ?? undefined} isOpen={isModalOpen} onClose={handleModalClose} />
         </>
     );
 };

@@ -14,9 +14,6 @@ const TableHomePage = () => {
 
     const { data: allLogs } = useAllLogs()
     const { selectedLog, isModalOpen, showModal, handleModalClose } = useModal();
-    console.log(ProjectColumns, "hej");
-    console.log(allLogs, "då");
-
 
     return (
         <div className="containerHome">
@@ -45,7 +42,7 @@ const TableHomePage = () => {
                     />
                 </Col>
                 <Col xs={24} sm={24} md={24} lg={6} xl={8}>
-                    <LogDetailsModal log={selectedLog} isOpen={isModalOpen} onClose={handleModalClose} />
+                    <LogDetailsModal log={selectedLog ?? undefined} isOpen={isModalOpen} onClose={handleModalClose} />
                 </Col>
             </Row>
         </div>

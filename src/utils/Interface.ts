@@ -17,7 +17,7 @@ export interface Log {
 }
 
 export interface LogDetailsModalProps {
-    log: Log;
+    log?: Log;
     isOpen: boolean;
     onClose: () => void;
 }
