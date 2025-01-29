@@ -16,6 +16,7 @@ import { useFetchLogsForProjects } from "../../hooks/useFetchLogsForProjects";
 
 const ProjectBarCharts: React.FC<ProjectBarChartsProps> = ({ projectId }) => {
     const { getTypesFromProjects } = useFetchLogsForProjects(projectId, "error");
+
     return (
 
         <ResponsiveContainer width="100%" height={350} className={"cardProject"} >

@@ -1,9 +1,9 @@
 import { Row, Col } from "antd";
-import { ErrorsHome } from "../components/homepage/ErrorsHome";
-import { WarningHome } from "../components/homepage/WarningHome";
+import { ErrorsHome } from "../components/homepage/CardsForHomePage/ErrorsHome";
+import { WarningHome } from "../components/homepage/CardsForHomePage/WarningHome";
 import TableHomePage from "../components/homepage/TableHomePage";
-import { CrashedHome } from "../components/homepage/CrashedHome";
-import { InfoHome } from "../components/homepage/InfoHome";
+import { CrashedHome } from "../components/homepage/CardsForHomePage/CrashedHome";
+import { InfoHome } from "../components/homepage/CardsForHomePage/InfoHome";
 import LineChartExample from "../components/homepage/LineChart";
 
 

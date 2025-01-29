@@ -19,3 +19,5 @@ function useModal() {
 }
 
 export default useModal;
+
+// logicen för hur modalen fungerar 

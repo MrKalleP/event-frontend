@@ -1,7 +1,7 @@
 
 import { InfoCircleOutlined } from '@ant-design/icons';
 import { Card, Statistic } from 'antd';
-import { useFetchLogsByType } from '../../hooks/useFetchByType';
+import { useFetchLogsByType } from '../../../hooks/useFetchByType';
 
 export const InfoHome = () => {
 

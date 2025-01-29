@@ -7,7 +7,9 @@ export const useFetchLogsForProjects = (projectId: string, type: string) => {
     const [getTypesFromProjects, setgetTypesFromProjects] = useState<barChartProps[]>([]);
 
     useEffect(() => {
+
         const fetchLogs = async () => {
+
             try {
                 const logs = await FetchAllProjectsFilterlogs(projectId, type);
                 const processedData = groupedDataByProject(logs);

@@ -6,17 +6,15 @@ import useModal from "../../utils/ModalFunctionality";
 import { useProjects } from "../../hooks/useFetchAllProjects";
 import formatDate from "../../utils/DateFunction";
 import { useAllLogs } from "../../hooks/useFetchAllLogs";
-import { Log, ProjectProjectPage } from "../../utils/Interface";
+import { Log, Project, } from "../../utils/Interface";
 import { SortOrder } from "antd/es/table/interface";
 
 
 const SingleProjectPage = () => {
 
     const { projectName } = useParams();
-    const { data: descriptionProject }: { data: ProjectProjectPage[] } = useProjects();
-
+    const { data: descriptionProject }: { data: Project[] } = useProjects();
     const { data: allLogs }: { data: Log[] } = useAllLogs();
-
     const { selectedLog, isModalOpen, showModal, handleModalClose } = useModal();
 
 

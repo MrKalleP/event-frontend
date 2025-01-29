@@ -23,10 +23,10 @@ export interface LogDetailsModalProps {
     onClose: () => void;
 }
 
-export interface ProjectProjectPage {
+export interface Project {
     id: string;
     description: string;
-    logs: string[];
+    logs: Log[];
     name: string;
 }
 
@@ -39,4 +39,7 @@ export interface preProcessDataType {
 }
 
 
-
+export type projectDataProps = {
+    type: string;
+    date: string | number | Date;
+}
