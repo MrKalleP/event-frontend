@@ -42,7 +42,7 @@ const TableHomePage = () => {
                     />
                 </Col>
                 <Col xs={24} sm={24} md={24} lg={6} xl={8}>
-                    <LogDetailsModal log={selectedLog ?? undefined} isOpen={isModalOpen} onClose={handleModalClose} />
+                    <LogDetailsModal log={selectedLog} isOpen={isModalOpen} onClose={handleModalClose} />
                 </Col>
             </Row>
         </div>
