@@ -61,7 +61,7 @@ const ProjectsPage: React.FC<ProjectBarChartsProps> = ({ projectId }) => {
                     const totalLogs = logs.length;
 
                     const foundCrashes = crashes.length;
-                    console.log(foundCrashes);
+
 
                     const crashFreePercentage = calculateCrashFreePercentage(totalLogs, foundCrashes);
                     return (

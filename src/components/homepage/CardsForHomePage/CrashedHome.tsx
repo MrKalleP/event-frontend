@@ -5,7 +5,6 @@ import { useFetchLogsByType } from '../../../hooks/useFetchByType';
 export const CrashedHome = () => {
 
     const { data: CrashedFilterData } = useFetchLogsByType({ type: 'crashed' });
-
     return (
         <Card bordered={false} style={{ backgroundColor: "var(--Crashed-color-)" }}>
             <Statistic

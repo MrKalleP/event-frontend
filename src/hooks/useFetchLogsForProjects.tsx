@@ -1,19 +1,18 @@
 import { useState, useEffect } from "react";
 import { barChartProps } from "../utils/Interface";
-import { FetchAllProjectsFilterlogs } from "../utils/ApiStore";
-import { groupedDataByProject } from "../components/projects/GroupedDataByProject";
+import { FetchLogsByProjectAndType } from "../utils/ApiStore";
+import { DataProject24HErrors } from "../components/projects/DataProject24HErrors";
 
 export const useFetchLogsForProjects = (projectId: string, type: string) => {
-    const [getTypesFromProjects, setgetTypesFromProjects] = useState<barChartProps[]>([]);
+    const [getTypesFromProjects, setGetTypesFromProjects] = useState<barChartProps[]>([]);
 
     useEffect(() => {
-
+        if (!projectId || !type) return;
         const fetchLogs = async () => {
-
             try {
-                const logs = await FetchAllProjectsFilterlogs(projectId, type);
-                const processedData = groupedDataByProject(logs);
-                setgetTypesFromProjects(processedData);
+                const logs = await FetchLogsByProjectAndType(projectId, type);
+                const processedData = DataProject24HErrors(logs);
+                setGetTypesFromProjects(processedData);
             } catch (error) {
                 console.error("Error fetching logs:", error);
             }
