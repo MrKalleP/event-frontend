@@ -1,3 +1,4 @@
+import { FC } from 'react';
 
 export interface ProjectBarChartsProps {
     projectId: string;
@@ -42,4 +43,12 @@ export interface preProcessDataType {
 export type projectDataProps = {
     type: string;
     date: string | number | Date;
+}
+
+export interface TypesCardHomeProps {
+    type: string;
+    title: string;
+    bgColor: string;
+    textColor: string;
+    icon: FC;
 }

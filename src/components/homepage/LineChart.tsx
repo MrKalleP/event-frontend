@@ -17,9 +17,6 @@ import {
 function LineChartExample() {
     const { data: allLogs } = useAllLogs()
     const processedData = PreProcessData(allLogs);
-    console.log(allLogs);
-    console.log(processedData);
-
 
     // PreProcessData gör så att jag får rätt data för min chart det vill säga 24 timmar från nu bakåt i tiden 
     // jag hämtar alla loggar från backend med hjälp av FetchAllLogs och fetchdata från ApiStore 

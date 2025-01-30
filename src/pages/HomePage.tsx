@@ -1,16 +1,11 @@
 import { Row, Col } from "antd";
-import { ErrorsHome } from "../components/homepage/CardsForHomePage/ErrorsHome";
-import { WarningHome } from "../components/homepage/CardsForHomePage/WarningHome";
 import TableHomePage from "../components/homepage/TableHomePage";
-import { CrashedHome } from "../components/homepage/CardsForHomePage/CrashedHome";
-import { InfoHome } from "../components/homepage/CardsForHomePage/InfoHome";
 import LineChartExample from "../components/homepage/LineChart";
-
+import TypesCardHome from "../components/homepage/CardForHomePage/TypesCardHome";
+import { AlertOutlined, FireOutlined, InfoCircleOutlined, WarningOutlined } from "@ant-design/icons";
 
 
 const HomePage = () => {
-
-
     return (
         <Row
             style={{ padding: "4rem" }}
@@ -20,17 +15,44 @@ const HomePage = () => {
 
             <Row gutter={[16, 16]} justify="center" style={{ width: "100%" }}>
                 <Col xs={24} sm={12} md={6} lg={6} >
-                    <InfoHome />
+                    <TypesCardHome
+                        type="info"
+                        title="Info"
+                        bgColor="var(--Info-color-)"
+                        textColor="var(--white-color-)"
+                        icon={InfoCircleOutlined}
+                    />
                 </Col>
                 <Col xs={24} sm={12} md={6} lg={6} >
-                    <WarningHome />
+                    <TypesCardHome
+                        type="warning"
+                        title="Warnings"
+                        bgColor="var(--Warning-color-)"
+                        textColor="var(--dark-color-)"
+                        icon={WarningOutlined}
+                    />
                 </Col>
                 <Col xs={24} sm={12} md={6} lg={6} >
-                    <ErrorsHome />
+                    <TypesCardHome
+                        type="error"
+                        title="Errors"
+                        bgColor="var(--errors-color-)"
+                        textColor="var(--white-color-)"
+                        icon={FireOutlined}
+                    />
                 </Col>
                 <Col xs={24} sm={12} md={6} lg={6} >
-                    <CrashedHome />
+                    <TypesCardHome
+                        type="crashed"
+                        title="Crashed"
+                        bgColor="var(--Crashed-color-)"
+                        textColor="var(--white-color-)"
+                        icon={AlertOutlined}
+                    />
                 </Col>
+
+
+
             </Row>
             <Row gutter={[24, 24]} style={{ width: "100%" }}>
                 <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={12}>

@@ -22,7 +22,6 @@ const SingleProjectPage = () => {
     const filteredProject = descriptionProject.find(
         (proj) => proj.name.toLowerCase() === projectName?.toLowerCase()
     );
-    console.log(filteredProject);
 
     if (!filteredProject) {
         return <p>Project not found.</p>;
@@ -34,7 +33,7 @@ const SingleProjectPage = () => {
     return (
         <>
             <Row gutter={[24, 2]} align="middle" justify="center" style={{ padding: "0 1rem", height: "100vh" }}>
-                <ProjectDetails project={filteredProject} />
+                <ProjectDetails project={filteredProject} description={""} />
                 <ProjectLogsTable logs={projectsLogsId} showModal={showModal} />
             </Row>
 

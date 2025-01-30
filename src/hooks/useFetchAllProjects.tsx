@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { FetchAllProjects } from '../utils/ApiStore';
 
+
 export const useProjects = () => {
     const [fetchedProjectsData, setfetchedProjectsData] = useState([]);
 
@@ -22,3 +23,4 @@ export const useProjects = () => {
 
 
 
+// useFetchAllProjects useFetchLogsByType, useFetchByType, useFetchLogsForProjects
