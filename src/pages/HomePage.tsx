@@ -1,7 +1,7 @@
 import { Row, Col } from "antd";
 import TableHomePage from "../components/homepage/TableHomePage";
 import LineChartExample from "../components/homepage/LineChart";
-import TypesCardHome from "../components/homepage/CardForHomePage/TypesCardHome";
+import TypesCardHome from "../components/homepage/TypesCardHome";
 import { AlertOutlined, FireOutlined, InfoCircleOutlined, WarningOutlined } from "@ant-design/icons";
 
 
@@ -12,7 +12,6 @@ const HomePage = () => {
             gutter={[24, 24]}
             justify="center"
             align="top">
-
             <Row gutter={[16, 16]} justify="center" style={{ width: "100%" }}>
                 <Col xs={24} sm={12} md={6} lg={6} >
                     <TypesCardHome
@@ -50,9 +49,6 @@ const HomePage = () => {
                         icon={AlertOutlined}
                     />
                 </Col>
-
-
-
             </Row>
             <Row gutter={[24, 24]} style={{ width: "100%" }}>
                 <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={12}>

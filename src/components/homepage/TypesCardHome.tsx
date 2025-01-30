@@ -1,6 +1,6 @@
 import { Card, Statistic } from 'antd';
-import { useFetchLogsByType } from '../../../hooks/useFetchByType';
-import { TypesCardHomeProps } from '../../../utils/Interface';
+import { useFetchLogsByType } from '../../hooks/useFetchByType';
+import { TypesCardHomeProps } from '../../utils/Interface';
 
 
 const TypesCardHome = ({ type, title, bgColor, textColor, icon: Icon }: TypesCardHomeProps) => {

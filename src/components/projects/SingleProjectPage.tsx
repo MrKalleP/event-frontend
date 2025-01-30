@@ -15,7 +15,7 @@ const SingleProjectPage = () => {
     const { data: allLogs }: { data: Log[] } = useAllLogs();
     const { selectedLog, isModalOpen, showModal, handleModalClose } = useModal();
 
-    if (!descriptionProject || descriptionProject.length === 0 || !allLogs || allLogs.length === 0) {
+    if (!descriptionProject?.length || !allLogs?.length) {
         return <p>Loading or no projects available.</p>;
     }
 
@@ -27,7 +27,8 @@ const SingleProjectPage = () => {
         return <p>Project not found.</p>;
     }
 
-    const projectsLogsId = allLogs.filter((log) => filteredProject.logs.includes(log.id));
+    const projectsLogsId = allLogs.filter((log) => filteredProject.logs.find(entry => entry.id === log.id));
+    console.log(projectsLogsId, "hejjpds");
 
 
     return (
