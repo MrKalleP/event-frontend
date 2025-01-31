@@ -11,7 +11,7 @@ import ProjectDetails from "./ProjectDetails";
 
 const SingleProjectPage = () => {
     const { projectName } = useParams();
-    const { data: descriptionProject }: { data: Project[] } = useProjects();
+    const { dataFromFetchProjects: descriptionProject }: { dataFromFetchProjects: Project[] } = useProjects();
     const { data: allLogs }: { data: Log[] } = useAllLogs();
     const { selectedLog, isModalOpen, showModal, handleModalClose } = useModal();
 
@@ -27,8 +27,7 @@ const SingleProjectPage = () => {
         return <p>Project not found.</p>;
     }
 
-    const projectsLogsId = filteredProject.logs
-        ? allLogs.filter((log) => filteredProject.logs.includes(log.id))
+    const projectsLogsId = filteredProject.logs ? allLogs.filter((log) => filteredProject.logs.includes(log.id))
         : [];
 
 

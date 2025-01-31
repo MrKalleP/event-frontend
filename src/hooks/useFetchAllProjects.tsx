@@ -18,6 +18,6 @@ export const useProjects = () => {
     }, []);
 
 
-    return { data: fetchedProjectsData };
+    return { dataFromFetchProjects: fetchedProjectsData };
 };
 

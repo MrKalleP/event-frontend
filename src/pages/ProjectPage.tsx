@@ -4,41 +4,47 @@ import { Link } from "react-router-dom";
 import { SmileTwoTone } from "@ant-design/icons";
 import ProjectBarChart from "../components/projects/BarChart";
 import { useProjects } from "../hooks/useFetchAllProjects";
-import { Project, ProjectBarChartsProps } from "../utils/Interface";
-
-
+import { Project } from "../utils/Interface";
+import { fetchCrashes } from "../utils/fetchingFromApi/FetchCrashes";
 
 const { Search } = Input;
 
 const calculateCrashFreePercentage = (totalLogs: number, crashes: number) => {
+    if (totalLogs === 0) return "100.00";
     const crashFreeSessions = totalLogs - crashes;
     return ((crashFreeSessions / totalLogs) * 100).toFixed(2);
 };
 
-const ProjectsPage: React.FC<ProjectBarChartsProps> = () => {
+const ProjectsPage: React.FC<{ projectId: string }> = ({ projectId }) => {
 
-    const { data: descriptionProject }: { data: Project[] } = useProjects();
-    const [searchValue, setSearchValue] = useState("");
+    const { dataFromFetchProjects: projects } = useProjects();
+    const [searchValue, setSearchValue] = useState<string>("");
     const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
-
-
+    const [crashes, setCrashes] = useState<number>(0);
 
     useEffect(() => {
-        if (descriptionProject) {
-            setFilteredProjects(descriptionProject);
-        }
-    }, [descriptionProject]);
+        const fetchData = async () => {
+            if (projects) {
+                setFilteredProjects(projects);
+            }
+            if (projectId) {
+                const crashData = await fetchCrashes(projectId);
+                setCrashes(crashData.length);
+            }
+        };
 
-    const onSearch = () => {
-        if (!searchValue.trim()) {
-            setFilteredProjects(descriptionProject);
+        fetchData();
+    }, [projects, projectId]);
+
+    const onSearch = (value: string) => {
+        const trimmedValue = value.trim().toLowerCase();
+        if (!trimmedValue) {
+            setFilteredProjects(projects || []);
         } else {
-            const filtered = descriptionProject.filter((project) =>
-                project.name.toLowerCase().includes(searchValue.toLowerCase())
+            setFilteredProjects(
+                (projects ?? []).filter((project: { name: string; }) => project?.name?.toLowerCase().includes(trimmedValue)) || []
             );
-            setFilteredProjects(filtered);
         }
-        setSearchValue("");
     };
 
     return (
@@ -49,43 +55,30 @@ const ProjectsPage: React.FC<ProjectBarChartsProps> = () => {
                 allowClear
                 enterButton="Search"
                 size="large"
-                onSearch={onSearch}
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
+                onSearch={onSearch}
             />
 
             <Row gutter={[16, 16]}>
-                {filteredProjects.map((project, index) => {
+                {filteredProjects.map((project) => {
                     const { name, logs, id } = project;
-                    const uniqueKey = id || `${name}-${index}`;
                     const totalLogs = logs.length;
-                    const foundCrashes = 0;
-                    const crashFreePercentage = calculateCrashFreePercentage(totalLogs, foundCrashes);
+                    const crashFreePercentage = calculateCrashFreePercentage(totalLogs, crashes);
 
                     return (
-                        <Col key={uniqueKey} xs={24} sm={24} md={24} lg={8}>
+                        <Col key={id} xs={24} sm={24} md={24} lg={8}>
                             <Card
-                                title={
-                                    <Link
-                                        to={`/project/${name.toLowerCase()}`}
-                                        style={{ fontSize: "1.5rem" }}
-                                    >
-                                        {name}
-                                    </Link>
-                                }
+                                title={<Link to={`/project/${name.toLowerCase()}`} style={{ fontSize: "1.5rem" }}>{name}</Link>}
                                 hoverable
                                 style={{ fontSize: ".8rem", padding: ".5rem" }}
                             >
-                                <ProjectBarChart projectId={project.id} type={""} />
-                                <h3
-                                    style={{
-                                        fontSize: "1.3rem",
-                                        borderTop: "2px solid black",
-                                        padding: ".7rem",
-                                    }}
-                                >
-                                    {`It is ${foundCrashes} crashes of total: ${totalLogs} logs`}
+                                <ProjectBarChart projectId={project.id} type={"error"} />
+
+                                <h3 style={{ fontSize: "1.3rem", borderTop: "2px solid black", padding: ".7rem" }}>
+                                    {`It is ${crashes} crashes of total: ${totalLogs} logs`}
                                 </h3>
+
                                 <Statistic
                                     title="Crash Free Sessions"
                                     value={crashFreePercentage}
