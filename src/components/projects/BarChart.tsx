@@ -10,18 +10,26 @@ import {
     Legend,
 } from "recharts";
 
-import { ProjectBarChartsProps } from "../../utils/Interface";
+import { barChartProps, ProjectBarChartsProps } from "../../utils/Interface";
+import { useEffect, useState } from "react";
+import { fetch24HErrors } from "../../utils/fetchingFromApi/Fetch24HErrors";
 
+const ProjectBarCharts: React.FC<ProjectBarChartsProps> = ({ projectId }) => {
+    const [errors24H, setError24H] = useState<barChartProps[]>([])
 
-const ProjectBarCharts: React.FC<ProjectBarChartsProps> = () => {
-
-    const dummiedata = ["sda"]
+    useEffect(() => {
+        const fetchErrorData = async () => {
+            const errors = await fetch24HErrors(projectId)
+            setError24H(errors)
+        }
+        fetchErrorData()
+    }, [projectId])
 
     return (
 
         <ResponsiveContainer width="100%" height={350} className={"cardProject"} >
             <BarChart
-                data={dummiedata}
+                data={errors24H}
                 style={{ marginBlock: "1rem" }}
                 margin={{ top: 5, right: 10, bottom: 15, left: 5 }}
             >

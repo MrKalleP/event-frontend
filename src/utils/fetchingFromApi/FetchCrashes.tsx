@@ -1,4 +1,4 @@
-import { FetchLogsByProjectAndType } from "./ApiStore";
+import { FetchLogsByProjectAndType } from "../ApiStore";
 
 export const fetchCrashes = async (projectId: string) => {
     if (!projectId) return [];

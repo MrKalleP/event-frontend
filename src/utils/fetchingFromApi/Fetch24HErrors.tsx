@@ -1,5 +1,5 @@
-import { DataProject24HErrors } from "../components/projects/DataProject24HErrors";
-import { FetchLogsByProjectAndType } from "./ApiStore";
+import { DataProject24HErrors } from "../../components/projects/DataProject24HErrors";
+import { FetchLogsByProjectAndType } from "../ApiStore";
 
 export const fetch24HErrors = async (projectId: string) => {
     if (!projectId) return [];
