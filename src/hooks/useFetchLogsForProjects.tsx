@@ -17,7 +17,6 @@ export const useFetchLogsForProjects = (projectId: string, type: string) => {
                 console.error("Error fetching logs:", error);
             }
         };
-
         fetchLogs();
     }, [projectId, type]);
 

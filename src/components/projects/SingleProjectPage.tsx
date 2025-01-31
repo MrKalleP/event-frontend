@@ -27,14 +27,15 @@ const SingleProjectPage = () => {
         return <p>Project not found.</p>;
     }
 
-    const projectsLogsId = allLogs.filter((log) => filteredProject.logs.find(entry => entry.id === log.id));
-    console.log(projectsLogsId, "hejjpds");
+    const projectsLogsId = filteredProject.logs
+        ? allLogs.filter((log) => filteredProject.logs.includes(log.id))
+        : [];
 
 
     return (
         <>
             <Row gutter={[24, 2]} align="middle" justify="center" style={{ padding: "0 1rem", height: "100vh" }}>
-                <ProjectDetails project={filteredProject} description={""} />
+                {filteredProject && <ProjectDetails project={filteredProject} description={filteredProject.description} />}
                 <ProjectLogsTable logs={projectsLogsId} showModal={showModal} />
             </Row>
 

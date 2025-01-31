@@ -35,10 +35,7 @@ html,
   font-family: 'Poppins', 'Montserrat', sans-serif;
 }
 
-.crashed-title,
-.error-title,
-.info-title,
-.warning-title {
+.card-title-homepage {
   color: var(--white-color-);
   font-size: 1.1rem;
   padding: ".1rem"

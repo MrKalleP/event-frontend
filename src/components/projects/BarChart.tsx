@@ -13,7 +13,6 @@ import {
 import { ProjectBarChartsProps } from "../../utils/Interface";
 import { useFetchLogsForProjects } from "../../hooks/useFetchLogsForProjects";
 
-
 const ProjectBarCharts: React.FC<ProjectBarChartsProps> = ({ projectId }) => {
     const { getTypesFromProjects } = useFetchLogsForProjects(projectId, "error");
 

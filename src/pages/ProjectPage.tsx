@@ -59,11 +59,9 @@ const ProjectsPage: React.FC<ProjectBarChartsProps> = ({ projectId }) => {
                     const { name, logs, id } = project;
                     const uniqueKey = id || `${name}-${index}`;
                     const totalLogs = logs.length;
-
                     const foundCrashes = crashes.length;
-
-
                     const crashFreePercentage = calculateCrashFreePercentage(totalLogs, foundCrashes);
+
                     return (
                         <Col key={uniqueKey} xs={24} sm={24} md={24} lg={8}>
                             <Card

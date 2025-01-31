@@ -21,6 +21,3 @@ export const useProjects = () => {
     return { data: fetchedProjectsData };
 };
 
-
-
-// useFetchAllProjects useFetchLogsByType, useFetchByType, useFetchLogsForProjects
