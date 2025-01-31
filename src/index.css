@@ -41,10 +41,6 @@ html,
   padding: ".1rem"
 }
 
-.warning-title {
-  color: var(--dark-color-);
-}
-
 .ant-table-tbody>tr {
   cursor: pointer;
 }

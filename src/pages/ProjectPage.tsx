@@ -5,7 +5,7 @@ import { SmileTwoTone } from "@ant-design/icons";
 import ProjectBarChart from "../components/projects/BarChart";
 import { useProjects } from "../hooks/useFetchAllProjects";
 import { Project, ProjectBarChartsProps } from "../utils/Interface";
-import { useFetchLogsForProjects } from "../hooks/useFetchLogsForProjects";
+
 
 
 const { Search } = Input;
@@ -15,12 +15,12 @@ const calculateCrashFreePercentage = (totalLogs: number, crashes: number) => {
     return ((crashFreeSessions / totalLogs) * 100).toFixed(2);
 };
 
-const ProjectsPage: React.FC<ProjectBarChartsProps> = ({ projectId }) => {
+const ProjectsPage: React.FC<ProjectBarChartsProps> = () => {
 
     const { data: descriptionProject }: { data: Project[] } = useProjects();
     const [searchValue, setSearchValue] = useState("");
     const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
-    const { getTypesFromProjects: crashes } = useFetchLogsForProjects(projectId, "crashed");
+
 
 
     useEffect(() => {
@@ -59,7 +59,7 @@ const ProjectsPage: React.FC<ProjectBarChartsProps> = ({ projectId }) => {
                     const { name, logs, id } = project;
                     const uniqueKey = id || `${name}-${index}`;
                     const totalLogs = logs.length;
-                    const foundCrashes = crashes.length;
+                    const foundCrashes = 0;
                     const crashFreePercentage = calculateCrashFreePercentage(totalLogs, foundCrashes);
 
                     return (

@@ -11,16 +11,17 @@ import {
 } from "recharts";
 
 import { ProjectBarChartsProps } from "../../utils/Interface";
-import { useFetchLogsForProjects } from "../../hooks/useFetchLogsForProjects";
 
-const ProjectBarCharts: React.FC<ProjectBarChartsProps> = ({ projectId }) => {
-    const { getTypesFromProjects } = useFetchLogsForProjects(projectId, "error");
+
+const ProjectBarCharts: React.FC<ProjectBarChartsProps> = () => {
+
+    const dummiedata = ["sda"]
 
     return (
 
         <ResponsiveContainer width="100%" height={350} className={"cardProject"} >
             <BarChart
-                data={getTypesFromProjects}
+                data={dummiedata}
                 style={{ marginBlock: "1rem" }}
                 margin={{ top: 5, right: 10, bottom: 15, left: 5 }}
             >

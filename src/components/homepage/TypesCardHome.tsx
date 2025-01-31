@@ -9,7 +9,7 @@ const TypesCardHome = ({ type, title, bgColor, textColor, icon: Icon }: TypesCar
     return (
         <Card bordered={false} style={{ backgroundColor: bgColor }}>
             <Statistic
-                title={<span className="card-title-homepage ">{title}</span>}
+                title={<span className="card-title-homepage">{title}</span>}
                 value={homePageCardData.length}
                 valueStyle={{ color: textColor }}
                 prefix={Icon ? <Icon /> : null}
