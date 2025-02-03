@@ -52,3 +52,4 @@ export interface TypesCardHomeProps {
     textColor: string;
     icon: FC;
 }
+

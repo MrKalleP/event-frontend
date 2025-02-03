@@ -7,8 +7,8 @@ export const fetch24HErrors = async (projectId: string) => {
     try {
         const logs = await FetchLogsByProjectAndType(projectId, "error");
         return DataProject24HErrors(logs);
-    } catch (error) {
-        console.error("Error fetching 24H errors:", error);
+    } catch {
+        console.log("Error fetching 24H errors:");
         return [];
     }
 };
