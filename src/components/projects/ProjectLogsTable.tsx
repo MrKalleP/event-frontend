@@ -34,7 +34,7 @@ export const ProjectLogsTable = ({ logs, showModal }: { logs: Log[], showModal: 
                 };
 
                 return (
-                    <Tag color={colorMap[type as keyof typeof colorMap] || "default"} style={{ color: type === "warning" ? "black" : "white" }}>
+                    <Tag color={colorMap[type as keyof typeof colorMap] || "default"} style={{ color: type === "warning" ? "black" : "white", width: "4.5rem" }}>
                         {type}
                     </Tag>
                 );

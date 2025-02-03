@@ -14,15 +14,16 @@ const MainLayout = () => {
         { key: "/project", label: "Projects", icon: <ProjectOutlined /> },
     ];
 
-    const breadcrumbItems = location.pathname
+    const breadcrumbItems = decodeURIComponent(location.pathname)
         .split("/")
         .filter((path) => path)
         .map((path, index, arr) => {
             const isLastItem = index === arr.length - 1;
+            const formattedPath = path.replace(/å/g, "a");
             return {
                 key: index,
-                label: path,
-                link: !isLastItem && path === "project" ? "/project" : null,
+                label: formattedPath,
+                link: !isLastItem && formattedPath === "project" ? "/project" : null,
             };
         });
 
