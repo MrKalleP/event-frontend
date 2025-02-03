@@ -9,17 +9,19 @@ import { fetchCrashes } from "../utils/fetchingFromApi/FetchCrashes";
 
 const { Search } = Input;
 
-const calculateCrashFreePercentage = (totalLogs: number, crashes: number) => {
+const calculateCrashFreePercentage = (totalLogs: number, crashed: number) => {
     if (totalLogs === 0) return "100.00";
-    const crashFreeSessions = totalLogs - crashes;
+    const crashFreeSessions = totalLogs - crashed;
     return ((crashFreeSessions / totalLogs) * 100).toFixed(2);
 };
 
-const ProjectsPage: React.FC<{ projectId: string }> = ({ projectId }) => {
+const ProjectsPage: React.FC<{ projectId: string, type: string }> = ({ projectId, type }) => {
 
     const { dataFromFetchProjects: projects } = useProjects();
+
     const [searchValue, setSearchValue] = useState<string>("");
     const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
+
     const [crashes, setCrashes] = useState<number>(0);
 
     useEffect(() => {
@@ -27,14 +29,14 @@ const ProjectsPage: React.FC<{ projectId: string }> = ({ projectId }) => {
             if (projects) {
                 setFilteredProjects(projects);
             }
-            if (projectId) {
-                const crashData = await fetchCrashes(projectId);
+            if (projectId && type) {
+                const crashData = await fetchCrashes(projectId, "crashed");
                 setCrashes(crashData.length);
             }
         };
 
         fetchData();
-    }, [projects, projectId]);
+    }, [projects, projectId, type]);
 
     const onSearch = (value: string) => {
         const trimmedValue = value.trim().toLowerCase();
@@ -63,8 +65,11 @@ const ProjectsPage: React.FC<{ projectId: string }> = ({ projectId }) => {
             <Row gutter={[16, 16]}>
                 {filteredProjects.map((project) => {
                     const { name, logs, id } = project;
+
                     const totalLogs = logs.length;
-                    const crashFreePercentage = calculateCrashFreePercentage(totalLogs, crashes);
+                    const crashFreePercentage = totalLogs > 0
+                        ? calculateCrashFreePercentage(totalLogs, crashes)
+                        : 100;
 
                     return (
                         <Col key={id} xs={24} sm={24} md={24} lg={8}>
