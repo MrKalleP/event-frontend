@@ -27,7 +27,7 @@ export interface LogDetailsModalProps {
 export interface Project {
     id: string;
     description: string;
-    logs: Log[];
+    logs: string[];
     name: string;
 }
 

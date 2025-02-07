@@ -1,8 +1,6 @@
 
 import { useAllLogs } from "../../hooks/useFetchAllLogs";
 import { PreProcessData } from "./preProcessData";
-
-
 import {
     LineChart,
     Line,
@@ -13,6 +11,8 @@ import {
     Legend,
     ResponsiveContainer,
 } from "recharts";
+
+
 
 function LineChartExample() {
     const { data: allLogs } = useAllLogs()

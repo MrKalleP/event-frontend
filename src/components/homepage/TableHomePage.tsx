@@ -1,14 +1,10 @@
 import { Col, Row, Table } from 'antd';
-import type { TableProps } from 'antd';
 import ProjectColumns from "../projects/ProjectColumns";
 import LogDetailsModal from "../../utils/LogDetailsModal";
 import useModal from "../../utils/ModalFunctionality";
 import { useAllLogs } from '../../hooks/useFetchAllLogs';
 import { Log } from '../../utils/Interface';
 
-const onChange: TableProps<Log>['onChange'] = (pagination, filters, sorter, extra) => {
-    console.log('params', pagination, filters, sorter, extra);
-};
 
 const TableHomePage = () => {
 
@@ -27,7 +23,6 @@ const TableHomePage = () => {
                                 showModal(record);
                             },
                         })}
-                        onChange={onChange}
                         pagination={{
                             position: ["bottomCenter"],
                         }}

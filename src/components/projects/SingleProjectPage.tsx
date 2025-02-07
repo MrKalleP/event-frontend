@@ -30,6 +30,7 @@ const SingleProjectPage = () => {
     const projectsLogsId = filteredProject.logs ? allLogs.filter((log) => filteredProject.logs.includes(log.id))
         : [];
 
+    console.log(projectsLogsId);
 
     return (
         <>
