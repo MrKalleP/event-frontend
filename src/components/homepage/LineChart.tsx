@@ -28,16 +28,9 @@ function LineChartExample() {
 
         <ResponsiveContainer width="100%" height="100%" style={{ backgroundColor: "white", borderRadius: ".5rem", padding: "1rem" }}>
             <LineChart
-                data={processedData}
-                margin={{
-                    top: 6,
-                    right: 35,
-                    left: 15,
-                    bottom: 5,
-                }}
-            >
+                data={processedData}>
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="date" tick={{ fill: "#2A2A2A", fontSize: 10 }} />
+                <XAxis dataKey="date" tick={{ fill: "#2A2A2A", fontSize: 13 }} />
                 <YAxis tick={{ fill: "#2A2A2A", fontSize: 12 }} />
                 <Tooltip />
                 <Legend />

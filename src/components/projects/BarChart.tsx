@@ -30,8 +30,6 @@ const ProjectBarCharts: React.FC<ProjectBarChartsProps> = ({ projectId }) => {
         <ResponsiveContainer width="100%" height={350} className={"cardProject"} >
             <BarChart
                 data={errors24H}
-                style={{ marginBlock: "1rem" }}
-                margin={{ top: 5, right: 10, bottom: 15, left: 5 }}
             >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis

@@ -1,5 +1,5 @@
 import { Row } from "antd";
-import { Navigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import LogDetailsModal from "../../utils/LogDetailsModal";
 import useModal from "../../utils/ModalFunctionality";
 import { useProjects } from "../../hooks/useFetchAllProjects";

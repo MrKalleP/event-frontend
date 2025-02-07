@@ -37,7 +37,7 @@ const TableHomePage = () => {
                         style={{
                             background: "white",
                             color: "#2A2A2A",
-                            borderRadius: ".5rem"
+                            borderRadius: ".5rem",
                         }}
                     />
                 </Col>
