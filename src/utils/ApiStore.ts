@@ -20,7 +20,7 @@ export const FetchAllLogs = async () => fetchData("logs");
 export const FetchLogsByType = async (type: string) => fetchData(`logs/type/${type}`);
 
 // Fetch logs by project får det valda projectet
-export const FetchLogsByProject = async (projectId: string) => fetchData(`logs/project/${projectId}`);
+export const FetchLogsByProjectId = async (projectId: string) => fetchData(`logs/project/${projectId}`);
 
 // Fetch all projects får alla project det skiljer sig eftersom loggs bara en array av ["1","2"] istället för vanliga project eftersom den görs om i db
 export const FetchAllProjects = async () => fetchData("projects");
@@ -33,7 +33,6 @@ export const FetchLogsByProjectAndType = async (projectId: string, type: string)
 //export const FetchProjectById = async (projectId: string) => fetchData(`projects/${projectId}`);
 export const FetchProjectById = async (projectId: string) => {
     const response = await fetchData(`projects/${projectId}`);
-    console.log("Response from API:", response); // Logga API-svaret
     return response;
 };
 
