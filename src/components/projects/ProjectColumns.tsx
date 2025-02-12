@@ -4,13 +4,15 @@ import { Tag } from 'antd';
 import { Link } from 'react-router-dom';
 import { Log } from '../../utils/Interface';
 
+
+
 const ProjectColumns: TableColumnsType<Log> = [
     {
         title: 'Project',
         dataIndex: 'project',
 
-        render: (text) => (
-            <Link to={`/project/${text.toLowerCase()}`} style={{ fontSize: '1rem' }}>
+        render: (text, record) => (
+            <Link to={`projects/${record.id}`} style={{ fontSize: '1rem' }}>
                 {text}
             </Link>
         ),

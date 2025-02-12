@@ -34,7 +34,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
 
     return (
         <Card
-            title={<Link to={`/project/${id.toLowerCase()}`} style={{ fontSize: "1.5rem", cursor: "pointer" }}>{name}</Link>}
+            title={<Link to={`/project/${id}`} style={{ fontSize: "1.5rem", cursor: "pointer" }}>{name}</Link>}
             hoverable
             style={{ fontSize: ".8rem", padding: ".5rem", cursor: "default" }}
         >
