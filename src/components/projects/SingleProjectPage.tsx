@@ -2,41 +2,41 @@ import { Row } from "antd";
 import { useParams } from "react-router-dom";
 import LogDetailsModal from "../../utils/LogDetailsModal";
 import useModal from "../../utils/ModalFunctionality";
-import { useProjects } from "../../hooks/useFetchAllProjects";
 import { useAllLogs } from "../../hooks/useFetchAllLogs";
-import { Log, Project, } from "../../utils/Interface";
+import { Log, Project } from "../../utils/Interface";
 import { ProjectLogsTable } from "./ProjectLogsTable";
 import ProjectDetails from "./ProjectDetails";
-
+import { useEffect, useState } from "react";
+import { ProjectById } from "../../utils/fetchingFromApi/FetchProjectById";
 
 const SingleProjectPage = () => {
-    const { projectName } = useParams();
-    const { dataFromFetchProjects: descriptionProject }: { dataFromFetchProjects: Project[] } = useProjects();
+    const { projectId } = useParams();
     const { data: allLogs }: { data: Log[] } = useAllLogs();
     const { selectedLog, isModalOpen, showModal, handleModalClose } = useModal();
+    const [project, setProject] = useState<Project | null>(null);
+    console.log(project);
 
-    if (!descriptionProject?.length || !allLogs?.length) {
-        return <p>Loading or no projects available.</p>;
-    }
+    useEffect(() => {
+        console.log(projectId, "hej");
 
-    const filteredProject = descriptionProject.find(
-        (proj) => proj.name.toLowerCase() === projectName?.toLowerCase()
-    );
+        const fetchProjectByID = async () => {
+            if (!projectId) return;
+            const fetchedProject = await ProjectById(projectId);
+            console.log("Fetched project:", fetchedProject);
+            setProject(fetchedProject);
+        };
+        fetchProjectByID();
+    }, [projectId]);
 
-    if (!filteredProject) {
-        return <p>Project not found.</p>;
-    }
 
-    const projectsLogsId = filteredProject.logs ? allLogs.filter((log) => filteredProject.logs.includes(log.id))
-        : [];
+    const projectsLogs = project?.logs ? allLogs.filter((log) => project.logs.includes(log.id)) : [];
 
-    console.log(projectsLogsId);
 
     return (
         <>
             <Row gutter={[24, 2]} align="middle" justify="center" style={{ padding: "0 1rem", height: "100vh" }}>
-                {filteredProject && <ProjectDetails project={filteredProject} description={filteredProject.description} />}
-                <ProjectLogsTable logs={projectsLogsId} showModal={showModal} />
+                {project?.description && <ProjectDetails project={project} description={project.description} />}
+                <ProjectLogsTable logs={projectsLogs} showModal={showModal} />
             </Row>
 
             <LogDetailsModal log={selectedLog} isOpen={isModalOpen} onClose={handleModalClose} />

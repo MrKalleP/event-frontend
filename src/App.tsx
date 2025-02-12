@@ -15,7 +15,7 @@ const App: React.FC = () => {
           <Route element={<MainLayout />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/project" element={<ProjectPage />} />
-            <Route path="/project/:projectName" element={<SingleProjectPage />} />
+            <Route path="/project/:projectId" element={<SingleProjectPage />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/project/*" element={<NotFound />} />
           </Route>
