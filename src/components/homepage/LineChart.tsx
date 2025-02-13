@@ -1,5 +1,5 @@
 
-import { useAllLogs } from "../../hooks/useFetchAllLogs";
+import { Log } from "../../utils/Interface";
 import { PreProcessData } from "./preProcessData";
 import {
     LineChart,
@@ -13,9 +13,8 @@ import {
 } from "recharts";
 
 
+function LineChartExample({ allLogs }: { allLogs: Log[] }) {
 
-function LineChartExample() {
-    const { data: allLogs } = useAllLogs()
     const processedData = PreProcessData(allLogs);
 
     // PreProcessData gör så att jag får rätt data för min chart det vill säga 24 timmar från nu bakåt i tiden 

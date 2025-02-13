@@ -3,9 +3,12 @@ import TableHomePage from "../components/homepage/TableHomePage";
 import LineChartExample from "../components/homepage/LineChart";
 import TypesCardHome from "../components/homepage/TypesCardHome";
 import { AlertOutlined, FireOutlined, InfoCircleOutlined, WarningOutlined } from "@ant-design/icons";
+import { useAllLogs } from "../hooks/useFetchAllLogs";
 
 
 const HomePage = () => {
+    const { data: allLogs } = useAllLogs()
+
     return (
         <Row
             style={{ padding: "4rem" }}
@@ -53,10 +56,10 @@ const HomePage = () => {
             </Row>
             <Row gutter={[24, 24]} style={{ width: "100%" }}>
                 <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={12}>
-                    <TableHomePage />
+                    <TableHomePage allLogs={allLogs} />
                 </Col>
                 <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={12}>
-                    <LineChartExample />
+                    <LineChartExample allLogs={allLogs} />
                 </Col>
             </Row>
         </Row>

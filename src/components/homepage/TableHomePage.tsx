@@ -2,13 +2,11 @@ import { Col, Row, Table } from 'antd';
 import ProjectColumns from "../projects/ProjectColumns";
 import LogDetailsModal from "../../utils/LogDetailsModal";
 import useModal from "../../utils/ModalFunctionality";
-import { useAllLogs } from '../../hooks/useFetchAllLogs';
 import { Log } from '../../utils/Interface';
 
 
-const TableHomePage = () => {
+const TableHomePage = ({ allLogs }: { allLogs: Log[] }) => {
 
-    const { data: allLogs } = useAllLogs()
     const { selectedLog, isModalOpen, showModal, handleModalClose } = useModal();
 
     return (
