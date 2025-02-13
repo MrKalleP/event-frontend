@@ -34,13 +34,28 @@ const ProjectCard = ({ project }: { project: Project }) => {
 
     return (
         <Card
-            title={<Link to={`/project/${id}`} style={{ fontSize: "1.5rem", cursor: "pointer" }}>{name}</Link>}
+            title={
+                <Link to={`/project/${id}`}
+                    style={{
+                        fontSize: "1.5rem",
+                        cursor: "pointer"
+                    }}>
+                    {name}
+                </Link>}
             hoverable
-            style={{ fontSize: ".8rem", padding: ".5rem", cursor: "default" }}
+            style={{
+                fontSize: ".8rem",
+                padding: ".5rem",
+                cursor: "default"
+            }}
         >
             <ProjectBarChart projectId={id} type={"error"} />
 
-            <h3 style={{ fontSize: "1.3rem", borderTop: "2px solid black", padding: ".7rem" }}>
+            <h3 style={{
+                fontSize: "1.3rem",
+                borderTop: "2px solid black",
+                padding: ".7rem"
+            }}>
                 {`It is ${crashes} crashes of total: ${totalLogs} logs`}
             </h3>
 
