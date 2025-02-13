@@ -19,6 +19,7 @@ const HomePage = () => {
                         title="Info"
                         bgColor="var(--Info-color-)"
                         textColor="var(--white-color-)"
+                        titleColor="var(--white-color-)"
                         icon={InfoCircleOutlined}
                     />
                 </Col>
@@ -29,7 +30,7 @@ const HomePage = () => {
                         bgColor="var(--Warning-color-)"
                         textColor="var(--dark-color-)"
                         icon={WarningOutlined}
-                    />
+                        titleColor={"var(--dark-color-)"} />
                 </Col>
                 <Col xs={24} sm={12} md={6} lg={6} >
                     <TypesCardHome
@@ -38,7 +39,7 @@ const HomePage = () => {
                         bgColor="var(--errors-color-)"
                         textColor="var(--white-color-)"
                         icon={FireOutlined}
-                    />
+                        titleColor={"var(--white-color-)"} />
                 </Col>
                 <Col xs={24} sm={12} md={6} lg={6} >
                     <TypesCardHome
@@ -47,7 +48,7 @@ const HomePage = () => {
                         bgColor="var(--Crashed-color-)"
                         textColor="var(--white-color-)"
                         icon={AlertOutlined}
-                    />
+                        titleColor={"var(--white-color-)"} />
                 </Col>
             </Row>
             <Row gutter={[24, 24]} style={{ width: "100%" }}>

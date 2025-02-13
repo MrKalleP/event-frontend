@@ -3,13 +3,13 @@ import { useFetchLogsByType } from '../../hooks/useFetchByType';
 import { TypesCardHomeProps } from '../../utils/Interface';
 
 
-const TypesCardHome = ({ type, title, bgColor, textColor, icon: Icon }: TypesCardHomeProps) => {
+const TypesCardHome = ({ type, title, bgColor, textColor, icon: Icon, titleColor }: TypesCardHomeProps) => {
     const { data: homePageCardData = [] } = useFetchLogsByType({ type });
 
     return (
         <Card bordered={false} style={{ backgroundColor: bgColor }}>
             <Statistic
-                title={<span className="card-title-homepage">{title}</span>}
+                title={<span className="card-title-homepage" style={{ color: titleColor }}>{title}</span>}
                 value={homePageCardData.length}
                 valueStyle={{ color: textColor }}
                 prefix={Icon ? <Icon /> : null}

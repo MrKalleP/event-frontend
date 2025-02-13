@@ -51,6 +51,7 @@ export interface TypesCardHomeProps {
     title: string;
     bgColor: string;
     textColor: string;
+    titleColor: string;
     icon: FC;
 }
 
