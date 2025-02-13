@@ -11,6 +11,7 @@ export interface barChartProps {
 }
 
 export interface Log {
+    projectId: string;
     date: string;
     id: string;
     message: string;

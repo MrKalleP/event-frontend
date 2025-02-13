@@ -12,7 +12,7 @@ const ProjectColumns: TableColumnsType<Log> = [
         dataIndex: 'project',
 
         render: (text, record) => (
-            <Link to={`projects/${record.id}`} style={{ fontSize: '1rem' }}>
+            <Link to={`project/${record.projectId}`} style={{ fontSize: '1rem' }}>
                 {text}
             </Link>
         ),
