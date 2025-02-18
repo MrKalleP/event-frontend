@@ -5,6 +5,7 @@ import { SmileTwoTone } from "@ant-design/icons";
 import ProjectBarChart from "../projects/BarChart";
 import { Project } from "../../utils/Interface";
 import { fetchCrashes } from "../../utils/fetchingFromApi/FetchCrashes";
+import { ProjectLogsById } from "../../utils/fetchingFromApi/FetchProjectLogsById";
 
 const calculateCrashFreePercentage = (totalLogs: number, crashed: number) => {
     if (totalLogs === 0) return "100.00";
@@ -12,24 +13,40 @@ const calculateCrashFreePercentage = (totalLogs: number, crashed: number) => {
 };
 
 const ProjectCard = ({ project }: { project: Project }) => {
+    const { name, id } = project;
 
-    const { name, logs, id } = project;
-    const totalLogs = logs.length;
+    const [logs, setLogs] = useState<any[]>([]);
     const [crashes, setCrashes] = useState<number>(0);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const fetchedLogs = await ProjectLogsById(id);
+                setLogs(fetchedLogs || []);
+            } catch {
+                console.log("Error fetching logs:");
+                setLogs([]);
+            }
+        };
+
+        fetchData();
+    }, [id]);
 
     useEffect(() => {
         const fetchCrashData = async () => {
             try {
                 const crashCount = await fetchCrashes(id);
-                setCrashes(Number(crashCount.length) || 0);
+                setCrashes(crashCount.length || 0);
             } catch {
                 console.log("Error fetching crashes:");
                 setCrashes(0);
             }
         };
+
         fetchCrashData();
     }, [id]);
 
+    const totalLogs = logs.length;
     const crashFreePercentage = totalLogs > 0 ? calculateCrashFreePercentage(totalLogs, crashes) : "100.00";
 
     return (

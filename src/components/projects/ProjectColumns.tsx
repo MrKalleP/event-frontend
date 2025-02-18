@@ -1,23 +1,17 @@
 import { TableColumnsType } from 'antd';
 import formatDate from "../../utils/DateFunction";
 import { Tag } from 'antd';
-import { Link } from 'react-router-dom';
 import { Log } from '../../utils/Interface';
-
+import ProjectName from '../../utils/fetchingFromApi/ProjectName';
 
 const ProjectColumns: TableColumnsType<Log> = [
     {
         title: 'Project',
-        dataIndex: 'project.name',
-        render: (name, record) => {
-            console.log("Record:", record);
-            return (
-                <Link to={`/project/${record.projectId}`}>
-                    {name}
-                </Link>
-            );
+        dataIndex: 'projectId',
+        render: (projectId: string) => {
+            return <ProjectName projectId={projectId} />;
         },
-        sorter: (a, b) => a.project.localeCompare(b.project),
+        sorter: (a, b) => a.projectId.localeCompare(b.projectId),
     },
     {
         title: 'Date',
@@ -51,6 +45,7 @@ const ProjectColumns: TableColumnsType<Log> = [
                 value: 'crashed',
             },
         ],
+        onFilter: (value, record) => record.type.includes(value as string),
         sorter: (a: { type: string; }, b: { type: string; }) => a.type.localeCompare(b.type),
         render: (type: string) => {
             const colorMap: Record<string, string> = {
