@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Input, Row, Col } from "antd";
-import { useProjects } from "../hooks/useFetchAllProjects";
+import useProjects from "../hooks/useFetchAllProjects";
 import { Project } from "../utils/Interface";
 import ProjectCard from "../components/projects/ProjectCard";
 

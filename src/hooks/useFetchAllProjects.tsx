@@ -3,7 +3,7 @@ import { FetchAllProjects } from '../utils/ApiStore';
 import { Project } from '../utils/Interface';
 
 
-export const useProjects = () => {
+const useProjects = () => {
     const [fetchedProjectsData, setfetchedProjectsData] = useState<Project[]>([]);
 
     useEffect(() => {
@@ -22,3 +22,4 @@ export const useProjects = () => {
     return { dataFromFetchProjects: fetchedProjectsData };
 };
 
+export default useProjects

@@ -34,8 +34,7 @@ const SingleProjectPage = () => {
 
         fetchProjectData();
     }, [projectId]);
-    console.log(project);
-    console.log(logs);
+
 
 
     return (

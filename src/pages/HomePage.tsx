@@ -3,7 +3,7 @@ import TableHomePage from "../components/homepage/TableHomePage";
 import LineChartExample from "../components/homepage/LineChart";
 import TypesCardHome from "../components/homepage/TypesCardHome";
 import { AlertOutlined, FireOutlined, InfoCircleOutlined, WarningOutlined } from "@ant-design/icons";
-import { useAllLogs } from "../hooks/useFetchAllLogs";
+import useAllLogs from "../hooks/useFetchAllLogs";
 
 
 const HomePage = () => {

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { FetchAllLogs } from '../utils/ApiStore';
 
-export const useAllLogs = () => {
+const useAllLogs = () => {
     const [fetchAllLogs, setfetchAllLogs] = useState([]);
 
     useEffect(() => {
@@ -20,5 +20,5 @@ export const useAllLogs = () => {
     return { data: fetchAllLogs };
 };
 
-
+export default useAllLogs
 

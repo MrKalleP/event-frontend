@@ -5,17 +5,18 @@ import { Link } from 'react-router-dom';
 import { Log } from '../../utils/Interface';
 
 
-
 const ProjectColumns: TableColumnsType<Log> = [
     {
         title: 'Project',
-        dataIndex: 'project',
-
-        render: (text, record) => (
-            <Link to={`project/${record.projectId}`} style={{ fontSize: '1rem' }}>
-                {text}
-            </Link>
-        ),
+        dataIndex: 'project.name',
+        render: (name, record) => {
+            console.log("Record:", record);
+            return (
+                <Link to={`/project/${record.projectId}`}>
+                    {name}
+                </Link>
+            );
+        },
         sorter: (a, b) => a.project.localeCompare(b.project),
     },
     {

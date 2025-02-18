@@ -7,9 +7,9 @@ const fetchData = async (endpoint: string) => {
             throw new Error(`Failed to fetch: ${response.status} ${response.statusText}`);
         }
         return await response.json();
-    } catch (error) {
-        console.error(`Error fetching data from ${endpoint}:`, error);
-        throw error;
+    } catch {
+        console.log("did not find all the logs");
+
     }
 };
 
@@ -31,10 +31,8 @@ export const FetchLogsByProjectAndType = async (projectId: string, type: string)
 
 // Fetch project by projects id och får det valda projectet
 //export const FetchProjectById = async (projectId: string) => fetchData(`projects/${projectId}`);
-export const FetchProjectById = async (projectId: string) => {
-    const response = await fetchData(`projects/${projectId}`);
-    return response;
-};
+export const FetchProjectById = async (projectId: string) => fetchData(`projects/${projectId}`);
+
 
 
 
