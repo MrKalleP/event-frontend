@@ -8,7 +8,7 @@ const Logo: React.FC<{ isCollapsed: boolean }> = ({ isCollapsed }) => (
         <Col>
             <img
                 src={logo}
-                width={isCollapsed ? 39 : 160}
+                width={isCollapsed ? 100 : 160}
                 alt="blue text on the companyname Skytech and 2 orange hexagons"
             />
         </Col>

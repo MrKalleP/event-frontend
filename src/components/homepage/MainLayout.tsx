@@ -35,20 +35,23 @@ const MainLayout = () => {
         <Layout>
 
             {!isMobile && (
-                <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed}
+                <Sider
+                    collapsible
+                    collapsed={collapsed}
+                    onCollapse={setCollapsed}
                     breakpoint="md"
                     collapsedWidth="0"
                     trigger={null}
                     onBreakpoint={(broken) => setIsMobile(broken)}
                 >
-                    <Logo isCollapsed={collapsed} />
+
                     <Menu
                         theme="dark"
                         mode="inline"
                         defaultSelectedKeys={["/"]}
                         selectedKeys={[location.pathname]}
                         style={{ padding: ".5rem" }}
-                    >
+                    >    <Logo isCollapsed={collapsed} />
                         {menuItems.map((item) => (
                             <Menu.Item key={item.key} icon={item.icon} style={{ textAlign: "left", marginBlock: ".6rem" }}>
                                 <Link style={{ marginInline: ".4rem" }} to={item.key}>{item.label}</Link>
@@ -64,6 +67,7 @@ const MainLayout = () => {
                         onClick={() => setDrawerVisible(true)}
                         style={{ position: "fixed", top: 5, right: 20, zIndex: 1000, marginTop: "1rem" }}
                     />
+
                     <MyDrawer
                         visible={drawerVisible}
                         onClose={() => setDrawerVisible(false)}

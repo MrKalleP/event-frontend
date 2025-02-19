@@ -22,7 +22,6 @@ const MyDrawer = ({ visible, onClose }: MyDrawerProps) => {
             onClose={onClose}
             open={visible}
         >
-
             <Menu
 
                 mode="inline"
