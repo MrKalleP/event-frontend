@@ -16,6 +16,7 @@ const TableHomePage = ({ allLogs }: { allLogs: Log[] }) => {
                     <Table<Log>
                         columns={ProjectColumns}
                         dataSource={allLogs}
+                        tableLayout='fixed'
                         onRow={(record) => ({
                             onClick: () => {
                                 showModal(record);

@@ -23,6 +23,7 @@ const ProjectColumns: TableColumnsType<Log> = [
     {
         title: 'Message',
         dataIndex: 'message',
+        ellipsis: true,
     },
     {
         title: 'Type',

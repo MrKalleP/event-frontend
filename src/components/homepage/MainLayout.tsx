@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { Link, useLocation, Outlet } from "react-router-dom";
-import { Layout, Menu, Breadcrumb } from "antd";
-import { ProjectOutlined, HomeOutlined } from "@ant-design/icons";
+import { Layout, Menu, Breadcrumb, Button } from "antd";
+import { ProjectOutlined, HomeOutlined, MenuOutlined } from "@ant-design/icons";
 import Logo from "../../utils/Logo";
+import MyDrawer from "./MyDrawerMenu";
 const { Content, Footer, Sider } = Layout;
 
 const MainLayout = () => {
     const [collapsed, setCollapsed] = useState(false);
+    const [drawerVisible, setDrawerVisible] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
     const location = useLocation();
 
     const menuItems = [
@@ -29,22 +33,43 @@ const MainLayout = () => {
 
     return (
         <Layout>
-            <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed}>
-                <Logo isCollapsed={collapsed} />
-                <Menu
-                    theme="dark"
-                    mode="inline"
-                    defaultSelectedKeys={["/"]}
-                    selectedKeys={[location.pathname]}
-                    style={{ padding: ".5rem" }}
+
+            {!isMobile && (
+                <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed}
+                    breakpoint="md"
+                    collapsedWidth="0"
+                    trigger={null}
+                    onBreakpoint={(broken) => setIsMobile(broken)}
                 >
-                    {menuItems.map((item) => (
-                        <Menu.Item key={item.key} icon={item.icon} style={{ textAlign: "left", marginBlock: ".6rem" }}>
-                            <Link style={{ marginInline: ".4rem" }} to={item.key}>{item.label}</Link>
-                        </Menu.Item>
-                    ))}
-                </Menu>
-            </Sider>
+                    <Logo isCollapsed={collapsed} />
+                    <Menu
+                        theme="dark"
+                        mode="inline"
+                        defaultSelectedKeys={["/"]}
+                        selectedKeys={[location.pathname]}
+                        style={{ padding: ".5rem" }}
+                    >
+                        {menuItems.map((item) => (
+                            <Menu.Item key={item.key} icon={item.icon} style={{ textAlign: "left", marginBlock: ".6rem" }}>
+                                <Link style={{ marginInline: ".4rem" }} to={item.key}>{item.label}</Link>
+                            </Menu.Item>
+                        ))}
+                    </Menu>
+                </Sider>)}
+            {isMobile && (
+                <>
+                    <Button
+                        type="primary"
+                        icon={<MenuOutlined />}
+                        onClick={() => setDrawerVisible(true)}
+                        style={{ position: "fixed", top: 5, right: 20, zIndex: 1000, marginTop: "1rem" }}
+                    />
+                    <MyDrawer
+                        visible={drawerVisible}
+                        onClose={() => setDrawerVisible(false)}
+                    />
+                </>
+            )}
             <Layout>
                 <Content>
                     <Breadcrumb style={{ margin: "3px" }}>

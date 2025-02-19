@@ -43,6 +43,7 @@ export const ProjectLogsTable = ({ logs, showModal }: { logs: Log[], showModal: 
         {
             title: "Message",
             dataIndex: "message",
+            ellipsis: true,
             key: "message",
             render: (message, record) => (
                 <a href="#" onClick={(e) => { e.preventDefault(); showModal(record); }}>
@@ -57,6 +58,7 @@ export const ProjectLogsTable = ({ logs, showModal }: { logs: Log[], showModal: 
             <Table<Log>
                 dataSource={logs}
                 columns={columns}
+                tableLayout='fixed'
                 onRow={(record) => ({
                     onClick: () => showModal(record),
                 })}
