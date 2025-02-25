@@ -23,7 +23,6 @@ const MyDrawer = ({ visible, onClose }: MyDrawerProps) => {
             open={visible}
         >
             <Menu
-
                 mode="inline"
                 style={{ padding: ".5rem" }}
                 defaultSelectedKeys={[location.pathname]}
