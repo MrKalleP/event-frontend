@@ -20,14 +20,14 @@ export const FetchAllLogs = async () => fetchData("logs");
 export const FetchLogsByType = async (type: string) => fetchData(`logs/type/${type}`);
 
 // Fetch logs by project får det valda projectet
-export const FetchLogsByProjectId = async (projectId: string) => fetchData(`logs/project/${projectId}`);
+export const FetchLogsByProjectId = async (projectId: string) => fetchData(`logs/${projectId}`);
 
 // Fetch all projects får alla project det skiljer sig eftersom loggs bara en array av ["1","2"] istället för vanliga project eftersom den görs om i db
 export const FetchAllProjects = async () => fetchData("projects");
 
 // Fetch logs filtered by project and type så tex alla på ståldirekts errors
 export const FetchLogsByProjectAndType = async (projectId: string, type: string) =>
-    fetchData(`logs/project/${projectId}/type/${type}`);
+    fetchData(`logs/${projectId}/type/${type}`);
 
 // Fetch project by projects id och får det valda projectet
 //export const FetchProjectById = async (projectId: string) => fetchData(`projects/${projectId}`);
