@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Card, Statistic } from "antd";
 import { Link } from "react-router-dom";
-import { SmileTwoTone } from "@ant-design/icons";
+import { FrownTwoTone, SmileTwoTone } from "@ant-design/icons";
 import ProjectBarChart from "../projects/BarChart";
 import { Project } from "../../utils/Interface";
 import { fetchCrashes } from "../../utils/fetchingFromApi/FetchCrashes";
@@ -48,6 +48,15 @@ const ProjectCard = ({ project }: { project: Project }) => {
 
     const totalLogs = logs.length;
     const crashFreePercentage = totalLogs > 0 ? calculateCrashFreePercentage(totalLogs, crashes) : "100.00";
+    const crashFreeNumber = parseFloat(crashFreePercentage);
+
+    const icon =
+        crashFreeNumber < 50 ? (
+            <FrownTwoTone twoToneColor="#ff4d4f" />
+        ) : (
+            <SmileTwoTone twoToneColor={crashFreeNumber < 80 ? "#faad14" : "#52c41a"} />
+        );
+
 
     return (
         <Card
@@ -80,7 +89,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
                 title="Crash Free Sessions"
                 value={crashFreePercentage}
                 suffix="%"
-                prefix={<SmileTwoTone />}
+                prefix={icon}
                 style={{ fontSize: "1.5rem" }}
             />
         </Card>
