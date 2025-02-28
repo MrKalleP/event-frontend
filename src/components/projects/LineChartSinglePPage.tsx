@@ -77,7 +77,7 @@ export default function ProjectLineChart({ allLogs, projectId }: { allLogs: Log[
         const filtered = filterDataByRange(allLogs, timeRange, projectId);
         const aggregated = putAllDataTogheter(filtered, timeRange);
 
-        const finalData = logType === "all" ? aggregated : aggregated.map(entry => ({ date: entry.date, [logType]: String || 0, }));
+        const finalData = logType === "all" ? aggregated : aggregated.map(entry => ({ date: entry.date, [logType]: entry[logType] || 0, }));
 
         setFilteredData(finalData as preProcessDataType[]);
     }, [timeRange, logType, allLogs, projectId]);
