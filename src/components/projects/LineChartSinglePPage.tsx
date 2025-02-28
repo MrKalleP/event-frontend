@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend, CartesianGrid } from "recharts";
 import { Log, preProcessDataType } from "../../utils/Interface";
 
 const filterDataByRange = (data: Log[], range: string, projectId: string) => {
@@ -31,8 +31,8 @@ const filterDataByRange = (data: Log[], range: string, projectId: string) => {
     return data.filter(log => new Date(log.date) >= startDate && log.projectId === projectId);
 };
 
-const aggregateData = (data: Log[], range: string) => {
-    let aggregatedData: {
+const putAllDataTogheter = (data: Log[], range: string) => {
+    let putAllDataTogheter: {
         [key: string]: { date: string, info: number, warning: number, error: number, crashed: number }
     } = {};
 
@@ -54,30 +54,33 @@ const aggregateData = (data: Log[], range: string) => {
         }
 
         // Skapa ny samling om det inte redan finns
-        if (!aggregatedData[key]) {
-            aggregatedData[key] = { date: key, info: 0, warning: 0, error: 0, crashed: 0 };
+        if (!putAllDataTogheter[key]) {
+            putAllDataTogheter[key] = { date: key, info: 0, warning: 0, error: 0, crashed: 0 };
         }
 
         // Räknar varje typ av logg
-        if (entry.type === "info") aggregatedData[key].info += 1;
-        else if (entry.type === "warning") aggregatedData[key].warning += 1;
-        else if (entry.type === "error") aggregatedData[key].error += 1;
-        else if (entry.type === "crashed") aggregatedData[key].crashed += 1;
+        if (entry.type === "info") putAllDataTogheter[key].info += 1;
+        else if (entry.type === "warning") putAllDataTogheter[key].warning += 1;
+        else if (entry.type === "error") putAllDataTogheter[key].error += 1;
+        else if (entry.type === "crashed") putAllDataTogheter[key].crashed += 1;
     });
 
-    return Object.values(aggregatedData);
+    return Object.values(putAllDataTogheter);
 };
 
 export default function ProjectLineChart({ allLogs, projectId }: { allLogs: Log[], projectId: string }) {
-    const [timeRange, setTimeRange] = useState("today");
+    const [timeRange, setTimeRange] = useState("week");
+    const [logType, setLogType] = useState("all");
     const [filteredData, setFilteredData] = useState<preProcessDataType[]>([]);
 
     useEffect(() => {
         const filtered = filterDataByRange(allLogs, timeRange, projectId);
-        const aggregated = aggregateData(filtered, timeRange);
+        const aggregated = putAllDataTogheter(filtered, timeRange);
 
-        setFilteredData(aggregated);
-    }, [timeRange, allLogs, projectId]);
+        const finalData = logType === "all" ? aggregated : aggregated.map(entry => ({ date: entry.date, [logType]: String || 0, }));
+
+        setFilteredData(finalData as preProcessDataType[]);
+    }, [timeRange, logType, allLogs, projectId]);
 
     return (
         <main className="containerProjectLineChart" style={{ backgroundColor: "white", height: "100%", borderRadius: ".5rem", padding: "2rem" }}>
@@ -90,20 +93,40 @@ export default function ProjectLineChart({ allLogs, projectId }: { allLogs: Log[
                         }
                         return date;
                     }} />
-                    <YAxis />
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <YAxis allowDecimals={false} />
                     <Tooltip />
-                    <Line type="monotone" dataKey="info" stroke="var(--Info-color-)" strokeWidth={1.6} name="Info" activeDot={{ r: 6 }} />
-                    <Line type="monotone" dataKey="warning" stroke="var(--Warning-color-)" strokeWidth={1.6} name="Warning" />
-                    <Line type="monotone" dataKey="error" stroke="var(--errors-color-)" strokeWidth={1.6} name="Error" />
-                    <Line type="monotone" dataKey="crashed" stroke="var(--Crashed-color-)" strokeWidth={1.6} name="Crashed" />
+                    <Legend />
+                    {(logType === "all" || logType === "info") && (
+                        <Line type="monotone" dataKey="info" stroke="var(--Info-color-)" strokeWidth={1.6} name="Info" />
+                    )}
+                    {(logType === "all" || logType === "warning") && (
+                        <Line type="monotone" dataKey="warning" stroke="var(--Warning-color-)" strokeWidth={1.6} name="Warning" />
+                    )}
+                    {(logType === "all" || logType === "error") && (
+                        <Line type="monotone" dataKey="error" stroke="var(--errors-color-)" strokeWidth={1.6} name="Error" />
+                    )}
+                    {(logType === "all" || logType === "crashed") && (
+                        <Line type="monotone" dataKey="crashed" stroke="var(--Crashed-color-)" strokeWidth={1.6} name="Crashed" />
+                    )}
                 </LineChart>
+
             </ResponsiveContainer>
-            <select className="selectenForLineCart" value={timeRange} onChange={(e) => setTimeRange(e.target.value)}>
-                <option value="today">Today</option>
-                <option value="week">A week back</option>
-                <option value="month">Last month</option>
-                <option value="year">The whole year</option>
-            </select>
+            <section className="selectContainer">
+                <select className="selectenForLineCart" value={timeRange} onChange={(e) => setTimeRange(e.target.value)}>
+                    <option value="today">Today</option>
+                    <option value="week">A week back</option>
+                    <option value="month">Last month</option>
+                    <option value="year">The whole year</option>
+                </select>
+                <select className="selectenForLineCart" value={logType} onChange={(e) => setLogType(e.target.value)}>
+                    <option value="all">All Logs</option>
+                    <option value="info">Info</option>
+                    <option value="warning">Warning</option>
+                    <option value="error">Error</option>
+                    <option value="crashed">Crashed</option>
+                </select>
+            </section>
         </main>
     );
 }
