@@ -1,4 +1,4 @@
-import { Col, Table, TableColumnsType, Tag } from "antd";
+import { Col, Row, Table, TableColumnsType, Tag } from "antd";
 import { Log } from "../../utils/Interface";
 import { SortOrder } from "antd/es/table/interface";
 import formatDate from "../../utils/DateFunction";
@@ -54,17 +54,19 @@ export const ProjectLogsTable = ({ logs, showModal }: { logs: Log[], showModal: 
     ];
 
     return (
-        <Col xs={24} sm={24} md={24} lg={16} className="tableProjectPage">
-            <Table<Log>
-                dataSource={logs}
-                columns={columns}
-                tableLayout='fixed'
-                onRow={(record) => ({
-                    onClick: () => showModal(record),
-                })}
-                rowKey={(record) => String(record.id)}
-                pagination={{ pageSize: 10 }}
-            />
-        </Col>
+        <Row style={{ backgroundColor: "white", borderRadius: ".5rem" }}>
+            <Col xs={24} sm={24} md={24} lg={24} className="tableProjectPage">
+                <Table<Log>
+                    dataSource={logs}
+                    columns={columns}
+                    tableLayout='fixed'
+                    onRow={(record) => ({
+                        onClick: () => showModal(record),
+                    })}
+                    rowKey={(record) => String(record.id)}
+                    pagination={{ pageSize: 10 }}
+                />
+            </Col>
+        </Row>
     );
 };

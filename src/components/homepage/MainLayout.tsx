@@ -87,9 +87,9 @@ const MainLayout = () => {
                             </Breadcrumb.Item>
                         ))}
                     </Breadcrumb>
-                    <div>
+                    <section>
                         <Outlet />
-                    </div>
+                    </section>
                 </Content>
                 <Footer style={{ textAlign: "center" }}>Event Logger ©{new Date().getFullYear()}</Footer>
             </Layout>

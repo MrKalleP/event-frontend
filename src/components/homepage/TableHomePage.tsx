@@ -10,7 +10,7 @@ const TableHomePage = ({ allLogs }: { allLogs: Log[] }) => {
     const { selectedLog, isModalOpen, showModal, handleModalClose } = useModal();
 
     return (
-        <div className="containerHome">
+        <main className="containerHome">
             <Row gutter={[16, 16]}>
                 <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                     <Table<Log>
@@ -39,7 +39,7 @@ const TableHomePage = ({ allLogs }: { allLogs: Log[] }) => {
                     <LogDetailsModal log={selectedLog} isOpen={isModalOpen} onClose={handleModalClose} />
                 </Col>
             </Row>
-        </div>
+        </main>
     );
 };
 

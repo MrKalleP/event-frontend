@@ -29,7 +29,7 @@ const ProjectsPage = () => {
     };
 
     return (
-        <div className="projectPageContainer">
+        <main className="projectPageContainer">
             <h1 className="projectPageTitel">Project Page</h1>
             <Search
                 placeholder="Search for projects by name"
@@ -48,7 +48,7 @@ const ProjectsPage = () => {
                     </Col>
                 ))}
             </Row>
-        </div>
+        </main>
     );
 };
 
