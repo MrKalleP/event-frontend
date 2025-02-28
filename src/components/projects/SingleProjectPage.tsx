@@ -9,9 +9,10 @@ import { useEffect, useState } from "react";
 import { ProjectById } from "../../utils/fetchingFromApi/FetchProjectById";
 import { ProjectLogsById } from "../../utils/fetchingFromApi/FetchProjectLogsById";
 import ProjectLineChart from "./LineChartSinglePPage";
+import useAllLogs from "../../hooks/useFetchAllLogs";
 
 const SingleProjectPage = () => {
-
+    const { data: allLogs } = useAllLogs()
     const { projectId } = useParams();
     const { selectedLog, isModalOpen, showModal, handleModalClose } = useModal();
     const [project, setProject] = useState<Project | null>(null);
@@ -50,7 +51,7 @@ const SingleProjectPage = () => {
                             <ProjectLogsTable logs={logs} showModal={showModal} />
                         </Col>
                         <Col xs={24} sm={24} md={24} lg={12}>
-                            <ProjectLineChart />
+                            <ProjectLineChart allLogs={allLogs} projectId={projectId} />
                         </Col>
                     </Row>
                 </Col>

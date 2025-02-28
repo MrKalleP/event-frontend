@@ -122,13 +122,13 @@ html,
   background-color: white;
   padding: 2rem;
   border-radius: .5rem;
-  min-height: 30vh;
+  min-height: 50vh;
   margin-bottom: 6rem;
 }
 
 .containerProjectLineChart {
   width: 100%;
-  height: 50vh;
+  min-height: 50vh;
   background-color: #f0f2f5;
   display: flex;
   flex-direction: column;
