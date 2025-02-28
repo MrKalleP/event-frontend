@@ -8,7 +8,7 @@ const allLogs = [
     { date: "2025-02-24", value: 40 },
     { date: "2025-02-25", value: 60 },
     { date: "2025-02-26", value: 80 },
-    { date: "2025-02-27", value: 70 },
+    { date: "2025-02-28", value: 70 },
 ];
 
 const filterDataByRange = (data, range) => {
@@ -40,7 +40,7 @@ const filterDataByRange = (data, range) => {
 };
 
 export default function ProjectLineChart() {
-    const [timeRange, setTimeRange] = useState("week");
+    const [timeRange, setTimeRange] = useState("today");
     const [filteredData, setFilteredData] = useState([]);
 
     useEffect(() => {
@@ -51,13 +51,13 @@ export default function ProjectLineChart() {
         <main className="containerProjectLineChart" style={{ backgroundColor: "white", height: "100%", borderRadius: ".5rem", padding: "2rem" }}>
             <h2 className="ProjectLineChartH2">Projektets Loggar</h2>
             <select className="selectenForLineCart" value={timeRange} onChange={(e) => setTimeRange(e.target.value)}>
-                <option value="today">Idag</option>
-                <option value="week">Senaste veckan</option>
-                <option value="month">Senaste månaden</option>
-                <option value="year">Hela året</option>
+                <option value="today">Today</option>
+                <option value="week">A week back</option>
+                <option value="month">Last month</option>
+                <option value="year">The whole year</option>
             </select>
 
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={500} style={{ padding: "2rem" }}>
                 <LineChart data={filteredData}>
                     <XAxis dataKey="date" />
                     <YAxis />

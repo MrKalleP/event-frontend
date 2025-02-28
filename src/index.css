@@ -138,18 +138,19 @@ html,
   font-size: 2rem;
   text-align: center;
   color: var(--errors-color-);
-
 }
 
 .selectenForLineCart {
   font-size: 1rem;
   border-radius: .5rem;
-  margin-bottom: .4rem;
   padding: .2rem;
   border: none;
   background-color: var(--Info-color-);
   color: #f0f2f5;
+  font-weight: 500;
+  letter-spacing: .05rem;
 }
+
 
 @media (max-width: 730px) {
   .titleProjectSingle {
