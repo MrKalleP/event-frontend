@@ -1,47 +1,35 @@
-
 export const themeGlobal = {
     token: {
         colorPrimary: "#3A4DCB",
         colorBgLayout: "#F2F2F2",
         colorBgContainer: "white",
         colorText: "rgba(0,0,0,0.88)",
-        borderRadius: ".5rem",
+        borderRadius: 8,
         boxShadow: "0 2px 8px rgba(0, 0, 0, 0.15)",
     },
     components: {
-        Layout: {
-
-        },
-        Sider: {
-
-        },
-        Footer: {
-
-
-        },
         Menu: {
-            itemHeight: "2.5rem",
-            fontSize: "1rem",
+            itemHeight: 40,
+            fontSize: 16,
         },
         Breadcrumb: {
-            margin: "1rem",
-            fontSize: "16px",
+            margin: 16,
+            fontSize: 16,
             separator: "/",
         },
         Card: {
-            padding: "2rem",
-            margin: "16px 0",
+            padding: 32,
             boxShadow: "0 2px 8px rgba(0, 0, 0, 0.6)",
         }
     },
     responsive: {
         breakpoints: {
-            xs: "480px",
-            sm: "576px",
-            md: "768px",
-            lg: "992px",
-            xl: "1200px",
-            xxl: "1600px",
+            xs: 480,
+            sm: 576,
+            md: 768,
+            lg: 992,
+            xl: 1200,
+            xxl: 1600,
         },
     },
 };

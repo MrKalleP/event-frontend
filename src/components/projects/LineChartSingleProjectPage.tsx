@@ -31,10 +31,19 @@ const filterDataByRange = (data: Log[], range: string, projectId: string) => {
     return data.filter(log => new Date(log.date) >= startDate && log.projectId === projectId);
 };
 
-const putAllDataTogheter = (data: Log[], range: string) => {
-    let putAllDataTogheter: {
-        [key: string]: { date: string, info: number, warning: number, error: number, crashed: number }
-    } = {};
+interface PutAllDataTogheterMap {
+    [key: string]: {
+        type: string;
+        date: string;
+        info: number;
+        warning: number;
+        error: number;
+        crashed: number;
+    };
+}
+
+const putAllDataTogheter = (data: Log[], range: string): Array<PutAllDataTogheterMap[keyof PutAllDataTogheterMap]> => {
+    let putAllDataTogheter: PutAllDataTogheterMap = {};
 
     data.forEach((entry) => {
         const date = new Date(entry.date);
@@ -55,7 +64,7 @@ const putAllDataTogheter = (data: Log[], range: string) => {
 
         // Skapa ny samling om det inte redan finns
         if (!putAllDataTogheter[key]) {
-            putAllDataTogheter[key] = { date: key, info: 0, warning: 0, error: 0, crashed: 0 };
+            putAllDataTogheter[key] = { date: key, info: 0, warning: 0, error: 0, crashed: 0, type: "" };
         }
 
         // Räknar varje typ av logg
@@ -91,8 +100,8 @@ export default function ProjectLineChart({ allLogs, projectId }: { allLogs: Log[
         <main className="containerProjectLineChart" style={{ backgroundColor: "white", height: "100%", borderRadius: ".5rem", padding: "2rem" }}>
             <h2 className="ProjectLineChartH2">Projektets Loggar</h2>
             <ResponsiveContainer width="100%" height={500} style={{ padding: "2rem" }}>
-                <LineChart data={filteredData}>
-                    <XAxis dataKey="date" tickFormatter={(date) => {
+                <LineChart data={filteredData} >
+                    <XAxis tickMargin={10} dataKey="date" tickFormatter={(date) => {
                         if (timeRange === "month") {
                             return date.replace("-", "/");
                         }
@@ -104,9 +113,13 @@ export default function ProjectLineChart({ allLogs, projectId }: { allLogs: Log[
                         position={{ x: -62, y: 80 }}
                         itemStyle={{ padding: ".6rem", fontSize: "1.2rem" }}
                         labelStyle={{ fontSize: "1.2rem", padding: ".6rem", color: "#033649", marginBottom: ".5rem" }}
-                        contentStyle={{ border: "none" }}
                     />
-                    <Legend />
+                    <Legend
+                        iconType="triangle"
+                        verticalAlign="top"
+                        iconSize={20}
+                        wrapperStyle={{ padding: '1rem' }}
+                    />
                     {(logType === "all" || logType === "info") && (
                         <Line type="monotone" dataKey="info" stroke="var(--Info-color-)" strokeWidth={1.6} name="Info" />
                     )}

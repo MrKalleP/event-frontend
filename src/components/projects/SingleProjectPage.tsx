@@ -8,7 +8,7 @@ import ProjectDetails from "./ProjectDetails";
 import { useEffect, useState } from "react";
 import { ProjectById } from "../../utils/fetchingFromApi/FetchProjectById";
 import { ProjectLogsById } from "../../utils/fetchingFromApi/FetchProjectLogsById";
-import ProjectLineChart from "./LineChartSinglePPage";
+import ProjectLineChart from "./LineChartSingleProjectPage";
 import useAllLogs from "../../hooks/useFetchAllLogs";
 
 const SingleProjectPage = () => {
@@ -51,7 +51,7 @@ const SingleProjectPage = () => {
                             <ProjectLogsTable logs={logs} showModal={showModal} />
                         </Col>
                         <Col xs={24} sm={24} md={24} lg={12}>
-                            <ProjectLineChart allLogs={allLogs} projectId={projectId} />
+                            <ProjectLineChart allLogs={allLogs} projectId={projectId as string} />
                         </Col>
                     </Row>
                 </Col>
