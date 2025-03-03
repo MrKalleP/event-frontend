@@ -86,24 +86,56 @@ export default function ProjectLineChart({ allLogs, projectId }: { allLogs: Log[
     }, [timeRange, logType, allLogs, projectId]);
 
     return (
-        <main className="containerProjectLineChart" style={{ backgroundColor: "white", height: "100%", borderRadius: ".5rem", padding: "2rem" }}>
+        <main className="containerProjectLineChart"
+            style={{
+                backgroundColor: "white",
+                height: "100%",
+                borderRadius: ".5rem",
+                padding: "2rem"
+            }}>
             <h2 className="ProjectLineChartH2">Projektets Loggar</h2>
-            <ResponsiveContainer width="100%" height={500} style={{ padding: "2rem" }}>
+            <ResponsiveContainer
+                width="100%"
+                height={500}
+                style={{
+                    padding: "2rem"
+                }}>
                 <LineChart data={filteredData} >
-                    <XAxis tickMargin={10} dataKey="date" tickFormatter={(date) => {
-                        if (timeRange === "month") {
-                            return date.replace("-", "/");
-                        }
-                        return date;
-                    }} />
+                    <XAxis
+                        tickMargin={10}
+                        style={{
+                            fontSize: "1.05rem",
+                            fontWeight: 800,
+                            letterSpacing: ".1rem"
+                        }}
+                        dataKey="date"
+                        tickFormatter={(date) => {
+                            if (timeRange === "month") {
+                                return date.replace("-", "/");
+                            }
+                            return date;
+                        }} />
                     <CartesianGrid strokeDasharray="3 3" />
                     <YAxis allowDecimals={false} />
                     <Tooltip
-                        cursor={{ stroke: "var(--Info-color-)", strokeWidth: 3 }}
+                        cursor={{
+                            stroke: "var(--Info-color-)",
+                            strokeWidth: 3
+                        }}
                         position={{ x: -62, y: 80 }}
-                        itemStyle={{ padding: ".6rem", fontSize: "1.2rem" }}
-                        labelStyle={{ fontSize: "1.2rem", padding: ".6rem", color: "#033649", marginBottom: ".5rem" }}
-                        contentStyle={{ border: "none" }}
+                        itemStyle={{
+                            padding: ".6rem",
+                            fontSize: "1.2rem"
+                        }}
+                        labelStyle={{
+                            fontSize: "1.2rem",
+                            padding: ".6rem",
+                            color: "#033649",
+                            marginBottom: ".5rem"
+                        }}
+                        contentStyle={{
+                            border: "none"
+                        }}
                     />
                     <Legend
                         iconType="triangle"
@@ -112,16 +144,36 @@ export default function ProjectLineChart({ allLogs, projectId }: { allLogs: Log[
                         wrapperStyle={{ padding: '1rem' }}
                     />
                     {(logType === "all" || logType === "info") && (
-                        <Line type="monotone" dataKey="info" stroke="var(--Info-color-)" strokeWidth={1.6} name="Info" />
+                        <Line
+                            type="monotone"
+                            dataKey="info"
+                            stroke="var(--Info-color-)"
+                            strokeWidth={1.6}
+                            name="Info" />
                     )}
                     {(logType === "all" || logType === "warning") && (
-                        <Line type="monotone" dataKey="warning" stroke="var(--Warning-color-)" strokeWidth={1.6} name="Warning" />
+                        <Line
+                            type="monotone"
+                            dataKey="warning"
+                            stroke="var(--Warning-color-)"
+                            strokeWidth={1.6}
+                            name="Warning" />
                     )}
                     {(logType === "all" || logType === "error") && (
-                        <Line type="monotone" dataKey="error" stroke="var(--errors-color-)" strokeWidth={1.6} name="Error" />
+                        <Line
+                            type="monotone"
+                            dataKey="error"
+                            stroke="var(--errors-color-)"
+                            strokeWidth={1.6}
+                            name="Error" />
                     )}
                     {(logType === "all" || logType === "crashed") && (
-                        <Line type="monotone" dataKey="crashed" stroke="var(--Crashed-color-)" strokeWidth={1.6} name="Crashed" />
+                        <Line
+                            type="monotone"
+                            dataKey="crashed"
+                            stroke="var(--Crashed-color-)"
+                            strokeWidth={1.6}
+                            name="Crashed" />
                     )}
                 </LineChart>
 
