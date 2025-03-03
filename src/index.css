@@ -10,6 +10,7 @@
   --dark-color-: black;
 
   --effect-blue-color: #1677ff;
+  --close-error-color: #842b2b;
 }
 
 body {
@@ -102,11 +103,11 @@ html,
 
 .PTagProjectSingle {
   text-align: center;
-  color: var(--errors-color-);
+  color: var(--close-error-color);
   letter-spacing: .1rem;
   font-weight: 700;
-  font-size: 1.4rem;
-  margin-bottom: 5rem;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
 }
 
 .titleProjectSingle {
@@ -115,7 +116,7 @@ html,
   color: var(--errors-color-);
   letter-spacing: 0.4rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-block: 2rem;
 }
 
 .tableProjectPage {
@@ -138,6 +139,8 @@ html,
   font-size: 2rem;
   text-align: center;
   color: var(--errors-color-);
+  text-decoration: underline;
+  line-height: 1rem;
 }
 
 .selectenForLineCart {
@@ -160,6 +163,7 @@ html,
   justify-content: space-evenly;
   padding: .5rem;
 }
+
 
 
 @media (max-width: 730px) {
