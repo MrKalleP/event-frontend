@@ -102,6 +102,7 @@ export default function ProjectLineChart({ allLogs, projectId }: { allLogs: Log[
                         position={{ x: -62, y: 80 }}
                         itemStyle={{ padding: ".6rem", fontSize: "1.2rem" }}
                         labelStyle={{ fontSize: "1.2rem", padding: ".6rem", color: "#033649", marginBottom: ".5rem" }}
+                        contentStyle={{ border: "none" }}
                     />
                     <Legend
                         iconType="triangle"
