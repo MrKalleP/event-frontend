@@ -77,7 +77,12 @@ export default function ProjectLineChart({ allLogs, projectId }: { allLogs: Log[
         const filtered = filterDataByRange(allLogs, timeRange, projectId);
         const aggregated = putAllDataTogheter(filtered, timeRange);
 
-        const finalData = logType === "all" ? aggregated : aggregated.map(entry => ({ date: entry.date, [logType]: entry[logType] || 0, }));
+        const finalData = logType === "all"
+            ? aggregated
+            : aggregated.map(entry => ({
+                date: entry.date,
+                [logType]: entry[logType as keyof typeof entry] || 0,
+            }));
 
         setFilteredData(finalData as preProcessDataType[]);
     }, [timeRange, logType, allLogs, projectId]);
@@ -95,7 +100,12 @@ export default function ProjectLineChart({ allLogs, projectId }: { allLogs: Log[
                     }} />
                     <CartesianGrid strokeDasharray="3 3" />
                     <YAxis allowDecimals={false} />
-                    <Tooltip />
+                    <Tooltip
+                        position={{ x: -62, y: 80 }}
+                        itemStyle={{ padding: ".6rem", fontSize: "1.2rem" }}
+                        labelStyle={{ fontSize: "1.2rem", padding: ".6rem", color: "#033649", marginBottom: ".5rem" }}
+                        contentStyle={{ border: "none" }}
+                    />
                     <Legend />
                     {(logType === "all" || logType === "info") && (
                         <Line type="monotone" dataKey="info" stroke="var(--Info-color-)" strokeWidth={1.6} name="Info" />
