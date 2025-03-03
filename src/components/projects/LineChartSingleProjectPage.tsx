@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend, CartesianGrid } from "recharts";
-import { Log, preProcessDataType } from "../../utils/Interface";
+import { Log, preProcessDataType, PutAllDataTogheterMap } from "../../utils/Interface";
 
 const filterDataByRange = (data: Log[], range: string, projectId: string) => {
     const now = new Date();
@@ -30,17 +30,6 @@ const filterDataByRange = (data: Log[], range: string, projectId: string) => {
     // Filtrera både på datum och projectId
     return data.filter(log => new Date(log.date) >= startDate && log.projectId === projectId);
 };
-
-interface PutAllDataTogheterMap {
-    [key: string]: {
-        type: string;
-        date: string;
-        info: number;
-        warning: number;
-        error: number;
-        crashed: number;
-    };
-}
 
 const putAllDataTogheter = (data: Log[], range: string): Array<PutAllDataTogheterMap[keyof PutAllDataTogheterMap]> => {
     let putAllDataTogheter: PutAllDataTogheterMap = {};

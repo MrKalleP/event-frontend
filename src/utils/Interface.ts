@@ -55,3 +55,13 @@ export interface TypesCardHomeProps {
     icon: FC;
 }
 
+export interface PutAllDataTogheterMap {
+    [key: string]: {
+        type: string;
+        date: string;
+        info: number;
+        warning: number;
+        error: number;
+        crashed: number;
+    };
+}
