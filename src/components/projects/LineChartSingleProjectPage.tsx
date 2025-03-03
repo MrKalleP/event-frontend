@@ -99,6 +99,7 @@ export default function ProjectLineChart({ allLogs, projectId }: { allLogs: Log[
                     <CartesianGrid strokeDasharray="3 3" />
                     <YAxis allowDecimals={false} />
                     <Tooltip
+                        cursor={{ stroke: "var(--Info-color-)", strokeWidth: 3 }}
                         position={{ x: -62, y: 80 }}
                         itemStyle={{ padding: ".6rem", fontSize: "1.2rem" }}
                         labelStyle={{ fontSize: "1.2rem", padding: ".6rem", color: "#033649", marginBottom: ".5rem" }}
