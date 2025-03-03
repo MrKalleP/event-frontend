@@ -3,7 +3,7 @@ import { Card, Statistic } from "antd";
 import { Link } from "react-router-dom";
 import { FrownTwoTone, SmileTwoTone } from "@ant-design/icons";
 import ProjectBarChart from "../projects/BarChart";
-import { Project } from "../../utils/Interface";
+import { Log, Project } from "../../utils/Interface";
 import { fetchCrashes } from "../../utils/fetchingFromApi/FetchCrashes";
 import { ProjectLogsById } from "../../utils/fetchingFromApi/FetchProjectLogsById";
 
@@ -15,7 +15,7 @@ const calculateCrashFreePercentage = (totalLogs: number, crashed: number) => {
 const ProjectCard = ({ project }: { project: Project }) => {
     const { name, id } = project;
 
-    const [logs, setLogs] = useState<any[]>([]);
+    const [logs, setLogs] = useState<Log[]>([]);
     const [crashes, setCrashes] = useState<number>(0);
 
     useEffect(() => {
