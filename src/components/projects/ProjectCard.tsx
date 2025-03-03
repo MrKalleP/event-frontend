@@ -64,7 +64,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
                 <Link to={`/project/${id}`}
                     style={{
                         fontSize: "1.5rem",
-                        cursor: "pointer"
+                        cursor: "pointer",
                     }}>
                     {name}
                 </Link>}

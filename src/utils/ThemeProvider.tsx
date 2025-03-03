@@ -1,3 +1,4 @@
+
 export const themeGlobal = {
     token: {
         colorPrimary: "#3A4DCB",
@@ -6,6 +7,8 @@ export const themeGlobal = {
         colorText: "rgba(0,0,0,0.88)",
         borderRadius: 8,
         boxShadow: "0 2px 8px rgba(0, 0, 0, 0.15)",
+
+        colorLinkHover: "var(--errors-color-)",
     },
     components: {
         Menu: {
