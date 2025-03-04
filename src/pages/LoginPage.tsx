@@ -1,7 +1,7 @@
 
 import { LockOutlined, LoginOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, Flex, Row, Col } from 'antd';
-import { useAuth } from "../components/login/AuthContextLogin";
+import { useAuth } from "../hooks/useAuthHook";
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
@@ -11,9 +11,10 @@ const LoginPage = () => {
     const onFinish = (values: { username: string; password: string }) => {
         console.log("Received values of form: ", values);
 
-
         if (values.username === "test" && values.password === "password") {
             login(values.username);
+
+            console.log("User logged in:", values.username);
             navigate("/");
         } else {
             alert("Invalid credentials");

@@ -65,3 +65,9 @@ export interface PutAllDataTogheterMap {
         crashed: number;
     };
 }
+
+export interface AuthContextType {
+    user: string | null;
+    login: (username: string) => void;
+    logout: () => void;
+}

@@ -15,7 +15,7 @@ import { AuthProvider } from "./components/login/AuthContextLogin.tsx";
 const App: React.FC = () => {
   return (
     <ConfigProvider theme={themeGlobal}>
-      <AuthProvider >
+      <AuthProvider>
         <BrowserRouter>
           <Routes>
             <Route path="/login" element={<LoginPage />} />
@@ -29,7 +29,7 @@ const App: React.FC = () => {
             </Route>
           </Routes>
         </BrowserRouter>
-      </AuthProvider >
+      </AuthProvider>
     </ConfigProvider>
   );
 };
