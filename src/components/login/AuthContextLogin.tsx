@@ -1,4 +1,4 @@
-import { useState, ReactNode } from "react";
+import { useState, ReactNode, useEffect } from "react";
 import { AuthContext } from "../../utils/AuthContext";
 
 interface AuthProviderProps {
@@ -6,7 +6,12 @@ interface AuthProviderProps {
 }
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-    const [user, setUser] = useState<string | null>(localStorage.getItem("user"));
+
+    const [user, setUser] = useState<string | null>(null);
+
+    useEffect(() => {
+        setUser(localStorage.getItem("user"));
+    }, []);
 
     const login = (username: string) => {
         setUser(username);
