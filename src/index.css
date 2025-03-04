@@ -164,6 +164,15 @@ html,
   padding: .5rem;
 }
 
+.loginPageContainer {
+  min-height: 100vh;
+  width: 100%;
+  max-width: 2400px;
+  background-color: #f0f2f5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 
 @media (max-width: 730px) {

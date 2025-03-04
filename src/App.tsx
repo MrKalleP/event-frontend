@@ -6,6 +6,7 @@ import MainLayout from "./components/homepage/MainLayout";
 import SingleProjectPage from "./components/projects/SingleProjectPage";
 import { ConfigProvider } from 'antd';
 import { themeGlobal } from './utils/ThemeProvider.tsx';
+import LoginPage from './pages/LoginPage.tsx';
 
 const App: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const App: React.FC = () => {
       <BrowserRouter>
         <Routes>
           <Route element={<MainLayout />}>
+            <Route path="/login" element={< LoginPage />} />
             <Route path="/" element={<HomePage />} />
             <Route path="/project" element={<ProjectPage />} />
             <Route path="/project/:projectId" element={<SingleProjectPage />} />
