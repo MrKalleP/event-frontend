@@ -1,24 +1,37 @@
 
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { LockOutlined, LoginOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, Flex, Row, Col } from 'antd';
+import { useAuth } from "../components/login/AuthContextLogin";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+    const { login } = useAuth();
+    const navigate = useNavigate();
 
-    const onFinish = (values: any) => {
-        console.log('Received values of form: ', values);
+    const onFinish = (values: { username: string; password: string }) => {
+        console.log("Received values of form: ", values);
+
+
+        if (values.username === "test" && values.password === "password") {
+            login(values.username);
+            navigate("/");
+        } else {
+            alert("Invalid credentials");
+        }
     };
 
     return (
         <main className="loginPageContainer">
             <Row gutter={[16, 16]} justify="center" >
                 <Col xs={24} sm={12} md={6} lg={6} >
-                    <label><h2 style={{
-                        marginBlock: "2rem",
-                        fontSize: "2rem",
-                        textAlign: "center",
-                        textDecoration: "underline",
-                        color: "var(--errors-color-)"
-                    }}>Sign in to enter the Event log system</h2></label>
+                    <label><h2
+                        style={{
+                            marginBlock: "2rem",
+                            fontSize: "1.8rem",
+                            textAlign: "center",
+                            textDecoration: "underline",
+                            color: "var(--errors-color-)"
+                        }}>  Sign in to enter the Event log system  <LoginOutlined style={{ color: "var(--Info-color-)", padding: ".4rem" }} /></h2></label>
                     <Form
                         name="login"
                         initialValues={{ remember: true }}
