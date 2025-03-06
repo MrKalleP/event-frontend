@@ -10,15 +10,9 @@ const LoginPage = () => {
 
 
     const onFinish = (values: { username: string; password: string }) => {
-        console.log("Trying to log in with:", values);
-
         if (values.username === "test" && values.password === "password") {
             login(values.username);
-
-            setTimeout(() => {
-                console.log("Navigating...");
-                navigate("/");
-            }, 100);
+            navigate("/");
         } else {
             message.error("Invalid credentials");
         }
@@ -28,7 +22,7 @@ const LoginPage = () => {
     return (
         <main className="loginPageContainer">
             <Row gutter={[16, 16]} justify="center">
-                <Col xs={24} sm={12} md={8} lg={8}>
+                <Col xs={24} sm={24} md={12} lg={6}>
                     <h2
                         style={{
                             display: "flex",

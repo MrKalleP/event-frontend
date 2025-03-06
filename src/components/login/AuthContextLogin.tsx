@@ -6,16 +6,9 @@ interface AuthProviderProps {
 }
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-    const [user, setUser] = useState<string | null>("test");
+    const [user, setUser] = useState<string | null>(null);
 
-    /*useEffect(() => {
-        const storedUser = localStorage.getItem("user");
-        if (storedUser) {
-            setUser(storedUser);
-        }
-    }, []); 
 
-  
     useEffect(() => {
         if (user) {
             localStorage.setItem("user", user);
@@ -23,7 +16,14 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
             localStorage.removeItem("user");
         }
     }, [user]);
-*/
+
+    useEffect(() => {
+        const storedUser = localStorage.getItem("user");
+        if (storedUser) {
+            setUser(storedUser);
+        }
+    }, []);
+
     const login = (username: string) => {
         setUser(username);
     };

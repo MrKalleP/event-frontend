@@ -63,7 +63,6 @@ html,
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  max-width: 1200px;
   margin: 0 auto;
   background-color: white;
   color: #2A2A2A;
@@ -83,7 +82,6 @@ html,
 .projectPageContainer {
   min-height: 100vh;
   width: 100%;
-  max-width: 2400px;
   margin: 0 auto;
   background-color: #f0f2f5;
   padding: 2rem;

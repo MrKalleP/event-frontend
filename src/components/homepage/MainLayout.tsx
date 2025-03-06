@@ -70,7 +70,7 @@ const MainLayout = () => {
                         type="primary"
                         icon={<MenuOutlined />}
                         onClick={() => setDrawerVisible(true)}
-                        style={{ position: "fixed", top: 5, right: 20, zIndex: 1000, marginTop: "1rem" }}
+                        style={{ position: "absolute", top: 5, right: 20, zIndex: 10 }}
                     />
 
                     <MyDrawer
