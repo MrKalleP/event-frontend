@@ -13,14 +13,16 @@ const LogoutButton = () => {
     };
 
     return (<section style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "baseline",
         height: "100vh",
         width: "100%",
     }}>
         <Button
             style={{
+                display: "flex",
+                width: "100%",
+                alignItems: "center",
+                justifyContent: "center",
+                textAlign: "center",
                 padding: "1.2rem 2.4rem",
                 fontSize: "16px",
                 color: "var(--white-color-)",
