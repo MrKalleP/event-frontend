@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation, Outlet } from "react-router-dom";
 import { Layout, Menu, Breadcrumb, Button } from "antd";
-import { ProjectOutlined, HomeOutlined, MenuOutlined, LoginOutlined } from "@ant-design/icons";
+import { ProjectOutlined, HomeOutlined, MenuOutlined } from "@ant-design/icons";
 import Logo from "../../utils/Logo";
 import MyDrawer from "./MyDrawerMenu";
 import LogoutButton from "../login/LogOutBtn";
@@ -18,7 +18,6 @@ const MainLayout = () => {
     const menuItems = [
         { key: "/", label: "Home", icon: <HomeOutlined /> },
         { key: "/project", label: "Projects", icon: <ProjectOutlined /> },
-        { key: "/login", label: "Login", icon: <LoginOutlined /> },
     ];
 
     const breadcrumbItems = decodeURIComponent(location.pathname)
@@ -36,7 +35,7 @@ const MainLayout = () => {
 
     return (
         <Layout>
-            <LogoutButton />
+
             {!isMobile && (
                 <Sider
                     collapsible
@@ -58,8 +57,11 @@ const MainLayout = () => {
                         {menuItems.map((item) => (
                             <Menu.Item key={item.key} icon={item.icon} style={{ textAlign: "left", marginBlock: ".6rem" }}>
                                 <Link style={{ marginInline: ".4rem" }} to={item.key}>{item.label}</Link>
+
                             </Menu.Item>
+
                         ))}
+                        < LogoutButton />
                     </Menu>
                 </Sider>)}
             {isMobile && (

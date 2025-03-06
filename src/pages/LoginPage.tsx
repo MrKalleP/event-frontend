@@ -1,8 +1,8 @@
 
 import { LockOutlined, LoginOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input, Flex, Row, Col } from 'antd';
+import { Button, Checkbox, Form, Input, Flex, Row, Col, message } from 'antd';
 import { useAuth } from "../hooks/useAuthHook";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const LoginPage = () => {
     const { login } = useAuth();
@@ -13,26 +13,33 @@ const LoginPage = () => {
 
         if (values.username === "test" && values.password === "password") {
             login(values.username);
-
             console.log("User logged in:", values.username);
-            navigate("/");
+
+            setTimeout(() => {
+                navigate("/");
+            }, 500);
         } else {
-            alert("Invalid credentials");
+            message.error("Invalid credentials");
         }
     };
 
     return (
         <main className="loginPageContainer">
-            <Row gutter={[16, 16]} justify="center" >
-                <Col xs={24} sm={12} md={6} lg={6} >
-                    <label><h2
+            <Row gutter={[16, 8]} justify="center">
+                <Col xs={24} sm={12} md={8} lg={8}>
+                    <h2
                         style={{
-                            marginBlock: "2rem",
+                            display: "flex",
+                            margin: "2rem",
                             fontSize: "1.8rem",
                             textAlign: "center",
                             textDecoration: "underline",
                             color: "var(--errors-color-)"
-                        }}>  Sign in to enter the Event log system  <LoginOutlined style={{ color: "var(--Info-color-)", padding: ".4rem" }} /></h2></label>
+                        }}
+                    >
+                        Sign in to enter the Event log system
+                        <LoginOutlined style={{ color: "var(--Info-color-)", padding: ".4rem" }} />
+                    </h2>
                     <Form
                         name="login"
                         initialValues={{ remember: true }}
@@ -61,19 +68,23 @@ const LoginPage = () => {
                                 <Form.Item name="remember" valuePropName="checked" noStyle>
                                     <Checkbox>Remember me</Checkbox>
                                 </Form.Item>
-                                <a href="">Forgot password</a>
+                                <Link to="/forgot-password">Forgot password</Link>
                             </Flex>
                         </Form.Item>
 
                         <Form.Item>
-                            <Button block type="primary" htmlType="submit"
+                            <Button
+                                block
+                                type="primary"
+                                htmlType="submit"
                                 style={{
                                     backgroundColor: "var(--Info-color-)",
                                     marginBlock: ".5rem"
-                                }}>
+                                }}
+                            >
                                 Log in
                             </Button>
-                            or <a href="">Register now!</a>
+                            or <Link to="/register">Register now!</Link>
                         </Form.Item>
                     </Form>
                 </Col>
@@ -82,5 +93,4 @@ const LoginPage = () => {
     );
 };
 
-
-export default LoginPage
+export default LoginPage;

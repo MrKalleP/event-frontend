@@ -10,7 +10,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     const [user, setUser] = useState<string | null>(null);
 
     useEffect(() => {
-        setUser(localStorage.getItem("user"));
+        const storedUser = localStorage.getItem("user");
+        if (storedUser) {
+            setUser(storedUser);
+        }
     }, []);
 
     const login = (username: string) => {
