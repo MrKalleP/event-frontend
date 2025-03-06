@@ -1,6 +1,7 @@
 import { HomeOutlined, ProjectOutlined } from "@ant-design/icons";
 import { Drawer, Menu } from "antd";
 import { Link, useLocation } from "react-router-dom";
+import LogoutButton from "../login/LogOutBtn";
 
 interface MyDrawerProps {
     visible: boolean;
@@ -27,14 +28,17 @@ const MyDrawer = ({ visible, onClose }: MyDrawerProps) => {
                 style={{ padding: ".5rem" }}
                 defaultSelectedKeys={[location.pathname]}
                 selectedKeys={[location.pathname]}
+
             >
                 {menuItems.map((item) => (
                     <Menu.Item key={item.key} icon={item.icon}>
                         <Link style={{ marginInline: ".4rem" }} to={item.key} onClick={onClose}>
                             {item.label}
                         </Link>
+
                     </Menu.Item>
                 ))}
+                < LogoutButton />
             </Menu>
         </Drawer>
     );
