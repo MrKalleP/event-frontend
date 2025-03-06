@@ -22,7 +22,7 @@ const LoginPage = () => {
     return (
         <main className="loginPageContainer">
             <Row gutter={[16, 16]} justify="center">
-                <Col xs={24} sm={24} md={12} lg={6}>
+                <Col xs={24} sm={24} md={12} lg={8}>
                     <h2
                         style={{
                             display: "flex",
