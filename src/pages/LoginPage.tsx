@@ -8,24 +8,26 @@ const LoginPage = () => {
     const { login } = useAuth();
     const navigate = useNavigate();
 
+
     const onFinish = (values: { username: string; password: string }) => {
-        console.log("Received values of form: ", values);
+        console.log("Trying to log in with:", values);
 
         if (values.username === "test" && values.password === "password") {
             login(values.username);
-            console.log("User logged in:", values.username);
 
             setTimeout(() => {
+                console.log("Navigating...");
                 navigate("/");
-            }, 500);
+            }, 100);
         } else {
             message.error("Invalid credentials");
         }
     };
 
+
     return (
         <main className="loginPageContainer">
-            <Row gutter={[16, 8]} justify="center">
+            <Row gutter={[16, 16]} justify="center">
                 <Col xs={24} sm={12} md={8} lg={8}>
                     <h2
                         style={{

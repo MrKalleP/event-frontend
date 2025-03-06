@@ -1,4 +1,4 @@
-import { useState, ReactNode, useEffect } from "react";
+import { useState, useEffect, ReactNode } from "react";
 import { AuthContext } from "../../utils/AuthContext";
 
 interface AuthProviderProps {
@@ -6,24 +6,30 @@ interface AuthProviderProps {
 }
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
+    const [user, setUser] = useState<string | null>("test");
 
-    const [user, setUser] = useState<string | null>(null);
-
-    useEffect(() => {
+    /*useEffect(() => {
         const storedUser = localStorage.getItem("user");
         if (storedUser) {
             setUser(storedUser);
         }
-    }, []);
+    }, []); 
 
+  
+    useEffect(() => {
+        if (user) {
+            localStorage.setItem("user", user);
+        } else {
+            localStorage.removeItem("user");
+        }
+    }, [user]);
+*/
     const login = (username: string) => {
         setUser(username);
-        localStorage.setItem("user", username);
     };
 
     const logout = () => {
         setUser(null);
-        localStorage.removeItem("user");
     };
 
     return (
