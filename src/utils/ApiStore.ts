@@ -1,3 +1,4 @@
+
 const base_url = "http://localhost:3000";
 
 const fetchData = async (endpoint: string) => {
@@ -29,11 +30,17 @@ export const FetchAllProjects = async () => fetchData("projects");
 export const FetchLogsByProjectAndType = async (projectId: string, type: string) =>
     fetchData(`logs/${projectId}/type/${type}`);
 
+export const FetchOneUser = async (userFirstName: string, userPassword: string) => {
+    const response = await fetchData(`users/${userFirstName}/${userPassword}`);
+    if (!response.ok) throw new Error("Failed to fetch user");
+
+    return response.json();
+};
+
+
 // Fetch project by projects id och får det valda projectet
 //export const FetchProjectById = async (projectId: string) => fetchData(`projects/${projectId}`);
 export const FetchProjectById = async (projectId: string) => fetchData(`projects/${projectId}`);
-
-
 
 
 

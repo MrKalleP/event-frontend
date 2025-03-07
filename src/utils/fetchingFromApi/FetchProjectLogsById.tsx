@@ -5,6 +5,7 @@ export const ProjectLogsById = async (projectId: string) => {
 
     try {
         const projectLogsById = await FetchLogsByProjectId(projectId);
+
         return projectLogsById;
     } catch {
         console.log("Error fetching project by id");

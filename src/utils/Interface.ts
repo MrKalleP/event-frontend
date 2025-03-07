@@ -68,6 +68,6 @@ export interface PutAllDataTogheterMap {
 
 export interface AuthContextType {
     user: string | null;
-    login: (username: string) => void;
+    login: (username: string, password: string) => void;
     logout: () => void;
 }

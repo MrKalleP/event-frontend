@@ -3,21 +3,36 @@ import { LockOutlined, LoginOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, Flex, Row, Col, message } from 'antd';
 import { useAuth } from "../hooks/useAuthHook";
 import { useNavigate, Link } from "react-router-dom";
+import { GetOneUsersFromDb } from '../utils/fetchingFromApi/FetchUsers';
 
 const LoginPage = () => {
     const { login } = useAuth();
     const navigate = useNavigate();
 
+    const onFinish = async (values: { userFirstName: string; userPassword: string }) => {
+        console.log(values, "hej");
 
-    const onFinish = (values: { username: string; password: string }) => {
-        if (values.username === "test" && values.password === "password") {
-            login(values.username);
+        if (!values.userFirstName || !values.userPassword) {
+            message.error("All fields are required");
+            return;
+        }
+
+
+        const user = await GetOneUsersFromDb(values.userFirstName, values.userPassword);
+        console.log(user);
+
+        if (!user) {
+            message.error("Invalid credentials");
+            return;
+        }
+
+        if (user.userFirstName === values.userFirstName && user.userFirstName === values.userPassword) {
+            login(values.userFirstName, values.userPassword);
             navigate("/");
         } else {
             message.error("Invalid credentials");
         }
     };
-
 
     return (
         <main className="loginPageContainer">
