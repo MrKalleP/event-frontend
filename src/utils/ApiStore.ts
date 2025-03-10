@@ -31,14 +31,10 @@ export const FetchLogsByProjectAndType = async (projectId: string, type: string)
     fetchData(`logs/${projectId}/type/${type}`);
 
 export const FetchOneUser = async (userFirstName: string, userPassword: string) => {
-
     try {
         const response = await fetchData(`users/${userFirstName}/${userPassword}`);
-        console.log(response);
-
         return response;
     } catch (error) {
-        console.log(error);
         return null;
     }
 };

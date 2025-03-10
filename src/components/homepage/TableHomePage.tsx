@@ -11,7 +11,7 @@ const TableHomePage = ({ allLogs }: { allLogs: Log[] }) => {
 
     return (
         <main className="containerHome">
-            <h1 className='projectPageTitel' style={{ padding: "3rem" }}>Event log system</h1>
+            <h1 className='projectPageTitel' style={{ padding: "3rem", fontSize: "5rem" }}>Event log system</h1>
             <Row gutter={[16, 16]}>
                 <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                     <Table<Log>

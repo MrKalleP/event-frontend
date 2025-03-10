@@ -58,7 +58,7 @@ const HomePage = () => {
                 <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={12}>
                     <TableHomePage allLogs={allLogs} />
                 </Col>
-                <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={12}>
+                <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={12} >
                     <LineChartExample allLogs={allLogs} />
                 </Col>
             </Row>

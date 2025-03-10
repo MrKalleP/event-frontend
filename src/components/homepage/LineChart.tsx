@@ -24,14 +24,13 @@ function LineChartExample({ allLogs }: { allLogs: Log[] }) {
 
 
     return (
-
         <ResponsiveContainer
             width="100%"
             height="100%"
             style={{
                 backgroundColor: "white",
                 borderRadius: ".5rem",
-                padding: "1rem"
+                padding: "1rem",
             }}>
             <LineChart
                 style={{ padding: "1rem" }}
