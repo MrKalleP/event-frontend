@@ -1,22 +1,16 @@
-import { useState, ReactNode, useEffect } from "react";
+import { useState, ReactNode } from "react";
 import { AuthContext } from "../../utils/AuthContext";
 import { GetOneUsersFromDb } from "../../utils/fetchingFromApi/FetchUsers";
-import { FetchOneUser } from "../../utils/ApiStore";
 
 interface AuthProviderProps {
     children: ReactNode;
 }
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-    const [user, setUser] = useState<any | null>(null);
-    console.log(user);
-
-
+    const [user, setUser] = useState<string | null>(null);
 
     const login = async (userFirstName: string, userPassword: string) => {
         const fetchedUser = await GetOneUsersFromDb(userFirstName, userPassword);
-
-        console.log("Fetched user:", fetchedUser);
 
         if (fetchedUser) {
             setUser(fetchedUser);

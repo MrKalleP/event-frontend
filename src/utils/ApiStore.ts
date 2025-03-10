@@ -8,8 +8,9 @@ const fetchData = async (endpoint: string) => {
             throw new Error(`Failed to fetch: ${response.status} ${response.statusText}`);
         }
         return await response.json();
-    } catch {
+    } catch (errno) {
         console.log("did not find all the logs");
+        console.log(errno)
 
     }
 };
@@ -31,10 +32,15 @@ export const FetchLogsByProjectAndType = async (projectId: string, type: string)
     fetchData(`logs/${projectId}/type/${type}`);
 
 export const FetchOneUser = async (userFirstName: string, userPassword: string) => {
-    const response = await fetchData(`users/${userFirstName}/${userPassword}`);
-    if (!response.ok) throw new Error("Failed to fetch user");
+    try {
+        const response = await fetchData(`users/${userFirstName}/${userPassword}`);
+        console.log(response, "api");
+        return response;
+    } catch (errno) {
+        console.log(errno);
+    }
 
-    return response.json();
+
 };
 
 

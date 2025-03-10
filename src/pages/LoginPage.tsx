@@ -10,29 +10,27 @@ const LoginPage = () => {
     const navigate = useNavigate();
 
     const onFinish = async (values: { userFirstName: string; userPassword: string }) => {
-        console.log(values, "hej");
-
-        if (!values.userFirstName || !values.userPassword) {
+        if (!values.userFirstName.trim() || !values.userPassword.trim()) {
             message.error("All fields are required");
             return;
         }
 
-
         const user = await GetOneUsersFromDb(values.userFirstName, values.userPassword);
-        console.log(user);
+
+        if (user) {
+            login(user.userFirstName, user.userPassword);
+            navigate("/");
+        }
 
         if (!user) {
-            message.error("Invalid credentials");
+            message.error("Invalid credential");
             return;
-        }
-
-        if (user.userFirstName === values.userFirstName && user.userFirstName === values.userPassword) {
-            login(values.userFirstName, values.userPassword);
-            navigate("/");
         } else {
-            message.error("Invalid credentials");
+            message.success("Nu fungerar det :)")
         }
     };
+
+
 
     return (
         <main className="loginPageContainer">
@@ -51,7 +49,7 @@ const LoginPage = () => {
                         Sign in to enter the Event log system
                         <LoginOutlined style={{ color: "var(--Info-color-)", padding: ".4rem" }} />
                     </h2>
-                    <Form
+                    <Form onFinish={onFinish}
                         name="login"
                         initialValues={{ remember: true }}
                         style={{
@@ -60,16 +58,15 @@ const LoginPage = () => {
                             borderRadius: ".5rem",
                             border: "1px solid var(--Info-color-)"
                         }}
-                        onFinish={onFinish}
                     >
                         <Form.Item
-                            name="username"
+                            name="userFirstName"
                             rules={[{ required: true, message: 'Please input your Username!' }]}
                         >
                             <Input prefix={<UserOutlined />} placeholder="Username" />
                         </Form.Item>
                         <Form.Item
-                            name="password"
+                            name="userPassword"
                             rules={[{ required: true, message: 'Please input your Password!' }]}
                         >
                             <Input prefix={<LockOutlined />} type="password" placeholder="Password" />
