@@ -19,7 +19,7 @@ const LoginPage = () => {
 
         if (user) {
             await login(user.userFirstName, user.userPassword);
-            message.success("Nu fungerar det :)");
+            message.success("Welcome! You are now logged in to the Event log system");
             navigate("/");
         } else {
             message.error("Invalid credential");
