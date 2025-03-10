@@ -18,18 +18,13 @@ const LoginPage = () => {
         const user = await GetOneUsersFromDb(values.userFirstName, values.userPassword);
 
         if (user) {
-            login(user.userFirstName, user.userPassword);
+            await login(user.userFirstName, user.userPassword);
+            message.success("Nu fungerar det :)");
             navigate("/");
-        }
-
-        if (!user) {
-            message.error("Invalid credential");
-            return;
         } else {
-            message.success("Nu fungerar det :)")
+            message.error("Invalid credential");
         }
     };
-
 
 
     return (
