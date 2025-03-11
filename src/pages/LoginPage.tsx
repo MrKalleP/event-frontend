@@ -3,22 +3,24 @@ import { LockOutlined, LoginOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, Flex, Row, Col, message } from 'antd';
 import { useAuth } from "../hooks/useAuthHook";
 import { useNavigate, Link } from "react-router-dom";
-import { GetOneUsersFromDb } from '../utils/fetchingFromApi/FetchUsers';
+import { FetchOneUser } from '../utils/ApiStore';
+
 
 const LoginPage = () => {
     const { login } = useAuth();
     const navigate = useNavigate();
 
     const onFinish = async (values: { userFirstName: string; userPassword: string }) => {
+
         if (!values.userFirstName.trim() || !values.userPassword.trim()) {
             message.error("All fields are required");
             return;
         }
 
-        const user = await GetOneUsersFromDb(values.userFirstName, values.userPassword);
+        const user = await FetchOneUser(values.userFirstName, values.userPassword);
 
         if (user) {
-            await login(user.userFirstName, user.userPassword);
+            login(user.userFirstName, user.userPassword);
             message.success("Welcome! You are now logged in to the Event log system");
             navigate("/");
         } else {

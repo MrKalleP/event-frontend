@@ -30,11 +30,24 @@ export const FetchAllProjects = async () => fetchData("projects");
 export const FetchLogsByProjectAndType = async (projectId: string, type: string) =>
     fetchData(`logs/${projectId}/type/${type}`);
 
+
 export const FetchOneUser = async (userFirstName: string, userPassword: string) => {
     try {
-        const response = await fetchData(`users/${userFirstName}/${userPassword}`);
-        return response;
+        const response = await fetch(`${base_url}/users/login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ userFirstName, userPassword }),
+        })
+
+        if (!response.ok) {
+            throw new Error(`Failed to fetch: ${response.status} ${response.statusText}`);
+        }
+
+        return await response.json();
     } catch (error) {
+        console.log(error, "Login failed");
         return null;
     }
 };
