@@ -32,6 +32,8 @@ export const FetchLogsByProjectAndType = async (projectId: string, type: string)
 
 
 export const FetchOneUser = async (userFirstName: string, userPassword: string) => {
+    console.log(userFirstName, userPassword);
+
     try {
         const response = await fetch(`${base_url}/users/login`, {
             method: "POST",
@@ -44,7 +46,6 @@ export const FetchOneUser = async (userFirstName: string, userPassword: string) 
         if (!response.ok) {
             throw new Error(`Failed to fetch: ${response.status} ${response.statusText}`);
         }
-
         return await response.json();
     } catch (error) {
         console.log(error, "Login failed");

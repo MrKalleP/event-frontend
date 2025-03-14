@@ -1,33 +1,46 @@
-
 import { LockOutlined, LoginOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, Flex, Row, Col, message } from 'antd';
 import { useAuth } from "../hooks/useAuthHook";
 import { useNavigate, Link } from "react-router-dom";
 import { FetchOneUser } from '../utils/ApiStore';
-
+import { useEffect } from 'react';
 
 const LoginPage = () => {
-    const { login } = useAuth();
+    const auth = useAuth();
+    if (!auth) return null;
+
+    const { user, login } = auth;
     const navigate = useNavigate();
 
-    const onFinish = async (values: { userFirstName: string; userPassword: string }) => {
+    useEffect(() => {
+        if (user) {
+            navigate("/");
+        }
+    }, [user, navigate]);
 
-        if (!values.userFirstName.trim() || !values.userPassword.trim()) {
-            message.error("All fields are required");
-            return;
+
+    const onFinish = async (values: { userFirstName: string; userPassword: string }) => {
+        const { userFirstName, userPassword } = values;
+
+        if (!userFirstName.trim() || !userPassword.trim()) {
+            return message.error("All fields are mandatory!");
         }
 
-        const user = await FetchOneUser(values.userFirstName, values.userPassword);
+        try {
+            const fetchedUser = await FetchOneUser(userFirstName, userPassword);
 
-        if (user) {
-            login(user.userFirstName, user.userPassword);
-            message.success("Welcome! You are now logged in to the Event log system");
-            navigate("/");
-        } else {
-            message.error("Invalid credential");
+            if (fetchedUser) {
+                login(userFirstName, userPassword);
+                message.success("Welcome! You are logged in.");
+                navigate("/");
+            } else {
+                message.error("Incorrect username or password.");
+            }
+        } catch (error) {
+            console.error("Login error:", error);
+            message.error("Something went wrong while logging in.");
         }
     };
-
 
     return (
         <main className="loginPageContainer">
