@@ -32,7 +32,6 @@ export const FetchLogsByProjectAndType = async (projectId: string, type: string)
 
 
 export const FetchOneUser = async (userFirstName: string, userPassword: string) => {
-    console.log(userFirstName, userPassword);
 
     try {
         const response = await fetch(`${base_url}/users/login`, {

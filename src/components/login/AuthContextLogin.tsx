@@ -12,10 +12,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     const login = async (userFirstName: string, userPassword: string) => {
         try {
             const fetchedUser = await FetchOneUser(userFirstName, userPassword);
-            console.log(fetchedUser);
 
-            if (fetchedUser && fetchedUser.userFirstName) {
-                setUser({ userFirstName: fetchedUser.userFirstName });
+            if (fetchedUser && fetchedUser.user.userFirstName) {
+                setUser({ userFirstName: fetchedUser.user.userFirstName });
             } else {
                 setUser(null);
             }
