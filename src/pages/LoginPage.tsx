@@ -6,11 +6,9 @@ import { FetchOneUser } from '../utils/ApiStore';
 import { useEffect } from 'react';
 
 const LoginPage = () => {
-    const auth = useAuth();
-    if (!auth) return null;
-
-    const { user, login } = auth;
     const navigate = useNavigate();
+    const auth = useAuth();
+    const { user, login } = auth;
 
     useEffect(() => {
         if (user) {
@@ -18,6 +16,7 @@ const LoginPage = () => {
         }
     }, [user, navigate]);
 
+    if (!auth) return null;
 
     const onFinish = async (values: { userFirstName: string; userPassword: string }) => {
         const { userFirstName, userPassword } = values;

@@ -32,7 +32,7 @@ const filterDataByRange = (data: Log[], range: string, projectId: string) => {
 };
 
 const putAllDataTogheter = (data: Log[], range: string): Array<PutAllDataTogheterMap[keyof PutAllDataTogheterMap]> => {
-    let putAllDataTogheter: PutAllDataTogheterMap = {};
+    const putAllDataTogheter: PutAllDataTogheterMap = {};
 
     data.forEach((entry) => {
         const date = new Date(entry.date);

@@ -40,7 +40,7 @@ function LineChartExample({ allLogs }: { allLogs: Log[] }) {
                     dataKey="date"
                     tick={{
                         fill: "#2A2A2A",
-                        fontSize: 13
+                        fontSize: 13,
                     }} />
                 <YAxis
                     tick={{
