@@ -4,6 +4,9 @@ import { Button } from "antd";
 import { LoginOutlined } from "@ant-design/icons";
 
 const LogoutButton = () => {
+    const auth = useAuth();
+    const { user } = auth;
+
     const { logout } = useAuth();
     const navigate = useNavigate();
 
@@ -15,13 +18,13 @@ const LogoutButton = () => {
     return (<section style={{
         height: "100vh",
         width: "100%",
+        display: "flex",
+        alignItems: "center",
+        flexDirection: "column",
     }}>
+        <p style={{ textAlign: "center", color: "white" }}>{user?.userFirstName + " is logged in"}</p>
         <Button
             style={{
-                display: "flex",
-                width: "100%",
-                alignItems: "center",
-                justifyContent: "center",
                 textAlign: "center",
                 padding: "1.2rem 2.4rem",
                 fontSize: "16px",

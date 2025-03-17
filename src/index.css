@@ -22,7 +22,8 @@ body {
 body,
 html,
 #root {
-  height: 100vh;
+  height: 100%;
+  padding: 0;
   margin: 0;
   font-weight: 600;
   letter-spacing: .05rem;
@@ -68,7 +69,7 @@ html,
   color: #2A2A2A;
   border-radius: .5rem;
   padding: 1rem;
-  min-height: 72vh;
+
 }
 
 
@@ -163,7 +164,7 @@ html,
 }
 
 .loginPageContainer {
-  min-height: 100vh;
+  height: 100%;
   width: 100%;
   background-color: #f0f2f5;
   display: flex;

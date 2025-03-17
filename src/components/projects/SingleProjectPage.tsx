@@ -10,6 +10,7 @@ import { ProjectById } from "../../utils/fetchingFromApi/FetchProjectById";
 import { ProjectLogsById } from "../../utils/fetchingFromApi/FetchProjectLogsById";
 import ProjectLineChart from "./LineChartSingleProjectPage";
 import useAllLogs from "../../hooks/useFetchAllLogs";
+import TimeLine from "./TimeLine";
 
 const SingleProjectPage = () => {
     const { data: allLogs } = useAllLogs()
@@ -42,16 +43,23 @@ const SingleProjectPage = () => {
 
     return (
         <>
-            <Row gutter={[4, 2]} style={{ height: "100vh", marginInline: "3rem" }}>
+            <Row gutter={[4, 2]} style={{ height: "100%", marginInline: "3rem" }}>
                 {project?.description && <ProjectDetails project={project} description={project.description} />}
-
-                <Col xs={24} sm={24} md={24} lg={24}>
+                <Col xs={24} sm={24} md={24} lg={24}
+                    style={{ marginTop: "4rem" }}>
                     <Row gutter={[16, 16]}>
-                        <Col xs={24} sm={24} md={24} lg={12}>
-                            <ProjectLogsTable logs={logs} showModal={showModal} />
-                        </Col>
-                        <Col xs={24} sm={24} md={24} lg={12}>
-                            <ProjectLineChart allLogs={allLogs} projectId={projectId as string} />
+                        <Col xs={24} sm={24} md={24} lg={24}>
+                            <Row gutter={[16, 16]}>
+                                <Col xs={24} sm={24} md={24} lg={12}>
+                                    <ProjectLogsTable logs={logs} showModal={showModal} />
+                                </Col>
+                                <Col xs={24} sm={24} md={24} lg={12}>
+                                    <ProjectLineChart allLogs={allLogs} projectId={projectId as string} />
+                                </Col>
+                                <Col xs={24} sm={24} md={24} lg={24}>
+                                    <TimeLine logs={logs} />
+                                </Col>
+                            </Row>
                         </Col>
                     </Row>
                 </Col>

@@ -61,8 +61,9 @@ const MainLayout = () => {
                             </Menu.Item>
 
                         ))}
-                        < LogoutButton />
+
                     </Menu>
+                    < LogoutButton />
                 </Sider>)}
             {isMobile && (
                 <>
