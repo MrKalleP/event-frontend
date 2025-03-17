@@ -21,6 +21,8 @@ const LogoutButton = () => {
         display: "flex",
         alignItems: "center",
         flexDirection: "column",
+        justifyContent: "end",
+        padding: "1rem"
     }}>
         <p style={{ textAlign: "center", color: "white" }}>{user?.userFirstName + " is logged in"}</p>
         <Button

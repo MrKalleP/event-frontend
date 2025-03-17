@@ -56,7 +56,7 @@ const SingleProjectPage = () => {
                                 <Col xs={24} sm={24} md={24} lg={12}>
                                     <ProjectLineChart allLogs={allLogs} projectId={projectId as string} />
                                 </Col>
-                                <Col xs={24} sm={24} md={24} lg={24}>
+                                <Col xs={24} sm={24} md={24} lg={12}>
                                     <TimeLine logs={logs} />
                                 </Col>
                             </Row>
