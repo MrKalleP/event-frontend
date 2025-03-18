@@ -59,6 +59,10 @@ export const FetchProjectById = async (projectId: string) => fetchData(`projects
 
 
 
+export const fetchOneUserForProject = async (userId: string) => fetchData(`users/${userId}`);
+
+
+
 // http://localhost:3000/logs to get all logs  fungerar
 // http://localhost:3000/logs/type/error eller info osv beroende på typ info, warning, error, crashed  fungerar 
 // http://localhost:3000/logs/project/1 eller 2 osv berode på id tar ut alla project tillhörande det id som projectet tillhör fungerar
