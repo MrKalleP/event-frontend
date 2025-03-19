@@ -3,6 +3,8 @@ import { Input, Row, Col } from "antd";
 import useProjects from "../hooks/useFetchAllProjects";
 import { Project } from "../utils/Interface";
 import ProjectCard from "../components/projects/ProjectCard";
+import { ProjectsForUserId } from "../utils/fetchingFromApi/FetchUserForAuth";
+import { useAuth } from "../hooks/useAuthHook";
 
 const { Search } = Input;
 
@@ -11,11 +13,24 @@ const ProjectsPage = () => {
     const [searchValue, setSearchValue] = useState<string>("");
     const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
 
+    const auth = useAuth();
+    const { user } = auth;
+    console.log(user);
+
     useEffect(() => {
-        if (projects) {
-            setFilteredProjects(projects);
+
+        const fetchingProject = async () => {
+
+            const sture = await ProjectsForUserId(user?.userId as string)
+            console.log(sture, "hej");
+            setFilteredProjects(sture);
         }
-    }, [projects]);
+
+        fetchingProject()
+
+
+
+    }, [projects, user?.userId]);
 
     const onSearch = (value: string) => {
         const trimmedValue = value.trim().toLowerCase();
