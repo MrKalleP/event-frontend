@@ -35,7 +35,6 @@ const MainLayout = () => {
 
     return (
         <Layout>
-
             {!isMobile && (
                 <Sider
                     collapsible
@@ -52,12 +51,11 @@ const MainLayout = () => {
                         mode="inline"
                         defaultSelectedKeys={["/"]}
                         selectedKeys={[location.pathname]}
-                        style={{ padding: ".5rem" }}
+                        style={{ padding: ".5rem", height: "100vh" }}
                     >    <Logo isCollapsed={collapsed} />
                         {menuItems.map((item) => (
                             <Menu.Item key={item.key} icon={item.icon} style={{ textAlign: "left", marginBlock: ".6rem" }}>
                                 <Link style={{ marginInline: ".4rem" }} to={item.key}>{item.label}</Link>
-
                             </Menu.Item>
 
                         ))}

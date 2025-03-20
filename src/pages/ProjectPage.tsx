@@ -15,15 +15,12 @@ const ProjectsPage = () => {
 
     const auth = useAuth();
     const { user } = auth;
-    console.log(user);
 
     useEffect(() => {
 
         const fetchingProject = async () => {
-
-            const sture = await ProjectsForUserId(user?.userId as string)
-            console.log(sture, "hej");
-            setFilteredProjects(sture);
+            const logedInUserForThisProject = await ProjectsForUserId(user?.userId as string)
+            setFilteredProjects(logedInUserForThisProject);
         }
 
         fetchingProject()

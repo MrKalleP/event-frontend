@@ -6,16 +6,21 @@ interface AuthProviderProps {
     children: ReactNode;
 }
 
+
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-    const [user, setUser] = useState<{ userFirstName: string, userId: string } | null>(null);
+    const [user, setUser] = useState<{ userFirstName: string, userId: string, projectId: string } | null>(null);
+
 
     const login = async (userFirstName: string, userPassword: string) => {
         try {
             const fetchedUser = await FetchOneUser(userFirstName, userPassword);
-            console.log(fetchedUser);
 
             if (fetchedUser && fetchedUser.user.userFirstName) {
-                setUser({ userFirstName: fetchedUser.user.userFirstName, userId: fetchedUser.user.userId });
+                setUser({
+                    userFirstName: fetchedUser.user.userFirstName,
+                    userId: fetchedUser.user.userId,
+                    projectId: fetchedUser.user.projectId
+                });
             } else {
                 setUser(null);
             }

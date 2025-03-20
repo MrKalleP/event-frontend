@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { ProjectById } from "../../utils/fetchingFromApi/FetchProjectById";
 import { ProjectLogsById } from "../../utils/fetchingFromApi/FetchProjectLogsById";
 import ProjectLineChart from "./LineChartSingleProjectPage";
-import useAllLogs from "../../hooks/useFetchAllLogs";
+import { useAllLogs } from "../../hooks/useFetchAllLogs";
 import TimeLine from "./TimeLine";
 
 const SingleProjectPage = () => {
@@ -42,7 +42,7 @@ const SingleProjectPage = () => {
 
 
     return (
-        <>
+        <main style={{ height: "100%" }}>
             <Row gutter={[4, 2]} style={{ height: "100%", marginInline: "3rem" }}>
                 {project?.description && <ProjectDetails project={project} description={project.description} />}
                 <Col xs={24} sm={24} md={24} lg={24}
@@ -66,7 +66,7 @@ const SingleProjectPage = () => {
             </Row>
 
             <LogDetailsModal log={selectedLog} isOpen={isModalOpen} onClose={handleModalClose} />
-        </>
+        </main>
     );
 };
 

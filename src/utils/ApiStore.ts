@@ -61,7 +61,9 @@ export const FetchProjectById = async (projectId: string) => fetchData(`projects
 
 export const fetchOneUserForProject = async (userId: string) => fetchData(`users/${userId}`);
 
+export const FetchAllLogsForThisUser = async (projectId: string, userId: string) => fetchData(`logs/${projectId}/${userId}`);
 
+export const FetchAllLogsByTypeForOneUser = async (projectId: string, type: string) => fetchData(`logs/${projectId}/${type}`);
 
 // http://localhost:3000/logs to get all logs  fungerar
 // http://localhost:3000/logs/type/error eller info osv beroende på typ info, warning, error, crashed  fungerar 

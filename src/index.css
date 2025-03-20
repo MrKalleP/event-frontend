@@ -81,7 +81,7 @@ html,
 }
 
 .projectPageContainer {
-  min-height: 100vh;
+  min-height: 100%;
   width: 100%;
   margin: 0 auto;
   background-color: #f0f2f5;
@@ -138,7 +138,6 @@ html,
   font-size: 2rem;
   text-align: center;
   color: var(--errors-color-);
-  text-decoration: underline;
   line-height: 1rem;
 }
 

@@ -1,7 +1,48 @@
 import { useState, useEffect } from 'react';
+import { FetchAllLogsForThisUser } from '../utils/ApiStore';
+import { useAuth } from './useAuthHook';
+
+
+export const useAllLogs = () => {
+    const [fetchAllLogs, setfetchAllLogs] = useState([]);
+
+    const auth = useAuth();
+    const { user } = auth;
+    console.log(user);
+
+    useEffect(() => {
+        const fetchLogs = async () => {
+
+            if (!user?.projectId || !user?.userId) {
+                console.log("Missing projectId or userId, skipping fetch");
+                return;
+            }
+
+            try {
+                const allLogs = await FetchAllLogsForThisUser(user.projectId, user.userId);
+
+                setfetchAllLogs(allLogs);
+            } catch {
+                console.log("Did not find all of the logs");
+            }
+        };
+        if (user) {
+            fetchLogs();
+        }
+    }, [user]);
+
+    return { data: fetchAllLogs };
+};
+
+
+
+/*
+
+this Code is for one admin if you want all the logs for every project
+
 import { FetchAllLogs } from '../utils/ApiStore';
 
-const useAllLogs = () => {
+export const useAllLogs = () => {
     const [fetchAllLogs, setfetchAllLogs] = useState([]);
 
     useEffect(() => {
@@ -20,5 +61,4 @@ const useAllLogs = () => {
     return { data: fetchAllLogs };
 };
 
-export default useAllLogs
-
+*/
