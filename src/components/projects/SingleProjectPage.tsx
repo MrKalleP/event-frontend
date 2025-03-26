@@ -9,11 +9,11 @@ import { useEffect, useState } from "react";
 import { ProjectById } from "../../utils/fetchingFromApi/FetchProjectById";
 import { ProjectLogsById } from "../../utils/fetchingFromApi/FetchProjectLogsById";
 import ProjectLineChart from "./LineChartSingleProjectPage";
-import { useAllLogs } from "../../hooks/useFetchAllLogs";
+import { useFetchAllLogsForProjects } from "../../hooks/useAllLogsForProjects";
 import TimeLine from "./TimeLine";
 
 const SingleProjectPage = () => {
-    const { data: allLogs } = useAllLogs()
+    const { data: allLogs } = useFetchAllLogsForProjects()
     const { projectId } = useParams();
     const { selectedLog, isModalOpen, showModal, handleModalClose } = useModal();
     const [project, setProject] = useState<Project | null>(null);

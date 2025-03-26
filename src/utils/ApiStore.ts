@@ -65,6 +65,23 @@ export const FetchAllLogsForThisUser = async (userId: string, projectId: string)
 
 export const FetchAllLogsByTypeForOneUser = async (projectId: string, type: string) => fetchData(`logs/${projectId}/${type}`);
 
+
+export const fetchAllLogsForProjects = async (projectIds: string) => {
+    try {
+        const response = await fetch(`${base_url}/logs/projects`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ projectIds }),
+        })
+        return await response.json();
+    } catch (error) {
+        console.log(error, "fetchAllLogsForProjects failed to get");
+        return null;
+    }
+};
+
 // http://localhost:3000/logs to get all logs  fungerar
 // http://localhost:3000/logs/type/error eller info osv beroende på typ info, warning, error, crashed  fungerar 
 // http://localhost:3000/logs/project/1 eller 2 osv berode på id tar ut alla project tillhörande det id som projectet tillhör fungerar

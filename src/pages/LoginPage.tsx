@@ -30,6 +30,7 @@ const LoginPage = () => {
 
             if (fetchedUser) {
                 login(userFirstName, userPassword);
+                localStorage.setItem("user", JSON.stringify(fetchedUser))
                 message.success("Welcome! You are logged in.");
                 navigate("/");
             } else {
