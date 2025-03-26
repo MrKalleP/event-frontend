@@ -13,13 +13,14 @@ export const useAllLogs = () => {
     useEffect(() => {
         const fetchLogs = async () => {
 
-            if (!user?.projectId || !user?.userId) {
+            if (!user?.userId) {
                 console.log("Missing projectId or userId, skipping fetch");
                 return;
             }
 
             try {
-                const allLogs = await FetchAllLogsForThisUser(user.projectId, user.userId);
+                const allLogs = await FetchAllLogsForThisUser(user.userId, user.projectId);
+                console.log(allLogs);
 
                 setfetchAllLogs(allLogs);
             } catch {
