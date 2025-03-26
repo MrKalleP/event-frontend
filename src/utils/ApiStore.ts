@@ -61,7 +61,7 @@ export const FetchProjectById = async (projectId: string) => fetchData(`projects
 
 export const fetchOneUserForProject = async (userId: string) => fetchData(`users/${userId}`);
 
-export const FetchAllLogsForThisUser = async (projectId: string, userId: string) => fetchData(`logs/${projectId}/${userId}`);
+export const FetchAllLogsForThisUser = async (userId: string, projectId: string) => fetchData(`logs/${userId}/${projectId}`);
 
 export const FetchAllLogsByTypeForOneUser = async (projectId: string, type: string) => fetchData(`logs/${projectId}/${type}`);
 

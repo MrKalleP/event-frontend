@@ -10,7 +10,6 @@ interface AuthProviderProps {
 export const AuthProvider = ({ children }: AuthProviderProps) => {
     const [user, setUser] = useState<{ userFirstName: string, userId: string, projectId: string } | null>(null);
 
-
     const login = async (userFirstName: string, userPassword: string) => {
         try {
             const fetchedUser = await FetchOneUser(userFirstName, userPassword);
@@ -29,6 +28,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
             setUser(null);
         }
     };
+
 
     const logout = () => {
         setUser(null);

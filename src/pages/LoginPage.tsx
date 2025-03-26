@@ -51,7 +51,6 @@ const LoginPage = () => {
                             margin: "2rem",
                             fontSize: "1.8rem",
                             textAlign: "center",
-                            textDecoration: "underline",
                             color: "var(--errors-color-)"
                         }}
                     >
