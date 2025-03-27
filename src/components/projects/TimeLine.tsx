@@ -22,7 +22,8 @@ const TimeLine = ({ logs }: { logs: Log[] }) => {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-                justifyContent: "left"
+                justifyContent: "left",
+                overflowY: "auto",
             }}>
             <Timeline>
                 {logs.map((log) => (

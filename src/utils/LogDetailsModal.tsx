@@ -34,7 +34,7 @@ const LogDetailsModal: React.FC<LogDetailsModalProps> = ({ log, isOpen, onClose 
                         <ProjectOutlined style={{ marginRight: ".4rem" }} />
                         Project Name:
                     </strong>{" "}
-                    {log.project}
+                    {log.projectName}
                 </p>
                 <p>
                     <strong>

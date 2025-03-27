@@ -15,7 +15,7 @@ export interface Log {
     date: string;
     id: string;
     message: string;
-    project: string;
+    projectName: string;
     type: string;
 }
 
