@@ -61,12 +61,12 @@ export const FetchProjectById = async (projectId: string) => fetchData(`projects
 
 export const fetchOneUserForProject = async (userId: string) => fetchData(`users/${userId}`);
 
-export const FetchAllLogsForThisUser = async (userId: string, projectId: string) => fetchData(`logs/${projectId}/${userId}`);
+export const FetchAllLogsForThisUser = async (userId: string, projectIds: string) => fetchData(`logs/${projectIds}/${userId}`);
 
 export const FetchAllLogsByTypeForOneUser = async (projectId: string, type: string) => fetchData(`logs/${projectId}/${type}`);
 
 
-export const fetchAllLogsForProjects = async (projectIds: string) => {
+export const fetchAllLogsForProjects = async (projectIds: string[]) => {
     try {
         const response = await fetch(`${base_url}/logs/projects`, {
             method: "POST",

@@ -7,7 +7,7 @@ interface AuthProviderProps {
 }
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-    const [user, setUser] = useState<{ userFirstName: string, userId: string, projectId: string } | null>(() => {
+    const [user, setUser] = useState<{ userFirstName: string, userId: string, projectIds: string | string[] } | null>(() => {
         const storedUser = localStorage.getItem("user");
         return storedUser ? JSON.parse(storedUser) : null;
     });
@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
                 const newUser = {
                     userFirstName: fetchedUser.user.userFirstName,
                     userId: fetchedUser.user.userId,
-                    projectId: fetchedUser.user.projectId
+                    projectIds: fetchedUser.user.projectIds
                 };
                 setUser(newUser);
                 localStorage.setItem("user", JSON.stringify(newUser));

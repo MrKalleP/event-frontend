@@ -19,7 +19,7 @@ export const useAllLogs = () => {
             }
 
             try {
-                const allLogs = await FetchAllLogsForThisUser(user.userId, user.projectId);
+                const allLogs = await FetchAllLogsForThisUser(user.userId, user.projectIds);
                 console.log(allLogs);
 
                 setfetchAllLogs(allLogs);

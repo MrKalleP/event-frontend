@@ -10,6 +10,7 @@ export const useFetchAllLogsForProjects = (): { data: Log[] } => {
 
     const auth = useAuth();
     const { user } = auth;
+    console.log(user, "we");
 
     useEffect(() => {
         const fetchLogs = async () => {
@@ -20,7 +21,7 @@ export const useFetchAllLogsForProjects = (): { data: Log[] } => {
             }
 
             try {
-                const allLogs = await fetchAllLogsForProjects(user.projectId)
+                const allLogs = await fetchAllLogsForProjects(user.projectIds as string[])
                 setfetchAllLogs(allLogs);
             } catch {
                 console.log("Did not find all of the logs");
