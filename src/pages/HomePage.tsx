@@ -6,6 +6,7 @@ import { AlertOutlined, FireOutlined, InfoCircleOutlined, WarningOutlined } from
 import { useFetchAllLogsForProjects } from "../hooks/useAllLogsForProjects";
 
 
+
 const HomePage = () => {
     const { data: allLogs } = useFetchAllLogsForProjects()
 

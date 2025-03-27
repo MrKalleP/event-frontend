@@ -2,15 +2,14 @@
 import { useState, useEffect } from 'react';
 import { fetchAllLogsForProjects, } from '../utils/ApiStore';
 import { useAuth } from './useAuthHook';
+import { Log } from '../utils/Interface';
 
 
-export const useFetchAllLogsForProjects = () => {
+export const useFetchAllLogsForProjects = (): { data: Log[] } => {
     const [fetchAllLogs, setfetchAllLogs] = useState([]);
-    console.log(fetchAllLogs);
 
     const auth = useAuth();
     const { user } = auth;
-    console.log(user);
 
     useEffect(() => {
         const fetchLogs = async () => {
@@ -21,9 +20,7 @@ export const useFetchAllLogsForProjects = () => {
             }
 
             try {
-                const allLogs = await fetchAllLogsForProjects(user.projectId as string[])
-                console.log(allLogs, "hej");
-
+                const allLogs = await fetchAllLogsForProjects(user.projectId)
                 setfetchAllLogs(allLogs);
             } catch {
                 console.log("Did not find all of the logs");
