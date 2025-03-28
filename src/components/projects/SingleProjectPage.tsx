@@ -10,7 +10,7 @@ import { ProjectById } from "../../utils/fetchingFromApi/FetchProjectById";
 import { ProjectLogsById } from "../../utils/fetchingFromApi/FetchProjectLogsById";
 import ProjectLineChart from "./LineChartSingleProjectPage";
 import { useFetchAllLogsForProjects } from "../../hooks/useAllLogsForProjects";
-import TimeLine from "./TimeLine";
+import LogTimeLine from "./TimeLine";
 
 const SingleProjectPage = () => {
     const { data: allLogs } = useFetchAllLogsForProjects()
@@ -57,7 +57,7 @@ const SingleProjectPage = () => {
                                     <ProjectLineChart allLogs={allLogs} projectId={projectId as string} />
                                 </Col>
                                 <Col xs={24} sm={24} md={24} lg={12}>
-                                    <TimeLine logs={logs} />
+                                    <LogTimeLine logs={logs} />
                                 </Col>
                             </Row>
                         </Col>

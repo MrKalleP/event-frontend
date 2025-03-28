@@ -10,7 +10,6 @@ export const useFetchAllLogsForProjects = (): { data: Log[] } => {
 
     const auth = useAuth();
     const { user } = auth;
-    console.log(user, "we");
 
     useEffect(() => {
         const fetchLogs = async () => {

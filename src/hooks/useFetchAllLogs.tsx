@@ -8,7 +8,7 @@ export const useAllLogs = () => {
 
     const auth = useAuth();
     const { user } = auth;
-    console.log(user);
+
 
     useEffect(() => {
         const fetchLogs = async () => {
@@ -19,7 +19,7 @@ export const useAllLogs = () => {
             }
 
             try {
-                const allLogs = await FetchAllLogsForThisUser(user.userId, user.projectIds);
+                const allLogs = await FetchAllLogsForThisUser(user.userId, user.projectIds as string);
                 console.log(allLogs);
 
                 setfetchAllLogs(allLogs);
