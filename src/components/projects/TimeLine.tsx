@@ -17,8 +17,13 @@ const LogTimeLine = ({ logs }: { logs: Log[] }) => {
     const [currentPage, setCurrentPage] = useState(1);
 
     const startIndex = (currentPage - 1) * PageSize;
+    console.log(startIndex);
+
     const endIndex = startIndex + PageSize;
+    console.log(endIndex);
+
     const currentLogs = logs.slice(startIndex, endIndex);
+    console.log(currentLogs);
 
     return (
         <main
