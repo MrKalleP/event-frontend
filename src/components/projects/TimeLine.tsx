@@ -13,17 +13,20 @@ const colorMap = {
 
 const PageSize = 10;
 
-const LogTimeLine = ({ logs }: { logs: Log[] }) => {
+type LogTimeLineProps = {
+    logs?: Log[];
+    totalLogs: number;
+    setLogs: () => void
+};
+
+const LogTimeLine = ({ logs = [], totalLogs, setLogs }: LogTimeLineProps) => {
+
     const [currentPage, setCurrentPage] = useState(1);
-
     const startIndex = (currentPage - 1) * PageSize;
-    console.log(startIndex);
-
     const endIndex = startIndex + PageSize;
-    console.log(endIndex);
 
-    const currentLogs = logs.slice(startIndex, endIndex);
-    console.log(currentLogs);
+    const currentLogs = Array.isArray(logs) ? logs.slice(startIndex, endIndex) : [];
+
 
     return (
         <main
@@ -85,7 +88,7 @@ const LogTimeLine = ({ logs }: { logs: Log[] }) => {
             </Timeline>
             <section style={{ marginTop: "1rem", textAlign: "center" }}>
                 <Pagination
-                    total={logs.length}
+                    total={totalLogs}
                     pageSize={PageSize}
                     current={currentPage}
                     onChange={(page) => setCurrentPage(page)}

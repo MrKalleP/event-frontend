@@ -28,7 +28,8 @@ const filterDataByRange = (data: Log[], range: string, projectId: string) => {
     }
 
     // Filtrera både på datum och projectId
-    return data.filter(log => new Date(log.date) >= startDate && log.projectId === projectId);
+    const logsArray = Object.values(data);
+    return logsArray.filter(log => new Date(log.date) >= startDate && log.projectId === projectId);
 };
 
 const putAllDataTogheter = (data: Log[], range: string): Array<PutAllDataTogheterMap[keyof PutAllDataTogheterMap]> => {

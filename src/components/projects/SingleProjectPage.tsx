@@ -16,11 +16,16 @@ import LogTimeLine from "./TimeLine";
 const SingleProjectPage = () => {
 
     const { projectId } = useParams();
+    const [totalLogs, setTotalLogs] = useState<number>(0)
     const { data: allLogs } = useFetchAllLogsForProjects(projectId as string)
     const { selectedLog, isModalOpen, showModal, handleModalClose } = useModal();
     const [project, setProject] = useState<Project | null>(null);
     const [logs, setLogs] = useState<Log[]>([]);
-    console.log(allLogs);
+
+    console.log(project);
+    console.log(logs);
+    console.log(totalLogs);
+
 
     useEffect(() => {
         const fetchProjectData = async () => {
@@ -33,7 +38,8 @@ const SingleProjectPage = () => {
                 ]);
 
                 setProject(fetchedProject);
-                setLogs(fetchedLogs || []);
+                setLogs(Array.isArray(fetchedLogs.logs) ? fetchedLogs.logs : []);
+                setTotalLogs(fetchedLogs.total)
             } catch (error) {
                 console.error("Error fetching project or logs:", error);
             }
@@ -41,7 +47,6 @@ const SingleProjectPage = () => {
 
         fetchProjectData();
     }, [projectId]);
-
 
 
     return (
@@ -56,11 +61,9 @@ const SingleProjectPage = () => {
                                 <Col xs={24} sm={24} md={24} lg={12}>
                                     <ProjectLogsTable logs={logs} showModal={showModal} />
                                 </Col>
+
                                 <Col xs={24} sm={24} md={24} lg={12}>
-                                    <ProjectLineChart allLogs={allLogs} projectId={projectId as string} />
-                                </Col>
-                                <Col xs={24} sm={24} md={24} lg={12}>
-                                    <LogTimeLine logs={logs} />
+                                    <LogTimeLine logs={logs} totalLogs={totalLogs} setLogs={setLogs} />
                                 </Col>
                             </Row>
                         </Col>
@@ -74,3 +77,10 @@ const SingleProjectPage = () => {
 };
 
 export default SingleProjectPage;
+
+/*
+  <Col xs={24} sm={24} md={24} lg={12}>
+                         {       <ProjectLineChart allLogs={allLogs} projectId={projectId as string} />}
+                                </Col>
+
+*/

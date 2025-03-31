@@ -4,7 +4,6 @@ import { Log } from '../utils/Interface';
 
 export const useFetchAllLogsForProjects = (projectId: string): { data: Log[] } => {
     const [fetchAllLogsForProjects, setFetchAllLogsForProjects] = useState<Log[]>([]);
-    console.log(fetchAllLogsForProjects);
 
     useEffect(() => {
         const fetchLogs = async () => {
