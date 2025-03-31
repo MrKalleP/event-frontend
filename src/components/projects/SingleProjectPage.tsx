@@ -7,47 +7,18 @@ import { ProjectLogsTable } from "./ProjectLogsTable";
 import ProjectDetails from "./ProjectDetails";
 import { useEffect, useState } from "react";
 import { ProjectById } from "../../utils/fetchingFromApi/FetchProjectById";
-import { ProjectLogsById } from "../../utils/fetchingFromApi/FetchProjectLogsById";
 import ProjectLineChart from "./LineChartSingleProjectPage";
-import { useFetchAllLogsForProjects } from "../../hooks/useFetchAllLogsForSingleUser";
 import LogTimeLine from "./TimeLine";
 
 
 const SingleProjectPage = () => {
 
     const { projectId } = useParams();
-    const [totalLogs, setTotalLogs] = useState<number>(0)
-    const { data: allLogs } = useFetchAllLogsForProjects(projectId as string)
+
+
+
     const { selectedLog, isModalOpen, showModal, handleModalClose } = useModal();
     const [project, setProject] = useState<Project | null>(null);
-    const [logs, setLogs] = useState<Log[]>([]);
-
-    console.log(project);
-    console.log(logs);
-    console.log(totalLogs);
-
-
-    useEffect(() => {
-        const fetchProjectData = async () => {
-            if (!projectId) return;
-
-            try {
-                const [fetchedProject, fetchedLogs] = await Promise.all([
-                    ProjectById(projectId),
-                    ProjectLogsById(projectId)
-                ]);
-
-                setProject(fetchedProject);
-                setLogs(Array.isArray(fetchedLogs.logs) ? fetchedLogs.logs : []);
-                setTotalLogs(fetchedLogs.total)
-            } catch (error) {
-                console.error("Error fetching project or logs:", error);
-            }
-        };
-
-        fetchProjectData();
-    }, [projectId]);
-
 
     return (
         <main style={{ height: "100%" }}>
@@ -59,11 +30,14 @@ const SingleProjectPage = () => {
                         <Col xs={24} sm={24} md={24} lg={24}>
                             <Row gutter={[16, 16]}>
                                 <Col xs={24} sm={24} md={24} lg={12}>
-                                    <ProjectLogsTable logs={logs} showModal={showModal} />
+                                {/* FIXA KALLE! */}
+                                {/* <ProjectLogsTable logs={logs} showModal={showModal} /> */}
                                 </Col>
 
                                 <Col xs={24} sm={24} md={24} lg={12}>
-                                    <LogTimeLine logs={logs} totalLogs={totalLogs} setLogs={setLogs} />
+                                {projectId && (
+                                    <LogTimeLine projectId={projectId} />
+                                )}
                                 </Col>
                             </Row>
                         </Col>

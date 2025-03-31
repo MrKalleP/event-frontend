@@ -1,8 +1,9 @@
 import { Timeline, Tag, Pagination } from "antd";
 import { SmileOutlined } from "@ant-design/icons";
 import { Log } from "../../utils/Interface";
-import { format } from "date-fns";
-import { useState } from "react";
+import { format, set } from "date-fns";
+import { useEffect, useState } from "react";
+import { ProjectLogsById } from "../../utils/fetchingFromApi/FetchProjectLogsById";
 
 const colorMap = {
     info: "var(--Info-color-)",
@@ -11,22 +12,42 @@ const colorMap = {
     crashed: "var(--Crashed-color-)",
 };
 
-const PageSize = 10;
+// type LogTimeLineProps = {
+//     logs?: Log[];
+//     totalLogs: number;
+//     setLogs: () => void
+// };
 
-type LogTimeLineProps = {
-    logs?: Log[];
-    totalLogs: number;
-    setLogs: () => void
-};
+const LogTimeLine: React.FC<{ projectId: string }> = ({ projectId }) => {
 
-const LogTimeLine = ({ logs = [], totalLogs, setLogs }: LogTimeLineProps) => {
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const [itemsPerPage, setItemsPerPage] = useState<number>(10);
+    const [logs, setLogs] = useState<Log[]>([]);
+    const [totalLogs, setTotalLogs] = useState<number>(0);
 
-    const [currentPage, setCurrentPage] = useState(1);
-    const startIndex = (currentPage - 1) * PageSize;
-    const endIndex = startIndex + PageSize;
+    const handlePageChange = (newPage: number) => {
+        setCurrentPage(newPage);
+      };
 
-    const currentLogs = Array.isArray(logs) ? logs.slice(startIndex, endIndex) : [];
 
+    useEffect(() => {
+        const fetchLogs = async () => {
+        
+            try {
+                const fetchedLogs = await ProjectLogsById(projectId as string, currentPage, itemsPerPage);
+            
+                const {logs, total} = fetchedLogs;
+
+                setLogs(logs);
+                setTotalLogs(total);
+
+            } catch (error) {
+                console.error("Error fetching logs:", error);
+            }
+        };
+
+        fetchLogs();
+    }, [projectId, currentPage, itemsPerPage]);
 
     return (
         <main
@@ -44,7 +65,7 @@ const LogTimeLine = ({ logs = [], totalLogs, setLogs }: LogTimeLineProps) => {
             }}
         >
             <Timeline>
-                {currentLogs.map((log) => (
+                {logs.map((log) => (
                     <Timeline.Item
                         key={log.id}
                         color={colorMap[log.type as keyof typeof colorMap] || "gray"}
@@ -89,11 +110,14 @@ const LogTimeLine = ({ logs = [], totalLogs, setLogs }: LogTimeLineProps) => {
             <section style={{ marginTop: "1rem", textAlign: "center" }}>
                 <Pagination
                     total={totalLogs}
-                    pageSize={PageSize}
+                    pageSize={itemsPerPage}
                     current={currentPage}
-                    onChange={(page) => setCurrentPage(page)}
-                    showSizeChanger={false}
-                    showQuickJumper
+                    onChange={(page) => handlePageChange(page)}
+                    showSizeChanger={true}
+                    onShowSizeChange={(current, size) => {
+                        setItemsPerPage(size); // Uppdatera antal objekt per sida
+                        setCurrentPage(1); // Återställ till första sidan
+                    }}
                     showTotal={(total) => `Total ${total} items`}
                 />
             </section>

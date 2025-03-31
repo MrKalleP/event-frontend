@@ -21,7 +21,7 @@ export const FetchAllLogs = async () => fetchData("logs");
 export const FetchLogsByType = async (type: string) => fetchData(`logs/type/${type}`);
 
 // Fetch logs by project får det valda projectet
-export const FetchLogsByProjectId = async (projectId: string) => fetchData(`logs/${projectId}`);
+// export const FetchLogsByProjectId = async (projectId: string, currentPage: number, pageSize: number ) => fetchData(`logs/${projectId}`);
 
 // Fetch all projects får alla project det skiljer sig eftersom loggs bara en array av ["1","2"] istället för vanliga project eftersom den görs om i db
 export const FetchAllProjects = async () => fetchData("projects");
@@ -51,6 +51,20 @@ export const FetchOneUser = async (userFirstName: string, userPassword: string) 
         return null;
     }
 };
+
+
+export const FetchLogsByProjectId = async (projectId: string, currentPage: number, pageSize: number ) => {
+    try {
+        const response = await fetch(`${base_url}/logs/${projectId}?page=${currentPage}&pageSize=${pageSize}`);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch: ${response.status} ${response.statusText}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.log(error, "FetchLogsByProjectId failed to get");
+        return null;
+    }
+}
 
 
 // Fetch project by projects id och får det valda projectet
