@@ -12,30 +12,27 @@ const ProjectsPage = () => {
     const { dataFromFetchProjects: projects } = useProjects();
     const [searchValue, setSearchValue] = useState<string>("");
     const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
+    const [userProjects, setUserProjects] = useState<Project[]>([])
 
     const auth = useAuth();
     const { user } = auth;
 
     useEffect(() => {
-
         const fetchingProject = async () => {
             const logedInUserForThisProject = await ProjectsForUserId(user?.userId as string)
+            setUserProjects(logedInUserForThisProject)
             setFilteredProjects(logedInUserForThisProject);
         }
-
         fetchingProject()
-
-
-
     }, [projects, user?.userId]);
 
     const onSearch = (value: string) => {
         const trimmedValue = value.trim().toLowerCase();
         if (!trimmedValue) {
-            setFilteredProjects(projects || []);
+            setFilteredProjects(userProjects);
         } else {
             setFilteredProjects(
-                (projects ?? []).filter((project) => project.name.toLowerCase().includes(trimmedValue))
+                userProjects.filter((project) => project.name.toLowerCase().includes(trimmedValue))
             );
         }
     };
