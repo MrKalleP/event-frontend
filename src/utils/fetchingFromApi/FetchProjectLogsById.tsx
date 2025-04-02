@@ -1,6 +1,6 @@
 import { FetchLogsByProjectId } from "../ApiStore";
 
-export const ProjectLogsById = async (projectId: string, currentPage: number, pageSize: number ) => {
+export const ProjectLogsById = async (projectId: string, currentPage: number, pageSize: number) => {
     if (!projectId) return null;
 
     try {

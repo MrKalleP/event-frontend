@@ -1,9 +1,35 @@
-import { Col, Row, Table, TableColumnsType, Tag } from "antd";
+import { Col, Row, Table, TableColumnsType, Tag, Pagination } from "antd";
 import { Log } from "../../utils/Interface";
 import { SortOrder } from "antd/es/table/interface";
+import { useState, useEffect } from "react";
+import { ProjectLogsById } from "../../utils/fetchingFromApi/FetchProjectLogsById";
 import formatDate from "../../utils/DateFunction";
 
-export const ProjectLogsTable = ({ logs, showModal }: { logs: Log[], showModal: (log: Log) => void }) => {
+export const ProjectLogsTable = ({ projectId, showModal }: { projectId: string, showModal: (log: Log) => void }) => {
+    const [logs, setLogs] = useState<Log[]>([]);
+    const [totalLogs, setTotalLogs] = useState<number>(0);
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const [itemsPerPage, setItemsPerPage] = useState<number>(10);
+
+    const handlePageChange = (newPage: number) => {
+        setCurrentPage(newPage);
+    };
+
+    useEffect(() => {
+        const fetchLogs = async () => {
+            try {
+                const fetchedLogs = await ProjectLogsById(projectId, currentPage, itemsPerPage);
+                const { logs, total } = fetchedLogs;
+                setLogs(logs);
+                setTotalLogs(total);
+            } catch (error) {
+                console.error("Error fetching logs:", error);
+            }
+        };
+
+        fetchLogs();
+    }, [projectId, currentPage, itemsPerPage]);
+
     const columns: TableColumnsType<Log> = [
         {
             title: "Date",
@@ -54,17 +80,30 @@ export const ProjectLogsTable = ({ logs, showModal }: { logs: Log[], showModal: 
     ];
 
     return (
-        <Row style={{ backgroundColor: "white", borderRadius: ".5rem" }}>
+        <Row style={{ backgroundColor: "white", borderRadius: ".5rem", padding: "1rem" }}>
             <Col xs={24} sm={24} md={24} lg={24} className="tableProjectPage">
                 <Table<Log>
                     dataSource={logs}
                     columns={columns}
-                    tableLayout='fixed'
+                    tableLayout="fixed"
                     onRow={(record) => ({
                         onClick: () => showModal(record),
                     })}
                     rowKey={(record) => String(record.id)}
-                    pagination={{ pageSize: 10 }}
+                    pagination={false}
+                />
+                <Pagination
+                    total={totalLogs}
+                    pageSize={itemsPerPage}
+                    current={currentPage}
+                    onChange={(page) => handlePageChange(page)}
+                    showSizeChanger={true}
+                    onShowSizeChange={(current, size) => {
+                        setItemsPerPage(size);
+                        setCurrentPage(1);
+                    }}
+                    showTotal={(total) => `Total ${total} items`}
+                    style={{ marginTop: "1rem", textAlign: "center" }}
                 />
             </Col>
         </Row>

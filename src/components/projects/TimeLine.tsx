@@ -1,7 +1,7 @@
 import { Timeline, Tag, Pagination } from "antd";
 import { SmileOutlined } from "@ant-design/icons";
 import { Log } from "../../utils/Interface";
-import { format, set } from "date-fns";
+import { format } from "date-fns";
 import { useEffect, useState } from "react";
 import { ProjectLogsById } from "../../utils/fetchingFromApi/FetchProjectLogsById";
 
@@ -12,12 +12,6 @@ const colorMap = {
     crashed: "var(--Crashed-color-)",
 };
 
-// type LogTimeLineProps = {
-//     logs?: Log[];
-//     totalLogs: number;
-//     setLogs: () => void
-// };
-
 const LogTimeLine: React.FC<{ projectId: string }> = ({ projectId }) => {
 
     const [currentPage, setCurrentPage] = useState<number>(1);
@@ -27,16 +21,16 @@ const LogTimeLine: React.FC<{ projectId: string }> = ({ projectId }) => {
 
     const handlePageChange = (newPage: number) => {
         setCurrentPage(newPage);
-      };
+    };
 
 
     useEffect(() => {
         const fetchLogs = async () => {
-        
+
             try {
                 const fetchedLogs = await ProjectLogsById(projectId as string, currentPage, itemsPerPage);
-            
-                const {logs, total} = fetchedLogs;
+
+                const { logs, total } = fetchedLogs;
 
                 setLogs(logs);
                 setTotalLogs(total);
@@ -114,7 +108,7 @@ const LogTimeLine: React.FC<{ projectId: string }> = ({ projectId }) => {
                     current={currentPage}
                     onChange={(page) => handlePageChange(page)}
                     showSizeChanger={true}
-                    onShowSizeChange={(current, size) => {
+                    onShowSizeChange={(_current, size) => {
                         setItemsPerPage(size); // Uppdatera antal objekt per sida
                         setCurrentPage(1); // Återställ till första sidan
                     }}

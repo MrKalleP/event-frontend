@@ -15,17 +15,19 @@ const calculateCrashFreePercentage = (totalLogs: number, crashed: number) => {
 const ProjectCard = ({ project }: { project: Project }) => {
     const { name, id } = project;
 
-    const [logs, setLogs] = useState<Log[]>([]);
+    const [logs, setLogs] = useState<{ total: number, logs: Log[] }>({ total: 0, logs: [] });
     const [crashes, setCrashes] = useState<number>(0);
+
+
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const fetchedLogs = await ProjectLogsById(id);
+                const fetchedLogs = await ProjectLogsById(id, 1, 1000);
                 setLogs(fetchedLogs || []);
-            } catch {
-                console.log("Error fetching logs:");
-                setLogs([]);
+            } catch (error) {
+                console.log("Error fetching logs:", error);
+                setLogs({ total: 0, logs: [] });
             }
         };
 
@@ -46,7 +48,8 @@ const ProjectCard = ({ project }: { project: Project }) => {
         fetchCrashData();
     }, [id]);
 
-    const totalLogs = logs.length;
+    const totalLogs = logs.total;
+
     const crashFreePercentage = totalLogs > 0 ? calculateCrashFreePercentage(totalLogs, crashes) : "100.00";
     const crashFreeNumber = parseFloat(crashFreePercentage);
 
